@@ -1,0 +1,23 @@
+{
+  "name": "anvilcraft-homepage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev src",
+    "docs:build": "vitepress build src",
+    "docs:preview": "vitepress preview src"
+  },
+  "keywords": [],
+  "author": "Gugle",
+  "license": " AGPL-3.0-or-later",
+  "packageManager": "pnpm@10.16.1",
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "@types/qrcode": "^1.5.6",
+    "gray-matter": "^4.0.3",
+    "qrcode": "^1.5.4",
+    "vitepress": "2.0.0-alpha.16",
+    "vue": "^3.5.29"
+  }
+}

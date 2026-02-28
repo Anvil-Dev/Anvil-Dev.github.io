@@ -5,7 +5,7 @@ import Banner from '@/assets/banner.png';
 <template>
   <a-card hoverable bordered>
     <div style="width: 100%; text-align: center">
-      <a-image :width="640" :height="360" style="width: 100%" :src="Banner"/>
+      <a-image style="max-width: 100%" :src="Banner"/>
     </div>
     <a-divider />
     <a-typography-paragraph>

@@ -1,6 +1,7 @@
 @ -1,68 +1,98 @@
 <script setup lang="ts">
-import {h, reactive, ref} from 'vue';
+import { theme } from 'ant-design-vue';
+import { computed, h, onMounted, reactive, ref } from 'vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -9,15 +10,15 @@ import {
   InfoCircleOutlined,
   RedEnvelopeOutlined,
   AppstoreOutlined,
-  CloudOutlined,
+  CloudOutlined
 } from '@ant-design/icons-vue';
-import {createFromIconfontCN} from '@ant-design/icons-vue';
+import { createFromIconfontCN } from '@ant-design/icons-vue';
 import Urls from '@/assets/urls.json';
 import Icon from '@/assets/icon.svg';
 import router from '@/router/index.ts';
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/c/font_4583291_rt4yqubcpzs.js',
+  scriptUrl: '//at.alicdn.com/t/c/font_4583291_rt4yqubcpzs.js'
 });
 
 const items = ref([
@@ -65,7 +66,7 @@ let hrefs = window.location.href.split('/');
 let temp: any = '';
 let keys: string[] = [];
 
-hrefs.pop()
+hrefs.pop();
 while (temp !== '#') {
   temp = hrefs.pop();
   if (temp !== '#') keys.push(temp);
@@ -75,7 +76,54 @@ const state = reactive({
   collapsed: false,
   selectedKeys: [window.location.href.split('/').pop() || 'home'],
   openKeys: keys,
+  darkTheme: true,
+  narrow: false
 });
+
+const antTheme = computed(() => {
+  if (state.darkTheme) {
+    return {
+      algorithm: theme.darkAlgorithm
+    };
+  } else {
+    return {
+      algorithm: theme.defaultAlgorithm
+    };
+  }
+});
+
+function toggleDarkTheme(dark?: boolean) {
+  if (dark === undefined) {
+    state.darkTheme = !state.darkTheme;
+  } else {
+    state.darkTheme = dark;
+  }
+
+  localStorage.setItem('darkTheme', state.darkTheme ? 'true' : 'false');
+
+  updateDarkThemeStyles();
+}
+
+function updateDarkThemeStyles() {
+  const root = document.documentElement;
+  if (state.darkTheme) {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
+  }
+}
+
+function initDarkTheme() {
+  const isStoredDark = localStorage.getItem('darkTheme');
+  let isDark: boolean;
+  if (isStoredDark === null) {
+    isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    localStorage.setItem('darkTheme', isDark ? 'true' : 'false');
+  } else {
+    isDark = isStoredDark == 'true';
+  }
+  toggleDarkTheme(isDark);
+}
 
 function toggleCollapsed() {
   state.collapsed = !state.collapsed;
@@ -84,73 +132,151 @@ function toggleCollapsed() {
 function select(page: any) {
   let path: string = '';
   for (let p of page.keyPath) {
-    path += '/' + p
+    path += '/' + p;
   }
   path = path === '/home' ? '/' : path;
   router.push(path);
   console.log(state);
 }
+
+function updateNarrowState() {
+  const vw = window.visualViewport?.width;
+  if (!vw) return;
+  state.narrow = vw <= 650;
+
+  state.collapsed = state.narrow;
+  const root = document.documentElement;
+  if (state.narrow) {
+    root.style.setProperty('--app-header-height', '116px');
+  } else {
+    root.style.setProperty('--app-header-height', '80px');
+  }
+}
+
+addEventListener('resize', () => {
+  updateNarrowState();
+});
+
+onMounted(() => {
+  updateNarrowState();
+  initDarkTheme();
+});
 </script>
 
 <template>
-  <a-page-header
+  <a-config-provider :theme="antTheme">
+    <a-page-header
       class="app-header"
       title="铁砧工艺"
       sub-title="一个原版风科技模组"
       @back="toggleCollapsed"
       :avatar="{ src: Icon }">
-    <template #backIcon>
-      <MenuUnfoldOutlined v-if="state.collapsed"/>
-      <MenuFoldOutlined v-else/>
-    </template>
-    <template #extra>
-      <a-space class="url-list">
-        <a-tooltip v-for="url in Urls" placement="left">
+      <template #backIcon>
+        <MenuUnfoldOutlined v-if="state.collapsed" />
+        <MenuFoldOutlined v-else />
+      </template>
+      <template #extra>
+        <a-space class="url-list" v-if="!state.narrow">
+          <a-tooltip v-for="url in Urls" placement="left">
+            <template #title>
+              <span>{{ url.tip }}</span>
+            </template>
+            <a :href="url.url" target="_blank">
+              <icon-font class="icon" :type="'icon-' + url.icon" />
+            </a>
+          </a-tooltip>
+          <div />
+          <a-tooltip placement="left">
+            <template #title>
+              <span>
+                切换暗色模式
+                <br />
+                //todo: 改成 icon button
+              </span>
+            </template>
+            <a-switch v-model:checked="state.darkTheme" @click="toggleDarkTheme" />
+          </a-tooltip>
+        </a-space>
+      </template>
+      <div
+        v-if="state.narrow"
+        style="display: flex; align-items: center; justify-content: space-between"
+      >
+        <a-space class="url-list">
+          <a-tooltip v-for="url in Urls" placement="right">
+            <template #title>
+              <span>{{ url.tip }}</span>
+            </template>
+            <a :href="url.url" target="_blank">
+              <icon-font class="icon" :type="'icon-' + url.icon" />
+            </a>
+          </a-tooltip>
+        </a-space>
+
+        <a-tooltip placement="left">
           <template #title>
-            <span>{{ url.tip }}</span>
+            <span>
+              切换暗色模式
+              <br />
+              //todo: 改成 icon button
+            </span>
           </template>
-          <a :href="url.url" target="_blank">
-            <icon-font class="icon" :type="'icon-'+url.icon"/>
-          </a>
+          <a-switch v-model:checked="state.darkTheme" @click="toggleDarkTheme" />
         </a-tooltip>
-      </a-space>
-    </template>
-  </a-page-header>
-  <a-layout>
-    <a-layout-sider class="app-sider" :collapsed="state.collapsed" :trigger="null" collapsible>
-      <a-menu
+      </div>
+    </a-page-header>
+
+    <a-layout class="app-layout">
+      <a-layout-sider class="app-sider" :collapsed="state.collapsed" :trigger="null" collapsible>
+        <a-menu
           v-model:selectedKeys="state.selectedKeys"
           v-model:open-keys="state.openKeys"
           mode="inline"
           class="app-menu"
           :items="items"
-          @select="select"/>
-    </a-layout-sider>
-    <a-layout-content>
-      <div class="app-scrollbar">
+          @select="select" />
+      </a-layout-sider>
+
+      <a-layout-content class="app-scrollbar">
         <div class="app-content">
-          <router-view/>
+          <router-view />
         </div>
+
         <div class="app-footer">
           <span>
             ©
             <a href="https://github.com/Anvil-Dev" target="_blank">Anvil-Dev</a>
           </span>
         </div>
-      </div>
-    </a-layout-content>
-  </a-layout>
+      </a-layout-content>
+    </a-layout>
+  </a-config-provider>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+html {
+  --app-content-margin: 16px;
+  --app-header-height: 80px;
+  --app-footer-height: 80px;
+
+  --app-header-color: #fff;
+  --app-border-color: rgba(5, 5, 5, 0.06);
+  --app-scrollbar-color: #8b8b8b;
+}
+html.dark {
+  --app-header-color: #141414;
+  --app-border-color: rgba(253, 253, 253, 0.12);
+  --app-scrollbar-color: #555;
+}
+
 .app-header {
-  max-height: 81px;
-  border: 1px solid rgb(235, 237, 240);
-  background-color: #ffffff;
+  max-height: var(--app-header-height);
+  border-bottom: 1px solid var(--app-border-color);
+  background-color: var(--app-header-color) !important;
 }
 
 .app-sider {
-  height: calc(100vh - 82px);
+  height: calc(100vh - var(--app-header-height));
 }
 
 .app-menu {
@@ -159,26 +285,28 @@ function select(page: any) {
 }
 
 .app-scrollbar {
-  height: calc(100vh - 81px);
+  height: calc(100vh - var(--app-header-height));
   overflow: auto;
-  scrollbar-gutter: stable;
+  scrollbar-color: var(--app-scrollbar-color) transparent;
 }
 
 .app-footer {
-  height: 80px;
+  height: var(--app-footer-height);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .app-content {
-  margin: 5px;
-  min-height: calc(100vh - 173px);
+  margin: var(--app-content-margin);
+  min-height: calc(
+    100vh - var(--app-header-height) - var(--app-footer-height) - 2 * var(--app-content-margin)
+  );
 }
 
 .url-list {
-  font-size: 32px;
+  font-size: 24px;
   text-align: center;
-  max-height: 32px;
+  max-height: 24px;
 }
 </style>

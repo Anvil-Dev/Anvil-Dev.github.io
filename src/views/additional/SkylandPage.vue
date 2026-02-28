@@ -14,16 +14,13 @@ import {
       <a-divider/>
       <a-typography-title :level="2">作者</a-typography-title>
       <a-divider/>
-      <a-row>
-        <a-col :span="8">
+      <div style="display: flex; align-items: stretch; justify-content: start; flex-wrap: wrap">
           <a-card class="author-card">
             <template #title>
               <a-avatar shape="square" size="large" src="https://avatars.githubusercontent.com/u/46415647"/>
               Cjsah
             </template>
           </a-card>
-        </a-col>
-        <a-col :span="8">
           <a-card class="author-card">
             <template #title>
               <a-avatar shape="square" size="large"
@@ -31,8 +28,6 @@ import {
               朽白zz
             </template>
           </a-card>
-        </a-col>
-        <a-col :span="8">
           <a-card class="author-card">
             <template #title>
               <a-avatar shape="square" size="large" src="https://avatars.githubusercontent.com/u/34372427"/>
@@ -42,8 +37,7 @@ import {
               </a-typography-link>
             </template>
           </a-card>
-        </a-col>
-      </a-row>
+      </div>
       <a-typography-title :level="2">介绍</a-typography-title>
       <a-divider/>
       <a-typography-title :level="2">相关</a-typography-title>

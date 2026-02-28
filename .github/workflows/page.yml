@@ -1,4 +1,4 @@
-name: Deploy vue.js site to Pages
+name: Deploy VitePress site to Pages
 
 on:
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
         run: npm i -g pnpm
       - name: Prepare Dependency
         run: pnpm i
-      - name: Build with vue.js
+      - name: Build with VitePress
         run: pnpm run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

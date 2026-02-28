@@ -14,6 +14,12 @@ hero:
       text: 基本介绍
       link: posts/base-info.md
     - theme: alt
+      text: 赞助我们
+      link: posts/base-info/support_us.md
+    - theme: alt
+      text: 特别鸣谢
+      link: posts/base-info/members.md
+    - theme: alt
       text: 开发文档
       link: posts/docs
 

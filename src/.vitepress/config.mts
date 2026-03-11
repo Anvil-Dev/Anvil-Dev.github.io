@@ -8,9 +8,6 @@ import path from 'node:path'
 // @ts-ignore
 import matter from 'gray-matter'
 
-// 配置根目录
-const postsPath = path.resolve(__dirname, '../posts')
-
 function getFileTitle(filePath: string) {
     try {
         const content = fs.readFileSync(filePath, 'utf-8')
@@ -45,10 +42,16 @@ function getSidebar(filePath: string) {
 /**
  * 自动生成导航和侧边栏
  */
-function getAutoConfig() {
-    const nav: any[] = [{text: '首页', link: '/'}]
+function getAutoConfig(lang: string = 'zh', homeName = '首页') {
+    const nav: any[] = [];
+    if (lang === 'zh') {
+        nav.push({text: homeName, link: '/'})
+    } else {
+        nav.push({text: homeName, link: `/${lang}/`})
+    }
     const sidebar: any = {}
 
+    const postsPath = lang === 'zh' ? path.resolve(__dirname, '../posts') : path.resolve(__dirname, `../${lang}/posts`)
     // 读取 posts 目录下的所有第一级子目录
     if (!fs.existsSync(postsPath)) return {nav, sidebar}
 
@@ -64,7 +67,7 @@ function getAutoConfig() {
         const catTitle = fs.existsSync(indexPath) ? getFileTitle(indexPath) : cat
         nav.push({
             text: catTitle,
-            link: `/posts/${cat}/index`
+            link: lang === 'zh' ? `/posts/${cat}/index` : `/${lang}/posts/${cat}/index`
         })
 
         // 2. 生成 Sidebar: 扫描该目录下所有 md
@@ -73,13 +76,13 @@ function getAutoConfig() {
             .map((f: string) => {
                 return {
                     text: getSidebar(path.join(catPath, f)),
-                    link: `/posts/${cat}/${f.replace('.md', '')}`
+                    link: lang === 'zh' ? `/posts/${cat}/${f.replace('.md', '')}` : `/${lang}/posts/${cat}/${f.replace('.md', '')}`
                 }
             })
             // 让 support_us.md 始终在最前面
             .sort((a: { link: string }) => (a.link.endsWith('index') ? -1 : 1))
 
-        sidebar[`/posts/${cat}/`] = [
+        sidebar[lang === 'zh' ? `/posts/${cat}/` : `/${lang}/posts/${cat}/`] = [
             {
                 text: catTitle, // 侧边栏大标题使用该分类的 support_us.md 标题
                 items: items
@@ -90,27 +93,19 @@ function getAutoConfig() {
     return {nav, sidebar}
 }
 
-const {nav, sidebar} = getAutoConfig()
-
-
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "AnvilCraft",
     description: "以铁砧为核心的原版生存拓展",
     lastUpdated: true,
     head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
     themeConfig: {
-        // https://vitepress.dev/reference/default-theme-config
-        nav: nav,
-
-        sidebar: sidebar,
-
+        ...getAutoConfig(),
         socialLinks: [
             {icon: 'github', link: 'https://github.com/Anvil-Dev/AnvilCraft'},
             {icon: 'qq', link: 'https://qm.qq.com/q/OO9MeRbPIm'},
             {icon: 'discord', link: 'https://discord.gg/gAnWeZNKGh'},
             {icon: 'bilibili', link: 'https://space.bilibili.com/5930630/lists/2530932'},
-            {icon: { svg: MCMOD }, link: 'https://www.mcmod.cn/class/14068.html'},
+            {icon: {svg: MCMOD}, link: 'https://www.mcmod.cn/class/14068.html'},
             {icon: 'curseforge', link: 'https://www.curseforge.com/minecraft/mc-mods/anvilcraft'},
             {icon: 'modrinth', link: 'https://modrinth.com/mod/anvilcraft'}
         ],
@@ -128,5 +123,17 @@ export default defineConfig({
 
     markdown: {
         lineNumbers: true,
+    },
+
+    locales: {
+        root: {
+            label: '简体中文',
+            lang: 'zh-CN'
+        },
+        en: {
+            label: 'English',
+            lang: 'en',
+            themeConfig: getAutoConfig('en', 'Home')
+        }
     }
 })

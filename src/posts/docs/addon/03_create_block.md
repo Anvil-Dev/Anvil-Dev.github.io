@@ -1,8 +1,8 @@
-## 注册方块
+# 注册方块
 
 在 AnvilCraft 附属开发中，注册方块与注册物品类似，但涉及更多的属性和模型设置。
 
-### 打开 `init.AddonBlocks.java` ，你将看到如下语句：
+## 打开 `init.AddonBlocks.java` ，你将看到如下语句：
 
 ```java
 public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
@@ -13,12 +13,12 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该语句即为注册方块的示例，其中 `example_block` 为你即将注册的方块的ID，`Block::new` 为你方块类构造方法的引用。
 
-### 本章节内容将详细介绍 `REGISTRATE.block()` 的使用方法
+## 本章节内容将详细介绍 `REGISTRATE.block()` 的使用方法
 
 使用 `REGISTRATE.block()` 方法后，你将拿到一个 `BlockBuilder` ，该对象拥有一个 `.register()` 方法，调用后返回一个
 `BlockEntry` ，其对应的方块将在合适的时机自动注册。
 
-#### `BlockBuilder.initialProperties()`
+### `BlockBuilder.initialProperties()`
 
 该方法用于设置方块的初始属性，通常基于一个现有的方块属性：
 
@@ -32,7 +32,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何为注册的方块设置初始属性，继承了铁块的属性。
 
-#### `BlockBuilder.properties()`
+### `BlockBuilder.properties()`
 
 该方法用于修改方块的特定属性：
 
@@ -47,7 +47,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何设置方块的亮度等级和无遮挡属性。
 
-#### `BlockBuilder.tag()`
+### `BlockBuilder.tag()`
 
 该方法用于设置方块的标签：
 
@@ -62,7 +62,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何将方块添加到"可使用镐挖掘"和"需要石镐"标签中。
 
-#### `BlockBuilder.blockstate()`
+### `BlockBuilder.blockstate()`
 
 该方法用于设置方块的状态和模型：
 
@@ -77,7 +77,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何为方块设置简单的方块模型。
 
-#### `BlockBuilder.item()`
+### `BlockBuilder.item()`
 
 该方法用于为方块注册对应的物品：
 
@@ -94,7 +94,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何为方块注册物品，并设置物品属性。
 
-#### `BlockBuilder.simpleItem()`
+### `BlockBuilder.simpleItem()`
 
 这是一个便捷方法，用于快速为方块注册基础物品：
 
@@ -109,7 +109,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何使用 `simpleItem()` 快速为方块注册物品。
 
-#### `BlockBuilder.recipe()`
+### `BlockBuilder.recipe()`
 
 该方法用于设置方块的配方：
 
@@ -130,7 +130,7 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该示例展示了如何为方块添加一个有序合成配方。
 
-### 自定义方块类
+## 自定义方块类
 
 除了使用原版 Block 类，你还可以创建自定义的方块类：
 
@@ -158,7 +158,7 @@ public static final BlockEntry<CustomBlock> CUSTOM_BLOCK = REGISTRATE
     .register();
 ```
 
-### 方块注册最佳实践
+## 方块注册最佳实践
 
 1. **命名规范**
     * 使用小写字母和下划线命名方块ID
@@ -180,7 +180,7 @@ public static final BlockEntry<CustomBlock> CUSTOM_BLOCK = REGISTRATE
     * 确保在 mod 主类的构造函数中调用 `register()` 方法
     * 例如：`AddonBlocks.register();`
 
-### 完整示例
+## 完整示例
 
 以下是一个完整的自定义方块注册示例：
 

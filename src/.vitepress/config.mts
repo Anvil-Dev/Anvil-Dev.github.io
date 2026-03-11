@@ -40,6 +40,68 @@ function getSidebar(filePath: string) {
 }
 
 /**
+ * 递归扫描目录，生成嵌套的sidebar结构
+ */
+function scanDirectory(dirPath: string, basePath: string, lang: string = 'zh') {
+    const items: any[] = []
+    
+    // 读取目录内容
+    const entries = fs.readdirSync(dirPath)
+    
+    // 分离文件和目录
+    const files = entries.filter(f => f.endsWith('.md'))
+    const dirs = entries.filter(f => 
+        fs.statSync(path.join(dirPath, f)).isDirectory()
+    )
+    
+    // 处理markdown文件
+    files.forEach(file => {
+        const filePath = path.join(dirPath, file)
+        const linkPath = path.join(basePath, file.replace('.md', ''))
+        
+        items.push({
+            text: getSidebar(filePath),
+            link: lang === 'zh' ? linkPath : `/${lang}${linkPath}`
+        })
+    })
+    
+    // 处理子目录
+    dirs.forEach(dir => {
+        const subDirPath = path.join(dirPath, dir)
+        const subBasePath = path.join(basePath, dir)
+        
+        // 递归扫描子目录
+        const subItems = scanDirectory(subDirPath, subBasePath, lang)
+        
+        // 如果子目录有内容，则添加为折叠项
+        if (subItems.length > 0) {
+            const dirIndexPath = path.join(subDirPath, 'index.md')
+            const dirTitle = fs.existsSync(dirIndexPath) ? getFileTitle(dirIndexPath) : dir
+            
+            items.push({
+                text: dirTitle,
+                collapsed: true,
+                items: subItems
+            })
+        }
+    })
+    
+    // 对items进行排序，让index.md始终在最前面
+    return items.sort((a, b) => {
+        // 如果a是index而b不是，a排前面
+        if (a.link && a.link.endsWith('index') && !(b.link && b.link.endsWith('index'))) {
+            return -1
+        }
+        // 如果b是index而a不是，b排前面
+        if (b.link && b.link.endsWith('index') && !(a.link && a.link.endsWith('index'))) {
+            return 1
+        }
+        // 其他情况按字母顺序排序
+        return a.text.localeCompare(b.text)
+    })
+}
+
+/**
  * 自动生成导航和侧边栏
  */
 function getAutoConfig(lang: string = 'zh', homeName = '首页') {
@@ -70,21 +132,13 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
             link: lang === 'zh' ? `/posts/${cat}/index` : `/${lang}/posts/${cat}/index`
         })
 
-        // 2. 生成 Sidebar: 扫描该目录下所有 md
-        const items = fs.readdirSync(catPath)
-            .filter((f: string) => f.endsWith('.md'))
-            .map((f: string) => {
-                return {
-                    text: getSidebar(path.join(catPath, f)),
-                    link: lang === 'zh' ? `/posts/${cat}/${f.replace('.md', '')}` : `/${lang}/posts/${cat}/${f.replace('.md', '')}`
-                }
-            })
-            // 让 support_us.md 始终在最前面
-            .sort((a: { link: string }) => (a.link.endsWith('index') ? -1 : 1))
+        // 2. 生成 Sidebar: 递归扫描该目录及其子目录
+        const basePath = `/posts/${cat}`
+        const items = scanDirectory(catPath, basePath, lang)
 
         sidebar[lang === 'zh' ? `/posts/${cat}/` : `/${lang}/posts/${cat}/`] = [
             {
-                text: catTitle, // 侧边栏大标题使用该分类的 support_us.md 标题
+                text: catTitle, // 侧边栏大标题使用该分类的 index.md 标题
                 items: items
             }
         ]

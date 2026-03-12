@@ -43,7 +43,12 @@
   },
   {
     "name": "蓝",
-    "links": [],
+    "links": [
+      {
+        "icon": "bilibili",
+        "link": "https://space.bilibili.com/12324277"
+      }
+    ],
     "title": "实力富哥💵",
     "avatar": "/avatars/蓝.png"
   },

@@ -149,7 +149,35 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
         pattern: 'https://github.com/Anvil-Dev/Anvil-Dev.github.io/edit/main/src/:path'
     }
 
-    return {nav, sidebar, editLink}
+    const socialLinks = [
+        {icon: 'github', link: 'https://github.com/Anvil-Dev/AnvilCraft', ariaLabel: 'GitHub'},
+        {icon: 'qq', link: 'https://qm.qq.com/q/OO9MeRbPIm', ariaLabel: lang === 'zh' ? '腾讯QQ' : 'Tencent QQ'},
+        {icon: 'discord', link: 'https://discord.gg/gAnWeZNKGh', ariaLabel: 'Discord'},
+        {
+            icon: 'bilibili',
+            link: 'https://space.bilibili.com/5930630/lists/2530932',
+            ariaLabel: lang === 'zh' ? '哔哩哔哩' : 'BiliBili'
+        },
+        {
+            icon: {svg: MCMOD},
+            link: 'https://www.mcmod.cn/class/14068.html',
+            ariaLabel: lang === 'zh' ? '模组百科' : 'MCMOD'
+        },
+        {icon: 'curseforge', link: 'https://www.curseforge.com/minecraft/mc-mods/anvilcraft', ariaLabel: 'CurseForge'},
+        {icon: 'modrinth', link: 'https://modrinth.com/mod/anvilcraft', ariaLabel: 'Modrinth'},
+    ];
+
+    const footer = {
+        message: 'Released under the CC-BY-NC-SA 4.0 License.',
+        copyright: 'Copyright © 2024-present Gugle'
+    };
+
+    // const carbonAds = {
+    //     code: 'your-carbon-code',
+    //     placement: 'your-carbon-placement'
+    // };
+
+    return {socialLinks, nav, sidebar, editLink, footer}
 }
 
 export default defineConfig({
@@ -159,24 +187,8 @@ export default defineConfig({
     head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
     themeConfig: {
         ...getAutoConfig(),
-        socialLinks: [
-            {icon: 'github', link: 'https://github.com/Anvil-Dev/AnvilCraft'},
-            {icon: 'qq', link: 'https://qm.qq.com/q/OO9MeRbPIm'},
-            {icon: 'discord', link: 'https://discord.gg/gAnWeZNKGh'},
-            {icon: 'bilibili', link: 'https://space.bilibili.com/5930630/lists/2530932'},
-            {icon: {svg: MCMOD}, link: 'https://www.mcmod.cn/class/14068.html'},
-            {icon: 'curseforge', link: 'https://www.curseforge.com/minecraft/mc-mods/anvilcraft'},
-            {icon: 'modrinth', link: 'https://modrinth.com/mod/anvilcraft'}
-        ],
-
-        // carbonAds: {
-        //     code: 'your-carbon-code',
-        //     placement: 'your-carbon-placement'
-        // },
-
-        footer: {
-            message: 'Released under the CC-BY-NC-SA 4.0 License.',
-            copyright: 'Copyright © 2024-present Gugle'
+        search: {
+            provider: 'local'
         }
     },
 

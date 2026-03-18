@@ -10,7 +10,7 @@ AnvilCraft 开发文档为模组开发者和内容创作者提供了全面的技
 
 ### 文档结构
 
-本文档分为三个主要部分：
+本文档分为四个主要部分：
 
 #### 1. [附属开发 (Addon)](addon/index.md)
 指导开发者如何创建基于 AnvilCraft 核心的附属模组，包括：
@@ -37,6 +37,15 @@ AnvilCraft 开发文档为模组开发者和内容创作者提供了全面的技
 - KubeJS 风格的链式调用 API
 - 丰富的构建器方法和实用工具
 - 详细的代码示例和最佳实践
+
+#### 4. [AnvilLib 开发库](anvillib/index.md)
+AnvilLib 的完整开发文档，涵盖所有功能模块：
+- **Config**：基于注解的配置系统
+- **Integration**：模组兼容性集成框架
+- **Network**：网络包自动注册
+- **Recipe**：世界内配方系统
+- **Moveable Entity Block**：可被活塞推动的方块实体
+- **Registrum**：链式注册 API
 
 ---
 

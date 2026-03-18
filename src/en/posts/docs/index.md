@@ -10,7 +10,7 @@ The AnvilCraft development documentation provides comprehensive technical guidan
 
 ### Documentation Structure
 
-This documentation is divided into three major sections:
+This documentation is divided into four major sections:
 
 #### 1. [Addon Development](addon/index.md)
 Guides developers on creating addon mods based on AnvilCraft core, including:
@@ -38,3 +38,15 @@ Provides complete integration guidance for AnvilCraft with KubeJS scripts, inclu
 - Utility methods and constructor variants
 - Practical examples and integration notes
 
+#### 4. [AnvilLib Library](anvillib/index.md)
+Complete documentation for all AnvilLib modules:
+- **Config**: Annotation-based configuration system
+- **Integration**: Mod compatibility integration framework
+- **Network**: Automatic packet registration
+- **Recipe**: In-world recipe system
+- **Moveable Entity Block**: Piston-movable block entities
+- **Registrum**: Fluent chain-style registration API
+
+---
+
+Whether you want to build feature-rich addon mods or customize gameplay through datapacks and scripts, this documentation provides the guidance and technical references you need.

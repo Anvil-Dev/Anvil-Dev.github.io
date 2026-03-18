@@ -44,40 +44,40 @@ function getSidebar(filePath: string) {
  */
 function scanDirectory(dirPath: string, basePath: string, lang: string = 'zh') {
     const items: any[] = []
-    
+
     // 读取目录内容
     const entries = fs.readdirSync(dirPath)
-    
+
     // 分离文件和目录
     const files = entries.filter(f => f.endsWith('.md'))
-    const dirs = entries.filter(f => 
+    const dirs = entries.filter(f =>
         fs.statSync(path.join(dirPath, f)).isDirectory()
     )
-    
+
     // 处理markdown文件
     files.forEach(file => {
         const filePath = path.join(dirPath, file)
         const linkPath = path.join(basePath, file.replace('.md', ''))
-        
+
         items.push({
             text: getSidebar(filePath),
             link: lang === 'zh' ? linkPath : `/${lang}${linkPath}`
         })
     })
-    
+
     // 处理子目录
     dirs.forEach(dir => {
         const subDirPath = path.join(dirPath, dir)
         const subBasePath = path.join(basePath, dir)
-        
+
         // 递归扫描子目录
         const subItems = scanDirectory(subDirPath, subBasePath, lang)
-        
+
         // 如果子目录有内容，则添加为折叠项
         if (subItems.length > 0) {
             const dirIndexPath = path.join(subDirPath, 'index.md')
             const dirTitle = fs.existsSync(dirIndexPath) ? getFileTitle(dirIndexPath) : dir
-            
+
             items.push({
                 text: dirTitle,
                 collapsed: true,
@@ -85,7 +85,7 @@ function scanDirectory(dirPath: string, basePath: string, lang: string = 'zh') {
             })
         }
     })
-    
+
     // 对items进行排序，让index.md始终在最前面
     return items.sort((a, b) => {
         // 如果a是index而b不是，a排前面
@@ -144,7 +144,12 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
         ]
     })
 
-    return {nav, sidebar}
+    const editLink = {
+        text: lang === 'zh' ? '在 GitHub 上编辑此页面' : 'Edit this page on GitHub',
+        pattern: 'https://github.com/Anvil-Dev/Anvil-Dev.github.io/edit/main/src/:path'
+    }
+
+    return {nav, sidebar, editLink}
 }
 
 export default defineConfig({

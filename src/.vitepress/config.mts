@@ -106,6 +106,9 @@ function scanDirectory(dirPath: string, basePath: string, lang: string = 'zh') {
  */
 function getAutoConfig(lang: string = 'zh', homeName = '首页') {
     const nav: any[] = [];
+    nav.push({
+        component: 'fullres',
+    })
     if (lang === 'zh') {
         nav.push({text: homeName, link: '/'})
     } else {

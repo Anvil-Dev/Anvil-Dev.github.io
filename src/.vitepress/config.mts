@@ -97,7 +97,7 @@ function scanDirectory(dirPath: string, basePath: string, lang: string = 'zh') {
             return 1
         }
         // 其他情况按字母顺序排序
-        return a.text.localeCompare(b.text)
+        return `${a.link}`.localeCompare(`${b.link}`)
     })
 }
 

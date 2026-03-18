@@ -7,7 +7,7 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 ```js
 ServerEvents.recipes(event => {
   event.custom({
-    type: "anvilcraft:in_world",
+    type: "anvillib_recipe:in_world_recipe",
     icon: {
       item: "minecraft:anvil"
     },
@@ -25,7 +25,7 @@ ServerEvents.recipes(event => {
 
 ### type
 
-固定值 `anvilcraft:in_world`，标识这是一个 InWorld 配方。
+固定值 `anvillib_recipe:in_world_recipe`，标识这是一个 InWorld 配方。
 
 ### icon (配方图标)
 
@@ -59,6 +59,10 @@ ServerEvents.recipes(event => {
 
 是否兼容模式，决定谓词匹配方式。
 
+### max_efficiency (最大效率)
+
+最大效率值（可选），用于限制配方的最大执行效率。
+
 ## 实用方法
 
 ```js
@@ -71,19 +75,16 @@ ServerEvents.recipes(event => {
     "anvilcraft:on_anvil_fall_on",        // 触发器
     [],                                   // 冲突谓词
     [{                                   // 非冲突谓词
-      type: "anvilcraft:has_item_ingredient",
+      type: "anvillib_recipe:has_item_ingredient",
       offset: [0, -1, 0],
       item: {
         items: "minecraft:iron_ingot"
       }
     }],
     [{                                   // 结果
-      type: "anvilcraft:spawn_item",
+      type: "anvillib_recipe:spawn_item",
       offset: [0, -1, 0],
-      item: {
-        id: "minecraft:iron_nugget"
-      },
-      count: 1.0
+      item: "minecraft:iron_nugget"
     }],
     0,                                   // 优先级
     true                                 // 兼容模式

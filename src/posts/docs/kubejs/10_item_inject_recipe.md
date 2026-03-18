@@ -24,7 +24,7 @@ ServerEvents.recipes(event => {
     },
     block_result: {
       block: {
-        name: "minecraft:air"
+        Name: "minecraft:air"
       },
       chance: 1.0
     }
@@ -60,7 +60,7 @@ ServerEvents.recipes(event => {
 
 ### block_result (输出方块)
 
-输出方块，包含：
+输出方块（可选），包含：
 
 - `block`: 方块状态对象，包含方块名称和其他属性
 - `chance`: 结果出现的概率（0.0到1.0之间）

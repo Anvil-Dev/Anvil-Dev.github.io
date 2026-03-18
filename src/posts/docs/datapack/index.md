@@ -24,6 +24,20 @@
 - [生物转换配方](15_mob_transform_recipe.md) - 定义生物实体之间的转换规则
 - [珠宝制作配方](16_jewel_crafting_recipe.md) - 制作各种珠宝和装饰性物品
 - [矿物涌泉配方](17_mineral_fountain_recipe.md) - 定义矿物涌泉的方块转换规则
+- [煮沸配方](18_boiling_recipe.md) - 在炼药锅和营火环境下进行煮沸处理
+- [筛网配方](19_mesh_recipe.md) - 使用筛网/脚手架过滤并转化物品
+- [质量注入配方](20_mass_inject_recipe.md) - 为物品注入质量值属性
+- [唯一物品冲压配方](21_stamping_unique_items_recipe.md) - 仅接受不重复输入物品的冲压配方
+- [带物品生物转换配方](22_mob_transform_with_item_recipe.md) - 通过手持物品概率触发生物特殊转换
+- [多方块转换配方](23_multiblock_conversion_recipe.md) - 将匹配结构整体替换为另一套结构
+- [概率矿物涌泉配方](24_mineral_fountain_chance_recipe.md) - 在指定维度按概率进行矿物涌泉转换
+- [充放电配方](25_charger_charging_recipe.md) - 定义充电器/放电器的能量处理规则
+- [多重合一锻造配方](26_multiple_to_one_smithing_recipe.md) - 多输入位锻造台配方（2/4/8 合一）
+- [中子辐照配方](27_neutron_irradiation_recipe.md) - 在中子辐照器环境下进行处理
+- [霜铸置换配方](28_permutation_recipe.md) - 霜铸系统中的置换型锻造配方
+- [霜铸形变配方](29_deformation_recipe.md) - 霜铸系统中的形变型锻造配方
+- [能量武器制作配方](30_energy_weapon_make_recipe.md) - 多材料组合生成能量武器
+- [铁砧碰撞工艺配方](31_anvil_collision_recipe.md) - 通过铁砧撞击触发方块/掉落转换
 
 ## 使用说明
 

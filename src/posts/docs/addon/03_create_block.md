@@ -5,7 +5,7 @@
 ## 打开 `init.AddonBlocks.java` ，你将看到如下语句：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .simpleItem()
     .register();
@@ -13,17 +13,17 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 该语句即为注册方块的示例，其中 `example_block` 为你即将注册的方块的ID，`Block::new` 为你方块类构造方法的引用。
 
-## 本章节内容将详细介绍 `REGISTRATE.block()` 的使用方法
+## 本章节内容将详细介绍 `REGISTRUM.block()` 的使用方法
 
-使用 `REGISTRATE.block()` 方法后，你将拿到一个 `BlockBuilder` ，该对象拥有一个 `.register()` 方法，调用后返回一个
+使用 `REGISTRUM.block()` 方法后，你将拿到一个 `BlockBuilder` ，该对象拥有一个 `.register()` 方法，调用后返回一个
 `BlockEntry` ，其对应的方块将在合适的时机自动注册。
 
 ### `BlockBuilder.initialProperties()`
 
-该方法用于设置方块的初始属性，通常基于一个现有的方块属性：
+该方法用于设置方块的初始属性，基于一个现有的方块进行完整复制：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.IRON_BLOCK)
     .simpleItem()
@@ -34,10 +34,10 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 ### `BlockBuilder.properties()`
 
-该方法用于修改方块的特定属性：
+该方法用于修改方块的特定属性，可以多次调用以累加修改：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.STONE)
     .properties(p -> p.lightLevel(state -> 5).noOcclusion())
@@ -49,10 +49,10 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 ### `BlockBuilder.tag()`
 
-该方法用于设置方块的标签：
+该方法用于设置方块的标签，可以多次调用以添加多个标签：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.STONE)
     .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_STONE_TOOL)
@@ -64,13 +64,13 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 ### `BlockBuilder.blockstate()`
 
-该方法用于设置方块的状态和模型：
+该方法用于设置方块的状态和模型。默认会自动生成简单的 `cube_all` 模型：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.STONE)
-    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get()))
+    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.getEntry()))
     .simpleItem()
     .register();
 ```
@@ -79,15 +79,15 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 ### `BlockBuilder.item()`
 
-该方法用于为方块注册对应的物品：
+该方法用于为方块注册对应的物品，返回 `ItemBuilder` 以便进一步配置物品属性：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.STONE)
-    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get()))
+    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.getEntry()))
     .item()
-    .initialProperties(() -> new Item.Properties())
+    .properties(p -> p.rarity(Rarity.UNCOMMON))
     .build()
     .register();
 ```
@@ -96,13 +96,13 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 
 ### `BlockBuilder.simpleItem()`
 
-这是一个便捷方法，用于快速为方块注册基础物品：
+这是一个便捷方法，用于快速为方块注册基础物品（相当于 `item().build()`）：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.STONE)
-    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get()))
+    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.getEntry()))
     .simpleItem()
     .register();
 ```
@@ -114,16 +114,16 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
 该方法用于设置方块的配方：
 
 ```java
-public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRATE
+public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .block("example_block", Block::new)
     .initialProperties(() -> Blocks.STONE)
-    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get()))
+    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.getEntry()))
     .simpleItem()
     .recipe((ctx, provider) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get(), 4)
         .pattern("XX")
         .pattern("XX")
         .define('X', Items.STONE)
-        .unlockedBy(AnvilCraftDatagen.hasItem(Items.STONE), RegistrateRecipeProvider.has(Items.STONE))
+        .unlockedBy("has_stone", RegistrumRecipeProvider.has(Items.STONE))
         .save(provider))
     .register();
 ```
@@ -151,7 +151,7 @@ public class CustomBlock extends Block {
 然后在注册时使用：
 
 ```java
-public static final BlockEntry<CustomBlock> CUSTOM_BLOCK = REGISTRATE
+public static final BlockEntry<CustomBlock> CUSTOM_BLOCK = REGISTRUM
     .block("custom_block", CustomBlock::new)
     .initialProperties(() -> Blocks.STONE)
     .simpleItem()
@@ -185,19 +185,19 @@ public static final BlockEntry<CustomBlock> CUSTOM_BLOCK = REGISTRATE
 以下是一个完整的自定义方块注册示例：
 
 ```java
-public static final BlockEntry<Block> RUBY_BLOCK = REGISTRATE
+public static final BlockEntry<Block> RUBY_BLOCK = REGISTRUM
     .block("ruby_block", Block::new)
     .initialProperties(() -> Blocks.IRON_BLOCK)
     .properties(p -> p.lightLevel(state -> 3))
     .tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.BEACON_BASE_BLOCKS)
-    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get()))
+    .blockstate((ctx, provider) -> provider.simpleBlock(ctx.getEntry()))
     .simpleItem()
     .recipe((ctx, provider) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ctx.get())
         .pattern("XXX")
         .pattern("XXX")
         .pattern("XXX")
         .define('X', ModItems.RUBY)
-        .unlockedBy(AnvilCraftDatagen.hasItem(ModItems.RUBY), RegistrateRecipeProvider.has(ModItems.RUBY))
+        .unlockedBy("has_ruby", RegistrumRecipeProvider.has(ModItems.RUBY))
         .save(provider))
     .register();
 ```

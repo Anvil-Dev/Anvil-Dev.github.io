@@ -18,8 +18,14 @@
       "count": 1
     }
   ],
-  "cauldron": {
-    "fluid": "minecraft:water"
+  "block_ingredient": {
+    "blocks": "minecraft:water"
+  },
+  "block_result": {
+    "block": {
+      "Name": "minecraft:air"
+    },
+    "chance": 1.0
   }
 }
 ```
@@ -44,12 +50,18 @@
 - `id`: 物品ID
 - `count`: 物品数量
 
-### cauldron
+### block_ingredient
 
-炼药锅相关设置：
+配方所需的输入方块：
 
-- `fluid`: 流体类型
-- `consume`: 消耗量（可选，负数表示产生流体，正数表示消耗流体）
+- `blocks`: 方块ID（可以是单个方块ID字符串或方块ID数组）
+
+### block_result
+
+配方的输出方块（可选）：
+
+- `block`: 方块状态对象，包含方块名称和其他属性
+- `chance`: 结果出现的概率（0.0到1.0之间）
 
 ## 使用示例
 
@@ -69,8 +81,14 @@
       "count": 1
     }
   ],
-  "cauldron": {
-    "fluid": "minecraft:water"
+  "block_ingredient": {
+    "blocks": "minecraft:water"
+  },
+  "block_result": {
+    "block": {
+      "Name": "minecraft:air"
+    },
+    "chance": 1.0
   }
 }
 ```

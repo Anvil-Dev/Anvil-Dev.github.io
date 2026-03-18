@@ -78,8 +78,8 @@
       "count": 1
     }
   ],
-  "cauldron": {
-    "fluid": "minecraft:water"
-  }
+  "fluid": "minecraft:water",
+  "consume": 0,
+  "transform": "null"
 }
 ```

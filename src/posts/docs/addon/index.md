@@ -30,9 +30,22 @@
 
 ## 开发流程概览
 
+### 基础开发
+
 1. [环境搭建与模组构建](01_environment.md) - 配置开发环境
 2. [创建你的第一个物品](02_create_item.md) - 学习基本的物品注册
 3. [创建你的第一个方块](03_create_block.md) - 学习基本的方块注册
+
+### 进阶开发
+
+4. [注册实体](04_create_entity.md) - 学习如何创建自定义实体
+5. [方块实体开发](05_create_block_entity.md) - 创建具有逻辑的方块
+6. [数据生成器](06_data_generation.md) - 自动生成游戏资源
+7. [配置系统](07_config.md) - 创建模组配置文件
+8. [配方系统集成](08_recipe_integration.md) - 集成 AnvilCraft 配方系统
+9. [事件系统](09_event_system.md) - 使用 NeoForge 事件系统
+10. [资源和本地化](10_resources.md) - 管理材质、模型和语言文件
+11. [网络通信](11_networking.md) - 实现客户端与服务端通信
 
 ## 技术栈
 
@@ -40,7 +53,7 @@ AnvilCraft 附属模组开发主要使用以下技术：
 
 * **Java 21** - 开发语言
 * **Gradle** - 构建工具
-* **Registrate** - 内容注册系统
+* **Registrum** - 内容注册系统（AnvilLib 提供的注册 API，基于 Registrate 改进）
 * **NeoForge** - 模组加载器 API
 * **Lombok** - 简化 Java 代码编写
 

@@ -70,7 +70,7 @@
 
 ## 四、验证环境
 
-1. 运行 `Tasks -> forgegradle runs -> runClient` 任务测试环境
+1. 运行 `Tasks -> neoforge runs -> runClient` 任务测试环境
     * 如果能正常启动 Minecraft 并看到你的模组，说明环境配置成功
 
 2. 检查日志输出

@@ -158,10 +158,7 @@ ServerEvents.recipes(event => {
 
 ## 注意事项
 
-1. [mineral_fountain](file:///D:/Projects/repos/AnvilCraft/src/main/java/dev/dubhe/anvilcraft/integration/kubejs/recipe/mineral/MineralFountainRecipeSchema.java#L37)
-   配方需要附近有指定的 [need_block](file:///D:/Projects/repos/AnvilCraft/src/main/java/dev/dubhe/anvilcraft/integration/kubejs/recipe/mineral/MineralFountainRecipeSchema.java#L34)
-   方块才能触发
-2. [mineral_fountain_chance](file:///D:/Projects/repos/AnvilCraft/src/main/java/dev/dubhe/anvilcraft/integration/kubejs/recipe/mineral/MineralFountainChanceRecipeSchema.java#L47)
-   配方只在指定维度内有效
+1. `mineral_fountain` 配方需要附近有指定的 `need_block` 方块才能触发
+2. `mineral_fountain_chance` 配方只在指定维度内有效
 3. 概率值必须在 0.0 到 1.0 之间，其中 0.0 表示 0% 概率，1.0 表示 100% 概率
 4. 所有方块ID必须使用标准的 Minecraft 资源位置格式

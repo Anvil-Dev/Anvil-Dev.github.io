@@ -6,7 +6,7 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ```json
 {
-  "type": "anvilcraft:in_world_recipe",
+  "type": "anvillib_recipe:in_world_recipe",
   "icon": {
     "item": "minecraft:anvil"
   },
@@ -15,13 +15,14 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
   "non_conflicting": [],
   "outcomes": [],
   "priority": 0,
-  "compatible": true
+  "compatible": true,
+  "max_efficiency": 2147483647
 }
 ```
 
 ### 字段说明
 
-- `type`: 固定值 `anvilcraft:in_world_recipe`，标识这是一个 InWorld 配方
+- `type`: 固定值 `anvillib_recipe:in_world_recipe`，标识这是一个 InWorld 配方
 - `icon`: 配方图标，用于在配方界面中显示
 - `trigger`: 触发器类型，决定配方何时被触发
 - `conflicting`: 冲突谓词列表，这些谓词之间相互冲突
@@ -29,6 +30,7 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 - `outcomes`: 配方结果列表，当配方匹配时执行
 - `priority`: 配方优先级，数值越高优先级越高
 - `compatible`: 是否兼容模式，决定谓词匹配方式
+- `max_efficiency`: 最大效率值（可选，默认为 Integer.MAX_VALUE）
 
 ## 触发器 (Trigger)
 
@@ -44,11 +46,11 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ### `has_item`
 
-检查指定位置是否存在指定物品
+检查指定位置是否存在指定物品（由 AnvilLib Recipe 提供）
 
 ```json
 {
-  "type": "anvilcraft:has_item",
+  "type": "anvillib_recipe:has_item",
   "offset": [0, -1, 0],
   "item": {
     "items": "minecraft:iron_ingot"
@@ -58,11 +60,11 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ### `has_item_ingredient`
 
-检查指定位置是否存在指定物品，如果配方匹配则消耗该物品
+检查指定位置是否存在指定物品，如果配方匹配则消耗该物品（由 AnvilLib Recipe 提供）
 
 ```json
 {
-  "type": "anvilcraft:has_item_ingredient",
+  "type": "anvillib_recipe:has_item_ingredient",
   "offset": [0, -1, 0],
   "item": {
     "items": "minecraft:iron_ingot"
@@ -72,13 +74,13 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ### `has_block`
 
-检查指定位置是否存在指定方块
+检查指定位置是否存在指定方块（由 AnvilLib Recipe 提供）
 
 ```json
 {
-  "type": "anvilcraft:has_block",
+  "type": "anvillib_recipe:has_block",
   "offset": [0, -1, 0],
-  "block": {
+  "predicate": {
     "blocks": "minecraft:iron_block"
   }
 }
@@ -86,25 +88,25 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ### `has_block_ingredient`
 
-检查指定位置是否存在指定方块，如果配方匹配则清除该方块
+检查指定位置是否存在指定方块，如果配方匹配则清除该方块（由 AnvilLib Recipe 提供）
 
 ```json
 {
-  "type": "anvilcraft:has_block_ingredient",
+  "type": "anvillib_recipe:has_block_ingredient",
   "offset": [0, -1, 0],
-  "block": {
+  "predicate": {
     "blocks": "minecraft:iron_block"
   }
 }
 ```
 
-### `has_fluid_cauldron`
+### `has_cauldron`
 
-检查指定位置是否存在指定流体的炼药锅
+检查指定位置是否存在指定流体的炼药锅（由 AnvilCraft 提供）
 
 ```json
 {
-  "type": "anvilcraft:has_fluid_cauldron",
+  "type": "anvilcraft:has_cauldron",
   "offset": [0, -1, 0],
   "fluid": "minecraft:water"
 }
@@ -120,12 +122,9 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ```json
 {
-  "type": "anvilcraft:spawn_item",
+  "type": "anvillib_recipe:spawn_item",
   "offset": [0, -1, 0],
-  "item": {
-    "id": "minecraft:iron_nugget"
-  },
-  "count": 1.0
+  "item": "minecraft:iron_nugget"
 }
 ```
 
@@ -135,11 +134,9 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ```json
 {
-  "type": "anvilcraft:set_block",
+  "type": "anvillib_recipe:set_block",
   "offset": [0, -1, 0],
-  "block": {
-    "Name": "minecraft:diamond_block"
-  }
+  "block": "minecraft:diamond_block"
 }
 ```
 
@@ -159,7 +156,7 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
 
 ```json
 {
-  "type": "anvilcraft:in_world_recipe",
+  "type": "anvillib_recipe:in_world_recipe",
   "icon": {
     "item": "minecraft:iron_nugget"
   },
@@ -167,7 +164,7 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
   "conflicting": [],
   "non_conflicting": [
     {
-      "type": "anvilcraft:has_item_ingredient",
+      "type": "anvillib_recipe:has_item_ingredient",
       "offset": [0, -1, 0],
       "item": {
         "items": "minecraft:iron_ingot"
@@ -176,12 +173,9 @@ InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统
   ],
   "outcomes": [
     {
-      "type": "anvilcraft:spawn_item",
+      "type": "anvillib_recipe:spawn_item",
       "offset": [0, -1, 0],
-      "item": {
-        "id": "minecraft:iron_nugget"
-      },
-      "count": 1.0
+      "item": "minecraft:iron_nugget"
     }
   ],
   "priority": 0,

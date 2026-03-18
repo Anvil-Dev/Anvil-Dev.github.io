@@ -1,3 +1,12 @@
+---
+prev:
+   text: 质量注入配方 (Mass Inject Recipe)
+   link: /posts/docs/datapack/20_mass_inject_recipe
+next:
+   text: 带物品生物转换配方 (Mob Transform With Item Recipe)
+   link: /posts/docs/datapack/22_mob_transform_with_item_recipe
+---
+
 # 唯一物品冲压配方 (Stamping Unique Items Recipe)
 
 该配方要求输入物品彼此不重复，且每个输入堆叠数量为 1。

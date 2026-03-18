@@ -1,3 +1,12 @@
+---
+prev:
+   text: Squeezing Recipe
+   link: /en/posts/docs/datapack/07_squeezing_recipe
+next:
+   text: Cooking Recipe
+   link: /en/posts/docs/datapack/09_cooking_recipe
+---
+
 # Item Inject Recipe
 
 Item inject recipes are used to inject fluid into items to create new items.

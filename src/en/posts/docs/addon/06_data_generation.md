@@ -1,10 +1,22 @@
+---
+prev:
+   text: Block Entity Development
+   link: /en/posts/docs/addon/05_create_block_entity
+next:
+   text: Configuration System
+   link: /en/posts/docs/addon/07_config
+---
+
 # Data Generators
 
-Data Generators are tools in Minecraft mod development used to automatically generate game resource files. Registrum has built-in rich data generation support, allowing automatic generation of models, recipes, language files, loot tables, and more.
+Data Generators are tools in Minecraft mod development used to automatically generate game resource files. Registrum has
+built-in rich data generation support, allowing automatic generation of models, recipes, language files, loot tables,
+and more.
 
 ## Data Generation Overview
 
-When using Registrum to register items, blocks, and entities, most data generation is handled automatically. This chapter will introduce how to customize and extend data generation.
+When using Registrum to register items, blocks, and entities, most data generation is handled automatically. This
+chapter will introduce how to customize and extend data generation.
 
 ## Model Generation
 
@@ -188,7 +200,8 @@ public static final ItemEntry<Item> MULTI_RECIPE_ITEM = REGISTRUM
 
 ### Automatic Generation
 
-By default, Registrum will automatically generate English names from registration IDs (converting underscores to spaces, capitalizing first letters).
+By default, Registrum will automatically generate English names from registration IDs (converting underscores to spaces,
+capitalizing first letters).
 
 ### Custom Names
 

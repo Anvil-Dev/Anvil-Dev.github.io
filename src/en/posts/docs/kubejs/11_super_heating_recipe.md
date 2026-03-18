@@ -1,3 +1,12 @@
+---
+prev:
+   text: Item Inject Recipe
+   link: /en/posts/docs/kubejs/10_item_inject_recipe
+next:
+   text: Time Warp Recipe
+   link: /en/posts/docs/kubejs/12_time_warp_recipe
+---
+
 # Super Heating Recipe
 
 The Super Heating recipe uses high temperature to transform items into other items.

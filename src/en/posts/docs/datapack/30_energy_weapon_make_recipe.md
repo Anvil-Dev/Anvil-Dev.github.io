@@ -1,3 +1,12 @@
+---
+prev:
+   text: Deformation Recipe
+   link: /en/posts/docs/datapack/29_deformation_recipe
+next:
+   text: Anvil Collision Craft Recipe
+   link: /en/posts/docs/datapack/31_anvil_collision_recipe
+---
+
 # Energy Weapon Make Recipe
 
 This recipe combines up to 6 ingredients to craft an energy weapon and preserve key runtime attributes.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 方块涂抹配方 (Block Smear Recipe)
+   link: /posts/docs/kubejs/07_block_smear_recipe
+next:
+   text: 挤压配方 (Squeezing Recipe)
+   link: /posts/docs/kubejs/09_squeezing_recipe
+---
+
 # 膨发配方 (Bulging Recipe)
 
 膨发配方使用炼药锅中的流体将物品膨发成其他物品。

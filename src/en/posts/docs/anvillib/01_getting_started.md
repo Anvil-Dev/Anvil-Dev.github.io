@@ -1,10 +1,20 @@
+---
+prev:
+   text: AnvilLib Documentation
+   link: /en/posts/docs/anvillib/index
+next:
+   text: Config Module
+   link: /en/posts/docs/anvillib/02_config
+---
+
 # Getting Started
 
 This section explains how to add AnvilLib as a dependency in your NeoForge mod project.
 
 ## I. Maven Repository
 
-AnvilLib is published to **Maven Central** — no additional repository configuration is required. Simply declare the dependency in your `build.gradle` or `build.gradle.kts`.
+AnvilLib is published to **Maven Central** — no additional repository configuration is required. Simply declare the
+dependency in your `build.gradle` or `build.gradle.kts`.
 
 ## II. Adding Dependencies
 
@@ -45,27 +55,28 @@ dependencies {
 }
 ```
 
-> **Tip**: Always check [Maven Central](https://central.sonatype.com/search?q=anvillib) for the latest release version. This documentation corresponds to version `2.0.0`.
+> **Tip**: Always check [Maven Central](https://central.sonatype.com/search?q=anvillib) for the latest release version.
+> This documentation corresponds to version `2.0.0`.
 
 ## III. Module Reference
 
-| Artifact ID                                        | Description                                         |
-|---------------------------------------------------|-----------------------------------------------------|
-| `anvillib-neoforge-1.21.1`                         | Aggregate artifact — includes all submodules        |
-| `anvillib-config-neoforge-1.21.1`                  | Annotation-driven configuration management system   |
-| `anvillib-integration-neoforge-1.21.1`             | Mod integration framework                           |
-| `anvillib-network-neoforge-1.21.1`                 | Automatic packet registration framework             |
-| `anvillib-recipe-neoforge-1.21.1`                  | In-world recipe system                              |
-| `anvillib-moveable-entity-block-neoforge-1.21.1`   | Support for piston-movable block entities           |
-| `anvillib-registrum-neoforge-1.21.1`               | Registrate-based registration system                |
+| Artifact ID                                      | Description                                       |
+|--------------------------------------------------|---------------------------------------------------|
+| `anvillib-neoforge-1.21.1`                       | Aggregate artifact — includes all submodules      |
+| `anvillib-config-neoforge-1.21.1`                | Annotation-driven configuration management system |
+| `anvillib-integration-neoforge-1.21.1`           | Mod integration framework                         |
+| `anvillib-network-neoforge-1.21.1`               | Automatic packet registration framework           |
+| `anvillib-recipe-neoforge-1.21.1`                | In-world recipe system                            |
+| `anvillib-moveable-entity-block-neoforge-1.21.1` | Support for piston-movable block entities         |
+| `anvillib-registrum-neoforge-1.21.1`             | Registrate-based registration system              |
 
 ## IV. Requirements
 
-| Dependency  | Required Version |
-|-------------|-----------------|
-| Java        | 21+             |
-| Minecraft   | 1.21.1          |
-| NeoForge    | 21.1.x          |
+| Dependency | Required Version |
+|------------|------------------|
+| Java       | 21+              |
+| Minecraft  | 1.21.1           |
+| NeoForge   | 21.1.x           |
 
 ## V. Next Steps
 

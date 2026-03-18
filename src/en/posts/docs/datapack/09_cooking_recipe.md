@@ -1,3 +1,12 @@
+---
+prev:
+   text: Item Inject Recipe
+   link: /en/posts/docs/datapack/08_item_inject_recipe
+next:
+   text: Super Heating Recipe
+   link: /en/posts/docs/datapack/10_super_heating_recipe
+---
+
 # Cooking Recipe
 
 Cooking recipes are used to cook items into other items using heat sources.

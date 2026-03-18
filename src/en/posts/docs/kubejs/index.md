@@ -1,3 +1,9 @@
+---
+next:
+   text: InWorld Recipe
+   link: /en/posts/docs/kubejs/00_inworld_recipe
+---
+
 # KubeJS Integration
 
 AnvilCraft provides complete KubeJS integration, allowing you to customize AnvilCraft recipes using KubeJS scripts.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: InWorld 配方系统
+   link: /posts/docs/datapack/00_inworld_recipe
+next:
+   text: 方块压缩配方 (Block Compress Recipe)
+   link: /posts/docs/datapack/02_block_compress_recipe
+---
+
 # 物品压缩配方 (Item Compress Recipe)
 
 物品压缩配方用于将多个相同物品压缩成一个更高级的物品。

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 冲压配方 (Stamping Recipe)
+   link: /posts/docs/datapack/05_stamping_recipe
+next:
+   text: 挤压配方 (Squeezing Recipe)
+   link: /posts/docs/datapack/07_squeezing_recipe
+---
+
 # 膨发配方 (Bulging Recipe)
 
 膨发配方用于使用炼药锅中的流体将物品转换为其他物品。

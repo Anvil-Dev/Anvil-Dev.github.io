@@ -1,3 +1,12 @@
+---
+prev:
+   text: 注册方块
+   link: /posts/docs/addon/03_create_block
+next:
+   text: 方块实体开发
+   link: /posts/docs/addon/05_create_block_entity
+---
+
 # 注册实体
 
 在 AnvilCraft 附属开发中，实体（Entity）是游戏世界中可移动的对象，如投掷物、生物或特殊效果载体。
@@ -13,13 +22,15 @@ public static final EntityEntry<CustomEntity> CUSTOM_ENTITY = REGISTRUM
 ```
 
 其中：
+
 - `"custom_entity"` 是实体的ID
 - `CustomEntity::new` 是实体的工厂方法
 - `MobCategory.MISC` 是实体的分类
 
 ## 本章节内容将详细介绍 `REGISTRUM.entity()` 的使用方法
 
-使用 `REGISTRUM.entity()` 方法后，你将拿到一个 `EntityBuilder`，该对象拥有一个 `.register()` 方法，调用后返回一个 `EntityEntry`，其对应的实体将在合适的时机自动注册。
+使用 `REGISTRUM.entity()` 方法后，你将拿到一个 `EntityBuilder`，该对象拥有一个 `.register()` 方法，调用后返回一个
+`EntityEntry`，其对应的实体将在合适的时机自动注册。
 
 ### `EntityBuilder.properties()`
 
@@ -39,15 +50,15 @@ public static final EntityEntry<CustomEntity> CUSTOM_ENTITY = REGISTRUM
 
 常用属性设置：
 
-| 方法 | 说明 |
-|------|------|
-| `sized(width, height)` | 设置实体的碰撞箱大小 |
-| `eyeHeight(height)` | 设置实体眼睛位置的高度 |
-| `clientTrackingRange(range)` | 设置客户端开始追踪该实体的距离 |
-| `updateInterval(ticks)` | 设置同步更新的间隔（以 tick 为单位） |
-| `fireImmune()` | 使实体免疫火焰伤害 |
-| `noSave()` | 实体不会被保存到存档 |
-| `noSummon()` | 实体不能被 summon 命令召唤 |
+| 方法                           | 说明                    |
+|------------------------------|-----------------------|
+| `sized(width, height)`       | 设置实体的碰撞箱大小            |
+| `eyeHeight(height)`          | 设置实体眼睛位置的高度           |
+| `clientTrackingRange(range)` | 设置客户端开始追踪该实体的距离       |
+| `updateInterval(ticks)`      | 设置同步更新的间隔（以 tick 为单位） |
+| `fireImmune()`               | 使实体免疫火焰伤害             |
+| `noSave()`                   | 实体不会被保存到存档            |
+| `noSummon()`                 | 实体不能被 summon 命令召唤     |
 
 ### `EntityBuilder.renderer()`
 
@@ -254,16 +265,16 @@ public class CustomEntityRenderer extends EntityRenderer<CustomEntity> {
 
 ## MobCategory 分类说明
 
-| 分类 | 说明 |
-|------|------|
-| `MONSTER` | 怪物，在黑暗中生成 |
-| `CREATURE` | 友好生物，如牛、羊 |
-| `AMBIENT` | 环境生物，如蝙蝠 |
-| `WATER_CREATURE` | 水生生物，如鱼 |
-| `WATER_AMBIENT` | 水生环境生物 |
-| `UNDERGROUND_WATER_CREATURE` | 地下水生生物 |
-| `AXOLOTLS` | 美西螈类 |
-| `MISC` | 杂项，不自然生成 |
+| 分类                           | 说明        |
+|------------------------------|-----------|
+| `MONSTER`                    | 怪物，在黑暗中生成 |
+| `CREATURE`                   | 友好生物，如牛、羊 |
+| `AMBIENT`                    | 环境生物，如蝙蝠  |
+| `WATER_CREATURE`             | 水生生物，如鱼   |
+| `WATER_AMBIENT`              | 水生环境生物    |
+| `UNDERGROUND_WATER_CREATURE` | 地下水生生物    |
+| `AXOLOTLS`                   | 美西螈类      |
+| `MISC`                       | 杂项，不自然生成  |
 
 ## 完整示例
 

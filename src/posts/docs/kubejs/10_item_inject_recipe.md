@@ -1,3 +1,12 @@
+---
+prev:
+   text: 挤压配方 (Squeezing Recipe)
+   link: /posts/docs/kubejs/09_squeezing_recipe
+next:
+   text: 超级加热配方 (Super Heating Recipe)
+   link: /posts/docs/kubejs/11_super_heating_recipe
+---
+
 # 物品注入配方 (Item Inject Recipe)
 
 物品注入配方将流体注入物品中以创建新物品。

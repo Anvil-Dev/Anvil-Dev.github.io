@@ -1,3 +1,12 @@
+---
+prev:
+   text: 烹饪配方 (Cooking Recipe)
+   link: /posts/docs/kubejs/18_cooking_recipe
+next:
+   text: 概率矿物涌泉配方 (Mineral Fountain Chance Recipe)
+   link: /posts/docs/kubejs/20_mineral_fountain_chance_recipe
+---
+
 # 筛网配方 (Mesh Recipe)
 
 筛网配方用于在筛网/脚手架环境下过滤并转化掉落物。

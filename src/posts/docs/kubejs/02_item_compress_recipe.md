@@ -1,3 +1,12 @@
+---
+prev:
+   text: 物品粉碎配方 (Item Crush Recipe)
+   link: /posts/docs/kubejs/01_item_crush_recipe
+next:
+   text: 冲压配方 (Stamping Recipe)
+   link: /posts/docs/kubejs/03_stamping_recipe
+---
+
 # 物品压缩配方 (Item Compress Recipe)
 
 物品压缩配方用于将多个相同物品压缩成一个更高级的物品。

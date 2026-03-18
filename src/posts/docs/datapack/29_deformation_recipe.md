@@ -1,3 +1,12 @@
+---
+prev:
+   text: 霜铸置换配方 (Permutation Recipe)
+   link: /posts/docs/datapack/28_permutation_recipe
+next:
+   text: 能量武器制作配方 (Energy Weapon Make Recipe)
+   link: /posts/docs/datapack/30_energy_weapon_make_recipe
+---
+
 # 霜铸形变配方 (Deformation Recipe)
 
 形变配方是霜铸系统配方之一，用于在模板和材料约束下对输入物品进行形态变换。

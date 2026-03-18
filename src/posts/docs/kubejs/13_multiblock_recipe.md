@@ -1,3 +1,12 @@
+---
+prev:
+   text: 时移配方 (Time Warp Recipe)
+   link: /posts/docs/kubejs/12_time_warp_recipe
+next:
+   text: 生物转换配方 (Mob Transform Recipe)
+   link: /posts/docs/kubejs/14_mob_transform_recipe
+---
+
 # 多方块结构配方 (Multiblock Recipe)
 
 多方块结构配方允许你定义复杂的多方块结构，并在其中心产出物品。

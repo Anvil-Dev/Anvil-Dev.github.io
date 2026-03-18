@@ -1,6 +1,16 @@
+---
+prev:
+   text: Multiblock Recipe
+   link: /en/posts/docs/kubejs/13_multiblock_recipe
+next:
+   text: Jewel Crafting Recipe
+   link: /en/posts/docs/kubejs/15_jewel_crafting_recipe
+---
+
 # Mob Transform Recipe
 
-The Mob Transform recipe allows you to define transformation rules between mob entities, including complex transformations based on tag conditions.
+The Mob Transform recipe allows you to define transformation rules between mob entities, including complex
+transformations based on tag conditions.
 
 ## Basic Structure
 

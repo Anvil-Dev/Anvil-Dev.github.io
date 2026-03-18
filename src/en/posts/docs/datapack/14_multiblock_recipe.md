@@ -1,3 +1,12 @@
+---
+prev:
+   text: Block Smear Recipe
+   link: /en/posts/docs/datapack/13_block_smear_recipe
+next:
+   text: Mob Transform Recipe
+   link: /en/posts/docs/datapack/15_mob_transform_recipe
+---
+
 # Multiblock Recipe
 
 Multiblock recipes are used to define complex multiblock structures and produce items at their center.
@@ -48,7 +57,8 @@ Defines the shape and composition of the multiblock structure:
 
 #### layers
 
-Each layer consists of string arrays of equal length, each string represents a row, each character represents a block position:
+Each layer consists of string arrays of equal length, each string represents a row, each character represents a block
+position:
 
 - Space character indicates no block is needed at that position
 - Other characters need corresponding block predicates defined in symbols

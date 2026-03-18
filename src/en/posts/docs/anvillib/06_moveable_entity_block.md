@@ -1,10 +1,22 @@
+---
+prev:
+   text: Recipe Module (In-World Recipe)
+   link: /en/posts/docs/anvillib/05_recipe
+next:
+   text: Registrum Module
+   link: /en/posts/docs/anvillib/07_registrum
+---
+
 # Moveable Entity Block Module
 
-The Moveable Entity Block module allows blocks that have **Block Entities** to be pushed by pistons while preserving their internal data correctly. This solves the vanilla Minecraft limitation where blocks with block entities either cannot be pushed by pistons or lose their data when pushed.
+The Moveable Entity Block module allows blocks that have **Block Entities** to be pushed by pistons while preserving
+their internal data correctly. This solves the vanilla Minecraft limitation where blocks with block entities either
+cannot be pushed by pistons or lose their data when pushed.
 
 ## I. `IMoveableEntityBlock` Interface
 
-A block that implements this interface can be pushed by pistons and will have its block entity data migrated to the new position.
+A block that implements this interface can be pushed by pistons and will have its block entity data migrated to the new
+position.
 
 ```java
 package dev.anvilcraft.lib.v2.piston;
@@ -39,8 +51,10 @@ public interface IMoveableEntityBlock extends EntityBlock {
 ## II. How It Works
 
 1. When a piston attempts to push a block, the framework intercepts the push logic via Mixin (`PistonBaseBlockMixin`);
-2. For blocks that implement `IMoveableEntityBlock`, `clearData()` is called to extract the block entity data, which travels with the piston movement;
-3. After the block arrives at its new position, `PistonMovingBlockEntityMixin` calls `setData()` to write the data back into the block entity at the new position.
+2. For blocks that implement `IMoveableEntityBlock`, `clearData()` is called to extract the block entity data, which
+   travels with the piston movement;
+3. After the block arrives at its new position, `PistonMovingBlockEntityMixin` calls `setData()` to write the data back
+   into the block entity at the new position.
 
 ## III. Full Example
 
@@ -138,13 +152,19 @@ public static final BlockEntry<MyStorageBlock> MY_STORAGE_BLOCK = REGISTRUM
 
 ## IV. Notes
 
-- The block must extend `EntityBlock` (or one of its implementations such as `BaseEntityBlock`) **and** implement `IMoveableEntityBlock`;
-- The default implementation of `clearData()` returns an empty `CompoundTag`, meaning no data is preserved — **you must override this method if you want to keep data**;
+- The block must extend `EntityBlock` (or one of its implementations such as `BaseEntityBlock`) **and** implement
+  `IMoveableEntityBlock`;
+- The default implementation of `clearData()` returns an empty `CompoundTag`, meaning no data is preserved — **you must
+  override this method if you want to keep data**;
 - The default implementation of `setData()` is a no-op — **you must override this method if you want to restore data**;
-- This module works via Mixin; ensure the Mixin configuration is loaded correctly (when using the aggregate artifact, this is handled automatically);
-- All piston push directions (horizontal, upward, downward) are supported — the framework has no directional restriction.
+- This module works via Mixin; ensure the Mixin configuration is loaded correctly (when using the aggregate artifact,
+  this is handled automatically);
+- All piston push directions (horizontal, upward, downward) are supported — the framework has no directional
+  restriction.
 
 ## V. Sticky Pistons
 
-When a sticky piston pulls the block back, the same flow is triggered: `clearData()` and `setData()` are called correctly. If a block should not be retractable by sticky pistons, return `PushReaction.BLOCK` from the block's `getPistonPushReaction()` method — but this is vanilla behavior and unrelated to this module.
+When a sticky piston pulls the block back, the same flow is triggered: `clearData()` and `setData()` are called
+correctly. If a block should not be retractable by sticky pistons, return `PushReaction.BLOCK` from the block's
+`getPistonPushReaction()` method — but this is vanilla behavior and unrelated to this module.
 

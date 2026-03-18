@@ -1,6 +1,16 @@
+---
+prev:
+   text: Registering Entities
+   link: /en/posts/docs/addon/04_create_entity
+next:
+   text: Data Generators
+   link: /en/posts/docs/addon/06_data_generation
+---
+
 # Block Entity Development
 
-Block Entities are special objects attached to blocks, used to store data and execute logic. Common block entities include chests, furnaces, hoppers, etc.
+Block Entities are special objects attached to blocks, used to store data and execute logic. Common block entities
+include chests, furnaces, hoppers, etc.
 
 ## Block Entity Registration Basics
 
@@ -14,6 +24,7 @@ public static final BlockEntityEntry<CustomBlockEntity> CUSTOM_BLOCK_ENTITY = RE
 ```
 
 Where:
+
 - `"custom_block_entity"` is the block entity ID
 - `CustomBlockEntity::new` is the block entity factory method
 - `validBlock()` specifies which blocks this block entity can be attached to

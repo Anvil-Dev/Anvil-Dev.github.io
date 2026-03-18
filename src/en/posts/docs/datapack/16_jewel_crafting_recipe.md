@@ -1,3 +1,12 @@
+---
+prev:
+   text: Mob Transform Recipe
+   link: /en/posts/docs/datapack/15_mob_transform_recipe
+next:
+   text: Mineral Fountain Recipe
+   link: /en/posts/docs/datapack/17_mineral_fountain_recipe
+---
+
 # Jewel Crafting Recipe
 
 Jewel crafting recipes are used to craft various jewelry and decorative items.

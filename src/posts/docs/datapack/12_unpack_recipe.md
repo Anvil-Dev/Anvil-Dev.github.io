@@ -1,3 +1,12 @@
+---
+prev:
+   text: 时移配方 (Time Warp Recipe)
+   link: /posts/docs/datapack/11_timewarp_recipe
+next:
+   text: 方块涂抹配方 (Block Smear Recipe)
+   link: /posts/docs/datapack/13_block_smear_recipe
+---
+
 # 解包配方 (Unpack Recipe)
 
 解包配方用于将压缩物品解包为原始物品。

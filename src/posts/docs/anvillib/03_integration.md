@@ -1,6 +1,16 @@
+---
+prev:
+   text: Config 配置模块
+   link: /posts/docs/anvillib/02_config
+next:
+   text: Network 网络模块
+   link: /posts/docs/anvillib/04_network
+---
+
 # Integration 集成模块
 
-Integration 模块提供了一套基于注解扫描的**模组集成框架**，让你的模组能够在其他模组存在时自动加载额外的集成代码，而无需通过 `ModList.isLoaded()` 手动进行条件判断。
+Integration 模块提供了一套基于注解扫描的**模组集成框架**，让你的模组能够在其他模组存在时自动加载额外的集成代码，而无需通过
+`ModList.isLoaded()` 手动进行条件判断。
 
 ## 一、核心注解
 
@@ -22,22 +32,22 @@ package dev.anvilcraft.lib.v2.integration;
 
 采用 Maven 版本范围语法：
 
-| 表达式            | 含义                    |
-|----------------|-----------------------|
-| `*`            | 任意版本（默认）              |
-| `[1.0,)`       | 1.0 及以上               |
-| `[1.0,2.0)`    | 1.0（含）到 2.0（不含）       |
-| `[1.0,2.0]`    | 1.0 到 2.0（均含）         |
-| `(,1.0]`       | 1.0 及以下               |
-| `1.0`          | 精确匹配 1.0              |
+| 表达式         | 含义              |
+|-------------|-----------------|
+| `*`         | 任意版本（默认）        |
+| `[1.0,)`    | 1.0 及以上         |
+| `[1.0,2.0)` | 1.0（含）到 2.0（不含） |
+| `[1.0,2.0]` | 1.0 到 2.0（均含）   |
+| `(,1.0]`    | 1.0 及以下         |
+| `1.0`       | 精确匹配 1.0        |
 
 #### `type` 运行环境
 
-| 枚举值                | 说明              |
-|--------------------|-----------------|
-| `CLIENT`           | 物理客户端运行时加载      |
-| `DEDICATED_SERVER` | 专用服务端运行时加载（默认）  |
-| `DATA`             | 数据生成阶段加载        |
+| 枚举值                | 说明             |
+|--------------------|----------------|
+| `CLIENT`           | 物理客户端运行时加载     |
+| `DEDICATED_SERVER` | 专用服务端运行时加载（默认） |
+| `DATA`             | 数据生成阶段加载       |
 
 ## 二、`IntegrationManager` 注册
 
@@ -62,11 +72,11 @@ manager.loadAllDataIntegrations();
 
 集成类由 `IntegrationManager` 通过反射实例化，必须有**无参构造函数**。框架会依次查找并调用以下方法（均为可选）：
 
-| 方法名          | 调用时机                           |
-|--------------|--------------------------------|
-| `apply()`    | 模组加载时（通用，对应 `CLIENT` / `DEDICATED_SERVER`） |
-| `applyClient()` | 客户端初始化时（对应 `CLIENT`）        |
-| `applyData()` | 数据生成阶段（对应 `DATA`）            |
+| 方法名             | 调用时机                                       |
+|-----------------|--------------------------------------------|
+| `apply()`       | 模组加载时（通用，对应 `CLIENT` / `DEDICATED_SERVER`） |
+| `applyClient()` | 客户端初始化时（对应 `CLIENT`）                       |
+| `applyData()`   | 数据生成阶段（对应 `DATA`）                          |
 
 ## 四、完整示例
 
@@ -158,7 +168,8 @@ public class MyModClient {
 
 ## 五、`IntegrationHook`
 
-`IntegrationHook` 提供了在数据生成阶段可访问的静态上下文，可用于在 `applyData()` 中获取 `GatherDataEvent`、`IEventBus` 和 `ModContainer`：
+`IntegrationHook` 提供了在数据生成阶段可访问的静态上下文，可用于在 `applyData()` 中获取 `GatherDataEvent`、`IEventBus` 和
+`ModContainer`：
 
 ```java
 import dev.anvilcraft.lib.v2.integration.IntegrationHook;

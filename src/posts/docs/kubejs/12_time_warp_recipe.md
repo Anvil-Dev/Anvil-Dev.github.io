@@ -1,3 +1,12 @@
+---
+prev:
+   text: 超级加热配方 (Super Heating Recipe)
+   link: /posts/docs/kubejs/11_super_heating_recipe
+next:
+   text: 多方块结构配方 (Multiblock Recipe)
+   link: /posts/docs/kubejs/13_multiblock_recipe
+---
+
 # 时移配方 (Time Warp Recipe)
 
 时移配方使用时间力量将物品转换为其他物品。

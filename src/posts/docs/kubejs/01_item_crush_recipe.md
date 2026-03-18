@@ -1,3 +1,12 @@
+---
+prev:
+   text: InWorld 配方 (InWorld Recipe)
+   link: /posts/docs/kubejs/00_inworld_recipe
+next:
+   text: 物品压缩配方 (Item Compress Recipe)
+   link: /posts/docs/kubejs/02_item_compress_recipe
+---
+
 # 物品粉碎配方 (Item Crush Recipe)
 
 物品粉碎配方用于将物品粉碎成更小的物品。

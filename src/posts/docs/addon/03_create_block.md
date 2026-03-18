@@ -1,3 +1,12 @@
+---
+prev:
+   text: 注册物品
+   link: /posts/docs/addon/02_create_item
+next:
+   text: 注册实体
+   link: /posts/docs/addon/04_create_entity
+---
+
 # 注册方块
 
 在 AnvilCraft 附属开发中，注册方块与注册物品类似，但涉及更多的属性和模型设置。

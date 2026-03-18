@@ -1,6 +1,17 @@
+---
+prev:
+   text: Config Module
+   link: /en/posts/docs/anvillib/02_config
+next:
+   text: Network Module
+   link: /en/posts/docs/anvillib/04_network
+---
+
 # Integration Module
 
-The Integration module provides an **annotation-scanning based mod integration framework** that allows your mod to automatically load additional integration code when other mods are present — without manually checking `ModList.isLoaded()` everywhere.
+The Integration module provides an **annotation-scanning based mod integration framework** that allows your mod to
+automatically load additional integration code when other mods are present — without manually checking
+`ModList.isLoaded()` everywhere.
 
 ## I. Core Annotation
 
@@ -22,22 +33,22 @@ package dev.anvilcraft.lib.v2.integration;
 
 Uses Maven version range syntax:
 
-| Expression        | Meaning                            |
-|-------------------|------------------------------------|
-| `*`               | Any version (default)              |
-| `[1.0,)`          | 1.0 or higher                      |
-| `[1.0,2.0)`       | ≥ 1.0 and < 2.0                    |
-| `[1.0,2.0]`       | ≥ 1.0 and ≤ 2.0                    |
-| `(,1.0]`          | 1.0 or lower                       |
-| `1.0`             | Exact version 1.0                  |
+| Expression  | Meaning               |
+|-------------|-----------------------|
+| `*`         | Any version (default) |
+| `[1.0,)`    | 1.0 or higher         |
+| `[1.0,2.0)` | ≥ 1.0 and < 2.0       |
+| `[1.0,2.0]` | ≥ 1.0 and ≤ 2.0       |
+| `(,1.0]`    | 1.0 or lower          |
+| `1.0`       | Exact version 1.0     |
 
 #### `type` — Runtime Environments
 
-| Enum Value           | Description                               |
-|----------------------|-------------------------------------------|
-| `CLIENT`             | Loaded on physical client                 |
-| `DEDICATED_SERVER`   | Loaded on dedicated server (default)      |
-| `DATA`               | Loaded during data generation             |
+| Enum Value         | Description                          |
+|--------------------|--------------------------------------|
+| `CLIENT`           | Loaded on physical client            |
+| `DEDICATED_SERVER` | Loaded on dedicated server (default) |
+| `DATA`             | Loaded during data generation        |
 
 ## II. `IntegrationManager`
 
@@ -60,13 +71,14 @@ manager.loadAllDataIntegrations();
 
 ## III. Integration Class Lifecycle Methods
 
-Integration classes are instantiated by `IntegrationManager` via reflection and **must have a no-argument constructor**. The framework will look for and call the following methods (all optional):
+Integration classes are instantiated by `IntegrationManager` via reflection and **must have a no-argument constructor**.
+The framework will look for and call the following methods (all optional):
 
-| Method Name     | When Called                                              |
-|-----------------|----------------------------------------------------------|
+| Method Name     | When Called                                                 |
+|-----------------|-------------------------------------------------------------|
 | `apply()`       | During mod loading (common — `CLIENT` / `DEDICATED_SERVER`) |
-| `applyClient()` | During client initialization (`CLIENT`)                  |
-| `applyData()`   | During data generation (`DATA`)                          |
+| `applyClient()` | During client initialization (`CLIENT`)                     |
+| `applyData()`   | During data generation (`DATA`)                             |
 
 ## IV. Full Example
 
@@ -155,7 +167,8 @@ public class MyModClient {
 
 ## V. `IntegrationHook`
 
-`IntegrationHook` provides static context accessible during data generation, allowing `applyData()` implementations to access `GatherDataEvent`, `IEventBus`, and `ModContainer`:
+`IntegrationHook` provides static context accessible during data generation, allowing `applyData()` implementations to
+access `GatherDataEvent`, `IEventBus`, and `ModContainer`:
 
 ```java
 import dev.anvilcraft.lib.v2.integration.IntegrationHook;
@@ -173,8 +186,11 @@ public class SomeModDataIntegration {
 
 ## VI. Notes
 
-- `compileContent()` must be called during the **FML loading phase** (when mod scan data is available) — typically inside the mod constructor;
-- Integration classes **must not** contain `static` initializer blocks that reference the target mod's classes, as this will cause `NoClassDefFoundError` when that mod is absent;
+- `compileContent()` must be called during the **FML loading phase** (when mod scan data is available) — typically
+  inside the mod constructor;
+- Integration classes **must not** contain `static` initializer blocks that reference the target mod's classes, as this
+  will cause `NoClassDefFoundError` when that mod is absent;
 - It is recommended to place each integration class in a dedicated sub-package separate from your main logic;
-- If an integration class declares none of `apply()`, `applyClient()`, or `applyData()`, `IntegrationManager` will emit a warning in the log.
+- If an integration class declares none of `apply()`, `applyClient()`, or `applyData()`, `IntegrationManager` will emit
+  a warning in the log.
 

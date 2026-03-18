@@ -1,3 +1,12 @@
+---
+prev:
+   text: 物品注入配方 (Item Inject Recipe)
+   link: /posts/docs/datapack/08_item_inject_recipe
+next:
+   text: 超级加热配方 (Super Heating Recipe)
+   link: /posts/docs/datapack/10_super_heating_recipe
+---
+
 # 烹饪配方 (Cooking Recipe)
 
 烹饪配方用于使用热源将物品烹饪成其他物品。

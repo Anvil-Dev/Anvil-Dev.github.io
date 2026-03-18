@@ -1,3 +1,12 @@
+---
+prev:
+   text: 物品注入配方 (Item Inject Recipe)
+   link: /posts/docs/kubejs/10_item_inject_recipe
+next:
+   text: 时移配方 (Time Warp Recipe)
+   link: /posts/docs/kubejs/12_time_warp_recipe
+---
+
 # 超级加热配方 (Super Heating Recipe)
 
 超级加热配方使用高温将物品转换为其他物品。

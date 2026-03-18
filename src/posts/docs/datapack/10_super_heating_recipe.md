@@ -1,3 +1,12 @@
+---
+prev:
+   text: 烹饪配方 (Cooking Recipe)
+   link: /posts/docs/datapack/09_cooking_recipe
+next:
+   text: 时移配方 (Time Warp Recipe)
+   link: /posts/docs/datapack/11_timewarp_recipe
+---
+
 # 超级加热配方 (Super Heating Recipe)
 
 超级加热配方用于使用高温将物品转换为其他物品。

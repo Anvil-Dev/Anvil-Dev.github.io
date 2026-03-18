@@ -1,6 +1,16 @@
+---
+prev:
+   text: Datapack
+   link: /en/posts/docs/datapack/index
+next:
+   text: Item Compress Recipe
+   link: /en/posts/docs/datapack/01_item_compress_recipe
+---
+
 # InWorld Recipe System
 
-The InWorld recipe system is the core system in AnvilCraft for handling in-world recipes, allowing various effects to be triggered under specific conditions.
+The InWorld recipe system is the core system in AnvilCraft for handling in-world recipes, allowing various effects to be
+triggered under specific conditions.
 
 ## Basic Structure
 
@@ -42,7 +52,8 @@ Triggers when an anvil falls
 
 ## Predicates
 
-Predicates are used to determine whether a recipe can be executed, divided into conflicting and non-conflicting categories.
+Predicates are used to determine whether a recipe can be executed, divided into conflicting and non-conflicting
+categories.
 
 ### `has_item`
 
@@ -60,7 +71,8 @@ Check if a specified item exists at the specified position (provided by AnvilLib
 
 ### `has_item_ingredient`
 
-Check if a specified item exists at the specified position, consumes the item if the recipe matches (provided by AnvilLib Recipe)
+Check if a specified item exists at the specified position, consumes the item if the recipe matches (provided by
+AnvilLib Recipe)
 
 ```json
 {
@@ -88,7 +100,8 @@ Check if a specified block exists at the specified position (provided by AnvilLi
 
 ### `has_block_ingredient`
 
-Check if a specified block exists at the specified position, clears the block if the recipe matches (provided by AnvilLib Recipe)
+Check if a specified block exists at the specified position, clears the block if the recipe matches (provided by
+AnvilLib Recipe)
 
 ```json
 {

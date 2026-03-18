@@ -1,3 +1,12 @@
+---
+prev:
+   text: Item Compress Recipe
+   link: /en/posts/docs/datapack/01_item_compress_recipe
+next:
+   text: Item Crush Recipe
+   link: /en/posts/docs/datapack/03_item_crush_recipe
+---
+
 # Block Compress Recipe
 
 Block compress recipes are used to compress multiple identical blocks into a more advanced block.

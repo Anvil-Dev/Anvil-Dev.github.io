@@ -1,3 +1,12 @@
+---
+prev:
+   text: 方块涂抹配方 (Block Smear Recipe)
+   link: /posts/docs/datapack/13_block_smear_recipe
+next:
+   text: 生物转换配方 (Mob Transform Recipe)
+   link: /posts/docs/datapack/15_mob_transform_recipe
+---
+
 # 多方块结构配方 (Multiblock Recipe)
 
 多方块结构配方用于定义复杂的多方块结构，并在其中心产出物品。

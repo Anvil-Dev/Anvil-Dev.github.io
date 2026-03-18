@@ -1,3 +1,12 @@
+---
+prev:
+   text: Boiling Recipe
+   link: /en/posts/docs/kubejs/17_boiling_recipe
+next:
+   text: Mesh Recipe
+   link: /en/posts/docs/kubejs/19_mesh_recipe
+---
+
 # Cooking Recipe
 
 Cooking recipes process input items into output items in heated environments, with optional cauldron fluid conditions.

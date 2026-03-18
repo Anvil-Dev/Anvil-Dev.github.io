@@ -1,3 +1,12 @@
+---
+prev:
+   text: Boiling Recipe
+   link: /en/posts/docs/datapack/18_boiling_recipe
+next:
+   text: Mass Inject Recipe
+   link: /en/posts/docs/datapack/20_mass_inject_recipe
+---
+
 # Mesh Recipe
 
 Mesh recipes transform input items under scaffolding (mesh) conditions.

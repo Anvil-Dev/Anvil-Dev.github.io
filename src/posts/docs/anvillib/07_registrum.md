@@ -1,6 +1,13 @@
+---
+prev:
+   text: Moveable Entity Block 模块
+   link: /posts/docs/anvillib/06_moveable_entity_block
+---
+
 # Registrum 注册模块
 
-Registrum 模块提供了一套基于 [Registrate](https://github.com/IThundxr/Registrate) 的**链式注册 API**，极大简化了物品、方块、实体、流体、菜单等游戏内容的注册流程，并自动整合数据生成（模型、语言文件、战利品表、配方等）。
+Registrum 模块提供了一套基于 [Registrate](https://github.com/IThundxr/Registrate) 的**链式注册 API**
+，极大简化了物品、方块、实体、流体、菜单等游戏内容的注册流程，并自动整合数据生成（模型、语言文件、战利品表、配方等）。
 
 ## 一、创建 `Registrum` 实例
 
@@ -43,18 +50,18 @@ public class MyItems {
 
 ### `ItemBuilder` 常用方法
 
-| 方法                              | 说明                           |
-|---------------------------------|-------------------------------|
-| `.properties(p -> ...)`          | 修改 `Item.Properties`          |
-| `.lang(String)`                  | 设置英文翻译                    |
-| `.model(ctx, prov -> ...)`       | 自定义物品模型                  |
-| `.defaultModel()`                | 使用默认生成模型（纹理路径与 ID 同名）|
-| `.tab(ResourceKey<CreativeModeTab>)` | 加入创造模式标签页          |
-| `.tag(TagKey<Item>...)`          | 添加物品标签                    |
-| `.color(() -> () -> color)`      | 设置物品颜色处理器              |
-| `.compostable(float)`            | 设置堆肥概率                    |
-| `.burnTime(int)`                 | 设置燃料燃烧时间                |
-| `.register()`                    | 完成注册，返回 `ItemEntry`      |
+| 方法                                   | 说明                    |
+|--------------------------------------|-----------------------|
+| `.properties(p -> ...)`              | 修改 `Item.Properties`  |
+| `.lang(String)`                      | 设置英文翻译                |
+| `.model(ctx, prov -> ...)`           | 自定义物品模型               |
+| `.defaultModel()`                    | 使用默认生成模型（纹理路径与 ID 同名） |
+| `.tab(ResourceKey<CreativeModeTab>)` | 加入创造模式标签页             |
+| `.tag(TagKey<Item>...)`              | 添加物品标签                |
+| `.color(() -> () -> color)`          | 设置物品颜色处理器             |
+| `.compostable(float)`                | 设置堆肥概率                |
+| `.burnTime(int)`                     | 设置燃料燃烧时间              |
+| `.register()`                        | 完成注册，返回 `ItemEntry`   |
 
 ## 三、注册方块
 
@@ -81,17 +88,17 @@ public class MyBlocks {
 
 | 方法                                    | 说明                             |
 |---------------------------------------|--------------------------------|
-| `.properties(p -> ...)`               | 修改 `BlockBehaviour.Properties`  |
-| `.defaultBlockstate()`                | 生成所有状态映射到同一模型           |
-| `.blockstate(ctx, prov -> ...)`       | 自定义 blockstate JSON           |
-| `.defaultLoot()`                      | 生成自掉落战利品表                  |
-| `.loot(prov -> ...)`                  | 自定义战利品表                     |
-| `.simpleItem()`                       | 注册简单 BlockItem                |
-| `.item(factory -> ...)`               | 使用 ItemBuilder 自定义 BlockItem  |
-| `.blockEntity(type, factory).build()` | 关联方块实体                       |
-| `.tag(TagKey<Block>...)`              | 添加方块标签                       |
-| `.addLayer(() -> RenderType::...)`    | 设置渲染层（透明、半透明等）         |
-| `.register()`                         | 完成注册，返回 `BlockEntry`        |
+| `.properties(p -> ...)`               | 修改 `BlockBehaviour.Properties` |
+| `.defaultBlockstate()`                | 生成所有状态映射到同一模型                  |
+| `.blockstate(ctx, prov -> ...)`       | 自定义 blockstate JSON            |
+| `.defaultLoot()`                      | 生成自掉落战利品表                      |
+| `.loot(prov -> ...)`                  | 自定义战利品表                        |
+| `.simpleItem()`                       | 注册简单 BlockItem                 |
+| `.item(factory -> ...)`               | 使用 ItemBuilder 自定义 BlockItem   |
+| `.blockEntity(type, factory).build()` | 关联方块实体                         |
+| `.tag(TagKey<Block>...)`              | 添加方块标签                         |
+| `.addLayer(() -> RenderType::...)`    | 设置渲染层（透明、半透明等）                 |
+| `.register()`                         | 完成注册，返回 `BlockEntry`           |
 
 ## 四、注册方块实体
 
@@ -130,14 +137,14 @@ public class MyEntities {
 
 ### `EntityBuilder` 常用方法
 
-| 方法                             | 说明                          |
-|--------------------------------|-----------------------------|
-| `.properties(b -> ...)`         | 修改 `EntityType.Builder`     |
-| `.attributes(supplier)`         | 注册实体属性（必须）              |
-| `.renderer(() -> factory)`      | 设置客户端渲染器                |
-| `.spawnEgg(bg, fg)`             | 注册刷怪蛋（颜色为 ARGB int）    |
-| `.tag(TagKey<EntityType<?>>...)` | 添加实体类型标签               |
-| `.register()`                   | 完成注册，返回 `EntityEntry`    |
+| 方法                               | 说明                      |
+|----------------------------------|-------------------------|
+| `.properties(b -> ...)`          | 修改 `EntityType.Builder` |
+| `.attributes(supplier)`          | 注册实体属性（必须）              |
+| `.renderer(() -> factory)`       | 设置客户端渲染器                |
+| `.spawnEgg(bg, fg)`              | 注册刷怪蛋（颜色为 ARGB int）     |
+| `.tag(TagKey<EntityType<?>>...)` | 添加实体类型标签                |
+| `.register()`                    | 完成注册，返回 `EntityEntry`   |
 
 ## 六、注册流体
 
@@ -187,7 +194,8 @@ MyMod.REGISTRUM
 
 ## 九、`RegistryEntry` 访问注册结果
 
-所有 `.register()` 方法返回的 `RegistryEntry`（或其子类 `ItemEntry`、`BlockEntry` 等）继承自 `Supplier<T>`，可直接调用 `.get()` 获取注册对象：
+所有 `.register()` 方法返回的 `RegistryEntry`（或其子类 `ItemEntry`、`BlockEntry` 等）继承自 `Supplier<T>`，可直接调用
+`.get()` 获取注册对象：
 
 ```java
 Item item = MyItems.MY_ITEM.get();

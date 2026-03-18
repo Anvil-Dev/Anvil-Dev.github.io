@@ -1,6 +1,16 @@
+---
+prev:
+   text: Registering Items
+   link: /en/posts/docs/addon/02_create_item
+next:
+   text: Registering Entities
+   link: /en/posts/docs/addon/04_create_entity
+---
+
 # Registering Blocks
 
-In AnvilCraft addon development, registering blocks is similar to registering items, but involves more properties and model settings.
+In AnvilCraft addon development, registering blocks is similar to registering items, but involves more properties and
+model settings.
 
 ## Open `init.AddonBlocks.java`, and you will see the following code:
 
@@ -11,11 +21,13 @@ public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
     .register();
 ```
 
-This statement is an example of registering a block, where `example_block` is the ID of the block you are about to register, and `Block::new` is a reference to your block class constructor.
+This statement is an example of registering a block, where `example_block` is the ID of the block you are about to
+register, and `Block::new` is a reference to your block class constructor.
 
 ## This chapter will detail how to use `REGISTRUM.block()`
 
-After using the `REGISTRUM.block()` method, you will get a `BlockBuilder` object that has a `.register()` method. Calling it returns a `BlockEntry`, and the corresponding block will be automatically registered at the appropriate time.
+After using the `REGISTRUM.block()` method, you will get a `BlockBuilder` object that has a `.register()` method.
+Calling it returns a `BlockEntry`, and the corresponding block will be automatically registered at the appropriate time.
 
 ### `BlockBuilder.initialProperties()`
 
@@ -33,7 +45,8 @@ This example shows how to set initial properties for a registered block, inherit
 
 ### `BlockBuilder.properties()`
 
-This method is used to modify specific properties of a block. It can be called multiple times to accumulate modifications:
+This method is used to modify specific properties of a block. It can be called multiple times to accumulate
+modifications:
 
 ```java
 public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
@@ -63,7 +76,8 @@ This example shows how to add a block to the "mineable with pickaxe" and "needs 
 
 ### `BlockBuilder.blockstate()`
 
-This method is used to set the blockstate and model for a block. By default, a simple `cube_all` model is automatically generated:
+This method is used to set the blockstate and model for a block. By default, a simple `cube_all` model is automatically
+generated:
 
 ```java
 public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM
@@ -78,7 +92,8 @@ This example shows how to set a simple block model for a block.
 
 ### `BlockBuilder.item()`
 
-This method is used to register a corresponding item for a block, returning an `ItemBuilder` for further configuration of item properties:
+This method is used to register a corresponding item for a block, returning an `ItemBuilder` for further configuration
+of item properties:
 
 ```java
 public static final BlockEntry<Block> EXAMPLE_BLOCK = REGISTRUM

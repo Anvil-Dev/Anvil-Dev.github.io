@@ -1,3 +1,12 @@
+---
+prev:
+   text: Mob Transform With Item Recipe
+   link: /en/posts/docs/datapack/22_mob_transform_with_item_recipe
+next:
+   text: Mineral Fountain Chance Recipe
+   link: /en/posts/docs/datapack/24_mineral_fountain_chance_recipe
+---
+
 # Multiblock Conversion Recipe
 
 Multiblock conversion recipes replace a matched structure with another output structure.

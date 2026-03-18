@@ -1,3 +1,12 @@
+---
+prev:
+   text: 膨发配方 (Bulging Recipe)
+   link: /posts/docs/datapack/06_bulging_recipe
+next:
+   text: 物品注入配方 (Item Inject Recipe)
+   link: /posts/docs/datapack/08_item_inject_recipe
+---
+
 # 挤压配方 (Squeezing Recipe)
 
 挤压配方用于使用炼药锅中的流体将方块转换为其他方块。

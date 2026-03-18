@@ -1,3 +1,12 @@
+---
+prev:
+   text: 方块粉碎配方 (Block Crush Recipe)
+   link: /posts/docs/datapack/04_block_crush_recipe
+next:
+   text: 膨发配方 (Bulging Recipe)
+   link: /posts/docs/datapack/06_bulging_recipe
+---
+
 # 冲压配方 (Stamping Recipe)
 
 冲压配方用于在冲压平台上将物品转换为其他物品。

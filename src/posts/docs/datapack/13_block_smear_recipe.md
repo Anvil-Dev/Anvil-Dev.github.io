@@ -1,3 +1,12 @@
+---
+prev:
+   text: 解包配方 (Unpack Recipe)
+   link: /posts/docs/datapack/12_unpack_recipe
+next:
+   text: 多方块结构配方 (Multiblock Recipe)
+   link: /posts/docs/datapack/14_multiblock_recipe
+---
+
 # 方块涂抹配方 (Block Smear Recipe)
 
 方块涂抹配方用于使用上方方块涂抹下方方块。

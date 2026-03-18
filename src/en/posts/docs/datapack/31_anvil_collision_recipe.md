@@ -1,3 +1,9 @@
+---
+prev:
+   text: Energy Weapon Make Recipe
+   link: /en/posts/docs/datapack/30_energy_weapon_make_recipe
+---
+
 # Anvil Collision Craft Recipe
 
 This recipe triggers when an anvil hits a target block above a configured speed threshold.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: Bulging Recipe
+   link: /en/posts/docs/datapack/06_bulging_recipe
+next:
+   text: Item Inject Recipe
+   link: /en/posts/docs/datapack/08_item_inject_recipe
+---
+
 # Squeezing Recipe
 
 Squeezing recipes are used to transform blocks into other blocks using fluid in cauldrons.

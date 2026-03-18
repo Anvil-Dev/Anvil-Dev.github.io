@@ -1,3 +1,12 @@
+---
+prev:
+   text: Item Crush Recipe
+   link: /en/posts/docs/datapack/03_item_crush_recipe
+next:
+   text: Stamping Recipe
+   link: /en/posts/docs/datapack/05_stamping_recipe
+---
+
 # Block Crush Recipe
 
 Block crush recipes are used to crush blocks into smaller blocks or items.

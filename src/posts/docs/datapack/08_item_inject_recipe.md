@@ -1,3 +1,12 @@
+---
+prev:
+   text: 挤压配方 (Squeezing Recipe)
+   link: /posts/docs/datapack/07_squeezing_recipe
+next:
+   text: 烹饪配方 (Cooking Recipe)
+   link: /posts/docs/datapack/09_cooking_recipe
+---
+
 # 物品注入配方 (Item Inject Recipe)
 
 物品注入配方用于将流体注入物品中以创建新物品。

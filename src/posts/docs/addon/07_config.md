@@ -1,3 +1,12 @@
+---
+prev:
+   text: 数据生成器
+   link: /posts/docs/addon/06_data_generation
+next:
+   text: 配方系统集成
+   link: /posts/docs/addon/08_recipe_integration
+---
+
 # 配置系统
 
 本章介绍如何使用 AnvilLib 提供的配置系统来管理 Addon 的配置文件。
@@ -88,11 +97,11 @@ public void processItems() {
 
 `@Config` 注解的 `type` 属性支持以下配置类型：
 
-| 类型 | 说明 | 文件位置 |
-|------|------|----------|
-| `ModConfig.Type.COMMON` | 通用配置，客户端和服务端共用 | `config/myaddon-common.toml` |
-| `ModConfig.Type.CLIENT` | 客户端配置，仅客户端使用 | `config/myaddon-client.toml` |
-| `ModConfig.Type.SERVER` | 服务端配置，每个世界独立 | `saves/<world>/serverconfig/myaddon-server.toml` |
+| 类型                      | 说明             | 文件位置                                             |
+|-------------------------|----------------|--------------------------------------------------|
+| `ModConfig.Type.COMMON` | 通用配置，客户端和服务端共用 | `config/myaddon-common.toml`                     |
+| `ModConfig.Type.CLIENT` | 客户端配置，仅客户端使用   | `config/myaddon-client.toml`                     |
+| `ModConfig.Type.SERVER` | 服务端配置，每个世界独立   | `saves/<world>/serverconfig/myaddon-server.toml` |
 
 ### 客户端配置示例
 
@@ -145,10 +154,10 @@ public class MyAddonConfig {
 }
 ```
 
-| 属性 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `name` | String | 是 | 配置名称，通常使用 mod ID |
-| `type` | ModConfig.Type | 否 | 配置类型，默认 `COMMON` |
+| 属性     | 类型             | 必填 | 说明               |
+|--------|----------------|----|------------------|
+| `name` | String         | 是  | 配置名称，通常使用 mod ID |
+| `type` | ModConfig.Type | 否  | 配置类型，默认 `COMMON` |
 
 ### @Comment
 
@@ -160,6 +169,7 @@ public int myField = 10;
 ```
 
 注释会显示在：
+
 - 生成的 TOML 文件中
 - 配置 GUI 界面的 tooltip 中
 
@@ -177,8 +187,8 @@ public int boundedInt = 50;
 public double boundedDouble = 0.5;
 ```
 
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
+| 属性    | 类型     | 默认值                        | 说明  |
+|-------|--------|----------------------------|-----|
 | `min` | double | `Double.NEGATIVE_INFINITY` | 最小值 |
 | `max` | double | `Double.POSITIVE_INFINITY` | 最大值 |
 
@@ -206,18 +216,18 @@ public static class NestedConfig {
 
 配置系统支持以下字段类型：
 
-| 类型 | 说明 |
-|------|------|
-| `boolean` / `Boolean` | 布尔值 |
-| `byte` / `Byte` | 字节整数 |
-| `short` / `Short` | 短整数 |
-| `int` / `Integer` | 整数 |
-| `long` / `Long` | 长整数 |
-| `float` / `Float` | 单精度浮点数 |
-| `double` / `Double` | 双精度浮点数 |
-| `String` | 字符串 |
-| `Enum` | 枚举类型 |
-| 嵌套类 | 使用 `@CollapsibleObject` 标记 |
+| 类型                    | 说明                         |
+|-----------------------|----------------------------|
+| `boolean` / `Boolean` | 布尔值                        |
+| `byte` / `Byte`       | 字节整数                       |
+| `short` / `Short`     | 短整数                        |
+| `int` / `Integer`     | 整数                         |
+| `long` / `Long`       | 长整数                        |
+| `float` / `Float`     | 单精度浮点数                     |
+| `double` / `Double`   | 双精度浮点数                     |
+| `String`              | 字符串                        |
+| `Enum`                | 枚举类型                       |
+| 嵌套类                   | 使用 `@CollapsibleObject` 标记 |
 
 ### 枚举类型示例
 
@@ -389,6 +399,7 @@ message_prefix = "[MyAddon]"
 AnvilLib 会自动为你的配置注册一个配置界面工厂。玩家可以通过 mod 列表中的配置按钮打开配置界面。
 
 配置界面会：
+
 - 显示所有配置字段
 - 使用 `@Comment` 注解的内容作为 tooltip
 - 对 `@BoundedDiscrete` 标记的字段显示滑块
@@ -425,26 +436,26 @@ public class ModLanguageProvider extends LanguageProvider {
 ## 最佳实践
 
 1. **配置类型选择**
-   - 影响游戏逻辑的配置使用 `SERVER` 类型
-   - 纯客户端视觉效果使用 `CLIENT` 类型
-   - 两端都需要的配置使用 `COMMON` 类型
+    - 影响游戏逻辑的配置使用 `SERVER` 类型
+    - 纯客户端视觉效果使用 `CLIENT` 类型
+    - 两端都需要的配置使用 `COMMON` 类型
 
 2. **字段命名**
-   - 使用驼峰命名法（camelCase）
-   - 字段名会自动转换为下划线格式（如 `maxRadius` → `max_radius`）
+    - 使用驼峰命名法（camelCase）
+    - 字段名会自动转换为下划线格式（如 `maxRadius` → `max_radius`）
 
 3. **默认值**
-   - 为所有字段提供合理的默认值
-   - 默认值应该是大多数用户的最佳选择
+    - 为所有字段提供合理的默认值
+    - 默认值应该是大多数用户的最佳选择
 
 4. **范围限制**
-   - 对数值字段始终使用 `@BoundedDiscrete`
-   - 设置合理的最小和最大值，防止无效配置
+    - 对数值字段始终使用 `@BoundedDiscrete`
+    - 设置合理的最小和最大值，防止无效配置
 
 5. **注释说明**
-   - 为每个字段添加 `@Comment` 说明
-   - 注释应简洁明了，说明字段的作用
+    - 为每个字段添加 `@Comment` 说明
+    - 注释应简洁明了，说明字段的作用
 
 6. **配置分组**
-   - 使用 `@CollapsibleObject` 组织相关配置
-   - 避免单个配置类中有太多字段
+    - 使用 `@CollapsibleObject` 组织相关配置
+    - 避免单个配置类中有太多字段

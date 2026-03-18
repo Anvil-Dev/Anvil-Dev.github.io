@@ -1,3 +1,12 @@
+---
+prev:
+   text: 物品压缩配方 (Item Compress Recipe)
+   link: /posts/docs/kubejs/02_item_compress_recipe
+next:
+   text: 解包配方 (Unpack Recipe)
+   link: /posts/docs/kubejs/04_unpack_recipe
+---
+
 # 冲压配方 (Stamping Recipe)
 
 冲压配方用于在冲压平台上将物品转换为其他物品。

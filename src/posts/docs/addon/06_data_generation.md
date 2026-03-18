@@ -1,6 +1,16 @@
+---
+prev:
+   text: 方块实体开发
+   link: /posts/docs/addon/05_create_block_entity
+next:
+   text: 配置系统
+   link: /posts/docs/addon/07_config
+---
+
 # 数据生成器
 
-数据生成器（Data Generator）是 Minecraft 模组开发中用于自动生成游戏资源文件的工具。Registrum 内置了丰富的数据生成支持，可以自动生成模型、配方、语言文件、战利品表等。
+数据生成器（Data Generator）是 Minecraft 模组开发中用于自动生成游戏资源文件的工具。Registrum
+内置了丰富的数据生成支持，可以自动生成模型、配方、语言文件、战利品表等。
 
 ## 数据生成概述
 

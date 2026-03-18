@@ -1,3 +1,12 @@
+---
+prev:
+   text: 方块粉碎配方 (Block Crush Recipe)
+   link: /posts/docs/kubejs/05_block_crush_recipe
+next:
+   text: 方块涂抹配方 (Block Smear Recipe)
+   link: /posts/docs/kubejs/07_block_smear_recipe
+---
+
 # 方块压缩配方 (Block Compress Recipe)
 
 方块压缩配方用于将多个相同方块压缩成一个更高级的方块。

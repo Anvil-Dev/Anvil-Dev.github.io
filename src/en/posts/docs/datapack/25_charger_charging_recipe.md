@@ -1,3 +1,12 @@
+---
+prev:
+   text: Mineral Fountain Chance Recipe
+   link: /en/posts/docs/datapack/24_mineral_fountain_chance_recipe
+next:
+   text: Multiple To One Smithing Recipe
+   link: /en/posts/docs/datapack/26_multiple_to_one_smithing_recipe
+---
+
 # Charger Charging Recipe
 
 Charger/discharger recipes define energy processing behavior for items.

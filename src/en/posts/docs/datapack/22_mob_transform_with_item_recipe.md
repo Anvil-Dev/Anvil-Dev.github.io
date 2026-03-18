@@ -1,3 +1,12 @@
+---
+prev:
+   text: Stamping Unique Items Recipe
+   link: /en/posts/docs/datapack/21_stamping_unique_items_recipe
+next:
+   text: Multiblock Conversion Recipe
+   link: /en/posts/docs/datapack/23_multiblock_conversion_recipe
+---
+
 # Mob Transform With Item Recipe
 
 This recipe performs a special entity transformation based on held items and per-item probability.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 珠宝制作配方 (Jewel Crafting Recipe)
+   link: /posts/docs/kubejs/15_jewel_crafting_recipe
+next:
+   text: 煮沸配方 (Boiling Recipe)
+   link: /posts/docs/kubejs/17_boiling_recipe
+---
+
 # 矿物涌泉配方 (Mineral Fountain Recipe)
 
 矿物涌泉配方用于定义矿物涌泉的方块转换规则，包括基本转换和带概率的转换。

@@ -1,6 +1,15 @@
+---
+prev:
+   text: Moveable Entity Block Module
+   link: /en/posts/docs/anvillib/06_moveable_entity_block
+---
+
 # Registrum Module
 
-The Registrum module provides a **fluent, chain-style registration API** based on [Registrate](https://github.com/IThundxr/Registrate) that greatly simplifies the registration of items, blocks, entities, fluids, menus, and more. It also deeply integrates with NeoForge data generation (models, language files, loot tables, recipes, etc.).
+The Registrum module provides a **fluent, chain-style registration API** based
+on [Registrate](https://github.com/IThundxr/Registrate) that greatly simplifies the registration of items, blocks,
+entities, fluids, menus, and more. It also deeply integrates with NeoForge data generation (models, language files, loot
+tables, recipes, etc.).
 
 ## I. Creating a `Registrum` Instance
 
@@ -19,7 +28,8 @@ public class MyMod {
 }
 ```
 
-`Registrum.create(modId)` automatically finds the mod's event bus and registers the necessary listeners — no manual setup required.
+`Registrum.create(modId)` automatically finds the mod's event bus and registers the necessary listeners — no manual
+setup required.
 
 ## II. Registering Items
 
@@ -39,18 +49,18 @@ public class MyItems {
 
 ### `ItemBuilder` Common Methods
 
-| Method                                   | Description                                        |
-|------------------------------------------|----------------------------------------------------|
-| `.properties(p -> ...)`                  | Modify `Item.Properties`                           |
-| `.lang(String)`                          | Set the English translation                        |
-| `.model(ctx, prov -> ...)`               | Provide a custom item model                        |
-| `.defaultModel()`                        | Use a default generated model (texture matches ID) |
-| `.tab(ResourceKey<CreativeModeTab>)`     | Add to a creative mode tab                         |
-| `.tag(TagKey<Item>...)`                  | Add item tags                                      |
-| `.color(() -> () -> color)`              | Set an item color handler                          |
-| `.compostable(float)`                    | Set the composting chance                          |
-| `.burnTime(int)`                         | Set fuel burn time                                 |
-| `.register()`                            | Finish registration, return `ItemEntry`            |
+| Method                               | Description                                        |
+|--------------------------------------|----------------------------------------------------|
+| `.properties(p -> ...)`              | Modify `Item.Properties`                           |
+| `.lang(String)`                      | Set the English translation                        |
+| `.model(ctx, prov -> ...)`           | Provide a custom item model                        |
+| `.defaultModel()`                    | Use a default generated model (texture matches ID) |
+| `.tab(ResourceKey<CreativeModeTab>)` | Add to a creative mode tab                         |
+| `.tag(TagKey<Item>...)`              | Add item tags                                      |
+| `.color(() -> () -> color)`          | Set an item color handler                          |
+| `.compostable(float)`                | Set the composting chance                          |
+| `.burnTime(int)`                     | Set fuel burn time                                 |
+| `.register()`                        | Finish registration, return `ItemEntry`            |
 
 ## III. Registering Blocks
 
@@ -72,19 +82,19 @@ public class MyBlocks {
 
 ### `BlockBuilder` Common Methods
 
-| Method                                      | Description                                  |
-|---------------------------------------------|----------------------------------------------|
-| `.properties(p -> ...)`                     | Modify `BlockBehaviour.Properties`           |
-| `.defaultBlockstate()`                      | Map all states to a single cube_all model    |
-| `.blockstate(ctx, prov -> ...)`             | Provide a custom blockstate JSON             |
-| `.defaultLoot()`                            | Generate a self-drop loot table              |
-| `.loot(prov -> ...)`                        | Provide a custom loot table                  |
-| `.simpleItem()`                             | Register a simple BlockItem                  |
-| `.item(factory -> ...)`                     | Customize the BlockItem via `ItemBuilder`    |
-| `.blockEntity(type, factory).build()`       | Associate a block entity type               |
-| `.tag(TagKey<Block>...)`                    | Add block tags                               |
-| `.addLayer(() -> RenderType::...)`          | Set render layer (transparent, cutout, etc.) |
-| `.register()`                               | Finish registration, return `BlockEntry`     |
+| Method                                | Description                                  |
+|---------------------------------------|----------------------------------------------|
+| `.properties(p -> ...)`               | Modify `BlockBehaviour.Properties`           |
+| `.defaultBlockstate()`                | Map all states to a single cube_all model    |
+| `.blockstate(ctx, prov -> ...)`       | Provide a custom blockstate JSON             |
+| `.defaultLoot()`                      | Generate a self-drop loot table              |
+| `.loot(prov -> ...)`                  | Provide a custom loot table                  |
+| `.simpleItem()`                       | Register a simple BlockItem                  |
+| `.item(factory -> ...)`               | Customize the BlockItem via `ItemBuilder`    |
+| `.blockEntity(type, factory).build()` | Associate a block entity type                |
+| `.tag(TagKey<Block>...)`              | Add block tags                               |
+| `.addLayer(() -> RenderType::...)`    | Set render layer (transparent, cutout, etc.) |
+| `.register()`                         | Finish registration, return `BlockEntry`     |
 
 ## IV. Registering Block Entities
 
@@ -119,14 +129,14 @@ public class MyEntities {
 
 ### `EntityBuilder` Common Methods
 
-| Method                              | Description                                |
-|-------------------------------------|--------------------------------------------|
-| `.properties(b -> ...)`             | Modify `EntityType.Builder`                |
-| `.attributes(supplier)`             | Register entity attributes (required)      |
-| `.renderer(() -> factory)`          | Set the client-side entity renderer        |
-| `.spawnEgg(bg, fg)`                 | Register a spawn egg (ARGB int colors)     |
-| `.tag(TagKey<EntityType<?>>...)`    | Add entity type tags                       |
-| `.register()`                       | Finish registration, return `EntityEntry`  |
+| Method                           | Description                               |
+|----------------------------------|-------------------------------------------|
+| `.properties(b -> ...)`          | Modify `EntityType.Builder`               |
+| `.attributes(supplier)`          | Register entity attributes (required)     |
+| `.renderer(() -> factory)`       | Set the client-side entity renderer       |
+| `.spawnEgg(bg, fg)`              | Register a spawn egg (ARGB int colors)    |
+| `.tag(TagKey<EntityType<?>>...)` | Add entity type tags                      |
+| `.register()`                    | Finish registration, return `EntityEntry` |
 
 ## VI. Registering Fluids
 
@@ -156,7 +166,8 @@ public class MyMenus {
 
 ## VIII. Data Generation Integration
 
-Registrum is deeply integrated with NeoForge data generation. You can declare data provider callbacks directly in the builder via `ProviderType`:
+Registrum is deeply integrated with NeoForge data generation. You can declare data provider callbacks directly in the
+builder via `ProviderType`:
 
 ```java
 MyMod.REGISTRUM
@@ -174,7 +185,8 @@ MyMod.REGISTRUM
 
 ## IX. Accessing Registered Objects via `RegistryEntry`
 
-All `.register()` calls return a `RegistryEntry` (or a subclass such as `ItemEntry`, `BlockEntry`, etc.) which extends `Supplier<T>`. Call `.get()` to retrieve the registered object:
+All `.register()` calls return a `RegistryEntry` (or a subclass such as `ItemEntry`, `BlockEntry`, etc.) which extends
+`Supplier<T>`. Call `.get()` to retrieve the registered object:
 
 ```java
 Item item = MyItems.MY_ITEM.get();
@@ -182,7 +194,8 @@ Block block = MyBlocks.MY_BLOCK.get();
 EntityType<MyEntity> type = MyEntities.MY_ENTITY.get();
 ```
 
-> **Warning**: Do not call `.get()` too early during mod initialization. Wait until the registration events have fired before accessing registered objects.
+> **Warning**: Do not call `.get()` too early during mod initialization. Wait until the registration events have fired
+> before accessing registered objects.
 
 ## X. Full Example (Combined)
 
@@ -217,7 +230,9 @@ public class MyMod {
 ## XI. Notes
 
 - `Registrum.create()` must be executed **before** any `.register()` calls — typically as a `static` field initializer;
-- All registration fields should be declared as `public static final` to trigger class loading and registration at startup;
+- All registration fields should be declared as `public static final` to trigger class loading and registration at
+  startup;
 - Data generation callbacks in Registrum only run during the `runData` task and have no effect during normal gameplay;
-- Part of the Registrum module is based on [Registrate](https://github.com/IThundxr/Registrate) and is licensed under the Mozilla Public License 2.0.
+- Part of the Registrum module is based on [Registrate](https://github.com/IThundxr/Registrate) and is licensed under
+  the Mozilla Public License 2.0.
 

@@ -1,6 +1,16 @@
+---
+prev:
+   text: Mineral Fountain Recipe
+   link: /en/posts/docs/kubejs/16_mineral_fountain_recipe
+next:
+   text: Cooking Recipe
+   link: /en/posts/docs/kubejs/18_cooking_recipe
+---
+
 # Boiling Recipe
 
-Boiling recipes process items in cauldron environments, usually for low-temperature fluid processing and state conversion.
+Boiling recipes process items in cauldron environments, usually for low-temperature fluid processing and state
+conversion.
 
 ## Basic Structure
 

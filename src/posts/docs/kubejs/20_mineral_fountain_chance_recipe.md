@@ -1,3 +1,9 @@
+---
+prev:
+   text: 筛网配方 (Mesh Recipe)
+   link: /posts/docs/kubejs/19_mesh_recipe
+---
+
 # 概率矿物涌泉配方 (Mineral Fountain Chance Recipe)
 
 该配方用于在指定维度中，以概率方式将方块转换为目标方块。

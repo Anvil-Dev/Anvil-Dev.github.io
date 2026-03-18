@@ -1,3 +1,12 @@
+---
+prev:
+   text: 解包配方 (Unpack Recipe)
+   link: /posts/docs/kubejs/04_unpack_recipe
+next:
+   text: 方块压缩配方 (Block Compress Recipe)
+   link: /posts/docs/kubejs/06_block_compress_recipe
+---
+
 # 方块粉碎配方 (Block Crush Recipe)
 
 方块粉碎配方用于将方块粉碎成更小的方块或物品。

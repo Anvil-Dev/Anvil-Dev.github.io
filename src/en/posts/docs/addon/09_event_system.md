@@ -1,19 +1,29 @@
+---
+prev:
+   text: Recipe System Integration
+   link: /en/posts/docs/addon/08_recipe_integration
+next:
+   text: Resources and Localization
+   link: /en/posts/docs/addon/10_resources
+---
+
 # Event System
 
 This chapter introduces how to use the NeoForge event system and custom events provided by AnvilCraft in your Addon.
 
 ## Overview
 
-NeoForge provides a powerful event system that allows mods to interact at various stages of the game. AnvilCraft also defines some custom events for extending anvil-related functionality.
+NeoForge provides a powerful event system that allows mods to interact at various stages of the game. AnvilCraft also
+defines some custom events for extending anvil-related functionality.
 
 ## Event Buses
 
 NeoForge has two event buses:
 
-| Event Bus | Purpose | Common Events |
-|-----------|---------|---------------|
-| MOD Event Bus | Mod loading phase events | Registration, data generation, config loading |
-| GAME Event Bus | Game runtime events | Player interactions, block events, entity events |
+| Event Bus      | Purpose                  | Common Events                                    |
+|----------------|--------------------------|--------------------------------------------------|
+| MOD Event Bus  | Mod loading phase events | Registration, data generation, config loading    |
+| GAME Event Bus | Game runtime events      | Player interactions, block events, entity events |
 
 ## Using @EventBusSubscriber
 
@@ -466,24 +476,24 @@ public class CustomEventListener {
 ## Best Practices
 
 1. **Use the Correct Event Bus**
-   - Use `Bus.MOD` for MOD loading phase events
-   - Use `Bus.GAME` for game runtime events (default)
+    - Use `Bus.MOD` for MOD loading phase events
+    - Use `Bus.GAME` for game runtime events (default)
 
 2. **Event Handler Methods**
-   - Methods must be `static` when using `@EventBusSubscriber`
-   - Methods must have exactly one event parameter
+    - Methods must be `static` when using `@EventBusSubscriber`
+    - Methods must have exactly one event parameter
 
 3. **Avoid Performance Issues**
-   - Avoid expensive operations in high-frequency events (like Tick)
-   - Use caching to reduce repeated calculations
+    - Avoid expensive operations in high-frequency events (like Tick)
+    - Use caching to reduce repeated calculations
 
 4. **Handle Cancellation Correctly**
-   - Only events implementing `ICancellableEvent` can be cancelled
-   - Check if event is already cancelled before executing operations
+    - Only events implementing `ICancellableEvent` can be cancelled
+    - Check if event is already cancelled before executing operations
 
 5. **Client/Server Separation**
-   - Use `@OnlyIn(Dist.CLIENT)` to mark client-only code
-   - Check `level.isClientSide()` to distinguish sides
+    - Use `@OnlyIn(Dist.CLIENT)` to mark client-only code
+    - Check `level.isClientSide()` to distinguish sides
 
 ```java
 @SubscribeEvent
@@ -497,5 +507,5 @@ public static void onSomeEvent(SomeEvent event) {
 ```
 
 6. **Event Priority**
-   - Only use non-default priority when necessary
-   - High priority for cases that need to check/cancel first
+    - Only use non-default priority when necessary
+    - High priority for cases that need to check/cancel first

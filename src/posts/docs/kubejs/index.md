@@ -1,3 +1,9 @@
+---
+next:
+   text: InWorld 配方 (InWorld Recipe)
+   link: /posts/docs/kubejs/00_inworld_recipe
+---
+
 # KubeJS 集成
 
 AnvilCraft 提供了完整的 KubeJS 集成，允许你使用 KubeJS 脚本自定义 AnvilCraft 的配方。

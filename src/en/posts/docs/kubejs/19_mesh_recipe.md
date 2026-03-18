@@ -1,3 +1,12 @@
+---
+prev:
+   text: Cooking Recipe
+   link: /en/posts/docs/kubejs/18_cooking_recipe
+next:
+   text: Mineral Fountain Chance Recipe
+   link: /en/posts/docs/kubejs/20_mineral_fountain_chance_recipe
+---
+
 # Mesh Recipe
 
 Mesh recipes filter and transform drops under mesh/scaffolding conditions.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 附属开发
+   link: /posts/docs/addon/index
+next:
+   text: 注册物品
+   link: /posts/docs/addon/02_create_item
+---
+
 # 环境搭建
 
 ## 一、准备工作
@@ -40,10 +49,10 @@
         * 如果直接包含铁砧工艺的源码或修改后的铁砧工艺源码，则此项必须为 `LGPL-3.0 license`
     * `mod_version`
         * 模组版本号
-   * `mod_authors`
-       * 模组作者
-   * `mod_description`
-       * 模组描述
+    * `mod_authors`
+        * 模组作者
+    * `mod_description`
+        * 模组描述
 3. 修改 `gradle/libs.versions.toml` 中的依赖信息
     * `versions`.`anvilCraft`
         * 铁砧工艺的版本号

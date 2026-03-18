@@ -1,3 +1,12 @@
+---
+prev:
+   text: Time Warp Recipe
+   link: /en/posts/docs/kubejs/12_time_warp_recipe
+next:
+   text: Mob Transform Recipe
+   link: /en/posts/docs/kubejs/14_mob_transform_recipe
+---
+
 # Multiblock Recipe
 
 The Multiblock recipe allows you to define complex multi-block structures and produce items at the center.
@@ -160,4 +169,5 @@ ServerEvents.recipes(event => {
 2. The structure must match completely to trigger the recipe
 3. Space characters indicate that no block is required at that position
 4. Symbol definitions must cover all characters used in the layers
-5. There is no strict limit on structure size, but it is recommended to keep it within a reasonable range for performance
+5. There is no strict limit on structure size, but it is recommended to keep it within a reasonable range for
+   performance

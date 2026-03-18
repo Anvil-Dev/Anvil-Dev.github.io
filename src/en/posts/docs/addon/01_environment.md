@@ -1,3 +1,12 @@
+---
+prev:
+   text: Addon Development
+   link: /en/posts/docs/addon/index
+next:
+   text: Registering Items
+   link: /en/posts/docs/addon/02_create_item
+---
+
 # Environment Setup
 
 ## I. Prerequisites
@@ -8,8 +17,10 @@
 
 ## II. Create Repository from Addon Template
 
-1. Open the [Addon Template Repository](https://github.com/Anvil-Dev/AnvilCraftAddonTemplate), click `Use this template` in the top right corner, and select `Create a new repository`;
-2. Enter the relevant information for your addon mod on the new page, such as name and description. We recommend naming it in the format `AnvilCraft-${AddonName}`, for example `AnvilCraft-Demo`;
+1. Open the [Addon Template Repository](https://github.com/Anvil-Dev/AnvilCraftAddonTemplate), click `Use this template`
+   in the top right corner, and select `Create a new repository`;
+2. Enter the relevant information for your addon mod on the new page, such as name and description. We recommend naming
+   it in the format `AnvilCraft-${AddonName}`, for example `AnvilCraft-Demo`;
 3. Clone the repository to your local machine;
     * Please search for instructions on how to do this
 
@@ -34,7 +45,8 @@
         * Mod description
     * `mod_license`
         * Mod open source license, recommended to use `LGPL-3.0 license`
-        * If you directly include AnvilCraft source code or modified AnvilCraft source code, this must be `LGPL-3.0 license`
+        * If you directly include AnvilCraft source code or modified AnvilCraft source code, this must be
+          `LGPL-3.0 license`
     * `mod_version`
         * Mod version number
     * `mod_authors`
@@ -42,7 +54,8 @@
 3. Modify dependency information in `gradle/libs.versions.toml`:
     * `versions`.`anvilCraft`
         * AnvilCraft version number
-        * You can check the latest version at [this link](https://server.cjsah.net:1002/maven/dev/dubhe/anvilcraft-neoforge-1.21.1/maven-metadata.xml)
+        * You can check the latest version
+          at [this link](https://server.cjsah.net:1002/maven/dev/dubhe/anvilcraft-neoforge-1.21.1/maven-metadata.xml)
 4. Modify the package name in the following paths to your own package name:
     * `src/main/java`
     * Example: `dev.anvilcraft.addon.demo`
@@ -78,7 +91,8 @@
     * Try using the `./gradlew --refresh-dependencies` command to refresh dependencies
 
 2. **Cannot Find AnvilCraft Dependency**
-    * Check the latest version number in the [Maven Repository](https://server.cjsah.net:1002/maven/dev/dubhe/anvilcraft-neoforge-1.21.1/maven-metadata.xml)
+    * Check the latest version number in
+      the [Maven Repository](https://server.cjsah.net:1002/maven/dev/dubhe/anvilcraft-neoforge-1.21.1/maven-metadata.xml)
     * Ensure the version number matches your Minecraft version
 
 3. **IDEA Cannot Recognize Project**

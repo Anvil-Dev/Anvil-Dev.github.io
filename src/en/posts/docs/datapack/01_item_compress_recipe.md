@@ -1,3 +1,12 @@
+---
+prev:
+   text: InWorld Recipe System
+   link: /en/posts/docs/datapack/00_inworld_recipe
+next:
+   text: Block Compress Recipe
+   link: /en/posts/docs/datapack/02_block_compress_recipe
+---
+
 # Item Compress Recipe
 
 Item compress recipes are used to compress multiple identical items into a more advanced item.

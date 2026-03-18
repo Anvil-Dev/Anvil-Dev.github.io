@@ -1,3 +1,12 @@
+---
+prev:
+   text: Mesh Recipe
+   link: /en/posts/docs/datapack/19_mesh_recipe
+next:
+   text: Stamping Unique Items Recipe
+   link: /en/posts/docs/datapack/21_stamping_unique_items_recipe
+---
+
 # Mass Inject Recipe
 
 Mass inject recipes attach a mass value to matched items without directly outputting a new item stack.

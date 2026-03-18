@@ -1,3 +1,12 @@
+---
+prev:
+   text: Block Compress Recipe
+   link: /en/posts/docs/datapack/02_block_compress_recipe
+next:
+   text: Block Crush Recipe
+   link: /en/posts/docs/datapack/04_block_crush_recipe
+---
+
 # Item Crush Recipe
 
 Item crush recipes are used to crush items into smaller items.

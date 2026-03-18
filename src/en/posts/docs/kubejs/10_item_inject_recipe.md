@@ -1,3 +1,12 @@
+---
+prev:
+   text: Squeezing Recipe
+   link: /en/posts/docs/kubejs/09_squeezing_recipe
+next:
+   text: Super Heating Recipe
+   link: /en/posts/docs/kubejs/11_super_heating_recipe
+---
+
 # Item Inject Recipe
 
 The Item Inject recipe injects fluid into items to create new items.

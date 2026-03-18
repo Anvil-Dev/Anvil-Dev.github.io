@@ -1,6 +1,13 @@
+---
+next:
+   text: InWorld Recipe System
+   link: /en/posts/docs/datapack/00_inworld_recipe
+---
+
 # Datapack
 
-Datapack support is one of the core features of AnvilCraft, allowing customization of various recipes and mechanics through JSON files. The following documentation will detail the structure, fields, and usage of each recipe type.
+Datapack support is one of the core features of AnvilCraft, allowing customization of various recipes and mechanics
+through JSON files. The following documentation will detail the structure, fields, and usage of each recipe type.
 
 ## Recipes
 
@@ -27,18 +34,25 @@ These recipe types form the foundation of AnvilCraft's crafting system:
 - [Boiling Recipe](18_boiling_recipe.md) - Process items with cauldron + lit campfire conditions
 - [Mesh Recipe](19_mesh_recipe.md) - Filter/transform items through mesh scaffolding
 - [Mass Inject Recipe](20_mass_inject_recipe.md) - Inject mass value into target items
-- [Stamping Unique Items Recipe](21_stamping_unique_items_recipe.md) - Stamping recipe with unique (non-duplicate) inputs
-- [Mob Transform With Item Recipe](22_mob_transform_with_item_recipe.md) - Item-driven probabilistic special mob transformation
-- [Multiblock Conversion Recipe](23_multiblock_conversion_recipe.md) - Convert a matched structure into another structure
-- [Mineral Fountain Chance Recipe](24_mineral_fountain_chance_recipe.md) - Dimension-limited probability conversion for mineral fountain
+- [Stamping Unique Items Recipe](21_stamping_unique_items_recipe.md) - Stamping recipe with unique (non-duplicate)
+  inputs
+- [Mob Transform With Item Recipe](22_mob_transform_with_item_recipe.md) - Item-driven probabilistic special mob
+  transformation
+- [Multiblock Conversion Recipe](23_multiblock_conversion_recipe.md) - Convert a matched structure into another
+  structure
+- [Mineral Fountain Chance Recipe](24_mineral_fountain_chance_recipe.md) - Dimension-limited probability conversion for
+  mineral fountain
 - [Charger Charging Recipe](25_charger_charging_recipe.md) - Define charger/discharger processing behavior
 - [Multiple To One Smithing Recipe](26_multiple_to_one_smithing_recipe.md) - 2/4/8-to-1 multi-input smithing recipes
 - [Neutron Irradiation Recipe](27_neutron_irradiation_recipe.md) - Process items with neutron irradiator conditions
 - [Permutation Recipe](28_permutation_recipe.md) - Frost smithing permutation recipe type
 - [Deformation Recipe](29_deformation_recipe.md) - Frost smithing deformation recipe type
 - [Energy Weapon Make Recipe](30_energy_weapon_make_recipe.md) - Multi-ingredient energy weapon assembly
-- [Anvil Collision Craft Recipe](31_anvil_collision_recipe.md) - Trigger conversions by anvil collision speed and targets
+- [Anvil Collision Craft Recipe](31_anvil_collision_recipe.md) - Trigger conversions by anvil collision speed and
+  targets
 
 ## Usage Instructions
 
-To use these recipes, you need to create corresponding JSON files in your datapack and place them in the correct directory structure. Each recipe type has its specific structure and field requirements - please refer to the corresponding documentation for detailed information.
+To use these recipes, you need to create corresponding JSON files in your datapack and place them in the correct
+directory structure. Each recipe type has its specific structure and field requirements - please refer to the
+corresponding documentation for detailed information.

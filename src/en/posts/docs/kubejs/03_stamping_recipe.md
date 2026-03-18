@@ -1,3 +1,12 @@
+---
+prev:
+   text: Item Compress Recipe
+   link: /en/posts/docs/kubejs/02_item_compress_recipe
+next:
+   text: Unpack Recipe
+   link: /en/posts/docs/kubejs/04_unpack_recipe
+---
+
 # Stamping Recipe
 
 Stamping recipes are used to transform items into other items on the stamping platform.

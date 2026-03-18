@@ -1,3 +1,12 @@
+---
+prev:
+   text: 物品粉碎配方 (Item Crush Recipe)
+   link: /posts/docs/datapack/03_item_crush_recipe
+next:
+   text: 冲压配方 (Stamping Recipe)
+   link: /posts/docs/datapack/05_stamping_recipe
+---
+
 # 方块粉碎配方 (Block Crush Recipe)
 
 方块粉碎配方用于将方块粉碎成更小的方块或物品。

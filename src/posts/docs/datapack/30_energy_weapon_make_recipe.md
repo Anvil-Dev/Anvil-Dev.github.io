@@ -1,3 +1,12 @@
+---
+prev:
+   text: 霜铸形变配方 (Deformation Recipe)
+   link: /posts/docs/datapack/29_deformation_recipe
+next:
+   text: 铁砧碰撞工艺配方 (Anvil Collision Craft Recipe)
+   link: /posts/docs/datapack/31_anvil_collision_recipe
+---
+
 # 能量武器制作配方 (Energy Weapon Make Recipe)
 
 该配方用于使用最多 6 个输入材料合成能量武器，并保留关键属性数据。

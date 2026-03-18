@@ -1,3 +1,12 @@
+---
+prev:
+   text: 冲压配方 (Stamping Recipe)
+   link: /posts/docs/kubejs/03_stamping_recipe
+next:
+   text: 方块粉碎配方 (Block Crush Recipe)
+   link: /posts/docs/kubejs/05_block_crush_recipe
+---
+
 # 解包配方 (Unpack Recipe)
 
 解包配方用于将压缩物品解包为原始物品。

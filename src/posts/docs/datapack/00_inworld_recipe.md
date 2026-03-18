@@ -1,3 +1,12 @@
+---
+prev:
+   text: 数据包
+   link: /posts/docs/datapack/index
+next:
+   text: 物品压缩配方 (Item Compress Recipe)
+   link: /posts/docs/datapack/01_item_compress_recipe
+---
+
 # InWorld 配方系统
 
 InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统，它允许在特定条件下触发各种效果。

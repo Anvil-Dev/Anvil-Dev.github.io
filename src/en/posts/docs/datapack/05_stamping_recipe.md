@@ -1,3 +1,12 @@
+---
+prev:
+   text: Block Crush Recipe
+   link: /en/posts/docs/datapack/04_block_crush_recipe
+next:
+   text: Bulging Recipe
+   link: /en/posts/docs/datapack/06_bulging_recipe
+---
+
 # Stamping Recipe
 
 Stamping recipes are used to transform items into other items on the stamping platform.

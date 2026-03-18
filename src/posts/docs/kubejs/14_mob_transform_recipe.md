@@ -1,3 +1,12 @@
+---
+prev:
+   text: 多方块结构配方 (Multiblock Recipe)
+   link: /posts/docs/kubejs/13_multiblock_recipe
+next:
+   text: 珠宝制作配方 (Jewel Crafting Recipe)
+   link: /posts/docs/kubejs/15_jewel_crafting_recipe
+---
+
 # 生物转换配方 (Mob Transform Recipe)
 
 生物转换配方允许你定义生物实体之间的转换规则，包括基于标签条件的复杂转换。

@@ -1,3 +1,9 @@
+---
+prev:
+   text: Resources and Localization
+   link: /en/posts/docs/addon/10_resources
+---
+
 # Networking
 
 This chapter introduces how to implement client-server network communication in your Addon.
@@ -475,33 +481,33 @@ public class RequestActionPacket implements CustomPacketPayload {
 
 ## Packet Direction
 
-| Method | Direction | Use Case |
-|--------|-----------|----------|
-| `playToServer` | Client → Server | Player action requests, GUI interactions |
-| `playToClient` | Server → Client | Data sync, state updates |
-| `playBidirectional` | Bidirectional | Features needing two-way communication |
+| Method              | Direction       | Use Case                                 |
+|---------------------|-----------------|------------------------------------------|
+| `playToServer`      | Client → Server | Player action requests, GUI interactions |
+| `playToClient`      | Server → Client | Data sync, state updates                 |
+| `playBidirectional` | Bidirectional   | Features needing two-way communication   |
 
 ## Best Practices
 
 1. **Data Validation**
-   - Server must validate all data sent by client
-   - Never trust any information sent by clients
+    - Server must validate all data sent by client
+    - Never trust any information sent by clients
 
 2. **Thread Safety**
-   - Use `context.enqueueWork()` to execute game logic on main thread
-   - Don't modify game state directly on network thread
+    - Use `context.enqueueWork()` to execute game logic on main thread
+    - Don't modify game state directly on network thread
 
 3. **Data Volume Control**
-   - Only send necessary data
-   - Consider splitting packets for large data
+    - Only send necessary data
+    - Consider splitting packets for large data
 
 4. **Error Handling**
-   - Catch exceptions when handling packets
-   - Log errors for debugging
+    - Catch exceptions when handling packets
+    - Log errors for debugging
 
 5. **Version Compatibility**
-   - Use versioned registrar
-   - Consider forward/backward compatibility
+    - Use versioned registrar
+    - Consider forward/backward compatibility
 
 ```java
 // Versioned registration
@@ -510,6 +516,6 @@ PayloadRegistrar registrar = event.registrar("1")
 ```
 
 6. **Performance Considerations**
-   - Avoid frequent sending of many packets
-   - Use variable-length encoding (VarInt/VarLong) to save bandwidth
-   - Merge packets for batch updates
+    - Avoid frequent sending of many packets
+    - Use variable-length encoding (VarInt/VarLong) to save bandwidth
+    - Merge packets for batch updates

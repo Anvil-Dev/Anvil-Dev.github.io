@@ -1,3 +1,12 @@
+---
+prev:
+   text: InWorld Recipe
+   link: /en/posts/docs/kubejs/00_inworld_recipe
+next:
+   text: Item Compress Recipe
+   link: /en/posts/docs/kubejs/02_item_compress_recipe
+---
+
 # Item Crush Recipe
 
 Item crush recipes are used to crush items into smaller items.

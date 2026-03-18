@@ -1,3 +1,12 @@
+---
+prev:
+   text: Multiple To One Smithing Recipe
+   link: /en/posts/docs/datapack/26_multiple_to_one_smithing_recipe
+next:
+   text: Permutation Recipe
+   link: /en/posts/docs/datapack/28_permutation_recipe
+---
+
 # Neutron Irradiation Recipe
 
 Neutron irradiation recipes process items in neutron irradiator environments with optional cauldron fluid parameters.

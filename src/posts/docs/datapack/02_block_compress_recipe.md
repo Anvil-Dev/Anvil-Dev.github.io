@@ -1,3 +1,12 @@
+---
+prev:
+   text: 物品压缩配方 (Item Compress Recipe)
+   link: /posts/docs/datapack/01_item_compress_recipe
+next:
+   text: 物品粉碎配方 (Item Crush Recipe)
+   link: /posts/docs/datapack/03_item_crush_recipe
+---
+
 # 方块压缩配方 (Block Compress Recipe)
 
 方块压缩配方用于将多个相同方块压缩成一个更高级的方块。

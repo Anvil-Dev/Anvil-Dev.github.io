@@ -1,3 +1,12 @@
+---
+prev:
+   text: Unpack Recipe
+   link: /en/posts/docs/datapack/12_unpack_recipe
+next:
+   text: Multiblock Recipe
+   link: /en/posts/docs/datapack/14_multiblock_recipe
+---
+
 # Block Smear Recipe
 
 Block smear recipes are used to smear a lower block using an upper block.

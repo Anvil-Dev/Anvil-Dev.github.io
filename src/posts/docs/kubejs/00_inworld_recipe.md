@@ -1,3 +1,12 @@
+---
+prev:
+   text: KubeJS 集成
+   link: /posts/docs/kubejs/index
+next:
+   text: 物品粉碎配方 (Item Crush Recipe)
+   link: /posts/docs/kubejs/01_item_crush_recipe
+---
+
 # InWorld 配方 (InWorld Recipe)
 
 InWorld 配方系统是 AnvilCraft 中用于处理世界内配方的核心系统，它允许在特定条件下触发各种效果。

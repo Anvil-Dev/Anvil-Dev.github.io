@@ -1,3 +1,12 @@
+---
+prev:
+   text: 多重合一锻造配方 (Multiple To One Smithing Recipe)
+   link: /posts/docs/datapack/26_multiple_to_one_smithing_recipe
+next:
+   text: 霜铸置换配方 (Permutation Recipe)
+   link: /posts/docs/datapack/28_permutation_recipe
+---
+
 # 中子辐照配方 (Neutron Irradiation Recipe)
 
 中子辐照配方在中子辐照器环境下处理物品，并可结合炼药锅流体参数。

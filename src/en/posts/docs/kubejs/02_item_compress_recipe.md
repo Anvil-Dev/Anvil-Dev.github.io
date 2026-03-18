@@ -1,3 +1,12 @@
+---
+prev:
+   text: Item Crush Recipe
+   link: /en/posts/docs/kubejs/01_item_crush_recipe
+next:
+   text: Stamping Recipe
+   link: /en/posts/docs/kubejs/03_stamping_recipe
+---
+
 # Item Compress Recipe
 
 Item compress recipes are used to compress multiple identical items into a more advanced item.

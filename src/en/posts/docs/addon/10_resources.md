@@ -1,6 +1,16 @@
+---
+prev:
+   text: Event System
+   link: /en/posts/docs/addon/09_event_system
+next:
+   text: Networking
+   link: /en/posts/docs/addon/11_networking
+---
+
 # Resources and Localization
 
-This chapter introduces how to manage resource files in your Addon, including textures, models, sounds, and language localization.
+This chapter introduces how to manage resource files in your Addon, including textures, models, sounds, and language
+localization.
 
 ## Resource Directory Structure
 
@@ -259,18 +269,18 @@ assets/myaddon/lang/
 
 ### Translation Key Conventions
 
-| Type | Format | Example |
-|------|--------|---------|
-| Item | `item.<modid>.<name>` | `item.myaddon.custom_item` |
-| Block | `block.<modid>.<name>` | `block.myaddon.custom_block` |
-| Item Group | `itemGroup.<modid>` | `itemGroup.myaddon` |
-| Entity | `entity.<modid>.<name>` | `entity.myaddon.custom_entity` |
-| Effect | `effect.<modid>.<name>` | `effect.myaddon.custom_effect` |
-| Enchantment | `enchantment.<modid>.<name>` | `enchantment.myaddon.custom_enchant` |
-| Tooltip | `tooltip.<modid>.<name>` | `tooltip.myaddon.info` |
-| GUI | `gui.<modid>.<name>` | `gui.myaddon.title` |
-| Message | `message.<modid>.<name>` | `message.myaddon.hello` |
-| Config | `<modid>.configuration.<name>` | `myaddon.configuration.enable_feature` |
+| Type        | Format                         | Example                                |
+|-------------|--------------------------------|----------------------------------------|
+| Item        | `item.<modid>.<name>`          | `item.myaddon.custom_item`             |
+| Block       | `block.<modid>.<name>`         | `block.myaddon.custom_block`           |
+| Item Group  | `itemGroup.<modid>`            | `itemGroup.myaddon`                    |
+| Entity      | `entity.<modid>.<name>`        | `entity.myaddon.custom_entity`         |
+| Effect      | `effect.<modid>.<name>`        | `effect.myaddon.custom_effect`         |
+| Enchantment | `enchantment.<modid>.<name>`   | `enchantment.myaddon.custom_enchant`   |
+| Tooltip     | `tooltip.<modid>.<name>`       | `tooltip.myaddon.info`                 |
+| GUI         | `gui.<modid>.<name>`           | `gui.myaddon.title`                    |
+| Message     | `message.<modid>.<name>`       | `message.myaddon.hello`                |
+| Config      | `<modid>.configuration.<name>` | `myaddon.configuration.enable_feature` |
 
 ### Using Data Generators for Language Files
 
@@ -427,7 +437,8 @@ public class CustomMachineScreen extends AbstractContainerScreen<CustomMachineMe
 
 ## Resource Pack Overrides
 
-Players can override mod textures and language files through resource packs. Simply use the same path in the resource pack:
+Players can override mod textures and language files through resource packs. Simply use the same path in the resource
+pack:
 
 ```
 resourcepack/
@@ -441,26 +452,26 @@ resourcepack/
 ## Best Practices
 
 1. **Texture Naming**
-   - Use lowercase letters and underscores
-   - Names should be descriptive
-   - Keep consistent with registry names
+    - Use lowercase letters and underscores
+    - Names should be descriptive
+    - Keep consistent with registry names
 
 2. **Texture Dimensions**
-   - Item/block textures: 16x16 pixels
-   - Can use higher resolutions (32x32, 64x64, etc.), but keep powers of 2
+    - Item/block textures: 16x16 pixels
+    - Can use higher resolutions (32x32, 64x64, etc.), but keep powers of 2
 
 3. **Translation Completeness**
-   - Ensure all visible text has translation keys
-   - Provide at least English translations as fallback
+    - Ensure all visible text has translation keys
+    - Provide at least English translations as fallback
 
 4. **Use Data Generators**
-   - Automatic generation reduces errors
-   - Facilitates batch modifications
+    - Automatic generation reduces errors
+    - Facilitates batch modifications
 
 5. **Resource Compression**
-   - Optimize PNG file sizes
-   - Use appropriate audio bitrates
+    - Optimize PNG file sizes
+    - Use appropriate audio bitrates
 
 6. **Test Resources**
-   - Test in different language environments
-   - Check that textures display correctly
+    - Test in different language environments
+    - Check that textures display correctly

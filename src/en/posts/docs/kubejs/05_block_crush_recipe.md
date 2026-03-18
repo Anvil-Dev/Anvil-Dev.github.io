@@ -1,3 +1,12 @@
+---
+prev:
+   text: Unpack Recipe
+   link: /en/posts/docs/kubejs/04_unpack_recipe
+next:
+   text: Block Compress Recipe
+   link: /en/posts/docs/kubejs/06_block_compress_recipe
+---
+
 # Block Crush Recipe
 
 Block crush recipes are used to crush blocks into smaller blocks or items.

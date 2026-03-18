@@ -1,3 +1,12 @@
+---
+prev:
+   text: Block Crush Recipe
+   link: /en/posts/docs/kubejs/05_block_crush_recipe
+next:
+   text: Block Smear Recipe
+   link: /en/posts/docs/kubejs/07_block_smear_recipe
+---
+
 # Block Compress Recipe
 
 The Block Compress recipe is used to compress multiple identical blocks into a more advanced block.

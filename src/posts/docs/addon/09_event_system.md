@@ -1,3 +1,12 @@
+---
+prev:
+   text: 配方系统集成
+   link: /posts/docs/addon/08_recipe_integration
+next:
+   text: 资源和本地化
+   link: /posts/docs/addon/10_resources
+---
+
 # 事件系统
 
 本章介绍如何在 Addon 中使用 NeoForge 事件系统以及 AnvilCraft 提供的自定义事件。
@@ -10,10 +19,10 @@ NeoForge 提供了强大的事件系统，允许 mod 在游戏的各个阶段进
 
 NeoForge 有两种事件总线：
 
-| 事件总线 | 用途 | 常用事件 |
-|----------|------|----------|
-| MOD 事件总线 | mod 加载阶段事件 | 注册、数据生成、配置加载 |
-| GAME 事件总线 | 游戏运行时事件 | 玩家交互、方块事件、实体事件 |
+| 事件总线      | 用途         | 常用事件           |
+|-----------|------------|----------------|
+| MOD 事件总线  | mod 加载阶段事件 | 注册、数据生成、配置加载   |
+| GAME 事件总线 | 游戏运行时事件    | 玩家交互、方块事件、实体事件 |
 
 ## 使用 @EventBusSubscriber
 
@@ -466,24 +475,24 @@ public class CustomEventListener {
 ## 最佳实践
 
 1. **使用正确的事件总线**
-   - MOD 加载阶段事件使用 `Bus.MOD`
-   - 游戏运行时事件使用 `Bus.GAME`（默认）
+    - MOD 加载阶段事件使用 `Bus.MOD`
+    - 游戏运行时事件使用 `Bus.GAME`（默认）
 
 2. **事件处理方法**
-   - 使用 `@EventBusSubscriber` 时方法必须是 `static`
-   - 方法必须有且仅有一个事件参数
+    - 使用 `@EventBusSubscriber` 时方法必须是 `static`
+    - 方法必须有且仅有一个事件参数
 
 3. **避免性能问题**
-   - 在高频事件（如 Tick）中避免耗时操作
-   - 使用缓存减少重复计算
+    - 在高频事件（如 Tick）中避免耗时操作
+    - 使用缓存减少重复计算
 
 4. **正确处理取消**
-   - 只有实现 `ICancellableEvent` 的事件才能取消
-   - 检查事件是否已被取消再执行操作
+    - 只有实现 `ICancellableEvent` 的事件才能取消
+    - 检查事件是否已被取消再执行操作
 
 5. **客户端/服务端分离**
-   - 使用 `@OnlyIn(Dist.CLIENT)` 标记仅客户端代码
-   - 检查 `level.isClientSide()` 区分端
+    - 使用 `@OnlyIn(Dist.CLIENT)` 标记仅客户端代码
+    - 检查 `level.isClientSide()` 区分端
 
 ```java
 @SubscribeEvent
@@ -497,5 +506,5 @@ public static void onSomeEvent(SomeEvent event) {
 ```
 
 6. **事件优先级**
-   - 只在必要时使用非默认优先级
-   - 高优先级用于需要先检查/取消的情况
+    - 只在必要时使用非默认优先级
+    - 高优先级用于需要先检查/取消的情况

@@ -1,3 +1,12 @@
+---
+prev:
+   text: Charger Charging Recipe
+   link: /en/posts/docs/datapack/25_charger_charging_recipe
+next:
+   text: Neutron Irradiation Recipe
+   link: /en/posts/docs/datapack/27_neutron_irradiation_recipe
+---
+
 # Multiple To One Smithing Recipe
 
 This recipe family combines 2, 4, or 8 input slots into one result with shared template/material constraints.

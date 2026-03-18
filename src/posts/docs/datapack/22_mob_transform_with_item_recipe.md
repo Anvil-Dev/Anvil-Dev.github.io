@@ -1,3 +1,12 @@
+---
+prev:
+   text: 唯一物品冲压配方 (Stamping Unique Items Recipe)
+   link: /posts/docs/datapack/21_stamping_unique_items_recipe
+next:
+   text: 多方块转换配方 (Multiblock Conversion Recipe)
+   link: /posts/docs/datapack/23_multiblock_conversion_recipe
+---
+
 # 带物品生物转换配方 (Mob Transform With Item Recipe)
 
 该配方在生物满足条件时，根据手持物品数量按概率触发特殊转换。

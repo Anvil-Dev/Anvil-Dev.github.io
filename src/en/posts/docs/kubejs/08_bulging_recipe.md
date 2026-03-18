@@ -1,3 +1,12 @@
+---
+prev:
+   text: Block Smear Recipe
+   link: /en/posts/docs/kubejs/07_block_smear_recipe
+next:
+   text: Squeezing Recipe
+   link: /en/posts/docs/kubejs/09_squeezing_recipe
+---
+
 # Bulging Recipe
 
 The Bulging recipe uses fluid in a cauldron to bulge items into other items.

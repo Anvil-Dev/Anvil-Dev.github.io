@@ -1,3 +1,12 @@
+---
+prev:
+   text: 方块压缩配方 (Block Compress Recipe)
+   link: /posts/docs/kubejs/06_block_compress_recipe
+next:
+   text: 膨发配方 (Bulging Recipe)
+   link: /posts/docs/kubejs/08_bulging_recipe
+---
+
 # 方块涂抹配方 (Block Smear Recipe)
 
 方块涂抹配方用于使用上方方块涂抹下方方块。

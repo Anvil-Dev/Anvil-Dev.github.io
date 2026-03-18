@@ -1,3 +1,12 @@
+---
+prev:
+   text: 矿物涌泉配方 (Mineral Fountain Recipe)
+   link: /posts/docs/datapack/17_mineral_fountain_recipe
+next:
+   text: 筛网配方 (Mesh Recipe)
+   link: /posts/docs/datapack/19_mesh_recipe
+---
+
 # 煮沸配方 (Boiling Recipe)
 
 煮沸配方用于在铁砧处理流程中，结合炼药锅流体与营火条件处理物品。

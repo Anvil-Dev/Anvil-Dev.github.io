@@ -1,6 +1,16 @@
+---
+prev:
+   text: Jewel Crafting Recipe
+   link: /en/posts/docs/kubejs/15_jewel_crafting_recipe
+next:
+   text: Boiling Recipe
+   link: /en/posts/docs/kubejs/17_boiling_recipe
+---
+
 # Mineral Fountain Recipe
 
-The Mineral Fountain recipe is used to define block transformation rules for the mineral fountain, including basic transformations and probability-based transformations.
+The Mineral Fountain recipe is used to define block transformation rules for the mineral fountain, including basic
+transformations and probability-based transformations.
 
 ## Basic Mineral Fountain Recipe (mineral_fountain)
 

@@ -1,3 +1,12 @@
+---
+prev:
+   text: Time Warp Recipe
+   link: /en/posts/docs/datapack/11_timewarp_recipe
+next:
+   text: Block Smear Recipe
+   link: /en/posts/docs/datapack/13_block_smear_recipe
+---
+
 # Unpack Recipe
 
 Unpack recipes are used to unpack compressed items into original items.

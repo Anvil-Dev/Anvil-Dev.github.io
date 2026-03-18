@@ -1,6 +1,16 @@
+---
+prev:
+   text: Recipe 世界内配方模块
+   link: /posts/docs/anvillib/05_recipe
+next:
+   text: Registrum 注册模块
+   link: /posts/docs/anvillib/07_registrum
+---
+
 # Moveable Entity Block 模块
 
-Moveable Entity Block 模块允许携带**方块实体（Block Entity）的方块**被活塞推动时，保留并正确迁移其内部数据，解决了原版 Minecraft 中带方块实体的方块无法被活塞推动（或推动后丢失数据）的问题。
+Moveable Entity Block 模块允许携带**方块实体（Block Entity）的方块**被活塞推动时，保留并正确迁移其内部数据，解决了原版
+Minecraft 中带方块实体的方块无法被活塞推动（或推动后丢失数据）的问题。
 
 ## 一、`IMoveableEntityBlock` 接口
 
@@ -147,4 +157,5 @@ public static final BlockEntry<MyStorageBlock> MY_STORAGE_BLOCK = REGISTRUM
 
 ## 五、与粘性活塞
 
-粘性活塞拉回方块时同样会触发该流程，`clearData()` 和 `setData()` 会被正确调用。如果方块不可被粘性活塞拉回，需在方块的 `getPistonPushReaction()` 方法中返回 `PushReaction.BLOCK`（但这与本模块无关，属于原版行为）。
+粘性活塞拉回方块时同样会触发该流程，`clearData()` 和 `setData()` 会被正确调用。如果方块不可被粘性活塞拉回，需在方块的
+`getPistonPushReaction()` 方法中返回 `PushReaction.BLOCK`（但这与本模块无关，属于原版行为）。

@@ -1,3 +1,12 @@
+---
+prev:
+   text: Multiblock Conversion Recipe
+   link: /en/posts/docs/datapack/23_multiblock_conversion_recipe
+next:
+   text: Charger Charging Recipe
+   link: /en/posts/docs/datapack/25_charger_charging_recipe
+---
+
 # Mineral Fountain Chance Recipe
 
 This recipe converts blocks with probability in a specific dimension.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 环境搭建
+   link: /posts/docs/addon/01_environment
+next:
+   text: 注册方块
+   link: /posts/docs/addon/03_create_block
+---
+
 # 注册物品
 
 ## 打开 `init.AddonItems.java` ，你将看到如下语句：
@@ -21,76 +30,85 @@
 
 ## 本章节内容将详细介绍 `REGISTRUM.item()` 的使用方法
 
-* 使用 `REGISTRUM.item()` 方法后，你将拿到一个 `ItemBuilder` ，该对象拥有一个 `.register()` 方法，调用后返回一个 `ItemEntry` ，其对应的物品将在合适的时机自动注册，后文将着重介绍 `ItemBuilder` 与其所具备的方法。
+* 使用 `REGISTRUM.item()` 方法后，你将拿到一个 `ItemBuilder` ，该对象拥有一个 `.register()` 方法，调用后返回一个
+  `ItemEntry` ，其对应的物品将在合适的时机自动注册，后文将着重介绍 `ItemBuilder` 与其所具备的方法。
 
 ### `ItemBuilder.properties()`
-  * 该方法用于修改物品的默认属性，可以接受一个 `NonNullUnaryOperator<Item.Properties>` 函数，你可以多次调用此方法来累加修改
-  * 示例用法：
-    ```java
-    public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
-        .item("example_item", Item::new)
-        .properties(prop -> prop.durability(15))
-        .register();
-    ```
-    该示例展示了如何为注册的物品设置最大耐久值
+
+* 该方法用于修改物品的默认属性，可以接受一个 `NonNullUnaryOperator<Item.Properties>` 函数，你可以多次调用此方法来累加修改
+* 示例用法：
+  ```java
+  public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
+      .item("example_item", Item::new)
+      .properties(prop -> prop.durability(15))
+      .register();
+  ```
+  该示例展示了如何为注册的物品设置最大耐久值
 
 ### `ItemBuilder.initialProperties()`
-  * 该方法用于替换物品的初始属性，接受一个 `NonNullSupplier<Item.Properties>` 供应商，返回值将作为该物品的初始物品属性
-  * 示例用法：
-    ```java
-    public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
-        .item("example_item", Item::new)
-        .initialProperties(Item.Properties::new)
-        .register();
-    ```
-    该示例展示了如何为注册的物品设置物品默认属性，注意，你通常不需要这么做，该行为已在 `Registrum` 中默认定义，该实例仅作为教学示范
+
+* 该方法用于替换物品的初始属性，接受一个 `NonNullSupplier<Item.Properties>` 供应商，返回值将作为该物品的初始物品属性
+* 示例用法：
+  ```java
+  public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
+      .item("example_item", Item::new)
+      .initialProperties(Item.Properties::new)
+      .register();
+  ```
+  该示例展示了如何为注册的物品设置物品默认属性，注意，你通常不需要这么做，该行为已在 `Registrum` 中默认定义，该实例仅作为教学示范
 
 ### `ItemBuilder.tab()` 、 `ItemBuilder.removeTab()`
-  * `tab()` 方法用于将物品添加到指定的创造模式物品栏
-  * `removeTab()` 方法用于从指定的创造模式物品栏移除物品
-  * 如果你已经在类的静态代码块中设置了默认的创造模式物品栏，通常不需要再次调用此方法
-  * 示例用法：
-    ```java
-    public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
-        .item("example_item", Item::new)
-        .tab(ModItemGroups.EXAMPLE_TAB.getKey())
-        .register();
-    ```
+
+* `tab()` 方法用于将物品添加到指定的创造模式物品栏
+* `removeTab()` 方法用于从指定的创造模式物品栏移除物品
+* 如果你已经在类的静态代码块中设置了默认的创造模式物品栏，通常不需要再次调用此方法
+* 示例用法：
+  ```java
+  public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
+      .item("example_item", Item::new)
+      .tab(ModItemGroups.EXAMPLE_TAB.getKey())
+      .register();
+  ```
 
 ### `ItemBuilder.color()`
-  * 为该物品注册颜色处理器，对于大多数物品，你不需要使用该方法，特别的，如果你想制作类似药水的物品，该方法则很有帮助
-  * 示例用法：
-    ```java
-    public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
-        .item("example_item", Item::new)
-        .color(() -> () -> (itemStack, tintIndex) -> 0xFFFFFFFF)
-        .register();
-    ```
-    该用法仅供学习，返回值为颜色的 ARGB 值
+
+* 为该物品注册颜色处理器，对于大多数物品，你不需要使用该方法，特别的，如果你想制作类似药水的物品，该方法则很有帮助
+* 示例用法：
+  ```java
+  public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
+      .item("example_item", Item::new)
+      .color(() -> () -> (itemStack, tintIndex) -> 0xFFFFFFFF)
+      .register();
+  ```
+  该用法仅供学习，返回值为颜色的 ARGB 值
 
 ### `ItemBuilder.model()`
-  * 该方法用于设定物品的模型生成器
-  * ```java
+
+* 该方法用于设定物品的模型生成器
+* ```java
     public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
         .item("example_item", Item::new)
         .model((ctx, provider) -> provider.handheld(ctx))
         .register();
     ```
-    该示例展示了如何为物品设置手持物品父模型（例如各种工具）的模型生成器
+  该示例展示了如何为物品设置手持物品父模型（例如各种工具）的模型生成器
 
 ### `ItemBuilder.lang()`
-  * 该方法用于设定物品的默认英文显示名称，未指定时，将自动使用注册ID转大驼峰加空格作为显示名称，该方法会生成 `en_us` 与 `en_ud`（倒置英语）语言文件
-  * ```java
+
+* 该方法用于设定物品的默认英文显示名称，未指定时，将自动使用注册ID转大驼峰加空格作为显示名称，该方法会生成 `en_us` 与
+  `en_ud`（倒置英语）语言文件
+* ```java
     public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
         .item("example_item", Item::new)
         .lang("Item Example")
         .register();
     ```
-    该示例展示了如何将注册物品的默认显示名称修改为 `Item Example`
+  该示例展示了如何将注册物品的默认显示名称修改为 `Item Example`
 
 ### `ItemBuilder.recipe()`
-  * 该方法用于设置物品的配方生成器
-  * ```java
+
+* 该方法用于设置物品的配方生成器
+* ```java
     public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
         .item("example_item", Item::new)
         .recipe((ctx, provider) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.get())
@@ -104,17 +122,18 @@
         )
         .register();
     ```
-    该示例展示了如何为物品生成一个有序合成的配方，同时还将生成对应的解锁进度
+  该示例展示了如何为物品生成一个有序合成的配方，同时还将生成对应的解锁进度
 
 ### `ItemBuilder.tag()`
-  * 该方法用于设置物品的标签生成器，可以多次调用以添加多个标签
-  * ```java
+
+* 该方法用于设置物品的标签生成器，可以多次调用以添加多个标签
+* ```java
     public static final ItemEntry<Item> EXAMPLE_ITEM = REGISTRUM
         .item("example_item", Item::new)
         .tag(ItemTags.AXES)
         .register();
     ```
-    该示例展示如何将物品加入至原版斧子标签内
+  该示例展示如何将物品加入至原版斧子标签内
 
 ## 自定义物品类
 

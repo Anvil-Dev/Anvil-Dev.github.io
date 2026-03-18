@@ -1,3 +1,12 @@
+---
+prev:
+   text: Bulging Recipe
+   link: /en/posts/docs/kubejs/08_bulging_recipe
+next:
+   text: Item Inject Recipe
+   link: /en/posts/docs/kubejs/10_item_inject_recipe
+---
+
 # Squeezing Recipe
 
 The Squeezing recipe uses fluid in a cauldron to squeeze blocks into other blocks.

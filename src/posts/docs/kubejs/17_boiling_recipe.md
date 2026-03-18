@@ -1,3 +1,12 @@
+---
+prev:
+   text: 矿物涌泉配方 (Mineral Fountain Recipe)
+   link: /posts/docs/kubejs/16_mineral_fountain_recipe
+next:
+   text: 烹饪配方 (Cooking Recipe)
+   link: /posts/docs/kubejs/18_cooking_recipe
+---
+
 # 煮沸配方 (Boiling Recipe)
 
 煮沸配方用于在炼药锅环境下处理物品，通常用于低温流体处理与条件转换。

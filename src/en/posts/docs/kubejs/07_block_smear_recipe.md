@@ -1,3 +1,12 @@
+---
+prev:
+   text: Block Compress Recipe
+   link: /en/posts/docs/kubejs/06_block_compress_recipe
+next:
+   text: Bulging Recipe
+   link: /en/posts/docs/kubejs/08_bulging_recipe
+---
+
 # Block Smear Recipe
 
 The Block Smear recipe is used to smear one block with another block above it.

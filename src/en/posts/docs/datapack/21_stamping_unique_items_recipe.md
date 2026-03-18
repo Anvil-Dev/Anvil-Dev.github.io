@@ -1,3 +1,12 @@
+---
+prev:
+   text: Mass Inject Recipe
+   link: /en/posts/docs/datapack/20_mass_inject_recipe
+next:
+   text: Mob Transform With Item Recipe
+   link: /en/posts/docs/datapack/22_mob_transform_with_item_recipe
+---
+
 # Stamping Unique Items Recipe
 
 This recipe requires all input items to be unique, and each input stack size must be 1.

@@ -1,6 +1,13 @@
+---
+next:
+   text: Environment Setup
+   link: /en/posts/docs/addon/01_environment
+---
+
 # Addon Development
 
-Welcome to the AnvilCraft Addon Development documentation! This section will guide you through creating your own AnvilCraft addon mod.
+Welcome to the AnvilCraft Addon Development documentation! This section will guide you through creating your own
+AnvilCraft addon mod.
 
 ## What is an Addon Mod?
 

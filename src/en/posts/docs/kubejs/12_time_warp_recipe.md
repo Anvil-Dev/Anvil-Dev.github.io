@@ -1,3 +1,12 @@
+---
+prev:
+   text: Super Heating Recipe
+   link: /en/posts/docs/kubejs/11_super_heating_recipe
+next:
+   text: Multiblock Recipe
+   link: /en/posts/docs/kubejs/13_multiblock_recipe
+---
+
 # Time Warp Recipe
 
 The Time Warp recipe uses time power to transform items into other items.

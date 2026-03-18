@@ -1,3 +1,12 @@
+---
+prev:
+   text: Network 网络模块
+   link: /posts/docs/anvillib/04_network
+next:
+   text: Moveable Entity Block 模块
+   link: /posts/docs/anvillib/06_moveable_entity_block
+---
+
 # Recipe 世界内配方模块
 
 Recipe 模块提供了一套**世界内配方（In-World Recipe）**系统，允许模组开发者定义在世界中（而非工作台）触发并执行的配方，典型场景包括：物品落入铁砧下方、爆炸触发合成、生物踩踏物品等。
@@ -6,40 +15,41 @@ Recipe 模块提供了一套**世界内配方（In-World Recipe）**系统，允
 
 一个 `InWorldRecipe` 由以下四个部分组成：
 
-| 组成部分       | 接口                   | 说明                               |
-|------------|----------------------|------------------------------------|
-| **Trigger**  | `IRecipeTrigger`     | 触发条件，决定什么情况下运行配方匹配流程  |
-| **Predicate**| `IRecipePredicate`   | 配方谓词，判断当前场景是否满足配方要求   |
-| **Outcome**  | `IRecipeOutcome`     | 配方结果，定义配方成功后执行的操作      |
-| **Priority** | `IPrioritized`       | 优先级，数值越大越先匹配              |
+| 组成部分          | 接口                 | 说明                   |
+|---------------|--------------------|----------------------|
+| **Trigger**   | `IRecipeTrigger`   | 触发条件，决定什么情况下运行配方匹配流程 |
+| **Predicate** | `IRecipePredicate` | 配方谓词，判断当前场景是否满足配方要求  |
+| **Outcome**   | `IRecipeOutcome`   | 配方结果，定义配方成功后执行的操作    |
+| **Priority**  | `IPrioritized`     | 优先级，数值越大越先匹配         |
 
 ## 二、内置实现
 
 ### 触发器（Trigger）
 
-框架内置了一套触发器注册机制，模组可通过 `LibRegistries.TRIGGER_REGISTRY` 注册自定义触发器。AnvilCraft 中使用的触发器（如铁砧落地）均由上层模组注册。
+框架内置了一套触发器注册机制，模组可通过 `LibRegistries.TRIGGER_REGISTRY` 注册自定义触发器。AnvilCraft
+中使用的触发器（如铁砧落地）均由上层模组注册。
 
 ### 谓词（Predicate）
 
 内置谓词用于在配方匹配时检测世界状态：
 
-| 谓词类           | 说明                               |
-|---------------|------------------------------------|
-| `HasItem`     | 检查指定范围内是否存在特定物品（支持物品谓词）|
-| `HasItemIngredient` | 检查指定范围内是否有物品匹配指定 Ingredient |
-| `HasBlock`    | 检查指定偏移位置的方块状态            |
-| `HasBlockIngredient` | 检查方块是否匹配 BlockIngredient   |
+| 谓词类                  | 说明                          |
+|----------------------|-----------------------------|
+| `HasItem`            | 检查指定范围内是否存在特定物品（支持物品谓词）     |
+| `HasItemIngredient`  | 检查指定范围内是否有物品匹配指定 Ingredient |
+| `HasBlock`           | 检查指定偏移位置的方块状态               |
+| `HasBlockIngredient` | 检查方块是否匹配 BlockIngredient    |
 
 ### 结果（Outcome）
 
 内置结果：
 
-| 结果类              | 说明                           |
-|-------------------|-------------------------------|
-| `SpawnItem`       | 在指定位置生成物品实体，支持概率与数量提供器 |
-| `SetBlock`        | 在指定位置设置方块（包含 NBT 数据）   |
-| `ProduceExplosion`| 在指定位置产生爆炸                |
-| `ChooseOneOutcome`| 从多个结果中按权重随机选择一个执行   |
+| 结果类                | 说明                     |
+|--------------------|------------------------|
+| `SpawnItem`        | 在指定位置生成物品实体，支持概率与数量提供器 |
+| `SetBlock`         | 在指定位置设置方块（包含 NBT 数据）   |
+| `ProduceExplosion` | 在指定位置产生爆炸              |
+| `ChooseOneOutcome` | 从多个结果中按权重随机选择一个执行      |
 
 ## 三、数据包 JSON 结构
 
@@ -81,16 +91,16 @@ data/<namespace>/recipe/<name>.json
 }
 ```
 
-| 字段              | 类型       | 说明                                    |
-|-----------------|----------|-----------------------------------------|
-| `type`          | String   | 配方类型，固定为 `anvillib:in_world`        |
-| `icon`          | ItemStack| 用于 JEI/REI 等展示的图标物品               |
-| `trigger`       | String   | 触发器 ID（由上层模组注册）                   |
-| `priority`      | int      | 优先级，默认 `0`，越高越先匹配                |
-| `compatible`    | boolean  | 是否兼容模式（允许与其他同触发配方共存）          |
-| `max_efficiency`| int      | 最大效率限制                              |
-| `predicates`    | Array    | 谓词列表                                  |
-| `outcomes`      | Array    | 结果列表                                  |
+| 字段               | 类型        | 说明                           |
+|------------------|-----------|------------------------------|
+| `type`           | String    | 配方类型，固定为 `anvillib:in_world` |
+| `icon`           | ItemStack | 用于 JEI/REI 等展示的图标物品          |
+| `trigger`        | String    | 触发器 ID（由上层模组注册）              |
+| `priority`       | int       | 优先级，默认 `0`，越高越先匹配            |
+| `compatible`     | boolean   | 是否兼容模式（允许与其他同触发配方共存）         |
+| `max_efficiency` | int       | 最大效率限制                       |
+| `predicates`     | Array     | 谓词列表                         |
+| `outcomes`       | Array     | 结果列表                         |
 
 ## 四、在数据生成中使用
 
@@ -123,17 +133,17 @@ InWorldRecipeBuilder.create(MY_TRIGGER)
 
 ### `InWorldRecipeBuilder` 常用方法
 
-| 方法                              | 说明                          |
-|---------------------------------|-------------------------------|
-| `InWorldRecipeBuilder.create(trigger)` | 创建构建器，指定触发器          |
-| `.hasItem(HasItem)`              | 添加物品谓词                    |
-| `.hasBlock(HasBlock)`            | 添加方块谓词                    |
-| `.spawnItem(SpawnItem)`          | 添加生成物品结果                |
-| `.setBlock(SetBlock)`            | 添加设置方块结果                |
-| `.priority(int)`                 | 设置优先级                      |
-| `.compatible(boolean)`           | 设置兼容模式                    |
-| `.icon(ItemStack)`               | 设置配方图标                    |
-| `.save(output, id)`              | 输出配方 JSON                   |
+| 方法                                     | 说明          |
+|----------------------------------------|-------------|
+| `InWorldRecipeBuilder.create(trigger)` | 创建构建器，指定触发器 |
+| `.hasItem(HasItem)`                    | 添加物品谓词      |
+| `.hasBlock(HasBlock)`                  | 添加方块谓词      |
+| `.spawnItem(SpawnItem)`                | 添加生成物品结果    |
+| `.setBlock(SetBlock)`                  | 添加设置方块结果    |
+| `.priority(int)`                       | 设置优先级       |
+| `.compatible(boolean)`                 | 设置兼容模式      |
+| `.icon(ItemStack)`                     | 设置配方图标      |
+| `.save(output, id)`                    | 输出配方 JSON   |
 
 ## 五、自定义谓词
 
@@ -188,13 +198,13 @@ public class MyOutcome implements IRecipeOutcome<MyOutcome> {
 
 `InWorldRecipeContext` 是配方执行时传递的上下文对象，提供了以下能力：
 
-| 方法                              | 说明                      |
-|---------------------------------|--------------------------|
-| `getLevel()`                    | 获取 ServerLevel          |
-| `getPos()`                      | 获取触发位置（Vec3）         |
-| `computeIfAbsent(key)`          | 获取或创建缓存（如 ItemCache）|
-| `putAcceptor(id, acceptor)`     | 注册缓存提交器              |
-| `getFloat(NumberProvider)`      | 从数字提供器求值             |
+| 方法                          | 说明                   |
+|-----------------------------|----------------------|
+| `getLevel()`                | 获取 ServerLevel       |
+| `getPos()`                  | 获取触发位置（Vec3）         |
+| `computeIfAbsent(key)`      | 获取或创建缓存（如 ItemCache） |
+| `putAcceptor(id, acceptor)` | 注册缓存提交器              |
+| `getFloat(NumberProvider)`  | 从数字提供器求值             |
 
 ## 八、概率系统
 

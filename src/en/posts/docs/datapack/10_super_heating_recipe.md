@@ -1,3 +1,12 @@
+---
+prev:
+   text: Cooking Recipe
+   link: /en/posts/docs/datapack/09_cooking_recipe
+next:
+   text: Time Warp Recipe
+   link: /en/posts/docs/datapack/11_timewarp_recipe
+---
+
 # Super Heating Recipe
 
 Super heating recipes are used to transform items using high temperature.

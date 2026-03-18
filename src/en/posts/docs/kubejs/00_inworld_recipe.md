@@ -1,6 +1,16 @@
+---
+prev:
+   text: KubeJS Integration
+   link: /en/posts/docs/kubejs/index
+next:
+   text: Item Crush Recipe
+   link: /en/posts/docs/kubejs/01_item_crush_recipe
+---
+
 # InWorld Recipe
 
-The InWorld recipe system is the core system in AnvilCraft for handling in-world recipes, allowing various effects to be triggered under specific conditions.
+The InWorld recipe system is the core system in AnvilCraft for handling in-world recipes, allowing various effects to be
+triggered under specific conditions.
 
 ## Basic Structure
 

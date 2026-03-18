@@ -1,3 +1,12 @@
+---
+prev:
+   text: 中子辐照配方 (Neutron Irradiation Recipe)
+   link: /posts/docs/datapack/27_neutron_irradiation_recipe
+next:
+   text: 霜铸形变配方 (Deformation Recipe)
+   link: /posts/docs/datapack/29_deformation_recipe
+---
+
 # 霜铸置换配方 (Permutation Recipe)
 
 置换配方是霜铸系统配方之一，用于基于模板+材料对候选输入进行轮换转换。

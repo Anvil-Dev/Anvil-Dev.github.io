@@ -1,10 +1,21 @@
+---
+prev:
+   text: Data Generators
+   link: /en/posts/docs/addon/06_data_generation
+next:
+   text: Recipe System Integration
+   link: /en/posts/docs/addon/08_recipe_integration
+---
+
 # Configuration System
 
-This chapter introduces how to use the configuration system provided by AnvilLib to manage your Addon's configuration files.
+This chapter introduces how to use the configuration system provided by AnvilLib to manage your Addon's configuration
+files.
 
 ## Overview
 
-AnvilLib provides an annotation-based configuration system that simplifies the use of NeoForge `ModConfig`. Main features include:
+AnvilLib provides an annotation-based configuration system that simplifies the use of NeoForge `ModConfig`. Main
+features include:
 
 - Concise annotation-based configuration definitions
 - Automatic configuration GUI generation
@@ -88,11 +99,11 @@ public void processItems() {
 
 The `type` attribute of the `@Config` annotation supports the following configuration types:
 
-| Type | Description | File Location |
-|------|-------------|---------------|
-| `ModConfig.Type.COMMON` | Common config, shared between client and server | `config/myaddon-common.toml` |
-| `ModConfig.Type.CLIENT` | Client config, client-side only | `config/myaddon-client.toml` |
-| `ModConfig.Type.SERVER` | Server config, per-world | `saves/<world>/serverconfig/myaddon-server.toml` |
+| Type                    | Description                                     | File Location                                    |
+|-------------------------|-------------------------------------------------|--------------------------------------------------|
+| `ModConfig.Type.COMMON` | Common config, shared between client and server | `config/myaddon-common.toml`                     |
+| `ModConfig.Type.CLIENT` | Client config, client-side only                 | `config/myaddon-client.toml`                     |
+| `ModConfig.Type.SERVER` | Server config, per-world                        | `saves/<world>/serverconfig/myaddon-server.toml` |
 
 ### Client Configuration Example
 
@@ -145,10 +156,10 @@ public class MyAddonConfig {
 }
 ```
 
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `name` | String | Yes | Configuration name, typically the mod ID |
-| `type` | ModConfig.Type | No | Configuration type, defaults to `COMMON` |
+| Attribute | Type           | Required | Description                              |
+|-----------|----------------|----------|------------------------------------------|
+| `name`    | String         | Yes      | Configuration name, typically the mod ID |
+| `type`    | ModConfig.Type | No       | Configuration type, defaults to `COMMON` |
 
 ### @Comment
 
@@ -160,6 +171,7 @@ public int myField = 10;
 ```
 
 Comments are displayed in:
+
 - Generated TOML files
 - Configuration GUI tooltips
 
@@ -177,10 +189,10 @@ public int boundedInt = 50;
 public double boundedDouble = 0.5;
 ```
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `min` | double | `Double.NEGATIVE_INFINITY` | Minimum value |
-| `max` | double | `Double.POSITIVE_INFINITY` | Maximum value |
+| Attribute | Type   | Default                    | Description   |
+|-----------|--------|----------------------------|---------------|
+| `min`     | double | `Double.NEGATIVE_INFINITY` | Minimum value |
+| `max`     | double | `Double.POSITIVE_INFINITY` | Maximum value |
 
 Supported numeric types: `byte`, `short`, `int`, `long`, `float`, `double`
 
@@ -206,18 +218,18 @@ public static class NestedConfig {
 
 The configuration system supports the following field types:
 
-| Type | Description |
-|------|-------------|
-| `boolean` / `Boolean` | Boolean value |
-| `byte` / `Byte` | Byte integer |
-| `short` / `Short` | Short integer |
-| `int` / `Integer` | Integer |
-| `long` / `Long` | Long integer |
-| `float` / `Float` | Single-precision floating point |
-| `double` / `Double` | Double-precision floating point |
-| `String` | String |
-| `Enum` | Enum types |
-| Nested class | Marked with `@CollapsibleObject` |
+| Type                  | Description                      |
+|-----------------------|----------------------------------|
+| `boolean` / `Boolean` | Boolean value                    |
+| `byte` / `Byte`       | Byte integer                     |
+| `short` / `Short`     | Short integer                    |
+| `int` / `Integer`     | Integer                          |
+| `long` / `Long`       | Long integer                     |
+| `float` / `Float`     | Single-precision floating point  |
+| `double` / `Double`   | Double-precision floating point  |
+| `String`              | String                           |
+| `Enum`                | Enum types                       |
+| Nested class          | Marked with `@CollapsibleObject` |
 
 ### Enum Type Example
 
@@ -386,9 +398,11 @@ message_prefix = "[MyAddon]"
 
 ## Configuration GUI
 
-AnvilLib automatically registers a configuration screen factory for your configuration. Players can open the configuration screen through the configuration button in the mod list.
+AnvilLib automatically registers a configuration screen factory for your configuration. Players can open the
+configuration screen through the configuration button in the mod list.
 
 The configuration screen will:
+
 - Display all configuration fields
 - Use `@Comment` annotation content as tooltips
 - Show sliders for `@BoundedDiscrete` marked fields
@@ -425,26 +439,26 @@ public class ModLanguageProvider extends LanguageProvider {
 ## Best Practices
 
 1. **Configuration Type Selection**
-   - Use `SERVER` type for configs that affect game logic
-   - Use `CLIENT` type for purely visual effects
-   - Use `COMMON` type for configs needed on both sides
+    - Use `SERVER` type for configs that affect game logic
+    - Use `CLIENT` type for purely visual effects
+    - Use `COMMON` type for configs needed on both sides
 
 2. **Field Naming**
-   - Use camelCase naming convention
-   - Field names are automatically converted to snake_case (e.g., `maxRadius` → `max_radius`)
+    - Use camelCase naming convention
+    - Field names are automatically converted to snake_case (e.g., `maxRadius` → `max_radius`)
 
 3. **Default Values**
-   - Provide reasonable default values for all fields
-   - Default values should be the best choice for most users
+    - Provide reasonable default values for all fields
+    - Default values should be the best choice for most users
 
 4. **Range Constraints**
-   - Always use `@BoundedDiscrete` for numeric fields
-   - Set reasonable minimum and maximum values to prevent invalid configurations
+    - Always use `@BoundedDiscrete` for numeric fields
+    - Set reasonable minimum and maximum values to prevent invalid configurations
 
 5. **Comment Descriptions**
-   - Add `@Comment` descriptions to every field
-   - Comments should be concise and clear, explaining the field's purpose
+    - Add `@Comment` descriptions to every field
+    - Comments should be concise and clear, explaining the field's purpose
 
 6. **Configuration Grouping**
-   - Use `@CollapsibleObject` to organize related configurations
-   - Avoid having too many fields in a single configuration class
+    - Use `@CollapsibleObject` to organize related configurations
+    - Avoid having too many fields in a single configuration class

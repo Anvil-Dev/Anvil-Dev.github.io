@@ -1,3 +1,12 @@
+---
+prev:
+   text: 煮沸配方 (Boiling Recipe)
+   link: /posts/docs/kubejs/17_boiling_recipe
+next:
+   text: 筛网配方 (Mesh Recipe)
+   link: /posts/docs/kubejs/19_mesh_recipe
+---
+
 # 烹饪配方 (Cooking Recipe)
 
 烹饪配方用于在加热环境下将输入物品处理为输出物品，并可配合炼药锅流体条件。

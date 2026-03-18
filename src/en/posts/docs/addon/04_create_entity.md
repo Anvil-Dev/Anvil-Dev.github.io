@@ -1,6 +1,16 @@
+---
+prev:
+   text: Registering Blocks
+   link: /en/posts/docs/addon/03_create_block
+next:
+   text: Block Entity Development
+   link: /en/posts/docs/addon/05_create_block_entity
+---
+
 # Registering Entities
 
-In AnvilCraft addon development, entities are movable objects in the game world, such as projectiles, mobs, or special effect carriers.
+In AnvilCraft addon development, entities are movable objects in the game world, such as projectiles, mobs, or special
+effect carriers.
 
 ## Entity Registration Basics
 
@@ -13,13 +23,16 @@ public static final EntityEntry<CustomEntity> CUSTOM_ENTITY = REGISTRUM
 ```
 
 Where:
+
 - `"custom_entity"` is the entity ID
 - `CustomEntity::new` is the entity factory method
 - `MobCategory.MISC` is the entity category
 
 ## This chapter will detail how to use `REGISTRUM.entity()`
 
-After using the `REGISTRUM.entity()` method, you will get an `EntityBuilder` object that has a `.register()` method. Calling it returns an `EntityEntry`, and the corresponding entity will be automatically registered at the appropriate time.
+After using the `REGISTRUM.entity()` method, you will get an `EntityBuilder` object that has a `.register()` method.
+Calling it returns an `EntityEntry`, and the corresponding entity will be automatically registered at the appropriate
+time.
 
 ### `EntityBuilder.properties()`
 
@@ -39,15 +52,15 @@ public static final EntityEntry<CustomEntity> CUSTOM_ENTITY = REGISTRUM
 
 Common property settings:
 
-| Method | Description |
-|--------|-------------|
-| `sized(width, height)` | Set the entity's collision box size |
-| `eyeHeight(height)` | Set the height of the entity's eye position |
+| Method                       | Description                                                 |
+|------------------------------|-------------------------------------------------------------|
+| `sized(width, height)`       | Set the entity's collision box size                         |
+| `eyeHeight(height)`          | Set the height of the entity's eye position                 |
 | `clientTrackingRange(range)` | Set the distance at which clients start tracking the entity |
-| `updateInterval(ticks)` | Set the sync update interval (in ticks) |
-| `fireImmune()` | Make the entity immune to fire damage |
-| `noSave()` | Entity will not be saved to the world |
-| `noSummon()` | Entity cannot be summoned with the summon command |
+| `updateInterval(ticks)`      | Set the sync update interval (in ticks)                     |
+| `fireImmune()`               | Make the entity immune to fire damage                       |
+| `noSave()`                   | Entity will not be saved to the world                       |
+| `noSummon()`                 | Entity cannot be summoned with the summon command           |
 
 ### `EntityBuilder.renderer()`
 
@@ -60,7 +73,8 @@ public static final EntityEntry<CustomEntity> CUSTOM_ENTITY = REGISTRUM
     .register();
 ```
 
-The renderer is a class that implements the `EntityRenderer<T>` interface, responsible for drawing the entity on the client.
+The renderer is a class that implements the `EntityRenderer<T>` interface, responsible for drawing the entity on the
+client.
 
 ### `EntityBuilder.attributes()`
 
@@ -254,16 +268,16 @@ public class CustomEntityRenderer extends EntityRenderer<CustomEntity> {
 
 ## MobCategory Descriptions
 
-| Category | Description |
-|----------|-------------|
-| `MONSTER` | Monsters, spawn in darkness |
-| `CREATURE` | Friendly creatures, such as cows and sheep |
-| `AMBIENT` | Ambient creatures, such as bats |
-| `WATER_CREATURE` | Aquatic creatures, such as fish |
-| `WATER_AMBIENT` | Aquatic ambient creatures |
-| `UNDERGROUND_WATER_CREATURE` | Underground aquatic creatures |
-| `AXOLOTLS` | Axolotl types |
-| `MISC` | Miscellaneous, do not spawn naturally |
+| Category                     | Description                                |
+|------------------------------|--------------------------------------------|
+| `MONSTER`                    | Monsters, spawn in darkness                |
+| `CREATURE`                   | Friendly creatures, such as cows and sheep |
+| `AMBIENT`                    | Ambient creatures, such as bats            |
+| `WATER_CREATURE`             | Aquatic creatures, such as fish            |
+| `WATER_AMBIENT`              | Aquatic ambient creatures                  |
+| `UNDERGROUND_WATER_CREATURE` | Underground aquatic creatures              |
+| `AXOLOTLS`                   | Axolotl types                              |
+| `MISC`                       | Miscellaneous, do not spawn naturally      |
 
 ## Complete Example
 

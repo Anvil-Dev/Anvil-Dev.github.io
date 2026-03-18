@@ -1,3 +1,9 @@
+---
+prev:
+   text: Mesh Recipe
+   link: /en/posts/docs/kubejs/19_mesh_recipe
+---
+
 # Mineral Fountain Chance Recipe
 
 This recipe converts blocks with a probability in a specified dimension.

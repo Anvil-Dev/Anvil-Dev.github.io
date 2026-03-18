@@ -1,3 +1,12 @@
+---
+prev:
+   text: 膨发配方 (Bulging Recipe)
+   link: /posts/docs/kubejs/08_bulging_recipe
+next:
+   text: 物品注入配方 (Item Inject Recipe)
+   link: /posts/docs/kubejs/10_item_inject_recipe
+---
+
 # 挤压配方 (Squeezing Recipe)
 
 挤压配方使用炼药锅中的流体将方块挤压成其他方块。
@@ -57,6 +66,7 @@ ServerEvents.recipes(event => {
 - 正数表示消耗流体
 - 负数表示产生流体
 - 0 表示不改变流体（默认值）
+
 ## 实用方法
 
 ```js

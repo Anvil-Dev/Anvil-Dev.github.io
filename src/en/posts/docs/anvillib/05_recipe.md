@@ -1,34 +1,46 @@
+---
+prev:
+   text: Network Module
+   link: /en/posts/docs/anvillib/04_network
+next:
+   text: Moveable Entity Block Module
+   link: /en/posts/docs/anvillib/06_moveable_entity_block
+---
+
 # Recipe Module (In-World Recipe)
 
-The Recipe module provides a complete **In-World Recipe** system, allowing mod developers to define recipes that trigger and execute in the world itself (rather than in a crafting table). Typical use cases include: items falling under an anvil, explosions triggering synthesis, mobs stepping on items, and more.
+The Recipe module provides a complete **In-World Recipe** system, allowing mod developers to define recipes that trigger
+and execute in the world itself (rather than in a crafting table). Typical use cases include: items falling under an
+anvil, explosions triggering synthesis, mobs stepping on items, and more.
 
 ## I. Recipe Components
 
 An `InWorldRecipe` consists of four parts:
 
-| Component    | Interface          | Description                                              |
-|--------------|--------------------|----------------------------------------------------------|
-| **Trigger**  | `IRecipeTrigger`   | Trigger condition — determines when recipe matching runs |
-| **Predicate**| `IRecipePredicate` | Conditions the world must meet for the recipe to match   |
-| **Outcome**  | `IRecipeOutcome`   | Actions executed when the recipe succeeds                |
-| **Priority** | `IPrioritized`     | Priority — higher values are matched first               |
+| Component     | Interface          | Description                                              |
+|---------------|--------------------|----------------------------------------------------------|
+| **Trigger**   | `IRecipeTrigger`   | Trigger condition — determines when recipe matching runs |
+| **Predicate** | `IRecipePredicate` | Conditions the world must meet for the recipe to match   |
+| **Outcome**   | `IRecipeOutcome`   | Actions executed when the recipe succeeds                |
+| **Priority**  | `IPrioritized`     | Priority — higher values are matched first               |
 
 ## II. Built-in Implementations
 
 ### Triggers
 
-The framework provides a trigger registry mechanism via `LibRegistries.TRIGGER_REGISTRY`. Mods register their own triggers (e.g., the anvil-falling trigger used by AnvilCraft) from upstream.
+The framework provides a trigger registry mechanism via `LibRegistries.TRIGGER_REGISTRY`. Mods register their own
+triggers (e.g., the anvil-falling trigger used by AnvilCraft) from upstream.
 
 ### Predicates
 
 Built-in predicates for checking world state during recipe matching:
 
-| Class                  | Description                                                    |
-|------------------------|----------------------------------------------------------------|
-| `HasItem`              | Checks if a specific item exists within a range (item predicate)|
-| `HasItemIngredient`    | Checks if items in range match an Ingredient                   |
-| `HasBlock`             | Checks the block state at a specific offset position           |
-| `HasBlockIngredient`   | Checks if a block matches a BlockIngredient                    |
+| Class                | Description                                                      |
+|----------------------|------------------------------------------------------------------|
+| `HasItem`            | Checks if a specific item exists within a range (item predicate) |
+| `HasItemIngredient`  | Checks if items in range match an Ingredient                     |
+| `HasBlock`           | Checks the block state at a specific offset position             |
+| `HasBlockIngredient` | Checks if a block matches a BlockIngredient                      |
 
 ### Outcomes
 
@@ -81,16 +93,16 @@ data/<namespace>/recipe/<name>.json
 }
 ```
 
-| Field            | Type      | Description                                            |
-|------------------|-----------|--------------------------------------------------------|
-| `type`           | String    | Recipe type, always `anvillib:in_world`                |
-| `icon`           | ItemStack | Icon item for display in JEI/REI                       |
-| `trigger`        | String    | Trigger resource location (registered by upstream mod) |
-| `priority`       | int       | Priority (default `0`); higher = matched first         |
+| Field            | Type      | Description                                                             |
+|------------------|-----------|-------------------------------------------------------------------------|
+| `type`           | String    | Recipe type, always `anvillib:in_world`                                 |
+| `icon`           | ItemStack | Icon item for display in JEI/REI                                        |
+| `trigger`        | String    | Trigger resource location (registered by upstream mod)                  |
+| `priority`       | int       | Priority (default `0`); higher = matched first                          |
 | `compatible`     | boolean   | If true, allows coexistence with other recipes sharing the same trigger |
-| `max_efficiency` | int       | Maximum efficiency cap                                 |
-| `predicates`     | Array     | List of predicate conditions                           |
-| `outcomes`       | Array     | List of outcomes to execute                            |
+| `max_efficiency` | int       | Maximum efficiency cap                                                  |
+| `predicates`     | Array     | List of predicate conditions                                            |
+| `outcomes`       | Array     | List of outcomes to execute                                             |
 
 ## IV. Using the Data Generator
 
@@ -122,17 +134,17 @@ InWorldRecipeBuilder.create(MY_TRIGGER)
 
 ### `InWorldRecipeBuilder` Common Methods
 
-| Method                                     | Description                         |
-|--------------------------------------------|-------------------------------------|
-| `InWorldRecipeBuilder.create(trigger)`     | Create builder with a given trigger |
-| `.hasItem(HasItem)`                        | Add an item predicate               |
-| `.hasBlock(HasBlock)`                      | Add a block predicate               |
-| `.spawnItem(SpawnItem)`                    | Add a spawn-item outcome            |
-| `.setBlock(SetBlock)`                      | Add a set-block outcome             |
-| `.priority(int)`                           | Set the priority                    |
-| `.compatible(boolean)`                     | Set compatible mode                 |
-| `.icon(ItemStack)`                         | Set the recipe icon                 |
-| `.save(output, id)`                        | Output the recipe JSON              |
+| Method                                 | Description                         |
+|----------------------------------------|-------------------------------------|
+| `InWorldRecipeBuilder.create(trigger)` | Create builder with a given trigger |
+| `.hasItem(HasItem)`                    | Add an item predicate               |
+| `.hasBlock(HasBlock)`                  | Add a block predicate               |
+| `.spawnItem(SpawnItem)`                | Add a spawn-item outcome            |
+| `.setBlock(SetBlock)`                  | Add a set-block outcome             |
+| `.priority(int)`                       | Set the priority                    |
+| `.compatible(boolean)`                 | Set compatible mode                 |
+| `.icon(ItemStack)`                     | Set the recipe icon                 |
+| `.save(output, id)`                    | Output the recipe JSON              |
 
 ## V. Custom Predicates
 
@@ -186,17 +198,18 @@ public class MyOutcome implements IRecipeOutcome<MyOutcome> {
 
 `InWorldRecipeContext` is the context object passed during recipe execution:
 
-| Method                          | Description                                    |
-|---------------------------------|------------------------------------------------|
-| `getLevel()`                    | Get the `ServerLevel`                          |
-| `getPos()`                      | Get the trigger position (`Vec3`)              |
-| `computeIfAbsent(key)`          | Get or create a cache (e.g., `ItemCache`)      |
-| `putAcceptor(id, acceptor)`     | Register a cache committer                     |
-| `getFloat(NumberProvider)`      | Evaluate a `NumberProvider` to a float value   |
+| Method                      | Description                                  |
+|-----------------------------|----------------------------------------------|
+| `getLevel()`                | Get the `ServerLevel`                        |
+| `getPos()`                  | Get the trigger position (`Vec3`)            |
+| `computeIfAbsent(key)`      | Get or create a cache (e.g., `ItemCache`)    |
+| `putAcceptor(id, acceptor)` | Register a cache committer                   |
+| `getFloat(NumberProvider)`  | Evaluate a `NumberProvider` to a float value |
 
 ## VIII. Chance System
 
-Outcome classes return a `NumberProvider` from `chance()`. The `acceptWithChance(context)` method handles probability resolution automatically:
+Outcome classes return a `NumberProvider` from `chance()`. The `acceptWithChance(context)` method handles probability
+resolution automatically:
 
 ```json
 {
@@ -208,8 +221,10 @@ Outcome classes return a `NumberProvider` from `chance()`. The `acceptWithChance
 
 ## IX. Notes
 
-- The Recipe module is only a framework — **the actual trigger firing logic** (e.g., listening for an anvil falling) is implemented by the upstream mod (e.g., AnvilCraft);
-- The `trigger` field in a recipe JSON must be the ResourceLocation of a trigger registered in `LibRegistries.TRIGGER_REGISTRY`;
+- The Recipe module is only a framework — **the actual trigger firing logic** (e.g., listening for an anvil falling) is
+  implemented by the upstream mod (e.g., AnvilCraft);
+- The `trigger` field in a recipe JSON must be the ResourceLocation of a trigger registered in
+  `LibRegistries.TRIGGER_REGISTRY`;
 - `ChooseOneOutcome` supports weighted random selection among multiple outcomes;
 - Recipes with equal priority are not guaranteed to match in any fixed order.
 

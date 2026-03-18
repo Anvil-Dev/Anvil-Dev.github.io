@@ -1,6 +1,16 @@
+---
+prev:
+   text: 快速开始
+   link: /posts/docs/anvillib/01_getting_started
+next:
+   text: Integration 集成模块
+   link: /posts/docs/anvillib/03_integration
+---
+
 # Config 配置模块
 
-Config 模块提供了一套基于 **Java 注解** 的配置管理系统，让你无需手动编写 NeoForge `ModConfigSpec`，只需定义一个普通的 Java 类，通过注解即可完成配置注册、范围限制、注释生成和客户端 GUI 的自动生成。
+Config 模块提供了一套基于 **Java 注解** 的配置管理系统，让你无需手动编写 NeoForge `ModConfigSpec`，只需定义一个普通的 Java
+类，通过注解即可完成配置注册、范围限制、注释生成和客户端 GUI 的自动生成。
 
 ## 一、核心注解
 
@@ -35,8 +45,8 @@ public boolean debugMode = false;
 public int maxCount = 10;
 ```
 
-| 属性    | 类型       | 默认值                  | 说明       |
-|-------|----------|----------------------|----------|
+| 属性    | 类型       | 默认值                        | 说明     |
+|-------|----------|----------------------------|--------|
 | `min` | `double` | `Double.NEGATIVE_INFINITY` | 最小值（含） |
 | `max` | `double` | `Double.POSITIVE_INFINITY` | 最大值（含） |
 
@@ -61,11 +71,11 @@ public AdvancedSettings advanced = new AdvancedSettings();
 ConfigManager.register(String modId, Supplier<T> configFactory)
 ```
 
-| 参数            | 类型                | 说明                  |
-|---------------|-------------------|---------------------|
-| `modId`       | `String`          | 模组 ID               |
-| `configFactory` | `Supplier<T>`   | 配置类构造工厂（通常为 `MyConfig::new`） |
-| 返回值           | `T`               | 配置实例，可直接持有引用        |
+| 参数              | 类型            | 说明                           |
+|-----------------|---------------|------------------------------|
+| `modId`         | `String`      | 模组 ID                        |
+| `configFactory` | `Supplier<T>` | 配置类构造工厂（通常为 `MyConfig::new`） |
+| 返回值             | `T`           | 配置实例，可直接持有引用                 |
 
 ## 三、完整示例
 
@@ -140,13 +150,13 @@ int limit = MyMod.CONFIG.maxConnections;
 | Java 类型   | 说明                               |
 |-----------|----------------------------------|
 | `boolean` | 布尔值                              |
-| `int`     | 整数，支持 `@BoundedDiscrete`          |
-| `long`    | 长整数，支持 `@BoundedDiscrete`         |
+| `int`     | 整数，支持 `@BoundedDiscrete`         |
+| `long`    | 长整数，支持 `@BoundedDiscrete`        |
 | `float`   | 单精度浮点，支持 `@BoundedDiscrete`      |
 | `double`  | 双精度浮点，支持 `@BoundedDiscrete`      |
 | `String`  | 字符串                              |
 | `List<T>` | 基本类型列表                           |
-| 嵌套对象       | 使用 `@CollapsibleObject` 标注的自定义类型 |
+| 嵌套对象      | 使用 `@CollapsibleObject` 标注的自定义类型 |
 
 ## 五、自动 GUI
 

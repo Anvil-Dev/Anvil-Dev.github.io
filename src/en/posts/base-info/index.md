@@ -12,7 +12,8 @@ It facilitates automation processes that are difficult to achieve in vanilla gam
 
 Certain non-renewable items in vanilla can be regenerated through this mod.
 
-To simplify lifting anvils, magnets have been added—though this function can technically be replaced by vanilla redstone machinery, it is much more cumbersome.
+To simplify lifting anvils, magnets have been added—though this function can technically be replaced by vanilla redstone
+machinery, it is much more cumbersome.
 
 The mod's late-game progression includes unique technological elements.
 

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 概率矿物涌泉配方 (Mineral Fountain Chance Recipe)
+   link: /posts/docs/datapack/24_mineral_fountain_chance_recipe
+next:
+   text: 多重合一锻造配方 (Multiple To One Smithing Recipe)
+   link: /posts/docs/datapack/26_multiple_to_one_smithing_recipe
+---
+
 # 充放电配方 (Charger Charging Recipe)
 
 充放电配方定义充电器/放电器对物品的能量处理规则。

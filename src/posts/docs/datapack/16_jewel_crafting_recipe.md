@@ -1,3 +1,12 @@
+---
+prev:
+   text: 生物转换配方 (Mob Transform Recipe)
+   link: /posts/docs/datapack/15_mob_transform_recipe
+next:
+   text: 矿物涌泉配方 (Mineral Fountain Recipe)
+   link: /posts/docs/datapack/17_mineral_fountain_recipe
+---
+
 # 珠宝制作配方 (Jewel Crafting Recipe)
 
 珠宝制作配方用于制作各种珠宝和装饰性物品。

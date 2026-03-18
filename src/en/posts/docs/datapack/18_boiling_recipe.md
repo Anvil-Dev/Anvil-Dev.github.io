@@ -1,3 +1,12 @@
+---
+prev:
+   text: Mineral Fountain Recipe
+   link: /en/posts/docs/datapack/17_mineral_fountain_recipe
+next:
+   text: Mesh Recipe
+   link: /en/posts/docs/datapack/19_mesh_recipe
+---
+
 # Boiling Recipe
 
 Boiling recipes process items with cauldron fluid and campfire-related environmental conditions.

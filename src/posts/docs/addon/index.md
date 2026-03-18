@@ -1,3 +1,9 @@
+---
+next:
+   text: 环境搭建
+   link: /posts/docs/addon/01_environment
+---
+
 # 附属开发
 
 欢迎来到 AnvilCraft 附属开发文档！本章节将指导您如何创建自己的 AnvilCraft 附属模组。

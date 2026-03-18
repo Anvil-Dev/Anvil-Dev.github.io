@@ -1,6 +1,16 @@
+---
+prev:
+   text: Multiblock Recipe
+   link: /en/posts/docs/datapack/14_multiblock_recipe
+next:
+   text: Jewel Crafting Recipe
+   link: /en/posts/docs/datapack/16_jewel_crafting_recipe
+---
+
 # Mob Transform Recipe
 
-Mob transform recipes allow you to define transformation rules between mob entities, including complex transformations based on tag conditions.
+Mob transform recipes allow you to define transformation rules between mob entities, including complex transformations
+based on tag conditions.
 
 ## Basic Structure
 

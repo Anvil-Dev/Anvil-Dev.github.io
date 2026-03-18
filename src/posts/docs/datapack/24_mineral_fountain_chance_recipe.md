@@ -1,3 +1,12 @@
+---
+prev:
+   text: 多方块转换配方 (Multiblock Conversion Recipe)
+   link: /posts/docs/datapack/23_multiblock_conversion_recipe
+next:
+   text: 充放电配方 (Charger Charging Recipe)
+   link: /posts/docs/datapack/25_charger_charging_recipe
+---
+
 # 概率矿物涌泉配方 (Mineral Fountain Chance Recipe)
 
 该配方在指定维度中，将方块按概率转换为目标方块。

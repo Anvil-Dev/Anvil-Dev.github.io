@@ -1,3 +1,12 @@
+---
+prev:
+   text: 筛网配方 (Mesh Recipe)
+   link: /posts/docs/datapack/19_mesh_recipe
+next:
+   text: 唯一物品冲压配方 (Stamping Unique Items Recipe)
+   link: /posts/docs/datapack/21_stamping_unique_items_recipe
+---
+
 # 质量注入配方 (Mass Inject Recipe)
 
 质量注入配方用于给匹配物品附加质量值，不直接产出新物品。

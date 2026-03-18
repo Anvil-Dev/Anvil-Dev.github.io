@@ -1,3 +1,12 @@
+---
+prev:
+   text: Super Heating Recipe
+   link: /en/posts/docs/datapack/10_super_heating_recipe
+next:
+   text: Unpack Recipe
+   link: /en/posts/docs/datapack/12_unpack_recipe
+---
+
 # Time Warp Recipe
 
 Time warp recipes are used to transform items using time power.

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 事件系统
+   link: /posts/docs/addon/09_event_system
+next:
+   text: 网络通信
+   link: /posts/docs/addon/11_networking
+---
+
 # 资源和本地化
 
 本章介绍如何在 Addon 中管理资源文件，包括材质、模型、音效和语言本地化。
@@ -259,18 +268,18 @@ assets/myaddon/lang/
 
 ### 翻译键约定
 
-| 类型 | 格式 | 示例 |
-|------|------|------|
-| 物品 | `item.<modid>.<name>` | `item.myaddon.custom_item` |
-| 方块 | `block.<modid>.<name>` | `block.myaddon.custom_block` |
-| 物品组 | `itemGroup.<modid>` | `itemGroup.myaddon` |
-| 实体 | `entity.<modid>.<name>` | `entity.myaddon.custom_entity` |
-| 效果 | `effect.<modid>.<name>` | `effect.myaddon.custom_effect` |
-| 附魔 | `enchantment.<modid>.<name>` | `enchantment.myaddon.custom_enchant` |
-| 提示 | `tooltip.<modid>.<name>` | `tooltip.myaddon.info` |
-| GUI | `gui.<modid>.<name>` | `gui.myaddon.title` |
-| 消息 | `message.<modid>.<name>` | `message.myaddon.hello` |
-| 配置 | `<modid>.configuration.<name>` | `myaddon.configuration.enable_feature` |
+| 类型  | 格式                             | 示例                                     |
+|-----|--------------------------------|----------------------------------------|
+| 物品  | `item.<modid>.<name>`          | `item.myaddon.custom_item`             |
+| 方块  | `block.<modid>.<name>`         | `block.myaddon.custom_block`           |
+| 物品组 | `itemGroup.<modid>`            | `itemGroup.myaddon`                    |
+| 实体  | `entity.<modid>.<name>`        | `entity.myaddon.custom_entity`         |
+| 效果  | `effect.<modid>.<name>`        | `effect.myaddon.custom_effect`         |
+| 附魔  | `enchantment.<modid>.<name>`   | `enchantment.myaddon.custom_enchant`   |
+| 提示  | `tooltip.<modid>.<name>`       | `tooltip.myaddon.info`                 |
+| GUI | `gui.<modid>.<name>`           | `gui.myaddon.title`                    |
+| 消息  | `message.<modid>.<name>`       | `message.myaddon.hello`                |
+| 配置  | `<modid>.configuration.<name>` | `myaddon.configuration.enable_feature` |
 
 ### 使用数据生成器生成语言文件
 
@@ -441,26 +450,26 @@ resourcepack/
 ## 最佳实践
 
 1. **材质命名**
-   - 使用小写字母和下划线
-   - 名称应具有描述性
-   - 与注册名保持一致
+    - 使用小写字母和下划线
+    - 名称应具有描述性
+    - 与注册名保持一致
 
 2. **材质尺寸**
-   - 物品/方块材质：16x16 像素
-   - 可以使用更高分辨率（32x32, 64x64等），但要保持 2 的幂次
+    - 物品/方块材质：16x16 像素
+    - 可以使用更高分辨率（32x32, 64x64等），但要保持 2 的幂次
 
 3. **翻译完整性**
-   - 确保所有可见文本都有翻译键
-   - 至少提供英文翻译作为后备
+    - 确保所有可见文本都有翻译键
+    - 至少提供英文翻译作为后备
 
 4. **使用数据生成器**
-   - 自动生成减少错误
-   - 方便批量修改
+    - 自动生成减少错误
+    - 方便批量修改
 
 5. **资源压缩**
-   - 优化 PNG 文件大小
-   - 使用适当的音频比特率
+    - 优化 PNG 文件大小
+    - 使用适当的音频比特率
 
 6. **测试资源**
-   - 在不同语言环境下测试
-   - 检查材质是否正确显示
+    - 在不同语言环境下测试
+    - 检查材质是否正确显示

@@ -1,3 +1,12 @@
+---
+prev:
+   text: 注册实体
+   link: /posts/docs/addon/04_create_entity
+next:
+   text: 数据生成器
+   link: /posts/docs/addon/06_data_generation
+---
+
 # 方块实体开发
 
 方块实体（BlockEntity）是附加到方块上的特殊对象，用于存储数据和执行逻辑。常见的方块实体包括箱子、熔炉、漏斗等。
@@ -14,6 +23,7 @@ public static final BlockEntityEntry<CustomBlockEntity> CUSTOM_BLOCK_ENTITY = RE
 ```
 
 其中：
+
 - `"custom_block_entity"` 是方块实体的ID
 - `CustomBlockEntity::new` 是方块实体的工厂方法
 - `validBlock()` 指定该方块实体可以附加到哪些方块上

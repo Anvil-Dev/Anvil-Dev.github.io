@@ -1,3 +1,12 @@
+---
+prev:
+   text: 煮沸配方 (Boiling Recipe)
+   link: /posts/docs/datapack/18_boiling_recipe
+next:
+   text: 质量注入配方 (Mass Inject Recipe)
+   link: /posts/docs/datapack/20_mass_inject_recipe
+---
+
 # 筛网配方 (Mesh Recipe)
 
 筛网配方用于在脚手架（筛网）条件下，将输入物品转化为目标产物。

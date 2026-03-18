@@ -1,3 +1,9 @@
+---
+prev:
+   text: 能量武器制作配方 (Energy Weapon Make Recipe)
+   link: /posts/docs/datapack/30_energy_weapon_make_recipe
+---
+
 # 铁砧碰撞工艺配方 (Anvil Collision Craft Recipe)
 
 该配方在铁砧以指定速度撞击目标方块时触发，可转换方块并产出掉落。

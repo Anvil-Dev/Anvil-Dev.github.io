@@ -1,3 +1,12 @@
+---
+prev:
+   text: Stamping Recipe
+   link: /en/posts/docs/kubejs/03_stamping_recipe
+next:
+   text: Block Crush Recipe
+   link: /en/posts/docs/kubejs/05_block_crush_recipe
+---
+
 # Unpack Recipe
 
 Unpack recipes are used to unpack compressed items into original items.

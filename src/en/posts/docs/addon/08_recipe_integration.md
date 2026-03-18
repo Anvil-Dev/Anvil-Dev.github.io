@@ -1,10 +1,20 @@
+---
+prev:
+   text: Configuration System
+   link: /en/posts/docs/addon/07_config
+next:
+   text: Event System
+   link: /en/posts/docs/addon/09_event_system
+---
+
 # Recipe System Integration
 
 This chapter introduces how to integrate and extend AnvilCraft's recipe system in your Addon.
 
 ## Overview
 
-AnvilCraft provides a rich set of recipe types for implementing various processing and transformation functions. Addon developers can:
+AnvilCraft provides a rich set of recipe types for implementing various processing and transformation functions. Addon
+developers can:
 
 1. **Use existing recipe types** - Add new recipes via datapacks or code
 2. **Create custom recipe types** - Define entirely new recipe processing logic
@@ -14,25 +24,25 @@ AnvilCraft provides a rich set of recipe types for implementing various processi
 
 AnvilCraft provides the following recipe types:
 
-| Recipe Type | Registry Name | Purpose |
-|-------------|---------------|---------|
-| Item Crush | `anvilcraft:item_crush` | Crush items into smaller items |
-| Item Compress | `anvilcraft:item_compress` | Compress multiple items into advanced items |
-| Block Crush | `anvilcraft:block_crush` | Crush blocks into smaller blocks/items |
-| Block Compress | `anvilcraft:block_compress` | Compress multiple blocks into advanced blocks |
-| Stamping | `anvilcraft:stamping` | Transform items on the stamping platform |
-| Unpack | `anvilcraft:unpack` | Unpack compressed items |
-| Bulging | `anvilcraft:bulging` | Bulge items using fluid |
-| Squeezing | `anvilcraft:squeezing` | Squeeze blocks using fluid |
-| Item Inject | `anvilcraft:item_inject` | Inject fluid into items |
-| Cooking | `anvilcraft:cooking` | Cook items using heat sources |
-| Super Heating | `anvilcraft:super_heating` | Heat using high-temperature fluid |
-| Time Warp | `anvilcraft:time_warp` | Time power transformation |
-| Block Smear | `anvilcraft:block_smear` | Smear using blocks |
-| Mob Transform | `anvilcraft:mob_transform` | Transform mob entities |
-| Multiblock | `anvilcraft:multiblock` | Multiblock structure recipes |
-| Jewel Crafting | `anvilcraft:jewel_crafting` | Jewel crafting |
-| Mineral Fountain | `anvilcraft:mineral_fountain` | Mineral fountain transformation |
+| Recipe Type      | Registry Name                 | Purpose                                       |
+|------------------|-------------------------------|-----------------------------------------------|
+| Item Crush       | `anvilcraft:item_crush`       | Crush items into smaller items                |
+| Item Compress    | `anvilcraft:item_compress`    | Compress multiple items into advanced items   |
+| Block Crush      | `anvilcraft:block_crush`      | Crush blocks into smaller blocks/items        |
+| Block Compress   | `anvilcraft:block_compress`   | Compress multiple blocks into advanced blocks |
+| Stamping         | `anvilcraft:stamping`         | Transform items on the stamping platform      |
+| Unpack           | `anvilcraft:unpack`           | Unpack compressed items                       |
+| Bulging          | `anvilcraft:bulging`          | Bulge items using fluid                       |
+| Squeezing        | `anvilcraft:squeezing`        | Squeeze blocks using fluid                    |
+| Item Inject      | `anvilcraft:item_inject`      | Inject fluid into items                       |
+| Cooking          | `anvilcraft:cooking`          | Cook items using heat sources                 |
+| Super Heating    | `anvilcraft:super_heating`    | Heat using high-temperature fluid             |
+| Time Warp        | `anvilcraft:time_warp`        | Time power transformation                     |
+| Block Smear      | `anvilcraft:block_smear`      | Smear using blocks                            |
+| Mob Transform    | `anvilcraft:mob_transform`    | Transform mob entities                        |
+| Multiblock       | `anvilcraft:multiblock`       | Multiblock structure recipes                  |
+| Jewel Crafting   | `anvilcraft:jewel_crafting`   | Jewel crafting                                |
+| Mineral Fountain | `anvilcraft:mineral_fountain` | Mineral fountain transformation               |
 
 ## Adding Recipes via Datapacks
 
@@ -108,11 +118,11 @@ src/main/resources/data/<modid>/recipe/<recipe_name>.json
 
 Fluid recipes (bulging, squeezing, super heating, time warp) support the following fields:
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `fluid` | String | Required fluid type |
-| `transform` | String | Fluid type after transformation (optional) |
-| `consume` | int | Fluid consumption amount, positive for consume, negative for produce |
+| Field       | Type   | Description                                                          |
+|-------------|--------|----------------------------------------------------------------------|
+| `fluid`     | String | Required fluid type                                                  |
+| `transform` | String | Fluid type after transformation (optional)                           |
+| `consume`   | int    | Fluid consumption amount, positive for consume, negative for produce |
 
 ## Adding Recipes via Code
 
@@ -185,17 +195,17 @@ AnvilLib provides a powerful InWorld recipe system for handling in-world interac
 
 ### Field Description
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `type` | String | Fixed as `anvillib_recipe:in_world_recipe` |
-| `icon` | Object | Recipe icon |
-| `trigger` | String | Trigger type |
-| `conflicting` | Array | List of conflicting predicates |
-| `non_conflicting` | Array | List of non-conflicting predicates |
-| `outcomes` | Array | List of recipe outcomes |
-| `priority` | int | Priority, higher values are processed first |
-| `compatible` | boolean | Compatibility mode |
-| `max_efficiency` | int | Maximum efficiency value |
+| Field             | Type    | Description                                 |
+|-------------------|---------|---------------------------------------------|
+| `type`            | String  | Fixed as `anvillib_recipe:in_world_recipe`  |
+| `icon`            | Object  | Recipe icon                                 |
+| `trigger`         | String  | Trigger type                                |
+| `conflicting`     | Array   | List of conflicting predicates              |
+| `non_conflicting` | Array   | List of non-conflicting predicates          |
+| `outcomes`        | Array   | List of recipe outcomes                     |
+| `priority`        | int     | Priority, higher values are processed first |
+| `compatible`      | boolean | Compatibility mode                          |
+| `max_efficiency`  | int     | Maximum efficiency value                    |
 
 ### Trigger Types
 
@@ -488,21 +498,21 @@ public class ModRecipeProvider extends RecipeProvider {
 ## Best Practices
 
 1. **Prefer Datapacks**
-   - Datapack recipes are easier to maintain and modify
-   - Support resource pack overrides
+    - Datapack recipes are easier to maintain and modify
+    - Support resource pack overrides
 
 2. **Set Priorities Appropriately**
-   - InWorld recipe priority determines execution order
-   - Avoid recipe conflicts
+    - InWorld recipe priority determines execution order
+    - Avoid recipe conflicts
 
 3. **Use Tags**
-   - Use item/block tags for better recipe compatibility
-   - Facilitates integration with other mods
+    - Use item/block tags for better recipe compatibility
+    - Facilitates integration with other mods
 
 4. **Test Recipes**
-   - Use `/reload` command to reload recipes
-   - Verify all recipe paths are correct
+    - Use `/reload` command to reload recipes
+    - Verify all recipe paths are correct
 
 5. **Documentation**
-   - Provide usage instructions for custom recipes
-   - Document recipe prerequisites
+    - Provide usage instructions for custom recipes
+    - Document recipe prerequisites

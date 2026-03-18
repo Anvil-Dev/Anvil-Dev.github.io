@@ -1,3 +1,9 @@
+---
+next:
+   text: InWorld 配方系统
+   link: /posts/docs/datapack/00_inworld_recipe
+---
+
 # 数据包
 
 数据包支持是 AnvilCraft 的核心功能之一，允许通过 JSON 文件自定义各种配方和机制。以下文档将详细介绍每种配方类型的结构、字段和使用方法。

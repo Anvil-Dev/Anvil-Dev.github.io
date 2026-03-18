@@ -1,3 +1,12 @@
+---
+prev:
+   text: Stamping Recipe
+   link: /en/posts/docs/datapack/05_stamping_recipe
+next:
+   text: Squeezing Recipe
+   link: /en/posts/docs/datapack/07_squeezing_recipe
+---
+
 # Bulging Recipe
 
 Bulging recipes are used to transform items into other items using fluid in cauldrons.

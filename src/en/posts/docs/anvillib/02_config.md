@@ -1,6 +1,17 @@
+---
+prev:
+   text: Getting Started
+   link: /en/posts/docs/anvillib/01_getting_started
+next:
+   text: Integration Module
+   link: /en/posts/docs/anvillib/03_integration
+---
+
 # Config Module
 
-The Config module provides an **annotation-based** configuration management system that eliminates the need to manually write NeoForge `ModConfigSpec`. Simply define a plain Java class, annotate its fields, and registration, range validation, comment generation, and client GUI creation are all handled automatically.
+The Config module provides an **annotation-based** configuration management system that eliminates the need to manually
+write NeoForge `ModConfigSpec`. Simply define a plain Java class, annotate its fields, and registration, range
+validation, comment generation, and client GUI creation are all handled automatically.
 
 ## I. Core Annotations
 
@@ -35,14 +46,15 @@ Applied to numeric fields (`int`, `long`, `float`, `double`, etc.) to restrict t
 public int maxCount = 10;
 ```
 
-| Property | Type     | Default                     | Description      |
-|----------|----------|-----------------------------|------------------|
-| `min`    | `double` | `Double.NEGATIVE_INFINITY`  | Minimum (inclusive) |
-| `max`    | `double` | `Double.POSITIVE_INFINITY`  | Maximum (inclusive) |
+| Property | Type     | Default                    | Description         |
+|----------|----------|----------------------------|---------------------|
+| `min`    | `double` | `Double.NEGATIVE_INFINITY` | Minimum (inclusive) |
+| `max`    | `double` | `Double.POSITIVE_INFINITY` | Maximum (inclusive) |
 
 ### `@CollapsibleObject`
 
-Applied to non-primitive fields to mark them as **nested configuration objects** (corresponding to TOML sections). Nested object fields support all the same annotations.
+Applied to non-primitive fields to mark them as **nested configuration objects** (corresponding to TOML sections).
+Nested object fields support all the same annotations.
 
 ```java
 @CollapsibleObject
@@ -61,11 +73,11 @@ Use `ConfigManager.register(modId, factory)` to register your configuration. Thi
 ConfigManager.register(String modId, Supplier<T> configFactory)
 ```
 
-| Parameter       | Type            | Description                                      |
-|-----------------|-----------------|--------------------------------------------------|
-| `modId`         | `String`        | The mod ID                                       |
-| `configFactory` | `Supplier<T>`   | Config class factory (usually `MyConfig::new`)   |
-| Return value    | `T`             | The config instance — hold a reference to it     |
+| Parameter       | Type          | Description                                    |
+|-----------------|---------------|------------------------------------------------|
+| `modId`         | `String`      | The mod ID                                     |
+| `configFactory` | `Supplier<T>` | Config class factory (usually `MyConfig::new`) |
+| Return value    | `T`           | The config instance — hold a reference to it   |
 
 ## III. Full Example
 
@@ -137,25 +149,27 @@ int limit = MyMod.CONFIG.maxConnections;
 
 ## IV. Supported Field Types
 
-| Java Type  | Notes                                              |
-|------------|----------------------------------------------------|
-| `boolean`  | Boolean toggle                                     |
-| `int`      | Integer, supports `@BoundedDiscrete`               |
-| `long`     | Long integer, supports `@BoundedDiscrete`          |
-| `float`    | Single-precision float, supports `@BoundedDiscrete`|
-| `double`   | Double-precision float, supports `@BoundedDiscrete`|
-| `String`   | String value                                       |
-| `List<T>`  | List of primitives                                 |
-| Nested object | Custom types annotated with `@CollapsibleObject` |
+| Java Type     | Notes                                               |
+|---------------|-----------------------------------------------------|
+| `boolean`     | Boolean toggle                                      |
+| `int`         | Integer, supports `@BoundedDiscrete`                |
+| `long`        | Long integer, supports `@BoundedDiscrete`           |
+| `float`       | Single-precision float, supports `@BoundedDiscrete` |
+| `double`      | Double-precision float, supports `@BoundedDiscrete` |
+| `String`      | String value                                        |
+| `List<T>`     | List of primitives                                  |
+| Nested object | Custom types annotated with `@CollapsibleObject`    |
 
 ## V. Automatic GUI
 
-On the client side, `ConfigManager` automatically registers NeoForge's `ConfigurationScreen` as the mod's config GUI. Players can open the visual config screen directly from the mod list screen — no manual implementation required.
+On the client side, `ConfigManager` automatically registers NeoForge's `ConfigurationScreen` as the mod's config GUI.
+Players can open the visual config screen directly from the mod list screen — no manual implementation required.
 
 ## VI. Notes
 
 - Config classes must have a **no-argument constructor**;
 - Config fields must be `public` and non-`final`;
 - `ConfigManager.register` should be called inside the mod constructor (after the event bus is available);
-- Config instances are safe to read from any thread after loading, but should not be accessed before the config load event fires.
+- Config instances are safe to read from any thread after loading, but should not be accessed before the config load
+  event fires.
 

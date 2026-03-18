@@ -1,5 +1,8 @@
 ---
 title: 开发文档
+next:
+   text: 附属开发
+   link: /posts/docs/addon/index
 ---
 
 # 开发文档
@@ -13,14 +16,18 @@ AnvilCraft 开发文档为模组开发者和内容创作者提供了全面的技
 本文档分为四个主要部分：
 
 #### 1. [附属开发 (Addon)](addon/index.md)
+
 指导开发者如何创建基于 AnvilCraft 核心的附属模组，包括：
+
 - 环境搭建与开发工具配置
 - 物品和方块的创建与注册
 - 使用 Registrate 系统进行内容管理
 - NeoForge 模组开发最佳实践
 
 #### 2. [数据包 (Datapack)](datapack/index.md)
+
 详细介绍 AnvilCraft 的数据包系统，现已覆盖 32 种配方类型：
+
 - **基础工艺配方**：物品/方块压缩、粉碎、解包
 - **特殊工艺配方**：冲压、膨发、挤压、注入
 - **环境交互配方**：InWorld 世界内配方、烹饪、超级加热
@@ -32,14 +39,18 @@ AnvilCraft 开发文档为模组开发者和内容创作者提供了全面的技
 每种配方类型都提供详细的 JSON 结构说明和使用示例。
 
 #### 3. [KubeJS 集成](kubejs/index.md)
+
 提供 AnvilCraft 与 KubeJS 脚本系统的完整集成指南，支持：
+
 - 所有数据包配方类型的脚本化实现
 - KubeJS 风格的链式调用 API
 - 丰富的构建器方法和实用工具
 - 详细的代码示例和最佳实践
 
 #### 4. [AnvilLib 开发库](anvillib/index.md)
+
 AnvilLib 的完整开发文档，涵盖所有功能模块：
+
 - **Config**：基于注解的配置系统
 - **Integration**：模组兼容性集成框架
 - **Network**：网络包自动注册

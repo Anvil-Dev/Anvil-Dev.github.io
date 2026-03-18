@@ -1,3 +1,12 @@
+---
+prev:
+   text: Permutation Recipe
+   link: /en/posts/docs/datapack/28_permutation_recipe
+next:
+   text: Energy Weapon Make Recipe
+   link: /en/posts/docs/datapack/30_energy_weapon_make_recipe
+---
+
 # Deformation Recipe
 
 Deformation is one of the frost smithing recipe types for shape-changing conversions with template/material constraints.

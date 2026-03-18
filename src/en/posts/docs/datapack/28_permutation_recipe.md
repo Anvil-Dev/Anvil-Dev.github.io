@@ -1,6 +1,16 @@
+---
+prev:
+   text: Neutron Irradiation Recipe
+   link: /en/posts/docs/datapack/27_neutron_irradiation_recipe
+next:
+   text: Deformation Recipe
+   link: /en/posts/docs/datapack/29_deformation_recipe
+---
+
 # Permutation Recipe
 
-Permutation is one of the frost smithing recipe types for rotating conversion targets under template/material constraints.
+Permutation is one of the frost smithing recipe types for rotating conversion targets under template/material
+constraints.
 
 ## Basic Structure
 

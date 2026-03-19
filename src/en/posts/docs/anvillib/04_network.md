@@ -224,7 +224,7 @@ public record UpdatePacket(String data) implements ISensitiveBiPacket {
 
 - Each packet class **must** declare static `TYPE` (`CustomPacketPayload.Type`) and `STREAM_CODEC` fields —
   `NetworkRegistrar` reads them via reflection;
-- `handleOnClient` and `handleOnServer` callbacks are automatically dispatched to the main thread via
+- `handleOnClient`, `handleOnServer` and `handleOnBothSide` callbacks are automatically dispatched to the main thread via
   `ctx.enqueueWork()` — no manual queuing needed;
 - It is recommended to place packets for different `PacketProtocol` values in separate sub-packages (e.g.,
   `network.play`, `network.configuration`) each with their own `@Network` annotation;

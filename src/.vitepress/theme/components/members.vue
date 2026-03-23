@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {VPTeamMembers} from 'vitepress/theme'
 import authors from '../data/authors.json'
 import contributors from '../data/contributors.json'
@@ -13,9 +13,9 @@ const type = ref(props.type)
 </script>
 
 <template>
-  <VPTeamMembers v-if="type === 'authors'" size="small" :members="authors"/>
-  <VPTeamMembers v-if="type === 'contributors'" size="small" :members="contributors"/>
-  <VPTeamMembers v-if="type === 'supporters'" size="small" :members="supporters"/>
+  <VPTeamMembers v-if="type === 'authors'" :members="authors" size="small"/>
+  <VPTeamMembers v-if="type === 'contributors'" :members="contributors" size="small"/>
+  <VPTeamMembers v-if="type === 'supporters'" :members="supporters" size="small"/>
 </template>
 
 <style scoped>

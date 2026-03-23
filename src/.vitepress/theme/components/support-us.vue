@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import SupportUSData from '../data/support_us.json'
 import QRCode from 'qrcode'
 import {onMounted, ref} from 'vue';
@@ -9,7 +9,7 @@ onMounted(() => {
   supportData.value.forEach((item, index) => {
     const canvas = document.getElementById(`canvas-${index}`) as HTMLCanvasElement;
     if (canvas) {
-      QRCode.toCanvas(canvas, item.value, { width: 200, margin: 2 }, function (error) {
+      QRCode.toCanvas(canvas, item.value, {width: 200, margin: 2}, function (error) {
         if (error) console.error(error);
       });
     }
@@ -20,7 +20,7 @@ onMounted(() => {
   <div class="support-us-container">
     <div v-for="(item, index) in supportData" :key="index" class="support-item">
       <h3>{{ item.name }}</h3>
-      <canvas :id="`canvas-${index}`" width="200" height="200" />
+      <canvas :id="`canvas-${index}`" height="200" width="200"/>
     </div>
   </div>
 </template>

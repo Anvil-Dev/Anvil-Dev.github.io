@@ -222,7 +222,7 @@ public record UpdatePacket(String data) implements ISensitiveBiPacket {
 ## 六、注意事项
 
 - 每个网络包类**必须**声明静态的 `TYPE`（`CustomPacketPayload.Type`）和 `STREAM_CODEC` 字段，`NetworkRegistrar` 通过反射读取它们；
-- `handleOnClient` 和 `handleOnServer` 的回调默认会通过 `ctx.enqueueWork()` 在主线程执行，无需手动排队；
+- `handleOnClient`、 `handleOnServer` 和 `handleOnBothSide` 的回调默认会通过 `ctx.enqueueWork()` 在主线程执行，无需手动排队；
 - 建议为不同 `PacketProtocol` 的包分别建立子包（如 `network.play`、`network.configuration`）并各自添加 `@Network` 注解；
 - `NetworkRegistrar.register` 仅扫描同一 JAR 内的类，跨模组包不会被扫描。
 

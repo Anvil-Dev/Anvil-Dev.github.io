@@ -330,7 +330,7 @@ Supported types:
 ```markdown
 <click type="OPEN_URL" data="https://example.com">Click to open</click>
 <click type="COPY_TO_CLIPBOARD" data="Text to copy">Click to copy</click>
-<click type="SUGGEST_COMMAND" data="/say hello">Click to suggest command</click>
+<click type="OPEN_FILE" data="C:/path/to/file.txt">Click to open file</click>
 <click type="RUN_COMMAND" data="/ageratum ageratum">Click to run command</click>
 ```
 
@@ -340,7 +340,7 @@ Supported types:
 |---------------------|---------------|---------------------|
 | `OPEN_URL`          | Full URL      | Open a web page     |
 | `COPY_TO_CLIPBOARD` | Any text      | Copy to clipboard   |
-| `SUGGEST_COMMAND`   | Command text  | Fill into chat box  |
+| `OPEN_FILE`         | File path     | Open a local file   |
 | `RUN_COMMAND`       | Command text  | Execute immediately |
 
 ### Combining Styles

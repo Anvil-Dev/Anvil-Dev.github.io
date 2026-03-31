@@ -9,258 +9,190 @@ next:
 
 # API Reference
 
-This document lists all public-facing APIs in Ageratum, including class summaries, method signatures, and descriptions.
+This page is aligned with the current source under `reference/Ageratum` and covers the main public APIs and extension points.
 
 ---
 
-## Package Structure
+## 1. Core Entry
 
-```
-dev.anvilcraft.resource.ageratum
-├── Ageratum                                    # Mod main class (entry point)
-│
-├── network/
-│   ├── AgeratumNetwork                         # Network registration & dispatch
-│   └── OpenGuidePayload                        # Open-guide network packet
-│
-└── client/
-    ├── AgeratumClient                          # Client initialization
-    ├── AgeratumClientConfig                    # Client configuration
-    │
-    ├── registries/
-    │   ├── AgeratumRegistries                  # Registry definitions
-    │   ├── BuiltinExtensionComponents          # Built-in extension components
-    │   ├── BuiltinInlineStyleParsers           # Built-in inline parsers
-    │   └── BuiltinRecipeComponentFactories     # Built-in recipe factories
-    │
-    ├── gui/
-    │   └── GuideScreen                         # Document reading GUI
-    │
-    └── feat/markdown/
-        ├── MarkdownParser                      # Markdown parser
-        ├── GuideDocumentLoader                 # Document path & IO utilities
-        ├── GuideDocumentCache                  # Pre-parsed document cache
-        ├── MDDocument                          # Document model
-        ├── MDExtensionContext                  # Extension execution context
-        ├── MDExtensionComponentFactory         # Extension factory interface
-        │
-        └── component/
-            ├── MDComponent                     # Component base class
-            ├── MDTextComponent                 # Text paragraphs
-            ├── MDHeaderComponent               # Headings
-            ├── MDCodeBlockComponent            # Code blocks
-            ├── MDListComponent                 # Lists
-            ├── MDQuoteComponent                # Blockquotes
-            ├── MDTableComponent                # Tables
-            ├── MDImageComponent                # Images
-            ├── MDHorizontalRuleComponent       # Horizontal rules
-            ├── MDNoticeBoxComponent            # Notice boxes
-            ├── MDInlineStyleParser             # Inline parser interface
-            └── recipe/
-                ├── MDRecipeComponent           # Recipe component base class
-                └── MDCraftingTableRecipeComponent # Crafting table recipe component
-```
-
----
-
-## `Ageratum`
-
-The mod main class. Provides global entry-point methods.
+### `Ageratum`
 
 ```java
 package dev.anvilcraft.resource.ageratum;
 
 public class Ageratum {
-    /** Mod ID = "ageratum" */
     public static final String MOD_ID = "ageratum";
 
-    /**
-     * Creates a ResourceLocation with the "ageratum" namespace.
-     * Equivalent to ResourceLocation.fromNamespaceAndPath("ageratum", path)
-     */
     public static ResourceLocation location(String path);
 
-    /**
-     * Notifies the given player's client to open a guide document.
-     * Sends a network packet from the server to the client.
-     *
-     * @param player   Target player (server-side ServerPlayer)
-     * @param location Document resource location, e.g.
-     *                 ResourceLocation.fromNamespaceAndPath("mymod", "ageratum/en_us/index.md")
-     */
     public static void openGuide(ServerPlayer player, ResourceLocation location);
+}
+```
+
+Notes:
+
+- `location(path)` builds a `ResourceLocation` in the `ageratum` namespace.
+- `openGuide(player, location)` is the server-side entry for opening guides on clients.
+
+---
+
+## 2. Client Entry and Guide Opening
+
+### `AgeratumClient`
+
+```java
+package dev.anvilcraft.resource.ageratum.client;
+
+public class AgeratumClient {
+    public static final String PREVIEW_NAMESPACE = "ageratum_review";
+    public static final AgeratumClientConfig CONFIG;
+
+    public static String getClientLanguageCode(Minecraft minecraft);
+
+    public static int openGuide(
+        CommandContext<CommandSourceStack> context,
+        String namespace,
+        @Nullable String fileArgument,
+        @Nullable String anchor
+    );
+
+    public static boolean openGuideOnClient(ResourceLocation location, List<ResourceLocation> breadCrumbs);
+
+    public static boolean openGuideOnClient(
+        ResourceLocation location,
+        @Nullable String anchor,
+        List<ResourceLocation> breadCrumbs
+    );
+
+    public static boolean isPreviewLocation(ResourceLocation location);
+    public static ResourceLocation toPreviewLocation(@Nullable String fileArgument);
+    public static Path getPreviewRootPath();
+    public static Path resolvePreviewDocumentPath(ResourceLocation location);
+    public static Path resolvePreviewAssetPath(String relativePath);
+}
+```
+
+Notes:
+
+- `openGuide(...)` resolves documents with language fallback (`current language -> en_us`).
+- `openGuideOnClient(...)` uses `GuideDocumentCache` first, then falls back to immediate parsing.
+- Preview documents use `ageratum_review` and paths under `AgeratumClientConfig.previewPath`.
+
+---
+
+## 3. Networking API
+
+### `AgeratumNetwork`
+
+```java
+package dev.anvilcraft.resource.ageratum.network;
+
+public final class AgeratumNetwork {
+    public static final String NETWORK_VERSION = "1";
+
+    public static void register(RegisterPayloadHandlersEvent event);
+    public static void sendOpenGuide(ServerPlayer serverPlayer, ResourceLocation location);
+}
+```
+
+Registered handlers:
+
+- `playToClient`: `OpenGuidePayload` -> `ClientPayloadHandler::handleOpenGuide`
+- `playToServer`: `ShareGuidePayload` -> `ServerPayloadHandler::handleShareGuide`
+
+### `OpenGuidePayload`
+
+```java
+public record OpenGuidePayload(ResourceLocation location) implements CustomPacketPayload {
+    public static final Type<OpenGuidePayload> TYPE;              // ageratum:open_guide
+    public static final StreamCodec<RegistryFriendlyByteBuf, OpenGuidePayload> STREAM_CODEC;
+}
+```
+
+### `ShareGuidePayload`
+
+```java
+public record ShareGuidePayload(
+    ResourceLocation location,
+    String anchor,
+    boolean sameTeam
+) implements CustomPacketPayload {
+    public static final Type<ShareGuidePayload> TYPE;             // ageratum:share_guide
+    public static final StreamCodec<RegistryFriendlyByteBuf, ShareGuidePayload> STREAM_CODEC;
 }
 ```
 
 ---
 
-## `AgeratumRegistries`
+## 4. Registries (Extension Core)
 
-Defines all NeoForge custom registries. The central hub for all extension points.
+### `AgeratumRegistries`
 
 ```java
 package dev.anvilcraft.resource.ageratum.client.registries;
 
 public final class AgeratumRegistries {
-
-    // ── Extension Component Factory Registry ───────────────────────────────────
-
+    // block extension
     public static final ResourceKey<Registry<MDExtensionComponentFactory>>
         EXTENSION_COMPONENT_FACTORY_REGISTRY_KEY;
-
     public static final DeferredRegister<MDExtensionComponentFactory>
-        EXTENSION_COMPONENT_FACTORIES;                // Ageratum-internal
-
+        EXTENSION_COMPONENT_FACTORIES;
     public static final Registry<MDExtensionComponentFactory>
-        EXTENSION_COMPONENT_FACTORY_REGISTRY;         // Runtime access
+        EXTENSION_COMPONENT_FACTORY_REGISTRY;
 
-    // ── Inline Style Parser Registry ──────────────────────────────────────────
+    // inline component
+    public static final ResourceKey<Registry<MDInlineComponentFactory>>
+        INLINE_COMPONENT_FACTORY_REGISTRY_KEY;
+    public static final DeferredRegister<MDInlineComponentFactory>
+        INLINE_COMPONENT_FACTORIES;
+    public static final Registry<MDInlineComponentFactory>
+        INLINE_COMPONENT_FACTORY_REGISTRY;
 
+    // inline style
     public static final ResourceKey<Registry<MDInlineStyleParser>>
         INLINE_STYLE_PARSER_REGISTRY_KEY;
-
     public static final DeferredRegister<MDInlineStyleParser>
         INLINE_STYLE_PARSERS;
-
     public static final Registry<MDInlineStyleParser>
         INLINE_STYLE_PARSER_REGISTRY;
 
-    // ── Recipe Component Factory Registry ─────────────────────────────────────
-
-    public static final ResourceKey<Registry<MDRecipeComponent.RecipeComponentFactory<?>>>
+    // recipe component
+    public static final ResourceKey<Registry<MDRecipeComponent.RecipeComponentFactory<?>>> 
         RECIPE_COMPONENT_FACTORY_REGISTRY_KEY;
-
     public static final DeferredRegister<MDRecipeComponent.RecipeComponentFactory<?>>
         RECIPE_COMPONENT_FACTORIES;
-
     public static final Registry<MDRecipeComponent.RecipeComponentFactory<?>>
         RECIPE_COMPONENT_FACTORY_REGISTRY;
 
-    /**
-     * Binds all custom registries to the mod event bus.
-     * Called internally by Ageratum — external mods do NOT need to call this.
-     */
     public static void register(IEventBus modEventBus);
 }
 ```
 
-**How external mods plug in:**
+For external mods:
 
-```java
-DeferredRegister<MDExtensionComponentFactory> myRegister =
-    DeferredRegister.create(
-        AgeratumRegistries.EXTENSION_COMPONENT_FACTORY_REGISTRY_KEY,
-        "mymod"
-    );
-myRegister.register(modEventBus);
-```
+- Use `DeferredRegister.create(<REGISTRY_KEY>, "your_modid")`.
+- Register on client-side mod event bus.
 
 ---
 
-## `MDExtensionComponentFactory`
+## 5. Document Resolution and Cache
 
-Extension component factory interface. Register instances into `EXTENSION_COMPONENT_FACTORY_REGISTRY_KEY`.
-
-```java
-@FunctionalInterface
-public interface MDExtensionComponentFactory {
-    MDComponent create(MDExtensionContext context);
-}
-```
-
----
-
-## `MDExtensionContext`
-
-Context object received by an extension component factory.
+### `GuideDocumentLoader`
 
 ```java
-public record MDExtensionContext(
-    ResourceLocation id,                   // e.g. mymod:section
-    String rawParams,                      // Raw params string (colon syntax)
-    Map<String, String> params,            // Parsed key-value pairs (tag syntax)
-    List<MDComponent> renderedContent,     // Parsed child components
-    String rawContent                      // Raw block content text
-) {}
-```
+package dev.anvilcraft.resource.ageratum.client.feat.markdown;
 
----
-
-## `MDInlineStyleParser`
-
-Inline style parser interface. Register instances into `INLINE_STYLE_PARSER_REGISTRY_KEY`.
-
-```java
-public interface MDInlineStyleParser {
-    /** Priority: lower value = higher precedence at the same position */
-    int priority();
-
-    /**
-     * Attempts to match an inline tag starting at pos.
-     * Returns null on no match.
-     */
-    @Nullable
-    MDComponent.InlineStyleMatch parse(String text, int pos);
-
-    /**
-     * Creates a simple open/close tag parser.
-     *
-     * @param priority       Parser priority
-     * @param openTagPattern Open tag regex pattern
-     * @param closeTag       Close tag literal string
-     * @param styleFactory   Function returning a new Style from parent Style + Matcher
-     */
-    static MDInlineStyleParser create(
-        int priority,
-        Pattern openTagPattern,
-        String closeTag,
-        BiFunction<Style, Matcher, Style> styleFactory
-    );
-}
-```
-
----
-
-## `MDRecipeComponent.RecipeComponentFactory<T>`
-
-Recipe component factory interface. Register instances into `RECIPE_COMPONENT_FACTORY_REGISTRY_KEY`.
-
-```java
-public interface RecipeComponentFactory<T extends Recipe<?>> {
-    RecipeType<T> type();
-    MDRecipeComponent create(T recipe);
-
-    static <T extends Recipe<?>> RecipeComponentFactory<T> create(
-        RecipeType<T> type,
-        Function<T, MDRecipeComponent> factory
-    );
-}
-```
-
----
-
-## `GuideDocumentLoader`
-
-Pure static utility for document path resolution and content reading.
-
-```java
 public final class GuideDocumentLoader {
-
-    /** Default language code = "en_us" */
     public static final String DEFAULT_LANGUAGE_CODE = "en_us";
 
-    /** Converts namespace + file argument to ResourceLocation using the default language */
     public static ResourceLocation toDocumentLocation(String namespace, String fileArgument);
 
-    /** Converts namespace + language code + file argument to ResourceLocation */
     public static ResourceLocation toDocumentLocation(
-        String namespace, String languageCode, @Nullable String fileArgument
+        String namespace,
+        String languageCode,
+        @Nullable String fileArgument
     );
 
-    /**
-     * Resolves the first existing document location in order:
-     * current language → en_us fallback.
-     */
     public static Optional<ResourceLocation> resolveExistingLocation(
         ResourceManager resourceManager,
         String namespace,
@@ -268,49 +200,26 @@ public final class GuideDocumentLoader {
         @Nullable String fileArgument
     );
 
-    /** Checks whether a document exists in the current resource pack */
     public static boolean exists(ResourceManager resourceManager, ResourceLocation location);
-
-    /** Reads a document's full text content as UTF-8 */
     public static String read(ResourceManager resourceManager, ResourceLocation location);
 
-    /** Lists all namespaces that contain ageratum documents (sorted) */
     public static List<String> listNamespaces(ResourceManager resourceManager, String languageCode);
-
-    /**
-     * Lists all available document relative paths under the given namespace
-     * (without .md extension, sorted).
-     */
-    public static List<String> listFiles(ResourceManager resourceManager,
-                                         String namespace, String languageCode);
+    public static List<String> listFiles(ResourceManager resourceManager, String namespace, String languageCode);
 }
 ```
 
----
-
-## `GuideDocumentCache`
-
-Pre-parsed document cache. Populated automatically on resource pack load/reload.
+### `GuideDocumentCache`
 
 ```java
-public final class GuideDocumentCache {
+package dev.anvilcraft.resource.ageratum.client.feat.markdown;
 
-    /**
-     * Returns the resource reload listener.
-     * Ageratum registers this automatically — external mods rarely need this.
-     */
+public final class GuideDocumentCache {
     public static PreparableReloadListener reloadListener();
 
-    /** Gets the pre-parsed document by ResourceLocation */
     public static Optional<MDDocument> getParsedDocument(ResourceLocation location);
-
-    /** Gets a mutable copy of the pre-parsed component list */
     public static Optional<List<MDComponent>> getParsedComponents(ResourceLocation location);
 
-    /** Gets the navigation tree for a given namespace and language */
     public static Optional<NavigationTree> getNavigationTree(String namespace, String languageCode);
-
-    // ── Nested record types ────────────────────────────────────────────────────
 
     public record NavigationTree(
         List<NavigationDocument> rootDocuments,
@@ -325,19 +234,29 @@ public final class GuideDocumentCache {
         List<NavigationDirectory> children
     ) {}
 
-    public record NavigationDocument(
-        String fileArgument,
-        String title,
-        ResourceLocation location
-    ) {}
+    public record NavigationDocument(String fileArgument, String title, ResourceLocation location) {}
 }
 ```
 
 ---
 
-## `MDDocument`
+## 6. Markdown Parsing Model
 
-Markdown document model produced by `MarkdownParser`.
+### `MarkdownParser`
+
+```java
+public class MarkdownParser {
+    public MarkdownParser();
+
+    public void registerComponentParser(int priority, MDComponentParser parser);
+
+    public List<MDComponent> parse(ResourceLocation sourceLocation, String markdown);
+
+    public MDDocument parseDocument(ResourceLocation sourceLocation, String markdown);
+}
+```
+
+### `MDDocument`
 
 ```java
 public record MDDocument(
@@ -345,131 +264,180 @@ public record MDDocument(
     Map<String, Object> frontMatter,
     List<MDComponent> components
 ) {
-    /** Resolves the document title (frontMatter → first h1 → file name) */
     public String getTitle(String fileName);
-
-    /** Resolves the document title (falls back to "Untitled" with no fileName) */
     public String getTitle();
-
-    /** Returns the source file name only (no directory path) */
     public Optional<String> getSourceFileName();
 }
 ```
 
 ---
 
-## `MDComponent` (Base Class)
+## 7. Extension Interfaces
 
-Base class for all renderable components.
+### Block Extensions
+
+#### `MDExtensionComponentFactory`
 
 ```java
-public abstract class MDComponent {
-    protected final FormattedText text;
+@FunctionalInterface
+public interface MDExtensionComponentFactory {
+    MDComponent create(MDExtensionContext context);
+}
+```
 
-    /** Renders the component in the given bounds */
-    public void render(GuiGraphics guiGraphics, Minecraft minecraft,
-                       int maxX, int maxY, float mouseX, float mouseY);
+#### `MDExtensionContext`
 
-    /** Calculates the component's rendered height for the given width */
-    public int getHeight(Minecraft minecraft, int maxX, int maxY);
+```java
+public record MDExtensionContext(
+    ResourceLocation sourceLocation,
+    ResourceLocation id,
+    String rawParams,
+    Map<String, String> params,
+    List<MDComponent> renderedContent,
+    String rawContent
+) {}
+```
 
-    /** Returns the text style at a coordinate (for click/hover) */
+### Inline Components
+
+#### `MDInlineComponentFactory`
+
+```java
+@FunctionalInterface
+public interface MDInlineComponentFactory {
+    FormattedText create(MDInlineComponentContext context);
+}
+```
+
+#### `MDInlineComponentContext`
+
+```java
+public record MDInlineComponentContext(
+    ResourceLocation id,
+    String rawParams,
+    Map<String, String> params,
+    Style baseStyle
+) {}
+```
+
+### Inline Styles
+
+#### `MDInlineStyleParser`
+
+```java
+public interface MDInlineStyleParser {
+    int priority();
+
     @Nullable
-    public Style getStyleAtPosition(Minecraft minecraft, double mouseX,
-                                    double mouseY, int maxX);
+    MDComponent.InlineStyleMatch parse(String text, int pos);
 
-    /** Parses raw Markdown text (inline syntax) into FormattedText */
-    public static FormattedText textFormat(String text);
+    static MDInlineStyleParser create(
+        int priority,
+        Pattern openTagPattern,
+        String closeTag,
+        BiFunction<Style, Matcher, Style> styleFactory
+    );
 }
 ```
 
----
+### Recipe Component Factories
 
-## `MarkdownParser`
-
-Block-level Markdown parser.
+#### `MDRecipeComponent.RecipeComponentFactory<T>`
 
 ```java
-public class MarkdownParser {
-    public MarkdownParser();
+public interface RecipeComponentFactory<T extends Recipe<?>> {
+    List<RecipeType<? extends T>> type();
 
-    /**
-     * Registers a line-level component parser.
-     *
-     * @param priority Parser priority (lower = higher precedence)
-     * @param parser   Parsing function: receives line text, returns component or null
-     */
-    public void registerComponentParser(int priority, MDComponentParser parser);
+    MDRecipeComponent create(T recipe, boolean enableAlignCenter);
 
-    /**
-     * Parses raw Markdown text into a document model.
-     *
-     * @param location Source resource location (may be null)
-     * @param markdown Raw Markdown text
-     */
-    public MDDocument parseDocument(@Nullable ResourceLocation location, String markdown);
+    static <R extends Recipe<?>> RecipeComponentFactory<R> create(
+        RecipeType<R> type,
+        BiFunction<R, Boolean, MDRecipeComponent> function
+    );
+
+    @SafeVarargs
+    static <R extends Recipe<?>> RecipeComponentFactory<R> create(
+        BiFunction<R, Boolean, MDRecipeComponent> function,
+        RecipeType<? extends R>... types
+    );
 }
 ```
 
 ---
 
-## `AgeratumClientConfig`
+## 8. Built-in Registrations
 
-Client-side configuration. Managed via `config/ageratum-client.toml`.
+### `BuiltinExtensionComponents`
+
+Built-in block extensions:
+
+- `ageratum:info`
+- `ageratum:tip`
+- `ageratum:warning`
+- `ageratum:danger`
+- `ageratum:recipe`
+- `ageratum:structure`
+- `ageratum:item`
+
+### `BuiltinInlineStyleParsers`
+
+Built-in inline style tags:
+
+- `<color=#RRGGBB>...</color>`
+- `<o>...</o>`
+- `<hover ...>...</hover>`
+- `<click ...>...</click>`
+
+### `BuiltinInlineComponents`
+
+Built-in inline component:
+
+- `<translate key="..." fallback="..."/>`
+
+### `BuiltinRecipeComponentFactories`
+
+Built-in recipe factories:
+
+- `crafting`
+- `smithing`
+- `stonecutter`
+- `furnace` (covers smelting / smoking / blasting / campfire_cooking)
+
+---
+
+## 9. Client Config Object
+
+### `AgeratumClientConfig`
 
 ```java
 public class AgeratumClientConfig {
-    /** Whether sidebar tab jumps are recorded in breadcrumbs. Default: false */
     public boolean breadCrumbsHasLabel = false;
-
-    /** Whether to show line numbers in code blocks. Default: true */
     public boolean showCodeBlockLineNumbers = true;
-
-    /** Whether to allow line wrapping in code block content. Default: true */
     public boolean allowCodeBlockLineContentLineBreaks = true;
+
+    public boolean enablePreview = false;
+    public String previewPath = "ageratum_preview";
+
+    public boolean shareGuideOnlyInTeam = false;
 }
 ```
-
-Access via `AgeratumClient.CONFIG` (client-only).
 
 ---
 
-## Network Protocol
+## 10. Constant Quick Reference
 
-### `OpenGuidePayload`
-
-Direction: **Server → Client**  
-Purpose: Instructs the client to open a guide document.
-
-```java
-public record OpenGuidePayload(ResourceLocation location) implements CustomPacketPayload {
-    public static final Type<OpenGuidePayload> TYPE;         // ID: ageratum:open_guide
-    public static final StreamCodec<...> STREAM_CODEC;
-}
-```
-
-Network version: `"1"`
+| Constant | Value | Location |
+|---|---|---|
+| `Ageratum.MOD_ID` | `"ageratum"` | `Ageratum` |
+| `GuideDocumentLoader.DEFAULT_LANGUAGE_CODE` | `"en_us"` | `GuideDocumentLoader` |
+| `AgeratumNetwork.NETWORK_VERSION` | `"1"` | `AgeratumNetwork` |
+| `AgeratumClient.PREVIEW_NAMESPACE` | `"ageratum_review"` | `AgeratumClient` |
 
 ---
 
-## Constants & Enums
+## See Also
 
-### Built-in Notice Box Types
-
-```java
-public enum NoticeType {
-    INFO,     // Blue
-    TIP,      // Green
-    WARNING,  // Orange
-    DANGER    // Red
-}
-```
-
-### Key Constants
-
-| Constant                | Value        | Location              |
-|-------------------------|--------------|-----------------------|
-| `MOD_ID`                | `"ageratum"` | `Ageratum`            |
-| `DEFAULT_LANGUAGE_CODE` | `"en_us"`    | `GuideDocumentLoader` |
-| `NETWORK_VERSION`       | `"1"`        | `AgeratumNetwork`     |
-
+- [Extension Components](04-extension-components.md)
+- [Inline Style Parsers](05-inline-style-parsers.md)
+- [Architecture](08-architecture.md)
+- [Preview and Sharing](10-preview-and-sharing.md)

@@ -330,7 +330,7 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 ```markdown
 <click type="OPEN_URL" data="https://example.com">点击打开</click>
 <click type="COPY_TO_CLIPBOARD" data="要复制的文本">点击复制</click>
-<click type="SUGGEST_COMMAND" data="/say hello">点击填入命令</click>
+<click type="OPEN_FILE" data="C:/path/to/file.txt">点击打开文件</click>
 <click type="RUN_COMMAND" data="/ageratum ageratum">点击运行命令</click>
 ```
 
@@ -340,7 +340,7 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 |---------------------|-----------|--------|
 | `OPEN_URL`          | 完整 URL    | 打开网页   |
 | `COPY_TO_CLIPBOARD` | 任意文本      | 复制到剪贴板 |
-| `SUGGEST_COMMAND`   | 命令文本      | 填入聊天框  |
+| `OPEN_FILE`         | 文件路径      | 打开本地文件 |
 | `RUN_COMMAND`       | 命令文本      | 直接执行命令 |
 
 ### 组合使用

@@ -34,6 +34,7 @@ next:
 | [API 参考](07-api-reference.md)           | 所有公共 API 详细说明           |
 | [架构设计](08-architecture.md)              | 模块划分、数据流与扩展机制           |
 | [配置参考](09-config.md)                    | 客户端配置选项说明               |
+| [预览与分享](10-preview-and-sharing.md)      | 预览模式、分享协议与协作流程          |
 
 ## 功能特性
 
@@ -71,6 +72,12 @@ next:
 - 文档资源按 `ageratum/<language_code>/` 组织（如 `en_us`、`zh_cn`）
 - 默认从 `en_us` 读取，缺失文档自动回退到英文版本
 - 完全支持多字节文字（中文、日文等）
+
+### 预览与协作
+
+- 预览模式支持读取本地 `previewPath` 下文档并自动刷新
+- 支持服务端通过 `OpenGuidePayload` 触发客户端打开文档
+- 支持 `ShareGuidePayload` 发送可点击的文档分享消息
 
 ### 扩展语法
 

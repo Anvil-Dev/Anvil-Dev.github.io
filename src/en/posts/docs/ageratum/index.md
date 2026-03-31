@@ -34,6 +34,7 @@ rich Markdown rendering, i18n localization, and an extensible custom syntax/comp
 | [API Reference](07-api-reference.md)               | Detailed documentation of all public APIs              |
 | [Architecture](08-architecture.md)                 | Module layout, data flow, and extension mechanisms     |
 | [Configuration](09-config.md)                      | Client configuration options                           |
+| [Preview and Sharing](10-preview-and-sharing.md)   | Preview workflow, network payloads, sharing behavior   |
 
 ## Features
 
@@ -71,6 +72,12 @@ rich Markdown rendering, i18n localization, and an extensible custom syntax/comp
 - Documents organized by `ageratum/<language_code>/` (e.g., `en_us`, `zh_cn`)
 - Default fallback to `en_us` if localized version missing
 - Full support for multi-byte characters (Chinese, Japanese, etc.)
+
+### Preview and Collaboration
+
+- Preview mode reads local docs from `previewPath` and refreshes automatically
+- `OpenGuidePayload` supports server-triggered guide opening
+- `ShareGuidePayload` enables clickable guide-sharing messages in multiplayer
 
 ### Extension Syntax
 
@@ -139,14 +146,16 @@ Execute an action when clicking on text:
 ```markdown
 <click type="OPEN_URL" data="https://example.com">Click to open link</click>
 <click type="COPY_TO_CLIPBOARD" data="Text to copy">Click to copy</click>
-<click type="SUGGEST_COMMAND" data="/say hello">Click to suggest command</click>
+<click type="OPEN_FILE" data="C:/path/to/file.txt">Click to open file</click>
+<click type="RUN_COMMAND" data="/ageratum ageratum">Click to run command</click>
 ```
 
 **Supported Types:**
 
 - `OPEN_URL` - Open a URL (`data` is the complete URL)
 - `COPY_TO_CLIPBOARD` - Copy text to clipboard (`data` is the text to copy)
-- `SUGGEST_COMMAND` - Suggest a command in chat (`data` is the command text)
+- `OPEN_FILE` - Open a local file (`data` is the file path)
+- `RUN_COMMAND` - Run a command (`data` is the command text)
 
 #### Combining Styles
 

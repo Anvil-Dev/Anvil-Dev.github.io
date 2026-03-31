@@ -46,15 +46,29 @@ next:
 │    │ MDImageComponent         │                     │
 │    │ MDNoticeBoxComponent     │                     │
 │    │ MDRecipeComponent        │                     │
+│    │ MDItemComponent          │                     │
+│    │ MDNBTStructureComponent  │                     │
 │    │ <自定义组件>             │                     │
 │    └──────────────────────────┘                     │
 └─────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────┐
+│                    网络层（双向）                     │
+│                                                      │
+│  OpenGuidePayload    (Server -> Client)             │
+│  ShareGuidePayload   (Client -> Server)             │
+│                                                      │
+│  ClientPayloadHandler / ServerPayloadHandler         │
+└──────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────┐
 │              NeoForge 自定义注册表                    │
 │                                                      │
 │  ageratum:extension_component_factory                │
 │    → MDExtensionComponentFactory（块级扩展）         │
+│                                                      │
+│  ageratum:inline_component_factory                   │
+│    → MDInlineComponentFactory（行内组件）            │
 │                                                      │
 │  ageratum:inline_style_parser                        │
 │    → MDInlineStyleParser（行内样式）                 │
@@ -77,9 +91,16 @@ next:
 ### 客户端初始化 (`AgeratumClient`)
 
 - 注册 NeoForge 自定义注册表（`AgeratumRegistries.register()`）
-- 触发内置注册项的类加载（防止 Hotspot 延迟初始化导致注册缺失）
+- 触发内置注册项类加载（扩展组件、行内组件、行内样式、配方组件）
 - 注册客户端命令 `/ageratum`
 - 注册文档预加载监听器（`RegisterClientReloadListenersEvent`）
+- 提供预览模式入口（`/ageratum preview` + 文件轮询热刷新）
+
+### 网络与协作 (`AgeratumNetwork`)
+
+- `OpenGuidePayload`：服务端发给客户端，直接打开指定文档
+- `ShareGuidePayload`：客户端发给服务端，请求广播文档分享消息
+- `ServerPayloadHandler`：根据 `sameTeam` 过滤目标玩家并发送可点击命令
 
 ### 解析流水线
 
@@ -140,7 +161,7 @@ next:
   RELOAD_LISTENER.prepare()
         │
         ├─ 扫描全部 ageratum/**/*.md
-        ├─ 并行解析为 MDDocument
+        ├─ 解析为 MDDocument
         └─ 构建 NavigationTree（目录结构）
         │
         ▼
@@ -202,6 +223,27 @@ MDComponent.textFormat(rawText)
 输出 FormattedText
 ```
 
+### 行内组件解析流程
+
+```
+MDComponent.textFormat(rawText)
+        │
+        ▼
+查询 AgeratumRegistries.INLINE_COMPONENT_FACTORY_REGISTRY
+        │
+        ▼
+命中 <namespace:id .../> 自闭合标签
+        │
+        ▼
+构建 MDInlineComponentContext
+        │
+        ▼
+MDInlineComponentFactory.create(context)
+        │
+        ▼
+返回 FormattedText 并拼接到当前行内内容
+```
+
 ---
 
 ## 设计原则
@@ -237,6 +279,10 @@ MDComponent.textFormat(rawText)
 查找文档时优先使用客户端当前语言（如 `zh_cn`），找不到时自动回退到 `en_us`。这简化了模组开发者的工作：**只要提供 `en_us`
 版本，就能在所有语言客户端上正常显示**。
 
+### 6. 预览模式隔离
+
+预览模式使用独立命名空间 `ageratum_review` 与本地 `previewPath` 路径读取文档，不依赖资源包扫描缓存，避免污染正式文档索引。
+
 ---
 
 ## 文件大小控制
@@ -266,4 +312,5 @@ MDComponent.textFormat(rawText)
 - [API 参考](07-api-reference.md)
 - [扩展组件开发](04-extension-components.md)
 - [行内样式解析器开发](05-inline-style-parsers.md)
+- [预览与分享](10-preview-and-sharing.md)
 

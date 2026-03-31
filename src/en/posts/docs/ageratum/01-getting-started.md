@@ -87,9 +87,20 @@ found.
 /ageratum <namespace>               # Opens <namespace>:ageratum/<lang>/index.md
 /ageratum <namespace> <file>        # Opens <namespace>:ageratum/<lang>/<file>.md
 /ageratum <namespace> <dir>/<file>  # Opens a file in a subdirectory
+/ageratum <namespace> <file> <anchor> # Opens and jumps to an anchor
 ```
 
 > Both arguments support Tab completion, listing namespaces and files that actually exist in the resource pack.
+
+### Preview Command (Optional)
+
+If `enablePreview = true` is set in `ageratum-client.toml`, you can run:
+
+```
+/ageratum preview
+```
+
+This reads `<minecraft_dir>/<previewPath>/index.md` (default: `ageratum_preview/index.md`) and is useful for live documentation iteration.
 
 ---
 

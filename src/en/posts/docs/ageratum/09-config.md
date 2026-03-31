@@ -2,11 +2,14 @@
 prev:
   text: Architecture
   link: /en/posts/docs/ageratum/08-architecture
+next:
+  text: Preview and Sharing
+  link: /en/posts/docs/ageratum/10-preview-and-sharing
 ---
 
 # Configuration
 
-Ageratum provides a client-side configuration file to adjust the document reader's display behavior.
+Ageratum currently provides **client-side configuration only**, covering reader behavior, preview mode, and guide sharing behavior.
 
 ---
 
@@ -24,12 +27,10 @@ Ageratum provides a client-side configuration file to adjust the document reader
 
 **Type**: `boolean`  
 **Default**: `false`  
-**Description**: Controls whether clicking sidebar tab labels records a breadcrumb entry.
+**Description**: Whether sidebar label jumps are recorded in breadcrumb history.
 
-- `false`: Breadcrumbs only record navigation via in-document links. Clicking sidebar tabs does not affect the
-  breadcrumb trail.
-- `true`: Clicking a sidebar tab also appends an entry to the breadcrumb history, allowing the "back" button to return
-  to the previous document.
+- `false`: only in-content navigation is recorded.
+- `true`: sidebar tab clicks are also added to breadcrumbs.
 
 ```toml
 # Do breadcrumbs record jumps from sidebar tabs
@@ -42,10 +43,10 @@ breadCrumbsHasLabel = false
 
 **Type**: `boolean`  
 **Default**: `true`  
-**Description**: Controls whether code blocks display line numbers on the left side.
+**Description**: Whether code blocks display a line-number column.
 
-- `true`: A line number column (starting at 1) is shown to the left of code content.
-- `false`: No line numbers; code content uses the full available width.
+- `true`: show line numbers (starting at `1`).
+- `false`: hide line numbers and use full width for content.
 
 ```toml
 # Show line numbers in code blocks
@@ -58,11 +59,10 @@ showCodeBlockLineNumbers = true
 
 **Type**: `boolean`  
 **Default**: `true`  
-**Description**: Controls whether long lines inside code blocks automatically wrap.
+**Description**: Whether long code lines are wrapped.
 
-- `true`: Lines exceeding the display width wrap to the next line, ensuring full content visibility.
-- `false`: No wrapping; content that exceeds the width is not visible (useful when preserving original code formatting
-  is important).
+- `true`: long lines wrap so full content remains readable.
+- `false`: no wrapping (closer to source layout, but text can be clipped).
 
 ```toml
 # Allow line breaks in code block content
@@ -71,7 +71,58 @@ allowCodeBlockLineContentLineBreaks = true
 
 ---
 
-## Example Configuration File
+### `enablePreview`
+
+**Type**: `boolean`  
+**Default**: `false`  
+**Description**: Enables local preview mode.
+
+- `true`: `/ageratum preview` is available.
+- `false`: the preview command reports that preview is disabled.
+
+```toml
+# Whether to enable preview mode (enabling it will allow real-time previews of changes to documents in the specified path)
+enablePreview = false
+```
+
+---
+
+### `previewPath`
+
+**Type**: `string`  
+**Default**: `"ageratum_preview"`  
+**Description**: Root directory used by preview mode (relative to game directory).
+
+With default settings, `/ageratum preview` reads:
+
+```
+<minecraft_dir>/ageratum_preview/index.md
+```
+
+```toml
+# Preview mode path
+previewPath = "ageratum_preview"
+```
+
+---
+
+### `shareGuideOnlyInTeam`
+
+**Type**: `boolean`  
+**Default**: `false`  
+**Description**: Whether shared guides are limited to players on the same team.
+
+- `false`: sharing can target broader recipients (server-side handling).
+- `true`: only same-team players receive the share message.
+
+```toml
+# Share your guide only with player from the same team
+shareGuideOnlyInTeam = false
+```
+
+---
+
+## Full Example Configuration
 
 ```toml
 # Ageratum Client Configuration
@@ -84,23 +135,39 @@ showCodeBlockLineNumbers = true
 
 # Allow line breaks in code block content
 allowCodeBlockLineContentLineBreaks = true
+
+# Whether to enable preview mode (enabling it will allow real-time previews of changes to documents in the specified path)
+enablePreview = false
+
+# Preview mode path
+previewPath = "ageratum_preview"
+
+# Share your guide only with player from the same team
+shareGuideOnlyInTeam = false
 ```
 
 ---
 
 ## Accessing Configuration in Code
 
-Ageratum uses the AnvilCraft Lib v2 configuration system. Access the config from client-side code via
-`AgeratumClient.CONFIG`:
+Ageratum uses AnvilCraft Lib v2 configuration APIs. On client-side code, access values via `AgeratumClient.CONFIG`:
 
 ```java
 import dev.anvilcraft.resource.ageratum.client.AgeratumClient;
 
+// Reader behavior
 boolean showLineNumbers = AgeratumClient.CONFIG.showCodeBlockLineNumbers;
 boolean allowLineBreaks = AgeratumClient.CONFIG.allowCodeBlockLineContentLineBreaks;
+
+// Preview mode
+boolean previewEnabled = AgeratumClient.CONFIG.enablePreview;
+String previewRoot = AgeratumClient.CONFIG.previewPath;
+
+// Sharing behavior
+boolean sameTeamOnly = AgeratumClient.CONFIG.shareGuideOnlyInTeam;
 ```
 
-> **Note**: This config is client-only (`Dist.CLIENT`). Do not reference it from server-side code.
+> Note: this config object is `Dist.CLIENT` only. Do not reference it from server-side logic.
 
 ---
 
@@ -108,4 +175,4 @@ boolean allowLineBreaks = AgeratumClient.CONFIG.allowCodeBlockLineContentLineBre
 
 - [Getting Started](01-getting-started.md)
 - [Architecture](08-architecture.md)
-
+- [Preview and Sharing](/en/posts/docs/ageratum/10-preview-and-sharing)

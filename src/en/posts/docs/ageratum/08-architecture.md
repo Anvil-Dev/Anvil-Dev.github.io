@@ -47,15 +47,29 @@ understand the codebase for maintenance and contribution.
 │    │ MDImageComponent         │                     │
 │    │ MDNoticeBoxComponent     │                     │
 │    │ MDRecipeComponent        │                     │
+│    │ MDItemComponent          │                     │
+│    │ MDNBTStructureComponent  │                     │
 │    │ <custom components>      │                     │
 │    └──────────────────────────┘                     │
 └─────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────┐
+│                  Network Layer (Bidirectional)       │
+│                                                      │
+│  OpenGuidePayload    (Server -> Client)             │
+│  ShareGuidePayload   (Client -> Server)             │
+│                                                      │
+│  ClientPayloadHandler / ServerPayloadHandler         │
+└──────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────┐
 │              NeoForge Custom Registries              │
 │                                                      │
 │  ageratum:extension_component_factory                │
 │    → MDExtensionComponentFactory (block extensions)  │
+│                                                      │
+│  ageratum:inline_component_factory                   │
+│    → MDInlineComponentFactory (inline components)    │
 │                                                      │
 │  ageratum:inline_style_parser                        │
 │    → MDInlineStyleParser (inline styles)             │
@@ -81,6 +95,13 @@ understand the codebase for maintenance and contribution.
 - Triggers class loading of built-in registrations (prevents JIT lazy-init from missing entries)
 - Registers the `/ageratum` client command
 - Registers the document pre-load reload listener (`RegisterClientReloadListenersEvent`)
+- Provides preview-mode entry (`/ageratum preview`) and file polling refresh
+
+### Networking and Collaboration (`AgeratumNetwork`)
+
+- `OpenGuidePayload`: server -> client, asks client to open a guide
+- `ShareGuidePayload`: client -> server, requests broadcasting a share message
+- `ServerPayloadHandler`: filters by `sameTeam` and sends clickable `/ageratum` commands
 
 ### Parsing Pipeline
 
@@ -206,6 +227,27 @@ Apply Style to matched range, recursively process inner text
 Output FormattedText
 ```
 
+### Inline Component Resolution Flow
+
+```
+MDComponent.textFormat(rawText)
+        │
+        ▼
+Query AgeratumRegistries.INLINE_COMPONENT_FACTORY_REGISTRY
+        │
+        ▼
+Match self-closing inline tag: <namespace:id .../>
+        │
+        ▼
+Build MDInlineComponentContext
+        │
+        ▼
+MDInlineComponentFactory.create(context)
+        │
+        ▼
+Append returned FormattedText to the current inline output
+```
+
 ---
 
 ## Design Principles
@@ -243,6 +285,10 @@ When looking up documents, Ageratum first tries the client's current language (e
 if not found. This simplifies mod development: **providing only the `en_us` version is sufficient** for all language
 clients.
 
+### 6. Preview Isolation
+
+Preview documents use a dedicated namespace `ageratum_review` and are read from local `previewPath` instead of resource-pack caches, avoiding pollution of normal guide indexing.
+
 ---
 
 ## File Size Guidelines
@@ -274,4 +320,5 @@ Planned future additions:
 - [API Reference](07-api-reference.md)
 - [Extension Components](04-extension-components.md)
 - [Inline Style Parsers](05-inline-style-parsers.md)
+- [Preview and Sharing](10-preview-and-sharing.md)
 

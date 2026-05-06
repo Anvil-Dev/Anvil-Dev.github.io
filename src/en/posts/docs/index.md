@@ -49,17 +49,6 @@ Provides complete integration guidance for AnvilCraft with KubeJS scripts, inclu
 - Utility methods and constructor variants
 - Practical examples and integration notes
 
-#### 4. [AnvilLib Library](anvillib/index.md)
-
-Complete documentation for all AnvilLib modules:
-
-- **Config**: Annotation-based configuration system
-- **Integration**: Mod compatibility integration framework
-- **Network**: Automatic packet registration
-- **Recipe**: In-world recipe system
-- **Moveable Entity Block**: Piston-movable block entities
-- **Registrum**: Fluent chain-style registration API
-
 ---
 
 Whether you want to build feature-rich addon mods or customize gameplay through datapacks and scripts, this

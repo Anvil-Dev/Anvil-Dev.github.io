@@ -118,10 +118,19 @@ Namespace can be omitted (defaults to `ageratum:`).
 
 ### Built-in Extension Components
 
-- `ageratum:info` - Blue info box
-- `ageratum:tip` - Green tip box
-- `ageratum:warning` - Orange warning box
-- `ageratum:danger` - Red danger box
+| Component ID          | Trigger                                | Description                  |
+|-----------------------|----------------------------------------|------------------------------|
+| `ageratum:info`       | `::: info` or `<info/>`                | Blue info box                |
+| `ageratum:tip`        | `::: tip` or `<tip/>`                  | Green tip box                |
+| `ageratum:warning`    | `::: warning` or `<warning/>`          | Orange warning box           |
+| `ageratum:danger`     | `::: danger` or `<danger/>`            | Red danger box               |
+| `ageratum:recipe`     | `<recipe id="..."/>`                   | Recipe rendering             |
+| `ageratum:structure`  | `<structure id="..."/>`                | NBT structure preview        |
+| `ageratum:item`       | `<item id="..." count="..."/>`         | Item icon display            |
+| `ageratum:block`      | `<block id="..."/>`                    | Block item display           |
+| `ageratum:entity`     | `<entity id="..."/>`                   | Entity preview (rotatable)   |
+| `ageratum:latex`      | `<latex formula="..."/>`               | LaTeX formula rendering      |
+| `ageratum:row`        | `<row>` or `::: row`                   | Horizontal/vertical layout   |
 
 ### Hover and Click Events
 
@@ -133,11 +142,15 @@ Display tooltip text when hovering over text:
 
 ```markdown
 <hover type="SHOW_TEXT" data="This is the tooltip">Hover over me</hover>
+<hover type="SHOW_ITEM" data="{\"id\":\"minecraft:diamond\",\"count\":1}">Hover for item</hover>
+<hover type="SHOW_ENTITY" data="{\"type\":\"minecraft:zombie\",\"id\":\"...\",\"name\":\"Zombie\"}">Hover for entity</hover>
 ```
 
 **Supported Types:**
 
 - `SHOW_TEXT` - Display plain text tooltip (`data` is the tooltip content)
+- `SHOW_ITEM` - Display item tooltip (`data` is ItemStackInfo JSON)
+- `SHOW_ENTITY` - Display entity tooltip (`data` is EntityTooltipInfo JSON)
 
 #### Click Events (`<click>`)
 
@@ -156,6 +169,14 @@ Execute an action when clicking on text:
 - `COPY_TO_CLIPBOARD` - Copy text to clipboard (`data` is the text to copy)
 - `OPEN_FILE` - Open a local file (`data` is the file path)
 - `RUN_COMMAND` - Run a command (`data` is the command text)
+
+#### Gradient Tag (`<gradient>`)
+
+Apply per-character gradient color to text:
+
+```markdown
+<gradient start="#FF0000" end="#0000FF">Gradient text effect</gradient>
+```
 
 #### Combining Styles
 
@@ -217,7 +238,7 @@ src/main/java/dev/anvilcraft/resource/ageratum/
 ├── GuideDocumentCache.java                 // Preload cache & reload listener
 │
 ├── client/
-│   ├── AgeratumClient.java                 // Client hooks (reserved)
+│   ├── AgeratumClient.java                 // Client init (registries, commands, preview)
 │   ├── gui/
 │   │   └── GuideScreen.java                // Guide reading GUI
 │   └── feat/markdown/
@@ -242,7 +263,8 @@ src/main/java/dev/anvilcraft/resource/ageratum/
 │
 └── network/
     ├── AgeratumNetwork.java                // Network registration & dispatch
-    └── OpenGuidePayload.java               // Guide open network packet
+    ├── OpenGuidePayload.java               // Guide open network packet
+    └── ShareGuidePayload.java              // Guide sharing network packet
 ```
 
 ### Design Principles
@@ -347,7 +369,7 @@ Markdown usage:
 normal text <rainbow>colored text</rainbow> normal text
 ```
 
-See full guide: `docs/inline-style-parser-example.en.md`.
+See the full guide: [Inline Style Parsers](05-inline-style-parsers.md).
 
 #### Add Documentation
 
@@ -361,5 +383,5 @@ assets/<namespace>/ageratum/zh_cn/index.md
 
 ## License
 
-* Code unless otherwise stated default to our LICENSE file(LGPL-3.0) here
-* Non-Code assets (Located here) go by our ASSET_LICENSE file(ARR) here
+* Unless otherwise stated, all code follows the terms in our LICENSE file (LGPL-3.0).
+* Unless otherwise stated, all non-code assets follow the terms in our ASSETS_LICENSE file (ARR).

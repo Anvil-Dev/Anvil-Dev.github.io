@@ -271,13 +271,19 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 
 ## 内置扩展组件
 
-| 组件 ID              | 触发方式                         | 外观       |
-|--------------------|------------------------------|----------|
-| `ageratum:info`    | `::: info` 或 `<info/>`       | 🔵 蓝色信息框 |
-| `ageratum:tip`     | `::: tip` 或 `<tip/>`         | 🟢 绿色建议框 |
-| `ageratum:warning` | `::: warning` 或 `<warning/>` | 🟠 橙色警告框 |
-| `ageratum:danger`  | `::: danger` 或 `<danger/>`   | 🔴 红色危险框 |
-| `ageratum:recipe`  | `<recipe id="..."/>`         | 配方渲染     |
+| 组件 ID               | 触发方式                                  | 说明           |
+|---------------------|---------------------------------------|--------------|
+| `ageratum:info`     | `::: info` 或 `<info/>`                | 🔵 蓝色信息框     |
+| `ageratum:tip`      | `::: tip` 或 `<tip/>`                  | 🟢 绿色建议框     |
+| `ageratum:warning`  | `::: warning` 或 `<warning/>`          | 🟠 橙色警告框     |
+| `ageratum:danger`   | `::: danger` 或 `<danger/>`            | 🔴 红色危险框     |
+| `ageratum:recipe`   | `<recipe id="..."/>`                  | 配方渲染         |
+| `ageratum:structure` | `<structure id="..."/>`             | NBT 结构预览     |
+| `ageratum:item`     | `<item id="..." count="..."/>`       | 物品图标展示       |
+| `ageratum:block`    | `<block id="..."/>`                  | 方块物品展示       |
+| `ageratum:entity`   | `<entity id="..."/>`                 | 实体预览（可旋转）    |
+| `ageratum:latex`    | `<latex formula="..."/>`            | LaTeX 公式渲染   |
+| `ageratum:row`      | `<row>` 或 `::: row`                  | 水平/垂直布局容器    |
 
 ### 配方组件
 
@@ -288,6 +294,7 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 参数：
 
 - `id`：**必填**，目标配方的 ResourceLocation
+- `center`：可选，是否居中对齐（默认 `true`）
 
 ---
 
@@ -361,7 +368,6 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 - 引用块内嵌套块级元素（如引用中的列表、代码块）
 - 脚注（Footnotes）
 - 定义列表（Definition Lists）
-- 数学公式（LaTeX/MathJax）
 - HTML 块（Raw HTML Blocks）
 - 任务列表复选框点击（仅渲染，不可交互）
 

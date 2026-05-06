@@ -271,13 +271,19 @@ Block content here — supports Markdown syntax.
 
 ## Built-in Extension Components
 
-| Component ID       | Trigger                       | Appearance            |
-|--------------------|-------------------------------|-----------------------|
-| `ageratum:info`    | `::: info` or `<info/>`       | 🔵 Blue info box      |
-| `ageratum:tip`     | `::: tip` or `<tip/>`         | 🟢 Green tip box      |
-| `ageratum:warning` | `::: warning` or `<warning/>` | 🟠 Orange warning box |
-| `ageratum:danger`  | `::: danger` or `<danger/>`   | 🔴 Red danger box     |
-| `ageratum:recipe`  | `<recipe id="..."/>`          | Recipe rendering      |
+| Component ID          | Trigger                                | Description                |
+|-----------------------|----------------------------------------|----------------------------|
+| `ageratum:info`       | `::: info` or `<info/>`                | 🔵 Blue info box           |
+| `ageratum:tip`        | `::: tip` or `<tip/>`                  | 🟢 Green tip box           |
+| `ageratum:warning`    | `::: warning` or `<warning/>`          | 🟠 Orange warning box      |
+| `ageratum:danger`     | `::: danger` or `<danger/>`            | 🔴 Red danger box          |
+| `ageratum:recipe`     | `<recipe id="..."/>`                   | Recipe rendering           |
+| `ageratum:structure`  | `<structure id="..."/>`                | NBT structure preview      |
+| `ageratum:item`       | `<item id="..." count="..."/>`         | Item icon display          |
+| `ageratum:block`      | `<block id="..."/>`                    | Block item display         |
+| `ageratum:entity`     | `<entity id="..."/>`                   | Entity preview (rotatable) |
+| `ageratum:latex`      | `<latex formula="..."/>`               | LaTeX formula rendering    |
+| `ageratum:row`        | `<row>` or `::: row`                   | Horizontal/vertical layout |
 
 ### Recipe Component
 
@@ -288,6 +294,7 @@ Block content here — supports Markdown syntax.
 Parameters:
 
 - `id`: **Required** — target recipe `ResourceLocation`
+- `center`: Optional — align center (default `true`)
 
 ---
 
@@ -361,7 +368,6 @@ The following Markdown elements are **not currently supported**:
 - Block elements nested inside blockquotes (e.g. lists or code blocks within `>`)
 - Footnotes
 - Definition Lists
-- Math formulas (LaTeX/MathJax)
 - Raw HTML blocks
 - Interactive task list checkboxes (rendered only, not clickable)
 

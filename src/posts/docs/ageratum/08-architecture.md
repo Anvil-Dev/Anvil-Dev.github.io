@@ -47,6 +47,10 @@ next:
 │    │ MDNoticeBoxComponent     │                     │
 │    │ MDRecipeComponent        │                     │
 │    │ MDItemComponent          │                     │
+│    │ MDBlockComponent         │                     │
+│    │ MDEntityComponent        │                     │
+│    │ MDLatexComponent         │                     │
+│    │ MDRowComponent           │                     │
 │    │ MDNBTStructureComponent  │                     │
 │    │ <自定义组件>             │                     │
 │    └──────────────────────────┘                     │

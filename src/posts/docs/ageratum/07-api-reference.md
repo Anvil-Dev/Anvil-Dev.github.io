@@ -378,6 +378,10 @@ public interface RecipeComponentFactory<T extends Recipe<?>> {
 - `ageratum:recipe`
 - `ageratum:structure`
 - `ageratum:item`
+- `ageratum:block`
+- `ageratum:entity`
+- `ageratum:latex`
+- `ageratum:row`
 
 ### `BuiltinInlineStyleParsers`
 
@@ -387,12 +391,14 @@ public interface RecipeComponentFactory<T extends Recipe<?>> {
 - `<o>...</o>`
 - `<hover ...>...</hover>`
 - `<click ...>...</click>`
+- `<gradient start="#RRGGBB" end="#RRGGBB">...</gradient>`
 
 ### `BuiltinInlineComponents`
 
 内置行内组件：
 
 - `<translate key="..." fallback="..."/>`
+- `<ref item="..." component="..."/>`（物品引用跳转）
 
 ### `BuiltinRecipeComponentFactories`
 

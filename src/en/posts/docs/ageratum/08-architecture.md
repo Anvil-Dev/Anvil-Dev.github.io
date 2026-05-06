@@ -48,6 +48,10 @@ understand the codebase for maintenance and contribution.
 │    │ MDNoticeBoxComponent     │                     │
 │    │ MDRecipeComponent        │                     │
 │    │ MDItemComponent          │                     │
+│    │ MDBlockComponent         │                     │
+│    │ MDEntityComponent        │                     │
+│    │ MDLatexComponent         │                     │
+│    │ MDRowComponent           │                     │
 │    │ MDNBTStructureComponent  │                     │
 │    │ <custom components>      │                     │
 │    └──────────────────────────┘                     │

@@ -30,16 +30,23 @@ By registering an `MDRecipeComponent.RecipeComponentFactory<T>`, you can provide
 
 ```java
 public interface RecipeComponentFactory<T extends Recipe<?>> {
-    /** The recipe type this factory handles */
-    RecipeType<T> type();
+    /** The recipe types this factory handles */
+    List<RecipeType<? extends T>> type();
 
     /** Create a renderable component from a specific recipe instance */
-    MDRecipeComponent create(T recipe);
+    MDRecipeComponent create(T recipe, boolean enableAlignCenter);
 
-    /** Static factory method for lambda-style registration */
-    static <T extends Recipe<?>> RecipeComponentFactory<T> create(
-        RecipeType<T> type,
-        Function<T, MDRecipeComponent> factory
+    /** Static factory method for lambda-style registration (single recipe type) */
+    static <R extends Recipe<?>> RecipeComponentFactory<R> create(
+        RecipeType<R> type,
+        BiFunction<R, Boolean, MDRecipeComponent> function
+    ) { ... }
+
+    /** Static factory method for multiple recipe types */
+    @SafeVarargs
+    static <R extends Recipe<?>> RecipeComponentFactory<R> create(
+        BiFunction<R, Boolean, MDRecipeComponent> function,
+        RecipeType<? extends R>... types
     ) { ... }
 }
 ```
@@ -51,10 +58,10 @@ public abstract class MDRecipeComponent extends MDImageComponent {
     protected final int width;   // Background texture width (pixels)
     protected final int height;  // Background texture height (pixels)
 
-    public MDRecipeComponent(ResourceLocation imageLocation, int width, int height) { ... }
+    public MDRecipeComponent(ResourceLocation imageLocation, int width, int height, boolean enableAlignCenter) { ... }
 
     /** Subclass implements: draw recipe content on top of the background */
-    protected void renderRecipe(GuiGraphics guiGraphics, float mouseX, float mouseY) {}
+    protected void renderRecipe(MDRenderContext context, float mouseX, float mouseY) {}
 }
 ```
 
@@ -81,6 +88,7 @@ src/main/resources/
 ```java
 package com.example.mymod.client.markdown.recipe;
 
+import dev.anvilcraft.resource.ageratum.client.feat.markdown.MDRenderContext;
 import dev.anvilcraft.resource.ageratum.client.feat.markdown.component.recipe.MDRecipeComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -98,8 +106,8 @@ public class MDFurnaceRecipeComponent extends MDRecipeComponent {
     private final ItemStack fuel;
     private final ItemStack output;
 
-    public MDFurnaceRecipeComponent(SmeltingRecipe recipe) {
-        super(TEXTURE, 256, 128);  // Texture dimensions in pixels
+    public MDFurnaceRecipeComponent(SmeltingRecipe recipe, boolean enableAlignCenter) {
+        super(TEXTURE, 256, 128, enableAlignCenter);  // Texture dimensions in pixels
         Ingredient[] ingredients = recipe.getIngredients().toArray(Ingredient[]::new);
         this.input = ingredients.length > 0 && !ingredients[0].isEmpty()
             ? ingredients[0].getItems()[0] : ItemStack.EMPTY;
@@ -110,9 +118,10 @@ public class MDFurnaceRecipeComponent extends MDRecipeComponent {
     }
 
     @Override
-    protected void renderRecipe(GuiGraphics g, float mouseX, float mouseY) {
+    protected void renderRecipe(MDRenderContext context, float mouseX, float mouseY) {
         // Draw items at their positions in the background image
         // Adjust coordinates to match your texture layout
+        GuiGraphics g = context.graphics();
         renderItem(g, this.input,   8, 24, mouseX, mouseY);
         renderItem(g, this.fuel,    8, 60, mouseX, mouseY);
         renderItem(g, this.output, 96, 36, mouseX, mouseY);

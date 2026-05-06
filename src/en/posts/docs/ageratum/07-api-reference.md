@@ -378,6 +378,10 @@ Built-in block extensions:
 - `ageratum:recipe`
 - `ageratum:structure`
 - `ageratum:item`
+- `ageratum:block`
+- `ageratum:entity`
+- `ageratum:latex`
+- `ageratum:row`
 
 ### `BuiltinInlineStyleParsers`
 
@@ -387,12 +391,14 @@ Built-in inline style tags:
 - `<o>...</o>`
 - `<hover ...>...</hover>`
 - `<click ...>...</click>`
+- `<gradient start="#RRGGBB" end="#RRGGBB">...</gradient>`
 
 ### `BuiltinInlineComponents`
 
-Built-in inline component:
+Built-in inline components:
 
 - `<translate key="..." fallback="..."/>`
+- `<ref item="..." component="..."/>` (item reference with document jump)
 
 ### `BuiltinRecipeComponentFactories`
 

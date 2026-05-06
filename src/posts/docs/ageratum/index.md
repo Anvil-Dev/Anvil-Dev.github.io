@@ -64,7 +64,7 @@ next:
 
 - 引用链接定义与引用链接语法
 - 链接自动展开
-- 代码块行号与语法着色
+- 代码块行号显示
 - 表格列对齐（左/中/右）
 
 ### 国际化（i18n）
@@ -118,10 +118,19 @@ next:
 
 ### 内置扩展组件
 
-- `ageratum:info` - 蓝色提示框
-- `ageratum:tip` - 绿色建议框
-- `ageratum:warning` - 橙色警告框
-- `ageratum:danger` - 红色危险框
+| 组件 ID              | 触发方式                                  | 说明                |
+|--------------------|---------------------------------------|-------------------|
+| `ageratum:info`    | `::: info` 或 `<info/>`                | 蓝色提示框             |
+| `ageratum:tip`     | `::: tip` 或 `<tip/>`                  | 绿色建议框             |
+| `ageratum:warning` | `::: warning` 或 `<warning/>`          | 橙色警告框             |
+| `ageratum:danger`  | `::: danger` 或 `<danger/>`            | 红色危险框             |
+| `ageratum:recipe`  | `<recipe id="..."/>`                  | 配方渲染              |
+| `ageratum:structure` | `<structure id="..."/>`            | NBT 结构预览          |
+| `ageratum:item`    | `<item id="..." count="..."/>`        | 物品图标展示            |
+| `ageratum:block`   | `<block id="..."/>`                   | 方块物品展示            |
+| `ageratum:entity`  | `<entity id="..."/>`                  | 实体预览（可旋转）         |
+| `ageratum:latex`   | `<latex formula="..."/>`              | LaTeX 公式渲染        |
+| `ageratum:row`     | `<row>` 或 `::: row`                   | 水平/垂直布局容器         |
 
 ### 悬停与点击事件
 
@@ -133,11 +142,15 @@ next:
 
 ```markdown
 <hover type="SHOW_TEXT" data="这是提示文本">在我上面悬停</hover>
+<hover type="SHOW_ITEM" data="{\"id\":\"minecraft:diamond\",\"count\":1}">悬停查看物品</hover>
+<hover type="SHOW_ENTITY" data="{\"type\":\"minecraft:zombie\",\"id\":\"...\",\"name\":\"僵尸\"}">悬停查看实体</hover>
 ```
 
 **支持的类型：**
 
 - `SHOW_TEXT`：显示纯文本提示信息（`data` 为提示文本内容）
+- `SHOW_ITEM`：显示物品提示信息（`data` 为 ItemStackInfo JSON）
+- `SHOW_ENTITY`：显示实体提示信息（`data` 为 EntityTooltipInfo JSON）
 
 #### 点击事件（`<click>`）
 
@@ -146,14 +159,24 @@ next:
 ```markdown
 <click type="OPEN_URL" data="https://example.com">点击打开链接</click>
 <click type="COPY_TO_CLIPBOARD" data="复制的内容">点击复制</click>
-<click type="SUGGEST_COMMAND" data="/say hello">点击建议命令</click>
+<click type="OPEN_FILE" data="C:/path/to/file.txt">点击打开文件</click>
+<click type="RUN_COMMAND" data="/ageratum ageratum">点击运行命令</click>
 ```
 
 **支持的类型：**
 
 - `OPEN_URL`：打开网址（`data` 为完整 URL）
 - `COPY_TO_CLIPBOARD`：复制文本到剪贴板（`data` 为要复制的内容）
-- `SUGGEST_COMMAND`：在聊天框中建议命令（`data` 为命令文本）
+- `OPEN_FILE`：打开本地文件（`data` 为文件路径）
+- `RUN_COMMAND`：直接执行命令（`data` 为命令文本）
+
+#### 渐变色标签（`<gradient>`）
+
+为文本添加逐字符渐变色效果：
+
+```markdown
+<gradient start="#FF0000" end="#0000FF">渐变文字效果</gradient>
+```
 
 #### 组合使用
 
@@ -191,7 +214,7 @@ src/main/java/dev/anvilcraft/resource/ageratum/
 ├── GuideDocumentCache.java                 // 预加载缓存与资源重载监听
 │
 ├── client/
-│   ├── AgeratumClient.java                 // 客户端钩子（预留）
+│   ├── AgeratumClient.java                 // 客户端初始化（注册表、命令、预览）
 │   ├── gui/
 │   │   └── GuideScreen.java                // 文档读取界面
 │   └── feat/markdown/
@@ -216,7 +239,8 @@ src/main/java/dev/anvilcraft/resource/ageratum/
 │
 └── network/
     ├── AgeratumNetwork.java                // 网络注册与分发
-    └── OpenGuidePayload.java               // 文档打开网络包
+    ├── OpenGuidePayload.java               // 文档打开网络包
+    └── ShareGuidePayload.java              // 文档分享网络包
 ```
 
 ### 设计原则
@@ -318,7 +342,7 @@ Markdown 使用示例：
 普通文本 <rainbow>彩色文本</rainbow> 普通文本
 ```
 
-完整示例文档见：`docs/inline-style-parser-example.zh.md`。
+详细开发指南见：[行内样式解析器开发](05-inline-style-parsers.md)。
 
 #### 添加文档
 

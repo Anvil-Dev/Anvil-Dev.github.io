@@ -175,4 +175,4 @@ boolean sameTeamOnly = AgeratumClient.CONFIG.shareGuideOnlyInTeam;
 
 - [Getting Started](01-getting-started.md)
 - [Architecture](08-architecture.md)
-- [Preview and Sharing](/en/posts/docs/ageratum/10-preview-and-sharing)
+- [Preview and Sharing](10-preview-and-sharing.md)

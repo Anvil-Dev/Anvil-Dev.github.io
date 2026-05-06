@@ -156,6 +156,20 @@ Images **must be on their own line** and use namespace-qualified paths:
 ![Description](namespace:textures/path/image.png)
 ```
 
+### Formula Images (LaTeX)
+
+Single-line bracket syntax is supported for compatibility:
+
+```markdown
+[latex:E=mc^2]
+[tex,\frac{a}{b}]
+[formula!\int_0^1 x^2 dx]
+```
+
+- `tex`, `latex`, and `formula` are equivalent prefixes
+- Delimiters control scale: `,` = `0.75x`, `!` = `1.5x`, `+` = `2.0x`, `:`/`;` = `1.0x`
+- This syntax is parsed as a standalone block component (formula line only)
+
 ---
 
 ## Inline Elements
@@ -267,6 +281,25 @@ Block content here — supports Markdown syntax.
 - Parameters use `key="value"` or `key=value` format
 - Self-closing tags (`/>`) have no block content
 
+### Structure NBT Component
+
+Use the `structure` extension to render a summary, top-down block preview, and bounded NBT tree view for structure files stored under `data/<namespace>/structure/*.nbt`:
+
+```markdown
+<structure id="minecraft:village/plains/houses/plains_small_house_1"/>
+
+<structure id="./test.nbt"/>
+```
+
+- `id` / `path`: required, target structure file `ResourceLocation`
+- `maxDepth`: optional, maximum expansion depth, default `2`
+- `maxEntries`: optional, maximum number of keys/list entries shown per level, default `12`
+- Relative paths supported: e.g. `./test.nbt` or `../shared/demo.nbt`, resolved against the current document directory
+- In preview mode, relative paths load from the matching location under `run/ageratum_review/`
+- Rendered content: structure size, palette/block/entity counts, top-down block preview, and depth-limited NBT tree
+- Hovering a block in the preview shows its block ID, structure coordinates, palette index, and block-entity NBT flag
+- Fallback behavior: if the structure file is missing or cannot be read, the component shows an inline error message
+
 ---
 
 ## Built-in Extension Components
@@ -315,6 +348,16 @@ Parameters:
 ```
 
 Renders as randomly-changing "scrambled" characters.
+
+### Translate Tag
+
+```markdown
+<translate key="item.minecraft.diamond"/>
+<translate key="ageratum.guide.missing" fallback="Missing translation"/>
+```
+
+- `key`: **Required** translation key
+- `fallback`: Optional fallback text when the key has no translation
 
 ### Hover Events
 

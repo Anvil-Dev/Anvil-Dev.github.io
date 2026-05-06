@@ -156,6 +156,20 @@ ___
 ![图片描述](namespace:textures/路径/图片.png)
 ```
 
+### 公式图片（LaTeX）
+
+为兼容旧语法，支持单行方括号写法：
+
+```markdown
+[latex:E=mc^2]
+[tex,\frac{a}{b}]
+[formula!\int_0^1 x^2 dx]
+```
+
+- `tex`、`latex`、`formula` 前缀等价
+- 分隔符控制缩放：`,` = `0.75x`，`!` = `1.5x`，`+` = `2.0x`，`:`/`;` = `1.0x`
+- 该语法按独占一行的块组件解析
+
 ---
 
 ## 行内元素
@@ -267,6 +281,25 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 - 参数使用 `key="value"` 或 `key=value` 格式
 - 自闭合标签（`/>`）不含块内容
 
+### 结构 NBT 组件
+
+使用 `structure` 扩展，可以在文档中渲染 `data/<namespace>/structure/*.nbt` 结构文件的摘要、俯视方块预览与 NBT 树状视图：
+
+```markdown
+<structure id="minecraft:village/plains/houses/plains_small_house_1"/>
+
+<structure id="./test.nbt"/>
+```
+
+- `id` / `path`：必填，目标结构文件的 `ResourceLocation`
+- `maxDepth`：可选，最大展开深度，默认 `2`
+- `maxEntries`：可选，每层最多显示的键/列表项数量，默认 `12`
+- 支持相对路径：如 `./test.nbt`、`../shared/demo.nbt`，相对于当前文档所在目录解析
+- 预览模式下，相对路径会从 `run/ageratum_review/` 下的对应位置读取
+- 渲染内容：结构尺寸、调色板/方块/实体统计、俯视方块预览，以及受限深度的 NBT 树
+- 悬停预览区方块时，可查看方块 ID、结构坐标、palette 索引及是否带块实体数据
+- 回退行为：结构文件不存在或读取失败时，组件显示行内错误信息
+
 ---
 
 ## 内置扩展组件
@@ -315,6 +348,16 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 ```
 
 渲染为随机字符的"乱码"效果。
+
+### 翻译标签
+
+```markdown
+<translate key="item.minecraft.diamond"/>
+<translate key="ageratum.guide.missing" fallback="Missing translation"/>
+```
+
+- `key`：**必填**，语言键
+- `fallback`：可选，语言键不存在时显示的后备文本
 
 ### 悬停事件
 

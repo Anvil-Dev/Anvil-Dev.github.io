@@ -102,6 +102,8 @@ navigation:
 |--------------------|----------|--------------------------|
 | `title`            | `string` | 文档标题（覆盖一级标题）             |
 | `navigation.title` | `string` | 侧边栏导航中显示的标题（优先于 `title`） |
+| `guide.items` 或 `items` | `string` / `list<string>` | 绑定物品规则，用于"寻思"功能 |
+| `guide.item_id`、`item_id`、`guide.item`、`item` | `string` | 旧版兼容字段，仍可读取，但推荐迁移到 `items` |
 
 ### 标题解析优先级
 
@@ -111,6 +113,54 @@ Ageratum 按以下顺序确定文档标题：
 2. `title`（Front Matter）
 3. 文档中第一个一级标题（`# 标题`）
 4. 文件名（不含扩展名）
+
+### 物品绑定与"寻思"功能
+
+在 Front Matter 中声明 `items`（或 `guide.items`）可以将文档与特定物品绑定。玩家在物品栏中鼠标指向匹配物品时，会在 Tooltip 中看到进度提示；长按 <kbd>W</kbd> 键后会自动打开对应文档。
+
+`items` 支持以下写法：
+
+- 单个物品字符串
+- 物品字符串列表
+- 物品后追加 `{}` 组件条件，例如 `minecraft:diamond{\"test\":1}`
+
+匹配规则如下：
+
+1. 只写物品 ID，如 `minecraft:diamond`：匹配时忽略物品组件
+2. 写空组件，如 `minecraft:diamond{}`：等价于只写物品 ID
+3. 写了组件，如 `minecraft:diamond{\"test\":1}`：只要求这些已填写组件匹配
+4. 因此 `minecraft:diamond{\"test\":1}` 可以匹配 `minecraft:diamond{\"test\":1,\"test2\":2}`，但不能匹配 `minecraft:diamond{\"test\":0}`
+
+**示例：**
+
+```markdown
+---
+title: "铁锭的用途指南"
+items: "minecraft:iron_ingot"
+---
+
+# 铁锭用途
+
+...
+```
+
+**列表示例：**
+
+```markdown
+---
+title: "钻石相关文档"
+items:
+  - "minecraft:diamond"
+  - "minecraft:diamond{\"test\":1}"
+  - "minecraft:diamond_sword{damage=0}"
+---
+```
+
+若多个文档绑定同一物品，会按以下优先级打开第一个：
+
+1. 客户端当前语言版本
+2. 英文（`en_us`）版本
+3. 列表中的第一个（按路径字典序）
 
 ---
 

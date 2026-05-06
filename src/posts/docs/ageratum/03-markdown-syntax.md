@@ -359,6 +359,17 @@ CommonMark 可转义标点符号（`!`、`"`、`#`、`$`、`%`、`&`、`'`、`(`
 - `key`：**必填**，语言键
 - `fallback`：可选，语言键不存在时显示的后备文本
 
+### 物品引用标签
+
+```markdown
+<ref item="minecraft:diamond"/>
+<ref item="minecraft:netherite_sword" component='{"minecraft:custom_name":"Super Sword"}'/>
+```
+
+- `item`：**必填**，目标物品的 `ResourceLocation`
+- `component`：可选，物品组件 JSON（如自定义名称、附魔等）
+- 渲染为带链接颜色的可点击物品名称，鼠标悬停显示物品提示，若该物品有绑定的文档页面则点击跳转
+
 ### 悬停事件
 
 ```markdown

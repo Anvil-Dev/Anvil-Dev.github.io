@@ -359,6 +359,17 @@ Renders as randomly-changing "scrambled" characters.
 - `key`: **Required** translation key
 - `fallback`: Optional fallback text when the key has no translation
 
+### Item Reference Tag
+
+```markdown
+<ref item="minecraft:diamond"/>
+<ref item="minecraft:netherite_sword" component='{"minecraft:custom_name":"Super Sword"}'/>
+```
+
+- `item`: **Required** — target item `ResourceLocation`
+- `component`: Optional — item component JSON (e.g. custom name, enchantments)
+- Renders as a clickable item name in link color with an item tooltip on hover; clicking navigates to the item's bound document page
+
 ### Hover Events
 
 ```markdown

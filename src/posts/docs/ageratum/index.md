@@ -178,6 +178,19 @@ next:
 <gradient start="#FF0000" end="#0000FF">渐变文字效果</gradient>
 ```
 
+#### 物品引用标签（`<ref>`）
+
+创建可点击的物品引用链接，点击后跳转到该物品绑定的文档页面：
+
+```markdown
+<ref item="minecraft:diamond"/>
+<ref item="minecraft:netherite_sword" component='{"minecraft:custom_name":"Super Sword"}'/>
+```
+
+- `item`：**必填**，目标物品 ID
+- `component`：可选，物品组件 JSON
+- 渲染为带下划线的链接色文本，悬停显示物品提示，点击跳转到绑定文档
+
 #### 组合使用
 
 可在同一文本中组合多种样式：

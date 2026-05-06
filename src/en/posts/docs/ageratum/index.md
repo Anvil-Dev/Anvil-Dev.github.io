@@ -178,6 +178,19 @@ Apply per-character gradient color to text:
 <gradient start="#FF0000" end="#0000FF">Gradient text effect</gradient>
 ```
 
+#### Item Reference Tag (`<ref>`)
+
+Creates a clickable item reference that navigates to the item's bound document page:
+
+```markdown
+<ref item="minecraft:diamond"/>
+<ref item="minecraft:netherite_sword" component='{"minecraft:custom_name":"Super Sword"}'/>
+```
+
+- `item`: **Required** — target item ID
+- `component`: Optional — item component JSON
+- Renders as underlined link-colored text with an item tooltip on hover; clicking navigates to the bound document
+
 #### Combining Styles
 
 You can combine multiple styles in the same text:

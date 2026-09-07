@@ -231,6 +231,12 @@ export default defineConfig({
     vite: {
         // @ts-ignore
         plugins: [apiInjectPlugin()].filter(Boolean),
+        server: {
+            watch: {
+                // 编辑器/工具的原子写临时目录（*.tmpdir）会导致 chokidar watch EBUSY 崩溃，排除之
+                ignored: ['**/*.tmpdir/**'],
+            },
+        },
     },
     themeConfig: {
         ...getAutoConfig(),

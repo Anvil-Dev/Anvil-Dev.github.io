@@ -5,13 +5,13 @@ import {onMounted, onUnmounted, ref} from 'vue'
 import {upUrl} from './img-url'
 
 interface CheckItem {
-  id: number
+  id: string
   name: string
   enabled: boolean
 }
 
 interface Category {
-  id: number
+  id: string
   name: string
   emoji: string
   separate: boolean
@@ -19,12 +19,12 @@ interface Category {
 }
 
 interface Entry {
-  id: number
+  id: string
   nickname: string
   avatar_url: string
   display_id: string
   description: string
-  category_ids: number[]
+  category_ids: string[]
   check_states: Record<string, boolean> | null
   user?: { bio?: string } | null
 }
@@ -149,7 +149,7 @@ onUnmounted(() => {
 const mainCategories = (): Category[] => categories.value.filter(c => !c.separate)
 const separateCategories = (): Category[] => categories.value.filter(c => c.separate)
 // 某分类下的条目（一人可属多分类，卡片会出现在其每个分类下）
-const entriesOf = (catId: number): Entry[] => entries.value.filter(e => (e.category_ids ?? []).includes(catId))
+const entriesOf = (catId: string): Entry[] => entries.value.filter(e => (e.category_ids ?? []).includes(catId))
 </script>
 
 <template>
@@ -191,9 +191,9 @@ const entriesOf = (catId: number): Entry[] => entries.value.filter(e => (e.categ
                   v-for="ci in checkItems"
                   :key="ci.id"
                   class="check"
-                  :class="{done: e.check_states?.[String(ci.id)]}"
+                  :class="{done: e.check_states?.[ci.id]}"
               >
-                <span class="box">{{ e.check_states?.[String(ci.id)] ? '✔' : '' }}</span>
+                <span class="box">{{ e.check_states?.[ci.id] ? '✔' : '' }}</span>
                 {{ ci.name }}
               </li>
             </ul>
@@ -213,8 +213,8 @@ const entriesOf = (catId: number): Entry[] => entries.value.filter(e => (e.categ
               <div class="sub">{{ e.display_id }}</div>
             </div>
             <ul v-if="checkItems.length" class="checks">
-              <li v-for="ci in checkItems" :key="ci.id" class="check" :class="{done: e.check_states?.[String(ci.id)]}">
-                <span class="box">{{ e.check_states?.[String(ci.id)] ? '✔' : '' }}</span>
+              <li v-for="ci in checkItems" :key="ci.id" class="check" :class="{done: e.check_states?.[ci.id]}">
+                <span class="box">{{ e.check_states?.[ci.id] ? '✔' : '' }}</span>
                 {{ ci.name }}
               </li>
             </ul>

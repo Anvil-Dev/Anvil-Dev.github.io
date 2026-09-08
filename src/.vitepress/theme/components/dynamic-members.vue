@@ -8,15 +8,15 @@ import {computed, onMounted, onUnmounted, ref} from 'vue'
 import {upUrl} from './img-url'
 import {onContributorChange} from '../ws'
 
-interface Category {id: number; name: string; emoji: string; separate: boolean; separate_title: string}
+interface Category {id: string; name: string; emoji: string; separate: boolean; separate_title: string}
 interface Entry {
-  id: number
+  id: string
   nickname: string
   avatar_url: string
   display_id: string
   bilibili_uid: string
   description: string
-  category_ids: number[]
+  category_ids: string[]
   user?: {bio?: string} | null
 }
 
@@ -66,7 +66,7 @@ const normalCats = () => categories.value.filter(c => !c.separate)
 // 独立分组 = separate 分类（标题用 separate_title）
 const separateCats = () => categories.value.filter(c => c.separate)
 // 某分类下的条目（含多分类归属）
-const entriesOf = (catId: number) => entries.value.filter(e => (e.category_ids ?? []).includes(catId))
+const entriesOf = (catId: string) => entries.value.filter(e => (e.category_ids ?? []).includes(catId))
 // 「贡献者」合并组：出现在任一非 separate 分类下的条目（去重）
 const mergedEntries = () => {
   const ids = new Set(normalCats().map(c => c.id))
@@ -81,7 +81,7 @@ const mergedEntries = () => {
   })
 }
 // 仅属于独立分类（separate）且不属于任何普通分类的条目（避免与合并组重复）
-const orphanSeparate = (catId: number) => {
+const orphanSeparate = (catId: string) => {
   const normalIds = new Set(normalCats().map(c => c.id))
   return entriesOf(catId).filter(e => !(e.category_ids ?? []).some(id => normalIds.has(id)))
 }

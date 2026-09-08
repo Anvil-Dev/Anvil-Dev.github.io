@@ -5,7 +5,7 @@
 import {reactive, readonly} from 'vue'
 
 export interface UserInfo {
-  id: number
+  id: string // 雪花 ID（字符串）
   username: string
   nickname: string
   avatar_url: string

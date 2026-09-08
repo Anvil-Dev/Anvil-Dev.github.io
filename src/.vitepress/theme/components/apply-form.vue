@@ -4,9 +4,9 @@ import {onMounted, onUnmounted, ref} from 'vue'
 import {upUrl} from './img-url'
 import {authStore} from '../auth-store'
 
-interface Category {id: number; name: string; emoji: string}
+interface Category {id: string; name: string; emoji: string}
 interface UserInfo {
-  id: number; username: string; nickname: string; avatar_url: string; bio: string; role: string
+  id: string; username: string; nickname: string; avatar_url: string; bio: string; role: string
 }
 
 // 官网静态站不引入 Arco，这里使用原生 HTML 表单元素（样式沿用页面样式）。
@@ -18,7 +18,7 @@ const token = ref('')
 const categories = ref<Category[]>([])
 
 const form = ref({
-  category_ids: [] as number[],
+  category_ids: [] as string[],
   nickname: '',
   id: '',
   qq: '',
@@ -38,9 +38,9 @@ const POLL_TIMEOUT_MS = 15 * 60 * 1000
 
 // 我的申请（5.2：待审核可修改/撤回）
 interface MyApp {
-  id: number
-  category_id: number
-  category_ids?: number[]
+  id: string
+  category_id: string
+  category_ids?: string[]
   nickname: string
   display_id: string
   qq: string
@@ -60,7 +60,7 @@ const existingImages = ref<string[]>([])
 // 「我的申请」行内展开查看附件的申请 id（null=收起）
 const detailImagesId = ref<number | null>(null)
 
-function toggleDetail(id: number) {
+function toggleDetail(id: string) {
   detailImagesId.value = detailImagesId.value === id ? null : id
 }
 
@@ -307,7 +307,7 @@ function statusLabel(s: string): string {
   return {pending: '待审核', approved: '已通过', rejected: '已拒绝', withdrawn: '已撤回'}[s] ?? s
 }
 
-function catName(id: number): string {
+function catName(id: string): string {
   const c = categories.value.find((x) => x.id === id)
   return c ? `${c.name} ${c.emoji}` : `#${id}`
 }
@@ -323,7 +323,7 @@ function cancelEdit() {
 }
 
 // 多选贡献项目切换
-function toggleCategory(id: number, on: boolean) {
+function toggleCategory(id: string, on: boolean) {
   const ids = form.value.category_ids
   if (on) {
     if (!ids.includes(id)) ids.push(id)
@@ -439,7 +439,7 @@ onMounted(async () => {
 })
 
 // 5.2：若用户已绑定贡献者条目且无待审核申请，再次申请时基于最新条目预填表单
-async function prefillFromEntry(userId: number) {
+async function prefillFromEntry(userId: string) {
   // 有待审核申请时不预填（应通过「我的申请」编辑）
   if (myApps.value.some((a) => a.status === 'pending')) return
   try {
@@ -460,7 +460,7 @@ async function prefillFromEntry(userId: number) {
     // 分类预填：已有条目所属项目默认勾上（后端提交时自动过滤已属）
     const owned = e.category_ids ?? []
     if (owned.length) {
-      form.value.category_ids = owned.filter((id: number) =>
+      form.value.category_ids = owned.filter((id: string) =>
         categories.value.some((c) => c.id === id),
       )
     }

@@ -5,7 +5,7 @@ import {upUrl} from './img-url'
 import {authStore} from '../auth-store'
 
 interface UserInfo {
-  id: number
+  id: string
   username: string
   nickname: string
   avatar_url: string
@@ -167,8 +167,8 @@ function logout() {
 
 // ---------- 我的贡献者申请（查看/撤回；修改去申请页）----------
 interface MyApp {
-  id: number
-  category_id: number
+  id: string
+  category_id: string
   nickname: string
   display_id: string
   status: string
@@ -178,7 +178,7 @@ interface MyApp {
 const myApps = ref<MyApp[]>([])
 const myAppsLoaded = ref(false)
 
-const catOf = (id: number): string => {
+const catOf = (id: string): string => {
   // 分类名由申请接口不返回，这里不做映射（仅显示编号）——申请页展示详情
   return `#${id}`
 }

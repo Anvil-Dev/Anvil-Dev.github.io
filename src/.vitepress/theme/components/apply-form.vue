@@ -53,12 +53,12 @@ interface MyApp {
   created_at: string
 }
 const myApps = ref<MyApp[]>([])
-const editingAppId = ref<number | null>(null) // 正在编辑的申请 id（null=新申请）
+const editingAppId = ref<string | null>(null) // 正在编辑的申请 id（null=新申请）
 const noticeMsg = ref('')
 // 编辑模式保留的既有附件 URL（避免编辑时误清空原图）
 const existingImages = ref<string[]>([])
 // 「我的申请」行内展开查看附件的申请 id（null=收起）
-const detailImagesId = ref<number | null>(null)
+const detailImagesId = ref<string | null>(null)
 
 function toggleDetail(id: string) {
   detailImagesId.value = detailImagesId.value === id ? null : id
@@ -334,6 +334,10 @@ function toggleCategory(id: string, on: boolean) {
 }
 
 // ---------- 提交 ----------
+const QQ_RE = /^\d+$/
+const BILIBILI_UID_RE = /^\d+$/
+const MC_ID_RE = /^[0-9A-Za-z_]{3,16}$/
+
 async function submit() {
   errorMsg.value = ''
   if (!token.value || !loggedUser.value) {
@@ -342,6 +346,19 @@ async function submit() {
   }
   if (!form.value.category_ids.length) {
     errorMsg.value = '请至少选择一个贡献项目'
+    return
+  }
+  // 前端数据校验（均为选填，仅在填写时校验格式）
+  if (form.value.qq && !QQ_RE.test(form.value.qq)) {
+    errorMsg.value = 'QQ 号只能填写纯数字'
+    return
+  }
+  if (form.value.bilibili_uid && !BILIBILI_UID_RE.test(form.value.bilibili_uid)) {
+    errorMsg.value = 'B 站 UID 只能填写纯数字'
+    return
+  }
+  if (form.value.mc_id && !MC_ID_RE.test(form.value.mc_id)) {
+    errorMsg.value = 'Minecraft 正版 ID 须为 3-16 位，只能包含数字、大小写字母和下划线'
     return
   }
   submitting.value = true
@@ -505,32 +522,34 @@ async function prefillFromEntry(userId: string) {
           <table class="app-table">
             <thead><tr><th>项目</th><th>昵称</th><th>状态</th><th>时间</th><th>操作</th></tr></thead>
             <tbody>
-              <tr v-for="a in myApps" :key="a.id">
-                <td>{{ catName(a.category_id) }}</td>
-                <td>{{ a.nickname }}</td>
-                <td>
-                  <span class="status" :class="a.status">{{ statusLabel(a.status) }}</span>
-                  <div v-if="a.status === 'rejected' && a.reject_reason" class="reject">原因：{{ a.reject_reason }}</div>
-                  <a v-if="a.status === 'approved'" class="approved-link" href="./contributors.html" target="_blank" rel="noopener">已收录到贡献者墙 →</a>
-                </td>
-                <td class="time">{{ new Date(a.created_at).toLocaleDateString() }}</td>
-                <td>
-                  <button v-if="a.status === 'pending'" class="btn mini" @click="editApp(a)">修改</button>
-                  <button v-if="a.status === 'pending'" class="btn mini danger" @click="withdrawApp(a)">撤回</button>
-                  <button v-if="a.images?.length" class="btn mini" @click="toggleDetail(a.id)">
-                    {{ detailImagesId === a.id ? '收起图片' : `图片(${a.images.length})` }}
-                  </button>
-                </td>
-              </tr>
-              <tr v-if="detailImagesId === a.id" class="detail-row">
-                <td colspan="5">
-                  <div class="detail-imgs">
-                    <a v-for="(u, i) in (a.images ?? [])" :key="i" :href="upUrl(u)" target="_blank" rel="noopener">
-                      <img :src="upUrl(u)" alt="附件图" loading="lazy" />
-                    </a>
-                  </div>
-                </td>
-              </tr>
+              <template v-for="a in myApps" :key="a.id">
+                <tr>
+                  <td>{{ catName(a.category_id) }}</td>
+                  <td>{{ a.nickname }}</td>
+                  <td>
+                    <span class="status" :class="a.status">{{ statusLabel(a.status) }}</span>
+                    <div v-if="a.status === 'rejected' && a.reject_reason" class="reject">原因：{{ a.reject_reason }}</div>
+                    <a v-if="a.status === 'approved'" class="approved-link" href="./contributors.html" target="_blank" rel="noopener">已收录到贡献者墙 →</a>
+                  </td>
+                  <td class="time">{{ new Date(a.created_at).toLocaleDateString() }}</td>
+                  <td>
+                    <button v-if="a.status === 'pending'" class="btn mini" @click="editApp(a)">修改</button>
+                    <button v-if="a.status === 'pending'" class="btn mini danger" @click="withdrawApp(a)">撤回</button>
+                    <button v-if="a.images?.length" class="btn mini" @click="toggleDetail(a.id)">
+                      {{ detailImagesId === a.id ? '收起图片' : `图片(${a.images.length})` }}
+                    </button>
+                  </td>
+                </tr>
+                <tr v-if="detailImagesId === a.id" class="detail-row">
+                  <td colspan="5">
+                    <div class="detail-imgs">
+                      <a v-for="(u, i) in (a.images ?? [])" :key="i" :href="upUrl(u)" target="_blank" rel="noopener">
+                        <img :src="upUrl(u)" alt="附件图" loading="lazy" />
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </template>
             </tbody>
           </table>
         </div>
@@ -560,9 +579,9 @@ async function prefillFromEntry(userId: string) {
             <span>ID（GitHub 用户名，由登录账号确定）</span>
             <div class="ro">@{{ loggedUser?.username }}</div>
           </div>
-          <label class="field">QQ<input v-model="form.qq" placeholder="选填" /></label>
-          <label class="field">B站UID<input v-model="form.bilibili_uid" placeholder="选填" /></label>
-          <label class="field">Minecraft 正版 ID<input v-model="form.mc_id" placeholder="选填" /></label>
+          <label class="field">QQ<input v-model="form.qq" inputmode="numeric" placeholder="选填，纯数字" /></label>
+          <label class="field">B站UID<input v-model="form.bilibili_uid" inputmode="numeric" placeholder="选填，纯数字" /></label>
+          <label class="field">Minecraft 正版 ID<input v-model="form.mc_id" maxlength="16" placeholder="选填，3-16 位数字/字母/下划线" /></label>
           <label class="field">文字说明<textarea v-model="form.description" rows="3" placeholder="选填" /></label>
 
           <div class="field">

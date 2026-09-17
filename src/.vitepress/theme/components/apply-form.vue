@@ -51,6 +51,8 @@ interface MyApp {
   status: string
   reject_reason?: string
   created_at: string
+  // 后端「我的申请」输出：绑定条目是否仍存在（条目被删除后为 false）
+  entry_exists?: boolean
 }
 const myApps = ref<MyApp[]>([])
 const editingAppId = ref<string | null>(null) // 正在编辑的申请 id（null=新申请）
@@ -422,6 +424,17 @@ async function submit() {
 
 onMounted(async () => {
   apiBase.value = ((window as any).__ANVIL_API_BASE__ as string | undefined || 'https://api.anvilcraft.dev').replace(/\/$/, '')
+  // 先拉分类：后续 prefillFromEntry 的分类预勾选依赖 categories 已就绪
+  try {
+    const r = await fetch(apiURL('/categories'))
+    if (r.ok) {
+      const j = await r.json()
+      categories.value = j.categories ?? []
+      enabled.value = true
+    }
+  } catch {
+    errorMsg.value = '无法连接后端'
+  }
   // 会话恢复：优先全局 authStore（导航/登录页同源）
   await authStore.restore()
   const saved = authStore.token || localStorage.getItem(TOKEN_KEY)
@@ -443,16 +456,6 @@ onMounted(async () => {
       /* 离线忽略 */
     }
   }
-  try {
-    const r = await fetch(apiURL('/categories'))
-    if (r.ok) {
-      const j = await r.json()
-      categories.value = j.categories ?? []
-      enabled.value = true
-    }
-  } catch {
-    errorMsg.value = '无法连接后端'
-  }
 })
 
 // 5.2：若用户已绑定贡献者条目且无待审核申请，再次申请时基于最新条目预填表单
@@ -471,7 +474,19 @@ async function prefillFromEntry(userId: string) {
       form.value.nickname = loggedUser.value.nickname || loggedUser.value.username || ''
       form.value.id = loggedUser.value.username || ''
     }
-    if (!list.length) return
+    if (!list.length) {
+      // 条目已被删除（或从未生成）：回退用最近一条已通过申请的资料预填，避免用户重填
+      const approved = myApps.value.find((a) => a.status === 'approved')
+      if (approved) {
+        const ids = approved.category_ids && approved.category_ids.length ? approved.category_ids : [approved.category_id]
+        form.value.category_ids = ids.filter((id) => categories.value.some((c) => c.id === id))
+        form.value.qq = approved.qq ?? ''
+        form.value.bilibili_uid = approved.bilibili_uid ?? ''
+        form.value.mc_id = approved.mc_id ?? ''
+        form.value.description = approved.description ?? ''
+      }
+      return
+    }
     // 取最近更新的条目（按 id desc 由后端排序保证近似）
     const e = list[list.length - 1]
     // 分类预填：已有条目所属项目默认勾上（后端提交时自动过滤已属）
@@ -529,7 +544,8 @@ async function prefillFromEntry(userId: string) {
                   <td>
                     <span class="status" :class="a.status">{{ statusLabel(a.status) }}</span>
                     <div v-if="a.status === 'rejected' && a.reject_reason" class="reject">原因：{{ a.reject_reason }}</div>
-                    <a v-if="a.status === 'approved'" class="approved-link" href="./contributors.html" target="_blank" rel="noopener">已收录到贡献者墙 →</a>
+                    <a v-if="a.status === 'approved' && a.entry_exists !== false" class="approved-link" href="./members.html" target="_blank" rel="noopener">已收录到贡献者墙 →</a>
+                  <div v-else-if="a.status === 'approved' && a.entry_exists === false" class="removed">条目已被移除，可重新提交申请</div>
                   </td>
                   <td class="time">{{ new Date(a.created_at).toLocaleDateString() }}</td>
                   <td>
@@ -786,6 +802,11 @@ async function prefillFromEntry(userId: string) {
   display: block;
   font-size: 12px;
   color: #2e7d32;
+  margin-top: 2px;
+}
+.removed {
+  font-size: 12px;
+  color: #888;
   margin-top: 2px;
 }
 .reject {

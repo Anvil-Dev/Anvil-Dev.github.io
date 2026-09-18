@@ -128,6 +128,7 @@ async function refreshMe() {
       me.value = j.user
       fillForm(j.user)
       loadMyApps().catch(() => {})
+      loadMyEntry().catch(() => {})
     }
   } catch {
     /* 忽略 */
@@ -264,6 +265,92 @@ function loadImage(file: File): Promise<HTMLImageElement> {
     img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('图片读取失败')) }
     img.src = url
   })
+}
+
+// ---------- MC 正版 ID 自助管理 ----------
+// 条目数据：mc_id 为名称缓存，mc_uuid 为解析所得 UUID（改名不影响白名单准入）
+interface MyEntry {
+  id: string
+  mc_id: string
+  mc_uuid: string
+}
+const myEntry = ref<MyEntry | null>(null)
+const mcBusy = ref(false)
+const mcMsg = ref('')
+const mcErr = ref('')
+const mcInput = ref('')
+
+async function loadMyEntry() {
+  if (!token.value || !me.value) return
+  try {
+    const r = await fetch(apiURL(`/contributors?user_id=${me.value.id}`), {
+      headers: {Authorization: `Bearer ${token.value}`},
+    })
+    if (r.ok) {
+      const j = await r.json()
+      const list: MyEntry[] = j.entries ?? []
+      myEntry.value = list.length ? list[list.length - 1] : null
+      mcInput.value = myEntry.value?.mc_id ?? ''
+    }
+  } catch { /* 忽略 */ }
+}
+
+// 从 UUID 重新获取当前玩家名（改名后刷新缓存）
+async function refreshMCID() {
+  if (!token.value || mcBusy.value) return
+  mcBusy.value = true
+  mcMsg.value = ''
+  mcErr.value = ''
+  try {
+    const r = await fetch(apiURL('/users/me/mc-id/refresh'), {
+      method: 'POST', headers: {Authorization: `Bearer ${token.value}`},
+    })
+    const j = await r.json()
+    if (!r.ok) {
+      mcErr.value = j.error ?? '刷新失败'
+      return
+    }
+    myEntry.value = j.entry
+    mcInput.value = j.entry.mc_id
+    mcMsg.value = `已刷新为 ${j.entry.mc_id}`
+  } catch {
+    mcErr.value = '刷新失败：网络错误，请重试'
+  } finally {
+    mcBusy.value = false
+  }
+}
+
+// 重新设置 MC ID（服务端重新解析 UUID 并校验正版账号）
+async function resetMCID() {
+  if (!token.value || mcBusy.value) return
+  const id = mcInput.value.trim()
+  if (!/^[0-9A-Za-z_]{3,16}$/.test(id)) {
+    mcErr.value = 'MC ID 须为 3-16 位，只能包含数字、大小写字母和下划线'
+    mcMsg.value = ''
+    return
+  }
+  mcBusy.value = true
+  mcMsg.value = ''
+  mcErr.value = ''
+  try {
+    const r = await fetch(apiURL('/users/me/mc-id'), {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token.value}`},
+      body: JSON.stringify({mc_id: id}),
+    })
+    const j = await r.json()
+    if (!r.ok) {
+      mcErr.value = j.error ?? '设置失败'
+      return
+    }
+    myEntry.value = j.entry
+    mcInput.value = j.entry.mc_id
+    mcMsg.value = `已设置为 ${j.entry.mc_id}`
+  } catch {
+    mcErr.value = '设置失败：网络错误，请重试'
+  } finally {
+    mcBusy.value = false
+  }
 }
 
 // ---------- 邀请码注册为管理员 ----------
@@ -415,6 +502,28 @@ onMounted(async () => {
         <label class="field">个人描述<textarea v-model="form.bio" rows="4" placeholder="写一段关于你的介绍（悬浮贡献者卡片时展示）" /></label>
         <button class="btn primary" :disabled="saving" @click="saveProfile">{{ saving ? '保存中…' : '保存资料' }}</button>
         <p v-if="msg" class="ok">{{ msg }}</p>
+
+        <h4>Minecraft 正版 ID</h4>
+        <template v-if="myEntry">
+          <div class="field">
+            <span>当前 ID（白名单以 UUID 为准，改名不影响准入）</span>
+            <div class="mc-row">
+              <button
+                class="btn icon-btn"
+                :disabled="mcBusy || !myEntry.mc_uuid"
+                :title="myEntry.mc_uuid ? '从 Mojang 重新获取当前玩家名' : '尚未解析 UUID，请使用重新设置'"
+                @click="refreshMCID"
+              >↻</button>
+              <code class="mc-id">{{ myEntry.mc_id || '未设置' }}</code>
+            </div>
+            <span v-if="myEntry.mc_uuid" class="hint small-tip">UUID：{{ myEntry.mc_uuid }}</span>
+          </div>
+          <label class="field">重新设置<input v-model="mcInput" maxlength="16" placeholder="3-16 位数字、大小写字母或下划线，设置时重新解析 UUID" /></label>
+          <button class="btn primary" :disabled="mcBusy" @click="resetMCID">{{ mcBusy ? '处理中…' : '保存 MC ID' }}</button>
+          <p v-if="mcMsg" class="ok">{{ mcMsg }}</p>
+          <p v-if="mcErr" class="error">{{ mcErr }}</p>
+        </template>
+        <p v-else class="hint">暂无绑定的贡献者条目（申请审核通过后自动绑定，届时可在此管理 MC ID）。</p>
 
         <h4>邮箱 TOTP 绑定（管理员注册需要）</h4>
         <div v-if="totpStep === 'done'">
@@ -585,6 +694,25 @@ onMounted(async () => {
   display: block;
   font-size: 12px;
   margin-top: 4px;
+}
+.mc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.mc-id {
+  font-size: 15px;
+  font-weight: 600;
+}
+.btn.icon-btn {
+  padding: 4px 10px;
+  font-size: 15px;
+  line-height: 1;
+}
+.btn.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .my-apps {
   list-style: none;

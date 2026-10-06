@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // 个人中心：登录后查看/编辑个人描述与头像、邮箱 TOTP 绑定。
-import {onMounted, onUnmounted, ref} from 'vue'
+import {computed, onMounted, onUnmounted, ref} from 'vue'
 import {upUrl} from './img-url'
 import {authStore} from '../auth-store'
 
@@ -273,12 +273,21 @@ interface MyEntry {
   id: string
   mc_id: string
   mc_uuid: string
+  mc_id_updated_at?: string | null
 }
 const myEntry = ref<MyEntry | null>(null)
 const mcBusy = ref(false)
 const mcMsg = ref('')
 const mcErr = ref('')
 const mcInput = ref('')
+
+// 自行修改 MC ID 的 24 小时冷却截止时间（冷却中为 Date，否则 null）
+const mcCooldownUntil = computed<Date | null>(() => {
+  const ts = myEntry.value?.mc_id_updated_at
+  if (!ts) return null
+  const until = new Date(ts).getTime() + 24 * 3600 * 1000
+  return until > Date.now() ? new Date(until) : null
+})
 
 async function loadMyEntry() {
   if (!token.value || !me.value) return
@@ -518,8 +527,9 @@ onMounted(async () => {
             </div>
             <span v-if="myEntry.mc_uuid" class="hint small-tip">UUID：{{ myEntry.mc_uuid }}</span>
           </div>
-          <label class="field">重新设置<input v-model="mcInput" maxlength="16" placeholder="3-16 位数字、大小写字母或下划线，设置时重新解析 UUID" /></label>
-          <button class="btn primary" :disabled="mcBusy" @click="resetMCID">{{ mcBusy ? '处理中…' : '保存 MC ID' }}</button>
+          <label class="field">重新设置<input v-model="mcInput" maxlength="16" placeholder="3-16 位数字、大小写字母或下划线，设置时重新解析 UUID" :disabled="!!mcCooldownUntil" /></label>
+          <button class="btn primary" :disabled="mcBusy || !!mcCooldownUntil" @click="resetMCID">{{ mcBusy ? '处理中…' : '保存 MC ID' }}</button>
+          <p v-if="mcCooldownUntil" class="hint small-tip">修改冷却中（24 小时内仅可修改一次），可于 {{ mcCooldownUntil.toLocaleString() }} 后再修改。</p>
           <p v-if="mcMsg" class="ok">{{ mcMsg }}</p>
           <p v-if="mcErr" class="error">{{ mcErr }}</p>
         </template>

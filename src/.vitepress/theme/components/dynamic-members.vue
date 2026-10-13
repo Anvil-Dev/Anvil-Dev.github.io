@@ -85,14 +85,12 @@ const orphanSeparate = (catId: string) => {
   const normalIds = new Set(normalCats().map(c => c.id))
   return entriesOf(catId).filter(e => !(e.category_ids ?? []).some(id => normalIds.has(id)))
 }
-// 卡片副标题：按后端分类顺序拼接该成员全部贡献项目
+// 卡片副标题：按后端分类顺序取该成员全部贡献项目
 const categoryMap = computed(() => new Map(categories.value.map(c => [c.id, c])))
-function categoryLine(e: Entry): string {
+function categoriesOf(e: Entry): Category[] {
   return (e.category_ids ?? [])
       .map(id => categoryMap.value.get(id))
       .filter((c): c is Category => Boolean(c))
-      .map(c => `${c.name} ${c.emoji}`)
-      .join(' ')
 }
 
 async function load() {
@@ -198,7 +196,9 @@ onUnmounted(() => {
             </div>
             <div class="info">
               <div class="name">{{ e.nickname }}</div>
-              <div v-if="categoryLine(e)" class="roles">{{ categoryLine(e) }}</div>
+              <div v-if="categoriesOf(e).length" class="roles">
+                <span v-for="c in categoriesOf(e)" :key="c.id" class="role">{{ c.name }} {{ c.emoji }}</span>
+              </div>
               <p v-if="descOf(e)" class="desc">{{ descOf(e) }}</p>
             </div>
             <div v-if="e.display_id || e.bilibili_uid" class="card-footer">
@@ -244,7 +244,9 @@ onUnmounted(() => {
             </div>
             <div class="info">
               <div class="name">{{ e.nickname }}</div>
-              <div v-if="categoryLine(e)" class="roles">{{ categoryLine(e) }}</div>
+              <div v-if="categoriesOf(e).length" class="roles">
+                <span v-for="c in categoriesOf(e)" :key="c.id" class="role">{{ c.name }} {{ c.emoji }}</span>
+              </div>
               <p v-if="descOf(e)" class="desc">{{ descOf(e) }}</p>
             </div>
             <div v-if="e.display_id || e.bilibili_uid" class="card-footer">
@@ -379,6 +381,11 @@ onUnmounted(() => {
   color: var(--vp-c-text-2);
   font-size: 14px;
   line-height: 1.7;
+}
+/* 单个贡献项目作为整体换行：行内容不下时完整移到下一行，不拆散名称与 emoji */
+.role {
+  display: inline-block;
+  margin: 0 5px;
 }
 .desc {
   display: -webkit-box;

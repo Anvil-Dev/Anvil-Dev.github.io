@@ -7,7 +7,7 @@
 | AnvilCraft | [21.1 手册](docs/anvilcraft/21.1/index.md) | [26.1 手册](docs/anvilcraft/26.1/index.md) |
 | Ageratum | [21.1 手册](docs/ageratum/21.1/index.md) | [26.1 手册](docs/ageratum/26.1/index.md) |
 
-[全分支与子文档拆分清单](docs/checklist.md) 记录上游分支、取材提交与功能组。配方和资源字段从各分册的“数据包与资源包”进入。查方法重载、隐式成员、事件或工厂时，打开“Java 公开 API”或在站内搜索类型名。
+[全分支与子文档拆分清单](CHECKLIST.md) 记录上游分支、取材提交与功能组。配方和资源字段从各分册的“数据包与资源包”进入。查方法重载、隐式成员、事件或工厂时，打开“Java 公开 API”或在站内搜索类型名。
 
 ## 运行站点
 

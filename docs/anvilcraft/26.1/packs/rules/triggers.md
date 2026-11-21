@@ -4,31 +4,29 @@
 
 ## 使用示例
 
+给整合包加一个隐藏进度，在方块放置器成功放下另一个放置器时授予玩家。新建 `data/workshop/advancement/automation/place_a_placer.json`，使用本体的方块谓词匹配目标。省略 `display` 仍可用 `/advancement` 查询或撤销。
+
 ```json
 {
-  "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
+    "placer_place_placer": {
       "conditions": {
-        "recipe": "anvilcraft:mineral_fountain_active/lava"
+        "block": {
+          "block": "anvilcraft:block_placer"
+        }
       },
-      "trigger": "minecraft:recipe_unlocked"
+      "trigger": "anvilcraft:placer_place_block"
     }
   },
   "requirements": [
     [
-      "has_the_recipe"
+      "placer_place_placer"
     ]
-  ],
-  "rewards": {
-    "recipes": [
-      "anvilcraft:mineral_fountain_active/lava"
-    ]
-  }
+  ]
 }
 ```
 
-[完整资源文件](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/generated/resources/data/anvilcraft/advancement/recipes/mineral_fountain_active/lava.json)
+[上游放置器进度](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/generated/resources/data/anvilcraft/advancement/anvilcraft/block_placer.json)
 
 ## 类型与字段
 

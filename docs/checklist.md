@@ -2,12 +2,12 @@
 
 按上游提交保存文档。每棵树单独记录依赖、运行时行为、资源格式和公开符号。方框表示该项核对进度。
 
-| 文档树 | 上游分支 | 取材提交 |
-| --- | --- | --- |
-| [AnvilCraft 21.1](/anvilcraft/21.1/) | `dev/1.21/1.6` | [`6a4cde43b4`](https://github.com/Anvil-Dev/AnvilCraft/tree/6a4cde43b4ece65b765137a7aab145b9b4c002bf) |
-| [AnvilCraft 26.1](/anvilcraft/26.1/) | `dev/26.1/1.6` | [`7ac05a7698`](https://github.com/Anvil-Dev/AnvilCraft/tree/7ac05a76988c98454c0384513fcab44d9da4cf88) |
-| [Ageratum 21.1](/ageratum/21.1/) | `releases/1.21.1` | [`83f89c4c3a`](https://github.com/Anvil-Dev/Ageratum/tree/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c) |
-| [Ageratum 26.1](/ageratum/26.1/) | `dev/26.1.2` | [`36bf4ce160`](https://github.com/Anvil-Dev/Ageratum/tree/36bf4ce16017ebc532a369c56f972dfb73d272a0) |
+| 文档树 | 上游分支 | 取材提交 | 逐篇清单 |
+| --- | --- | --- | --- |
+| [AnvilCraft 21.1](/anvilcraft/21.1/) | `dev/1.21/1.6` | [`6a4cde43b4`](https://github.com/Anvil-Dev/AnvilCraft/tree/6a4cde43b4ece65b765137a7aab145b9b4c002bf) | [逐篇清单](/checklist/anvilcraft-21.1.md) |
+| [AnvilCraft 26.1](/anvilcraft/26.1/) | `dev/26.1/1.6` | [`7ac05a7698`](https://github.com/Anvil-Dev/AnvilCraft/tree/7ac05a76988c98454c0384513fcab44d9da4cf88) | [逐篇清单](/checklist/anvilcraft-26.1.md) |
+| [Ageratum 21.1](/ageratum/21.1/) | `releases/1.21.1` | [`83f89c4c3a`](https://github.com/Anvil-Dev/Ageratum/tree/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c) | [逐篇清单](/checklist/ageratum-21.1.md) |
+| [Ageratum 26.1](/ageratum/26.1/) | `dev/26.1.2` | [`36bf4ce160`](https://github.com/Anvil-Dev/Ageratum/tree/36bf4ce16017ebc532a369c56f972dfb73d272a0) | [逐篇清单](/checklist/ageratum-26.1.md) |
 
 ## AnvilCraft 21.1
 

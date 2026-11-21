@@ -10,7 +10,7 @@
     "docs:build": "node --max-old-space-size=8192 node_modules/vitepress/bin/vitepress.js build docs",
     "docs:preview": "vitepress preview docs",
     "typecheck": "vue-tsc --noEmit",
-    "docs:check": "node scripts/check-handbooks.ts",
+    "docs:check": "node scripts/check-handbooks.ts && node scripts/checklist.ts --check",
     "docs:check-render": "node scripts/check-render.ts"
   },
   "devDependencies": {

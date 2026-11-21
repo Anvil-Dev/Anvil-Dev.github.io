@@ -44,3 +44,5 @@ node scripts/verify-examples.ts ../AnvilCraft docs/anvilcraft/21.1 --standalone
 ## 文档目录
 
 每棵分支树位于 `docs/<模组>/<版本>/`。功能组以目录及其 `index.md` 命名，子页面从一级标题生成侧栏条目。Vue 组件在 `docs/.vitepress/theme/`，站点与导航使用 TypeScript，样式使用 SCSS。源文件使用 UTF-8。
+
+新增、移动或改名页面后执行 `node scripts/checklist.ts`，按分册重新生成逐篇清单。总清单表中的“逐篇清单”可按功能组和子系统打开每篇正文。执行 `npm run docs:check` 会对照现有文件复核清单的标题、链接和页数。

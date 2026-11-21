@@ -14,7 +14,9 @@ function indexGuides(branch: string) {
     references.set(key, guides)
   }
   function visit(folder: string) {
-    for (const entry of readdirSync(join(docs, folder), { withFileTypes: true })) {
+    const entries = readdirSync(join(docs, folder), { withFileTypes: true })
+      .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+    for (const entry of entries) {
       const path = posix.join(folder, entry.name)
       if (entry.isDirectory()) {
         if (entry.name !== 'api' && !entry.name.startsWith('.')) visit(path)

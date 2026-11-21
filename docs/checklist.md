@@ -622,11 +622,11 @@
 
 ## Ageratum 21.1
 
-- [ ] 快速开始 · 开发环境、仓库过滤、依赖坐标、可编译的入口示例
-- [ ] 指南内容 · 文档组织、语言回退、Markdown、内置组件、配方与结构预览
-- [ ] Java 扩展 · 模组生命周期、组件与内联解析器、指南界面和配置
-- [ ] 数据包与资源包 · 加载路径、元数据、绑定、组件参数与结构资源
-- [ ] 公开 API · 类型、构造器、字段、重载、注解、事件与构建器
+- [x] 快速开始 · 开发环境、仓库过滤、依赖坐标、可编译的入口示例
+- [x] 指南内容 · 文档组织、语言回退、Markdown、内置组件、配方与结构预览
+- [x] Java 扩展 · 模组生命周期、组件与内联解析器、指南界面和配置
+- [x] 数据包与资源包 · 加载路径、元数据、绑定、组件参数与结构资源
+- [x] 公开 API · 类型、构造器、字段、重载、注解、事件与构建器
 
 <details><summary>按 Java 包拆分的参考页范围（20 个包）</summary>
 
@@ -652,6 +652,18 @@
 - `dev.anvilcraft.resource.ageratum.util`
 
 </details>
+
+### 已发布的子文档
+
+- [Java 公开 API](/ageratum/21.1/api/) · 23 页
+- [Markdown 扩展](/ageratum/21.1/extensions/) · 5 页
+- [快速开始](/ageratum/21.1/getting-started/) · 3 页
+- [编写与打开手册](/ageratum/21.1/guides/) · 4 页
+- [Markdown 排版](/ageratum/21.1/markdown/) · 5 页
+- [数据包与资源包](/ageratum/21.1/packs/) · 9 页
+- [阅读器与导航](/ageratum/21.1/reader/) · 4 页
+- [客户端配方视图](/ageratum/21.1/recipe-render/) · 3 页
+- [结构模板、投影与导出](/ageratum/21.1/structures/) · 4 页
 
 ## Ageratum 26.1
 

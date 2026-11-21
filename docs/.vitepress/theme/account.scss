@@ -1,0 +1,19 @@
+.account {
+  max-width: 640px;
+  p { margin: .75em 0; }
+  fieldset, section { min-width: 0; margin: 1.25rem 0; padding: 1rem 1.2rem; border: 1px solid var(--vp-c-divider); border-radius: 10px; }
+  legend { font-weight: 650; padding: 0 .3em; }
+  label { display: block; margin: .6rem 0; }
+  input:not([type=checkbox]):not([type=file]), textarea { display: block; width: 100%; font: inherit; background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 6px; padding: .4rem .65rem; }
+  input:focus-visible, textarea:focus-visible, button:focus-visible { outline: 2px solid var(--vp-c-brand-1); }
+  input[type=checkbox] { appearance: auto; margin-inline-end: .35em; }
+  button, .action { display: inline-block; padding: .35rem .8rem; margin: .25rem .4rem .25rem 0; border: 1px solid var(--vp-c-divider); border-radius: 6px; font-size: .92rem; color: var(--vp-c-text-1); cursor: pointer; text-decoration: none; }
+  button:disabled { opacity: .55; cursor: default; }
+  .primary { background: var(--vp-button-brand-bg); color: var(--vp-button-brand-text); border-color: transparent; }
+  .error { color: var(--vp-c-danger-1); } .notice { color: var(--vp-c-tip-1); }
+  .muted, small { color: var(--vp-c-text-2); }
+  .avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+  .photos { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .photos img { max-width: 88px; max-height: 88px; object-fit: contain; }
+  .secret { overflow-wrap: anywhere; }
+}

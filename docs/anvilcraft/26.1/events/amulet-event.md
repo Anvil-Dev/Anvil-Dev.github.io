@@ -1,6 +1,8 @@
 # AmuletEvent
 
-该组事件定义在 [`AmuletEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/event/AmuletEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+附属装备槽想参加护符扫描时，先在 `EntityCheck` 对支持的生物调用 `pass()`，再于 `Find` 中用 `provide(stack)` 交出候选物品。`EntityCheck` 缺省未通过，管理器此时返回 `null`。通过后未找到护符则返回空列表。
+
+有嵌套物品的容器可以在 `ProcessFound` 展开内容。取消只丢弃当前候选。提供一个或多个栈后，管理器只保留带 `AMULET` 组件的栈，不再自动使用外层栈。`ModifyRaffleProbability` 发生在抽取失败之后，监听器收到的是原概率加 10，读回值限制在 0 至 100，影响下一次抽取。[护符查找与抽取](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/AmuletManager.java)
 
 | 事件类型 | 创建位置 |
 | --- | --- |

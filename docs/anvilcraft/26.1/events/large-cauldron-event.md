@@ -1,6 +1,8 @@
 # LargeCauldronEvent
 
-该组事件定义在 [`LargeCauldronEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/event/LargeCauldronEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+大型炼药锅的交互、伤害和产物有三个不同的结果出口。`UseItem` 在默认手持交互之前发布。接管时设置 `setResult(...)` 并取消，发布者才直接返回它。缺省结果是 `TRY_WITH_EMPTY_HAND`。`FluidDamage` 可以改写燃烧液体的接触伤害，`MixingOutput` 接收基础产物的副本，发布者用处理后的 `getResult()` 继续出料。
+
+`ServerTick`、`EntityInside` 适合观察锅与实体。巨砧命中时的 `GiantAnvilImpact` 可替换 `landedAnvilState`，结果仍需通过巨砧部件与主方块位置检查。同实体同游戏刻还有去重。设置一个无关状态会使该巨砧加工路径提前返回。[交互返回值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/LargeCauldronBlock.java) · [命中、伤害与产物](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/entity/LargeCauldronBlockEntity.java)
 
 | 事件类型 | 创建位置 |
 | --- | --- |

@@ -1,6 +1,14 @@
 # 事件
 
-先确定要介入的动作，再查看事件在哪段游戏逻辑中创建。打开调用点可核对发布总线、所在一侧，以及发布者是否检查取消或结果标志。
+按要介入的动作选择事件。手持磁铁通过模组事件总线发布，其余各页列出的运行时事件使用 `NeoForge.EVENT_BUS`。可取消的事件是否会停止游戏行为，取决于发布者怎样处理取消标记。
+
+| 附属功能 | 完整监听器示例 |
+| --- | --- |
+| 为自己的物品追加悬停说明 | [逐行写入提示文本](./append-custom-hover-text-event) |
+| 按玩家装备调整磁铁的拾取半径 | [向模组总线订阅磁铁事件](./use-magnet-event) |
+| 按位置调整燃烧鱼缸的接触伤害 | [限制特定区域内的鱼缸伤害](./fish-tank-event) |
+
+## 其他调用场景
 
 - [AmuletEvent](./amulet-event)
 - [AnvilBehaviorRegisterEvent](./anvil-behavior-register-event)

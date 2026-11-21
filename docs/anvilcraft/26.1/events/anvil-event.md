@@ -1,6 +1,8 @@
 # AnvilEvent
 
-该组事件定义在 [`AnvilEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/event/AnvilEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+想在落点执行一次操作，应先区分整座巨砧和落点方块。普通 `OnLand` 提供铁砧落点，承压方块在 `getPos().below()`。巨砧落成后先发一次 `GiantOnLand`，再在 3 × 3 底面逐格发九次 `OnLand`。整座结构只结算一次时订阅前者。铁砧锤也有用临时实体发布 `OnLand` 的路径。
+
+普通下落铁砧的发布者会读取 `OnLand.setAnvilDamage(true)` 对应的标志，按铁砧损伤流程更新落点。巨砧的九次通知没有这一步回读。`CollisionBlock` 在移动结束后报告碰撞，其 `speed` 是碰撞前移动向量的长度。取消可阻止后续内置碰撞合成监听器，已执行的实体移动无法由此撤销。`HurtEntity` 提供目标和伤害数值，字段只读。[碰撞处理](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/event/FallingBlockCollisionEventListener.java) · [巨砧落成](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/workstation/GiantAnvilBlock.java)
 
 | 事件类型 | 创建位置 |
 | --- | --- |

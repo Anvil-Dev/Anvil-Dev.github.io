@@ -27,6 +27,12 @@ export default defineConfig({
       provider: 'local',
       options: {
         miniSearch: {
+          searchOptions: {
+            filter: result => {
+              const branch = location.pathname.match(/\/(anvilcraft|ageratum)\/(21\.1|26\.1)\//)?.[0]
+              return !branch || String(result.id).includes(branch)
+            },
+          },
           options: {
             tokenize: (text: string) => {
               const words = text.match(/[\p{Script=Han}]+|[\p{Script=Latin}\d_$]+/gu) ?? []

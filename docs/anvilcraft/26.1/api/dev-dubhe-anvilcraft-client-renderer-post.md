@@ -1,0 +1,42 @@
+# dev.dubhe.anvilcraft.client.renderer.post
+
+
+
+## GravitationalLensPostEffect
+
+` public class GravitationalLensPostEffect `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L34)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final int UNIFORM_TRANSFORM_SIZE ` | 初值 ` TransformsUbo.DEFINITION.size(BufferLayout.STD140) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L35) |
+| ` public void resize(int width, int height) ` | 实现调用 ` this.lensOutputTarget.resize(width, height) `<br>实现调用 ` this.device.createCommandEncoder() `<br>实现调用 ` this.transform.getProjMat().setOrtho(0, width, 0, height, -10000, 10000) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L85) |
+| ` public void uploadSamplerInfo( CommandEncoder commandEncoder, int outWidth, int outHeight, int inWidth, int inHeight ) ` | 实现调用 ` this.samplerInfo.getOutSize().set(outWidth, outHeight) `<br>实现调用 ` this.samplerInfo.getOutSize() `<br>实现调用 ` this.samplerInfo.getInSize().set(inWidth, inHeight) `<br>[调用处 GravitationalLensPostEffect.process](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L149) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L95) |
+| ` public void uploadBlackHoles( CommandEncoder commandEncoder, List<HoleProjection> holes, int count, float lensStrength, float eventHorizonRadius, float perspectiveScale ) ` | 实现调用 ` Math.min(Math.min(count, holes.size()), GravitationalLensPostEffect.MAX_HOLES) `<br>实现调用 ` Math.min(count, holes.size()) `<br>实现调用 ` holes.size() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L107) |
+| ` @SuppressWarnings("DataFlowIssue") public void process( GpuTextureView input, RenderTarget output, int width, int height, LevelRenderState levelRenderState ) ` | 实现调用 ` this.device.createCommandEncoder() `<br>实现调用 ` GravitationalLensSupport.uploadBlackHoles(this, commandEncoder, levelRenderState) `<br>实现调用 ` this.uploadSamplerInfo(commandEncoder, width, height, width, height) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L137) |
+| ` public RenderTarget getLensOutputTarget() ` | 末尾返回 ` this.lensOutputTarget `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L34) |
+| ` public GpuBuffer getSamplerInfoUBO() ` | 末尾返回 ` this.samplerInfoUBO `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L34) |
+| ` public GpuBuffer getBlackHolesUBO() ` | 末尾返回 ` this.blackHolesUBO `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L34) |
+| ` public GpuSampler getSampler() ` | 末尾返回 ` this.sampler `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L34) |
+| ` public GravitationalLensPostEffect() ` | Java 提供的无参构造器。<br>[调用处 ModPostEffects.createPostEffects](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/init/ModPostEffects.java#L17) | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/GravitationalLensPostEffect.java#L34) |
+
+## LaserBloomPostEffect
+
+` public final class LaserBloomPostEffect implements AutoCloseable `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L30)
+
+类型注解 ` @EventBusSubscriber(modid = AnvilCraft.MOD_ID, value = Dist.CLIENT) `
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` @SubscribeEvent public static void register(RegisterRenderPipelinesEvent event) ` | 事件总线派发 ` RegisterRenderPipelinesEvent ` 时调用。<br>实现调用 ` event.registerPipeline(BLUR) `<br>实现调用 ` event.registerPipeline(APPLY) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L57) |
+| ` @SubscribeEvent public static void beginFrame(RenderFrameEvent.Pre event) ` | 事件总线派发 ` RenderFrameEvent.Pre ` 时调用。<br>执行 ` INSTANCE.dirty = false ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L63) |
+| ` @SubscribeEvent public static void afterLevel(RenderLevelStageEvent.AfterLevel event) ` | 事件总线派发 ` RenderLevelStageEvent.AfterLevel ` 时调用。<br>执行 ` INSTANCE.process() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L68) |
+| ` @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) ` | 事件总线派发 ` ClientPlayerNetworkEvent.LoggingOut ` 时调用。<br>执行 ` INSTANCE.close() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L73) |
+| ` @SubscribeEvent public static void shutdown(GameShuttingDownEvent event) ` | 事件总线派发 ` GameShuttingDownEvent ` 时调用。<br>执行 ` INSTANCE.close() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L78) |
+| ` public static RenderTarget lineTarget() ` | 末尾返回 ` input ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L83) |
+| ` public static void beginDraw() ` | 实现调用 ` lineTarget() `<br>实现调用 ` input.getColorTextureView() `<br>实现调用 ` input.getDepthTextureView() `<br>[调用处 LaserBloomCaptureMixin.anvilcraft$beginLaserBloom](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/client/LaserBloomCaptureMixin.java#L20) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L90) |
+| ` public static void endDraw() ` | [调用处 LaserBloomCaptureMixin.anvilcraft$endLaserBloom](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/client/LaserBloomCaptureMixin.java#L30) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L98) |
+| ` @Override public void close() ` | 分支 ` (this.input != null) ` 内调用 ` this.input.destroyBuffers() `<br>分支 ` (this.first != null) ` 内调用 ` this.first.destroyBuffers() `<br>分支 ` (this.second != null) ` 内调用 ` this.second.destroyBuffers() `<br>[调用处 LaserBloomPostEffect.prepare](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L108) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/renderer/post/LaserBloomPostEffect.java#L161) |

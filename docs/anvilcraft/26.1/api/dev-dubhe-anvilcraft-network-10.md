@@ -1,0 +1,216 @@
+# dev.dubhe.anvilcraft.network（StructureScannerEditPacket.Action 至 SwitchHeavyHalberdModePacket）
+
+
+
+## StructureScannerEditPacket.Action
+
+` public enum Action `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L20)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` REPLACE ` | 声明于枚举 ` StructureScannerEditPacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L21) |
+| ` REPLACE_ALL ` | 声明于枚举 ` StructureScannerEditPacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L21) |
+| ` RESIZE ` | 声明于枚举 ` StructureScannerEditPacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L21) |
+| ` UNDO ` | 声明于枚举 ` StructureScannerEditPacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L21) |
+| ` public static Action[] values() ` | 返回按声明顺序排列的枚举常量数组，每次调用得到独立数组。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L20) |
+| ` public static Action valueOf(String name) ` | 按大小写精确匹配枚举名。未知名称抛出 IllegalArgumentException，null 抛出 NullPointerException。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerEditPacket.java#L20) |
+
+## StructureScannerFilePacket
+
+` public record StructureScannerFilePacket(int containerId, UUID id, Action action, String name, int total, int offset, byte[] bytes) implements IServerboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public StructureScannerFilePacket(int containerId, UUID id, Action action, String name) ` | 执行 ` this(containerId, id, action, name, 0, 0, new byte[0]) `<br>[调用处 BlueprintClientFiles.requestFiles](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/building/BlueprintClientFiles.java#L154) | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L22) |
+| ` public static final Type<StructureScannerFilePacket> TYPE ` | 初值 ` IPacket.type(AnvilCraft.of("structure_scanner_file")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L26) |
+| ` public static final StreamCodec<FriendlyByteBuf, StructureScannerFilePacket> STREAM_CODEC ` | 由 ` StreamCodec.of ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L27) |
+| ` @Override public Type<StructureScannerFilePacket> type() ` | 末尾返回 ` TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L41) |
+| ` @Override public void handleOnServer(Player player) ` | 实现调用 ` player.isSpectator() `<br>实现调用 ` menu.stillValid(player) `<br>实现调用 ` StructureScannerFiles.handle(serverPlayer, menu, this) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L46) |
+| ` public int containerId() ` | 读取 record 分量 ` containerId ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public UUID id() ` | 读取 record 分量 ` id ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public Action action() ` | 读取 record 分量 ` action ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public String name() ` | 读取 record 分量 ` name ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public int total() ` | 读取 record 分量 ` total ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public int offset() ` | 读取 record 分量 ` offset ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public byte[] bytes() ` | 读取 record 分量 ` bytes ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L16) |
+
+## StructureScannerFilePacket.Action
+
+` public enum Action `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L18)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` LIST ` | 声明于枚举 ` StructureScannerFilePacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L19) |
+| ` IMPORT ` | 声明于枚举 ` StructureScannerFilePacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L19) |
+| ` EXPORT ` | 声明于枚举 ` StructureScannerFilePacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L19) |
+| ` RECIPE ` | 声明于枚举 ` StructureScannerFilePacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L19) |
+| ` UPLOAD ` | 声明于枚举 ` StructureScannerFilePacket.Action ` | [枚举值](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L19) |
+| ` public static Action[] values() ` | 返回按声明顺序排列的枚举常量数组，每次调用得到独立数组。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L18) |
+| ` public static Action valueOf(String name) ` | 按大小写精确匹配枚举名。未知名称抛出 IllegalArgumentException，null 抛出 NullPointerException。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFilePacket.java#L18) |
+
+## StructureScannerFileResultPacket
+
+` public record StructureScannerFileResultPacket(UUID id, String error, int total, int offset, byte[] bytes) implements IClientboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<StructureScannerFileResultPacket> TYPE ` | 初值 ` IPacket.type(AnvilCraft.of("structure_scanner_file_result")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L16) |
+| ` public static final StreamCodec<FriendlyByteBuf, StructureScannerFileResultPacket> STREAM_CODEC ` | 由 ` StreamCodec.of ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L17) |
+| ` @Override public Type<StructureScannerFileResultPacket> type() ` | 末尾返回 ` TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L29) |
+| ` @Override public void handleOnClient(Player player) ` | 执行 ` BlueprintClientFiles.receive(this) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L34) |
+| ` public StructureScannerFileResultPacket(UUID id, String error, int total, int offset, byte[] bytes) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public UUID id() ` | 读取 record 分量 ` id ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public String error() ` | 读取 record 分量 ` error ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public int total() ` | 读取 record 分量 ` total ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public int offset() ` | 读取 record 分量 ` offset ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public byte[] bytes() ` | 读取 record 分量 ` bytes ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerFileResultPacket.java#L14) |
+
+## StructureScannerRangeSyncPacket
+
+` public record StructureScannerRangeSyncPacket(int rangeX, int rangeY, int rangeZ) implements IClientboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<StructureScannerRangeSyncPacket> TYPE ` | 初值 ` IPacket.type( AnvilCraft.of("structure_scanner_range_sync") ) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L15) |
+| ` public static final StreamCodec<ByteBuf, StructureScannerRangeSyncPacket> STREAM_CODEC ` | 由 ` StreamCodec.composite ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L18) |
+| ` @Override public Type<StructureScannerRangeSyncPacket> type() ` | 末尾返回 ` StructureScannerRangeSyncPacket.TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L28) |
+| ` @Override public void handleOnClient(Player player) ` | 实现调用 ` Minecraft.getInstance() `<br>分支 ` (player.containerMenu instanceof StructureScannerMenu menu) ` 内调用 ` menu.getBlockEntity() `<br>分支 ` (player.containerMenu instanceof StructureScannerMenu menu) ` 内调用 ` blockEntity.getRangeX().fromIndex(this.rangeX) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L33) |
+| ` public StructureScannerRangeSyncPacket(int rangeX, int rangeY, int rangeZ) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+| ` public int rangeX() ` | 读取 record 分量 ` rangeX ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+| ` public int rangeY() ` | 读取 record 分量 ` rangeY ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+| ` public int rangeZ() ` | 读取 record 分量 ` rangeZ ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerRangeSyncPacket.java#L14) |
+
+## StructureScannerSavePacket
+
+` public record StructureScannerSavePacket(int containerId, String name, boolean autoRotate, ItemStack marker) implements IServerboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<StructureScannerSavePacket> TYPE ` | 初值 ` IPacket.type(AnvilCraft.of("structure_scanner_save")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L21) |
+| ` public static final StreamCodec<RegistryFriendlyByteBuf, StructureScannerSavePacket> STREAM_CODEC ` | 由 ` StreamCodec.of ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L22) |
+| ` @Override public Type<StructureScannerSavePacket> type() ` | 末尾返回 ` TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L33) |
+| ` @Override public void handleOnServer(Player player) ` | 实现调用 ` player.isSpectator() `<br>实现调用 ` menu.stillValid(player) `<br>实现调用 ` menu.getBlockEntity() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L38) |
+| ` public StructureScannerSavePacket(int containerId, String name, boolean autoRotate, ItemStack marker) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public int containerId() ` | 读取 record 分量 ` containerId ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public String name() ` | 读取 record 分量 ` name ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public boolean autoRotate() ` | 读取 record 分量 ` autoRotate ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public ItemStack marker() ` | 读取 record 分量 ` marker ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerSavePacket.java#L19) |
+
+## StructureScannerStatusPacket
+
+` public record StructureScannerStatusPacket(int containerId, Component message) implements IClientboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<StructureScannerStatusPacket> TYPE ` | 初值 ` IPacket.type(AnvilCraft.of("structure_scanner_status")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L16) |
+| ` public static final StreamCodec<RegistryFriendlyByteBuf, StructureScannerStatusPacket> STREAM_CODEC ` | 初值 ` StreamCodec.composite( ByteBufCodecs.VAR_INT, StructureScannerStatusPacket::containerId, ComponentSerialization.STREAM_CODEC, StructureScannerStatusPacket::message, StructureScannerStatusPacket::new ) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L17) |
+| ` @Override public Type<StructureScannerStatusPacket> type() ` | 末尾返回 ` TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L23) |
+| ` @Override public void handleOnClient(Player player) ` | 实现调用 ` Minecraft.getInstance() `<br>实现调用 ` screen.getMenu() `<br>实现调用 ` screen.showStatus(this.message) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L28) |
+| ` public StructureScannerStatusPacket(int containerId, Component message) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15) |
+| ` public int containerId() ` | 读取 record 分量 ` containerId ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15) |
+| ` public Component message() ` | 读取 record 分量 ` message ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/StructureScannerStatusPacket.java#L15) |
+
+## SwapPocketPacket
+
+` public record SwapPocketPacket(int slot) implements IServerboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L13)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<SwapPocketPacket> TYPE ` | 初值 ` new Type<>(AnvilCraft.of("swap_pocket")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L14) |
+| ` public static final StreamCodec<ByteBuf, SwapPocketPacket> STREAM_CODEC ` | 初值 ` ByteBufCodecs.VAR_INT .map(SwapPocketPacket::new, SwapPocketPacket::slot) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L15) |
+| ` @Override public Type<SwapPocketPacket> type() ` | 末尾返回 ` TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L18) |
+| ` @Override public void handleOnServer(Player player) ` | 实现调用 ` player.isAlive() `<br>实现调用 ` player.isSpectator() `<br>实现调用 ` PocketInventory.capacity(player) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L23) |
+| ` public SwapPocketPacket(int slot) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L13) |
+| ` public int slot() ` | 读取 record 分量 ` slot ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L13) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L13) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L13) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwapPocketPacket.java#L13) |
+
+## SwitchDragonRodProtectContainersPacket
+
+` public record SwitchDragonRodProtectContainersPacket(InteractionHand hand, boolean protect) implements IServerboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<SwitchDragonRodProtectContainersPacket> TYPE ` | 初值 ` new Type<>( AnvilCraft.of("switch_dragon_rod_protect_containers") ) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L16) |
+| ` public static final StreamCodec<RegistryFriendlyByteBuf, SwitchDragonRodProtectContainersPacket> STREAM_CODEC ` | 由 ` StreamCodec.composite ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L19) |
+| ` @Override public Type<SwitchDragonRodProtectContainersPacket> type() ` | 末尾返回 ` SwitchDragonRodProtectContainersPacket.TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L28) |
+| ` @Override public void handleOnServer(Player player) ` | 实现调用 ` player.getItemInHand(this.hand) `<br>实现调用 ` dragonRod.getItem() `<br>实现调用 ` dragonRod.set(ModComponents.DEVOUR_PROTECT_CONTAINERS, this.protect) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L33) |
+| ` public SwitchDragonRodProtectContainersPacket(InteractionHand hand, boolean protect) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15) |
+| ` public InteractionHand hand() ` | 读取 record 分量 ` hand ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15) |
+| ` public boolean protect() ` | 读取 record 分量 ` protect ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchDragonRodProtectContainersPacket.java#L15) |
+
+## SwitchEquipmentAbilityPacket
+
+` public record SwitchEquipmentAbilityPacket(InteractionHand hand, EquipmentSlot slot, boolean enabled) implements IServerboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<SwitchEquipmentAbilityPacket> TYPE ` | 初值 ` new Type<>(AnvilCraft.of("switch_equipment_ability")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L16) |
+| ` public static final StreamCodec<RegistryFriendlyByteBuf, SwitchEquipmentAbilityPacket> STREAM_CODEC ` | 由 ` StreamCodec.composite ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L17) |
+| ` @Override public Type<SwitchEquipmentAbilityPacket> type() ` | 末尾返回 ` TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L24) |
+| ` @Override public void handleOnServer(Player player) ` | 实现调用 ` player.getItemInHand(this.hand) `<br>实现调用 ` stack.getItem() `<br>实现调用 ` armor.getEquipmentSlot() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L29) |
+| ` public SwitchEquipmentAbilityPacket(InteractionHand hand, EquipmentSlot slot, boolean enabled) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+| ` public InteractionHand hand() ` | 读取 record 分量 ` hand ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+| ` public EquipmentSlot slot() ` | 读取 record 分量 ` slot ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+| ` public boolean enabled() ` | 读取 record 分量 ` enabled ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchEquipmentAbilityPacket.java#L15) |
+
+## SwitchHeavyHalberdModePacket
+
+` public record SwitchHeavyHalberdModePacket(InteractionHand hand, HeavyHalberdMode mode) implements IServerboundPacket `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Type<SwitchHeavyHalberdModePacket> TYPE ` | 初值 ` new Type<>(AnvilCraft.of("switch_heavy_halberd_mode")) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L14) |
+| ` public static final StreamCodec<ByteBuf, SwitchHeavyHalberdModePacket> STREAM_CODEC ` | 由 ` StreamCodec.composite ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L15) |
+| ` @Override public Type<SwitchHeavyHalberdModePacket> type() ` | 末尾返回 ` SwitchHeavyHalberdModePacket.TYPE ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L23) |
+| ` @Override public void handleOnServer(Player player) ` | 执行 ` HeavyHalberdItem.setMode(player, this.hand, this.mode) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L28) |
+| ` public SwitchHeavyHalberdModePacket(InteractionHand hand, HeavyHalberdMode mode) ` | 按声明顺序接收所有 record 分量。 | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13) |
+| ` public InteractionHand hand() ` | 读取 record 分量 ` hand ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13) |
+| ` public HeavyHalberdMode mode() ` | 读取 record 分量 ` mode ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/network/SwitchHeavyHalberdModePacket.java#L13) |

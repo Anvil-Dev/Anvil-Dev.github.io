@@ -1,0 +1,73 @@
+# dev.dubhe.anvilcraft.saved.setting
+
+
+
+## PlayerSetting
+
+` public record PlayerSetting(List<CategoryEntry> listed, List<ICategory> custom, StorageSetting storage) `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final MapCodec<PlayerSetting> CODEC ` | 由 ` CodecUtil.mapCodec ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L21) |
+| ` public static final StreamCodec<RegistryFriendlyByteBuf, PlayerSetting> STREAM_CODEC ` | 由 ` StreamCodec.composite ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L34) |
+| ` public PlayerSetting(List<CategoryEntry> listed, List<ICategory> custom, StorageSetting storage) ` | [调用处 SettingClientStub.copy](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/rpc/SettingClientStub.java#L103) | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L44) |
+| ` public PlayerSetting(HolderLookup.Provider registries) ` | 执行 ` this(PlayerSetting.initialize(registries), new ArrayList<>(), new StorageSetting()) `<br>[调用处 StorageScreen.构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/StorageScreen.java#L296) | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L50) |
+| ` public void list(ICategory category) ` | 执行 ` this.listed.add(new CategoryEntry(category)) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L64) |
+| ` public CategoryEntry unlist(int index) ` | 末尾返回 ` this.listed.remove(index) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L68) |
+| ` public void pinToTop(int index) ` | 执行 ` this.listed.addFirst(this.listed.remove(index)) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L72) |
+| ` public void addCustom(ICategory category) ` | 执行 ` this.custom.add(category) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L76) |
+| ` public void addCustom(ItemStack filter) ` | 执行 ` this.custom.add(FilterCategory.from(filter)) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L80) |
+| ` public List<CategoryEntry> listed() ` | 读取 record 分量 ` listed ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20) |
+| ` public List<ICategory> custom() ` | 读取 record 分量 ` custom ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20) |
+| ` public StorageSetting storage() ` | 读取 record 分量 ` storage ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L20) |
+
+## PlayerSettings
+
+` public class PlayerSettings extends BetterSavedData `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L22)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final Identifier ID ` | 初值 ` AnvilCraft.of("player_settings") ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L24) |
+| ` public static final MapCodec<PlayerSettings> CODEC ` | 初值 ` CodecUtil.mapCodec(Codec.unboundedMap(UUIDUtil.STRING_CODEC, PlayerSetting.CODEC.codec()).fieldOf("settings").forGetter(PlayerSettings::getSettings), PlayerSettings::new) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L25) |
+| ` public static final SavedDataType<PlayerSettings> TYPE ` | 初值 ` new SavedDataType<>(PlayerSettings.ID, PlayerSettings::new, PlayerSettings.CODEC.codec()) ` | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L31) |
+| ` public static PlayerSettings get() ` | 末尾返回 ` BetterSavedData.get(PlayerSettings.TYPE, PlayerSettings.CLIENT_COPY) `<br>[调用处 SettingClientStub.load](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/rpc/SettingClientStub.java#L54) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L47) |
+| ` public static PlayerSetting getSetting(HolderLookup.Provider registries, NameAndId nai) ` | 末尾返回 ` PlayerSettings.get().settings.computeIfAbsent(nai.id(), _ -> new PlayerSetting(registries)) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L51) |
+| ` public static PlayerSetting getSetting(HolderLookup.Provider registries, UUID id) ` | 请保证传入的 ID 是玩家档案 ID，而非玩家实体 ID！<br>末尾返回 ` PlayerSettings.get().settings.computeIfAbsent(id, _ -> new PlayerSetting(registries)) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L56) |
+| ` public static void clearClient() ` | 执行 ` PlayerSettings.CLIENT_COPY.settings.clear() `<br>[调用处 SettingClientStub.clearCache](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/rpc/SettingClientStub.java#L200) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L60) |
+| ` public Map<UUID, PlayerSetting> getSettings() ` | 末尾返回 ` this.settings `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSettings.java#L22) |
+
+## StorageSetting
+
+` public class StorageSetting `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static final MapCodec<StorageSetting> CODEC ` | 由 ` CodecUtil.mapCodec ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L19) |
+| ` public static final StreamCodec<ByteBuf, StorageSetting> STREAM_CODEC ` | 由 ` StreamCodec.composite ` 初始化。 | [字段](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L38) |
+| ` public StorageSetting(String content, SearchMode search, SortMode sort, OrderMode order, NbtDisplayMode nbtDisplay) ` | 执行 ` this(content, search, sort, order, nbtDisplay, false) ` | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L60) |
+| ` public StorageSetting() ` | 执行 ` this("", SearchMode.CLEAR, SortMode.COUNT, OrderMode.SEQUENTIAL, NbtDisplayMode.UNFOLD) `<br>[调用处 PlayerSetting.构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/PlayerSetting.java#L51) | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L64) |
+| ` public String getSearchContent() ` | 末尾返回 ` this.searchContent `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public SearchMode getSearch() ` | 末尾返回 ` this.search `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public SortMode getSort() ` | 末尾返回 ` this.sort `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public OrderMode getOrder() ` | 末尾返回 ` this.order `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public NbtDisplayMode getNbtDisplay() ` | 末尾返回 ` this.nbtDisplay `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public boolean isFlipped() ` | 末尾返回 ` this.flipped `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public void setSearchContent(final String searchContent) ` | 执行 ` this.searchContent = searchContent `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public void setSearch(final SearchMode search) ` | 执行 ` this.search = search `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public void setSort(final SortMode sort) ` | 执行 ` this.sort = sort `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public void setOrder(final OrderMode order) ` | 执行 ` this.order = order `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public void setNbtDisplay(final NbtDisplayMode nbtDisplay) ` | 执行 ` this.nbtDisplay = nbtDisplay `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public void setFlipped(final boolean flipped) ` | 执行 ` this.flipped = flipped `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` @Override public boolean equals(final Object o) ` | ` (o == this) ` 成立时提前返回 ` true `<br>` (!(o instanceof StorageSetting)) ` 成立时提前返回 ` false `<br>` (!other.canEqual((Object) this)) ` 成立时提前返回 ` false `<br>` (this.isFlipped() != other.isFlipped()) ` 成立时提前返回 ` false `<br>` (this$searchContent == null ? other$searchContent != null : !this$searchContent.equals(other$searchContent)) ` 成立时提前返回 ` false `<br>` (this$search == null ? other$search != null : !this$search.equals(other$search)) ` 成立时提前返回 ` false `<br>` (this$sort == null ? other$sort != null : !this$sort.equals(other$sort)) ` 成立时提前返回 ` false `<br>` (this$order == null ? other$order != null : !this$order.equals(other$order)) ` 成立时提前返回 ` false `<br>` (this$nbtDisplay == null ? other$nbtDisplay != null : !this$nbtDisplay.equals(other$nbtDisplay)) ` 成立时提前返回 ` false `<br>末尾返回 ` true `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` @Override public int hashCode() ` | 末尾返回 ` result `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` @Override public String toString() ` | 实现调用 ` this.getSearchContent() `<br>实现调用 ` this.getSearch() `<br>实现调用 ` this.getSort() `<br>由 Lombok 生成。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |
+| ` public StorageSetting(final String searchContent, final SearchMode search, final SortMode sort, final OrderMode order, final NbtDisplayMode nbtDisplay, final boolean flipped) ` | 由 Lombok 生成。<br>[调用处 SettingClientStub.copy](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/rpc/SettingClientStub.java#L106) | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/saved/setting/StorageSetting.java#L16) |

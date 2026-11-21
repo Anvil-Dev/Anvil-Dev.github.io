@@ -1,0 +1,44 @@
+# dev.dubhe.anvilcraft.client.support（TransparentItemRenderer.State 至 WheelBackgroundCapture）
+
+
+
+## TransparentItemRenderer.State
+
+` public record State(GuiItemRenderState item, int x0, int y0, int x1, int y1, float alpha, int slotOverlay) implements PictureInPictureRenderState `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public State(GuiItemRenderState item, int x0, int y0, int x1, int y1, float alpha) ` | 执行 ` this(item, x0, y0, x1, y1, alpha, 0) ` | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L224) |
+| ` @Override public float scale() ` | 末尾返回 ` 16 ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L228) |
+| ` @Override public Matrix3x2f pose() ` | 末尾返回 ` this.item.pose() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L233) |
+| ` @Override public @Nullable ScreenRectangle scissorArea() ` | 末尾返回 ` this.item.scissorArea() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L238) |
+| ` @Override public @Nullable ScreenRectangle bounds() ` | 末尾返回 ` this.item.bounds() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L243) |
+| ` public GuiItemRenderState item() ` | 读取 record 分量 ` item ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public int x0() ` | 读取 record 分量 ` x0 ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public int y0() ` | 读取 record 分量 ` y0 ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public int x1() ` | 读取 record 分量 ` x1 ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public int y1() ` | 读取 record 分量 ` y1 ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public float alpha() ` | 读取 record 分量 ` alpha ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public int slotOverlay() ` | 读取 record 分量 ` slotOverlay ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public int hashCode() ` | 根据各个分量计算哈希值。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public String toString() ` | 返回包含分量名和值的字符串。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+| ` public boolean equals(Object other) ` | 比较相同 record 类型的各个分量。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/TransparentItemRenderer.java#L222) |
+
+## WheelBackgroundCapture
+
+` public final class WheelBackgroundCapture `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L13)
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public static int sourceDiscColor(int color) ` | 末尾返回 ` ARGB.color(alpha, Math.round(ARGB.red(color) * premultiplier), Math.round(ARGB.green(color) * premultiplier), Math.round(ARGB.blue(color) * premultiplier)) `<br>[调用处 WheelWidgetMixin.anvilcraft$sourceDiscOpacity](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelWidgetMixin.java#L42) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L21) |
+| ` public static void beginFrame() ` | 实现调用 ` WheelBackgroundCapture.PENDING.clear() `<br>[调用处 WheelBackgroundFrameMixin.anvilcraft$beginGuiFrame](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelBackgroundFrameMixin.java#L15) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L30) |
+| ` public static void afterDisc(GuiGraphicsExtractor graphics) ` | 实现调用 ` Minecraft.getInstance().gameRenderer.getGameRenderState() `<br>实现调用 ` Minecraft.getInstance() `<br>实现调用 ` ((GuiBlurBoundaryAccessor) state).anvilcraft$firstStratumAfterBlur() `<br>[调用处 WheelWidgetMixin.anvilcraft$separateDiscFromBackground](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelWidgetMixin.java#L47) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L35) |
+| ` public static boolean atBlurBoundary() ` | ` (!WheelBackgroundCapture.ownsBlurBoundary) ` 成立时提前返回 ` false `<br>末尾返回 ` true `<br>[调用处 WheelGuiBlurMixin.anvilcraft$captureWheelBackground](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelGuiBlurMixin.java#L16) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L44) |
+| ` public static boolean isRefreshing() ` | 末尾返回 ` WheelBackgroundCapture.refreshing `<br>[调用处 WheelFrostedBackgroundMixin.anvilcraft$deferCapture](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelFrostedBackgroundMixin.java#L26) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L51) |
+| ` public static void request(WheelFrostedBackground background, int width, int height) ` | 执行 ` WheelBackgroundCapture.PENDING.put(background, new Size(width, height)) `<br>[调用处 WheelFrostedBackgroundMixin.anvilcraft$deferCapture](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelFrostedBackgroundMixin.java#L28) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L55) |
+| ` public static void forget(WheelFrostedBackground background) ` | 执行 ` WheelBackgroundCapture.PENDING.remove(background) `<br>[调用处 WheelFrostedBackgroundMixin.anvilcraft$forgetCapture](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelFrostedBackgroundMixin.java#L44) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L59) |
+| ` public static void beforeGui() ` | 分支 ` (!WheelBackgroundCapture.ownsBlurBoundary) ` 内调用 ` WheelBackgroundCapture.refresh() `<br>[调用处 WheelBackgroundFrameMixin.anvilcraft$captureWorldBeforeGui](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/WheelBackgroundFrameMixin.java#L21) | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/client/support/WheelBackgroundCapture.java#L63) |

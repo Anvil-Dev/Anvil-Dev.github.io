@@ -4,7 +4,7 @@
 
 ## 使用示例
 
-给整合包加一个隐藏进度，在方块放置器成功放下另一个放置器时授予玩家。新建 `data/workshop/advancement/automation/place_a_placer.json`，使用本体的方块谓词匹配目标。省略 `display` 仍可用 `/advancement` 查询或撤销。
+给整合包加一个隐藏进度，在方块放置器成功放下另一个放置器时授予玩家。新建 `data/workshop/advancement/automation/place_a_placer.json`，使用本体的方块谓词匹配目标。省略 `display` 后，进度不会出现在界面里。调试时用 `/advancement revoke @s only workshop:automation/place_a_placer` 清除记录，即可重试。
 
 ```json
 {

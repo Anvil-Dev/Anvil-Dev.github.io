@@ -1,0 +1,92 @@
+name: Deploy VitePress site to Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm docs:check
+      - run: pnpm docs:build
+      - run: pnpm docs:check-render
+      - name: Upload the pages artifact for 1Panel
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          name: pages
+          path: docs/.vitepress/dist
+          retention-days: 7
+      - name: Upload the GitHub Pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          name: github-pages
+          path: docs/.vitepress/dist
+
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v5
+      - name: Download the 1Panel site
+        uses: actions/download-artifact@v4
+        with:
+          name: pages
+          path: ${{ runner.temp }}/pages
+      - name: Extract the static site
+        run: |
+          mkdir dist
+          tar -xf "$RUNNER_TEMP/pages/artifact.tar" -C dist
+      - name: Publish the site to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+      - name: Refresh www.anvilcraft.dev in 1Panel
+        uses: Gu-ZT/1panel-actions@1.1.1
+        with:
+          url: ${{ secrets.ONEPANEL_URL }}
+          token: ${{ secrets.ONEPANEL_TOKEN }}
+          action: runCronjob
+          params: |
+            name=更新www.anvilcraft.dev
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages

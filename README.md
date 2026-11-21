@@ -28,6 +28,15 @@ pnpm docs:check-render
 pnpm docs:preview
 ```
 
+## 发布官网
+
+向 `main` 提交拉取请求时，GitHub Actions 会检查类型、校验手册、构建站点并核查生成页面的站内链接。合并到 `main` 后，`.github/workflows/page.yml` 从同一份 `docs/.vitepress/dist/` 生成两份归档。
+
+- `pages` 供 1Panel 使用，保留 7 天。下载并解压后可见 `artifact.tar`，站点首页位于 tar 根目录。工作流先把这份站点发布到 `gh-pages`，再用仓库密钥 `ONEPANEL_URL` 和 `ONEPANEL_TOKEN` 触发计划任务「更新www.anvilcraft.dev」。
+- `github-pages` 交给 GitHub Pages 发布到 `anvil-dev.github.io`。
+
+需要重新发布同一提交时，在 Actions 的 **Deploy VitePress site to Pages** 工作流选择 `main` 并手动运行。
+
 ## 社区页面与账户
 
 从「基本信息」可进入模组介绍、概览、特别鸣谢与支持页面。鸣谢页连接贡献者墙和申请入口，右上角账户菜单连接 GitHub 登录与个人中心。

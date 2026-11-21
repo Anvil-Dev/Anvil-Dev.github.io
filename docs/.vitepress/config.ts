@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { branchSidebar } from './sidebar'
+import { apiGuideLinks } from './api-guides'
 
 const versions = ['21.1', '26.1']
 const projects = [
@@ -15,6 +16,7 @@ export default defineConfig({
   buildConcurrency: 8,
   markdown: {
     config(md) {
+      apiGuideLinks(md)
       const renderCode = md.renderer.rules.code_inline!
       md.renderer.rules.code_inline = (tokens, index, ...args) => {
         const html = renderCode(tokens, index, ...args)

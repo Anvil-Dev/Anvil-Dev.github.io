@@ -36,6 +36,7 @@ npm run docs:preview
 
 ```powershell
 node scripts/reference.ts --check --source ../AnvilCraft --output docs/anvilcraft/21.1/api --upstream https://github.com/Anvil-Dev/AnvilCraft --java "$env:JAVA_HOME/bin/java.exe" --lombok "$env:LOMBOK_JAR"
+node scripts/check-source-links.ts ../AnvilCraft docs/anvilcraft/21.1
 node scripts/verify-examples.ts ../AnvilCraft docs/anvilcraft/21.1 --standalone
 ```
 

@@ -13,6 +13,16 @@ export default defineConfig({
   description: '面向模组和整合包作者的 AnvilCraft 与 Ageratum 开发文档。',
   metaChunk: true,
   buildConcurrency: 8,
+  markdown: {
+    config(md) {
+      const renderCode = md.renderer.rules.code_inline!
+      md.renderer.rules.code_inline = (tokens, index, ...args) => {
+        const html = renderCode(tokens, index, ...args)
+        // Java nested array initializers contain literal Vue interpolation delimiters.
+        return tokens[index].content.includes('{{') ? html.replace('<code', '<code v-pre') : html
+      }
+    },
+  },
   vite: { css: { preprocessorOptions: { scss: { api: 'modern' } } } },
   themeConfig: {
     siteTitle: 'AnvilCraft Docs',

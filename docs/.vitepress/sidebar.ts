@@ -55,8 +55,14 @@ function children(directory: string, route: string): DefaultTheme.SidebarItem[] 
 
 export function branchSidebar(mod: string, version: string) {
   const route = `/${mod}/${version}/`
-  return [
+  const items = [
     { text: `${mod === 'anvilcraft' ? 'AnvilCraft' : 'Ageratum'} · ${version}`, link: route },
     ...children(join(docsRoot, mod, version), route),
   ]
+  const position = (item: DefaultTheme.SidebarItem) => {
+    if (item.link === route + 'packs/') return -1
+    if (item.link === route + 'api/') return 1
+    return 0
+  }
+  return items.sort((a, b) => position(a) - position(b))
 }

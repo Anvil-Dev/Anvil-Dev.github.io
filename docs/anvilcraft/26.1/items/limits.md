@@ -1,6 +1,6 @@
 # 限制插入或提取
 
-对外提供只读的 ResourceHandler<ItemResource> 时，用 ReadOnlyItemResourceHandler 包装原处理器。读取槽位、数量和容量会委托给底层对象，插入和提取均不传输。事务的插入和提取返回实际移动量。
+对外提供只读的 `ResourceHandler<ItemResource>` 时，用 ReadOnlyItemResourceHandler 包装原处理器。读取槽位、数量和容量会委托给底层对象，插入和提取均不传输。事务的插入和提取返回实际移动量。
 
 ## 源码中的用例
 

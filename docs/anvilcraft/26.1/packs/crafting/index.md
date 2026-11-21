@@ -1,0 +1,14 @@
+# 合成、饰品与锻造
+
+- [终端解绑](./terminal_unbind)
+- [终端升级](./terminal_upgrade)
+- [中子锭充能](./neutronium_charging)
+- [宝石工艺](./jewel_crafting)
+- [罐装食物](./canning_food)
+- [药丸合成](./pill_recipe)
+- [二合一锻造](./two_to_one_smithing)
+- [四合一锻造](./four_to_one_smithing)
+- [八合一锻造](./eight_to_one_smithing)
+- [霜钢锻造置换](./permutation)
+- [霜钢锻造变形](./deformation)
+- [能量武器制作](./energy_weapon_make)

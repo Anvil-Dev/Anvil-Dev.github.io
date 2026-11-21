@@ -8,5 +8,5 @@
     "lib": ["DOM", "ES2022", "ES2022.Intl"],
     "types": ["node", "vite/client"]
   },
-  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue"]
+  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue", "scripts/**/*.ts"]
 }

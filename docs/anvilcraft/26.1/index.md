@@ -15,6 +15,7 @@
 
 - [护符](./amulets/)
 - [行为树](./behavior/)
+- [配方构建器](./builders/)
 - [恒星演化与铸星砧](./celestial/)
 - [电荷与物品能量](./charge/)
 - [实体、刷怪与催熟](./entities/)

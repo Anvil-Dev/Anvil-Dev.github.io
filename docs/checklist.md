@@ -68,6 +68,7 @@
 - [铁砧落地行为](/anvilcraft/26.1/anvil/) · 3 页
 - [Java 公开 API](/anvilcraft/26.1/api/) · 412 页
 - [行为树](/anvilcraft/26.1/behavior/) · 3 页
+- [配方构建器](/anvilcraft/26.1/builders/) · 49 页
 - [恒星演化与铸星砧](/anvilcraft/26.1/celestial/) · 3 页
 - [电荷与物品能量](/anvilcraft/26.1/charge/) · 3 页
 - [实体、刷怪与催熟](/anvilcraft/26.1/entities/) · 3 页
@@ -87,7 +88,7 @@
 - [传送门](/anvilcraft/26.1/portals/) · 3 页
 - [电网与功率](/anvilcraft/26.1/power/) · 5 页
 - [进度与条件](/anvilcraft/26.1/progress/) · 3 页
-- [配方与数据生成](/anvilcraft/26.1/recipe-code/) · 3 页
+- [配方与数据生成](/anvilcraft/26.1/recipe-code/) · 4 页
 - [方块模型渲染](/anvilcraft/26.1/render/) · 3 页
 - [滑轨与移动结构](/anvilcraft/26.1/sliding/) · 3 页
 - [声音与消音](/anvilcraft/26.1/sound/) · 2 页

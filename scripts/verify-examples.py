@@ -9,6 +9,7 @@ from pathlib import Path
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("upstream", type=Path)
 parser.add_argument("handbook", type=Path)
+parser.add_argument("--standalone", action="store_true", help="Build the quickstart project against its published Maven dependencies")
 parser.add_argument("--offline", action="store_true")
 args = parser.parse_args()
 upstream = args.upstream.resolve()
@@ -19,7 +20,7 @@ if revision != actual:
     parser.error(f"Handbook requires {revision}, found {actual}")
 with tempfile.TemporaryDirectory() as tmp:
     root = Path(tmp)
-    sources = root / "src"
+    sources = root / "src/main/java"
     count = 0
     for page in handbook.rglob("*.md"):
         for code in re.findall(r"^```java\s*\n(.*?)^```", page.read_text("utf-8"), re.M | re.S):
@@ -55,8 +56,20 @@ gradle.projectsEvaluated {
     print(f"Compiling {count} examples for {revision}", flush=True)
     wrapper = upstream / ("gradlew.bat" if os.name == "nt" else "gradlew")
     command = [str(wrapper), "--console=plain", "-I", str(init), "compileHandbookExamples"]
+    working_dir = upstream
+    if args.standalone:
+        guide = (handbook / "getting-started/gradle.md").read_text("utf-8")
+        for filename, build in zip(["settings.gradle", "build.gradle"], re.findall(r"^```groovy\n(.*?)^```", guide, re.M | re.S), strict=True):
+            (root / filename).write_text(build, "utf-8")
+        launch = (handbook / "getting-started/launch.md").read_text("utf-8")
+        metadata = re.search(r"^```toml\n(.*?)^```", launch, re.M | re.S)
+        metadata_file = root / "src/main/resources/META-INF/neoforge.mods.toml"
+        metadata_file.parent.mkdir(parents=True)
+        metadata_file.write_text(metadata[1], "utf-8")
+        working_dir = root
+        command = [str(wrapper), "--console=plain", "classes"]
     if args.offline:
         command.append("--offline")
-    subprocess.run(command, cwd=upstream, check=True, env={
+    subprocess.run(command, cwd=working_dir, check=True, env={
         **os.environ, "HANDBOOK_EXAMPLE_SOURCES": str(sources), "HANDBOOK_EXAMPLE_OUTPUT": str(root / "classes")
     })

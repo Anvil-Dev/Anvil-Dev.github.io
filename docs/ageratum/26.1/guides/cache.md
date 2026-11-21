@@ -1,0 +1,31 @@
+# 判断缓存与语言回退
+
+用命令打开某一页和用手持物品反查页面，查的不是同一个索引。命令先用当前客户端语言查文件，找不到才尝试 `en_us`。物品导航先按物品 ID 与组件筛出绑定项，再选语言；若匹配结果没有当前语言和英语，仍可选其中第一项。
+
+客户端资源重载时，`GuideDocumentCache` 先收集原文、读取 Front Matter 并建立物品索引。第二次遍历才解析完整页面，这样较早解析的页面也能引用较晚文件绑定的物品。单页解析异常会记录在日志里并跳过该页。应用阶段更新文档和导航索引，同时预热命令补全。编辑包内容后用 F3+T 验证。
+
+```java
+package dev.example.fieldguide;
+
+import dev.anvilcraft.resource.ageratum.client.feat.markdown.GuideDocumentCache;
+import dev.anvilcraft.resource.ageratum.client.feat.markdown.MDDocument;
+import java.util.Optional;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
+
+public final class ItemGuideTitle {
+    public static Optional<String> find(ItemStack stack, String language) {
+        Optional<Identifier> page = GuideDocumentCache.getFirstDocumentByItemStack(stack, language);
+        return page.flatMap(GuideDocumentCache::getParsedDocument).map(MDDocument::getTitle);
+    }
+}
+```
+
+| 查询 | 返回值与使用边界 |
+| --- | --- |
+| `getFirstDocumentByItemStack(stack, language)` | 空栈、没有绑定或组件条件全部不匹配时返回空。读客户端当前资源包的索引。 |
+| `getParsedDocument(location)` | 精确资源位置对应的已解析文档。需要解析语言时先定位文件。 |
+| `getNavigationTree(namespace, languageCode)` | 按命名空间和规范化语言取树。调用方可决定缺失语言时的回退策略。 |
+| `reloadListener()` | 返回由客户端登记的重载监听器。资源重新加载后，重新读取当前文档和导航树。 |
+
+[重载和缓存实现](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideDocumentCache.java)

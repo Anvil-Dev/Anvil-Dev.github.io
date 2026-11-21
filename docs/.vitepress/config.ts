@@ -1,17 +1,32 @@
 import { defineConfig } from 'vitepress'
 import { branchSidebar } from './sidebar'
 import { apiGuideLinks } from './api-guides'
+import { projects, siteNavigation, versions } from './navigation'
 
-const versions = ['21.1', '26.1']
-const projects = [
-  { slug: 'anvilcraft', name: 'AnvilCraft' },
-  { slug: 'ageratum', name: 'Ageratum' },
-]
+const chinese = siteNavigation()
+const english = siteNavigation(true)
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'AnvilCraft 开发者手册',
-  description: '面向模组和整合包作者的 AnvilCraft 与 Ageratum 开发文档。',
+  title: 'AnvilCraft',
+  description: '以铁砧为核心的原版生存拓展。铁砧工艺与藿香的模组介绍、社区和开发文档。',
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  locales: {
+    root: { label: '简体中文', lang: 'zh-CN' },
+    en: {
+      label: 'English', lang: 'en',
+      description: 'A vanilla survival expansion centered around the anvil. Project information, community and developer documentation.',
+      themeConfig: {
+        ...english,
+        outline: { label: 'On this page', level: [2, 3] },
+        docFooter: { prev: 'Previous page', next: 'Next page' },
+        sidebarMenuLabel: 'Menu', returnToTopLabel: 'Return to top',
+        darkModeSwitchLabel: 'Appearance', lightModeSwitchTitle: 'Switch to light theme',
+        darkModeSwitchTitle: 'Switch to dark theme', skipToContentLabel: 'Skip to content',
+        langMenuLabel: 'Change language',
+      },
+    },
+  },
   metaChunk: true,
   buildConcurrency: 8,
   markdown: {
@@ -25,16 +40,25 @@ export default defineConfig({
       }
     },
   },
-  vite: { css: { preprocessorOptions: { scss: { api: 'modern' } } } },
+  vite: {
+    define: { 'import.meta.env.VITE_ANVIL_API_BASE': JSON.stringify(process.env.ANVIL_API_BASE || '') },
+    css: { preprocessorOptions: { scss: { api: 'modern' } } },
+  },
   themeConfig: {
-    siteTitle: 'AnvilCraft Docs',
-    nav: projects.map(({ name, slug }) => ({
-      text: name,
-      activeMatch: `^/${slug}/`,
-      items: versions.map(version => ({ text: version, link: `/${slug}/${version}/` })),
-    })),
-    sidebar: Object.fromEntries(projects.flatMap(({ slug }) => versions.map(version =>
-      [`/${slug}/${version}/`, branchSidebar(slug, version)]))),
+    siteTitle: 'AnvilCraft',
+    logo: '/icon.png',
+    nav: chinese.nav,
+    socialLinks: chinese.socialLinks,
+    langMenuLabel: '切换语言',
+    footer: {
+      message: 'Released under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0 License</a>.',
+      copyright: 'Copyright © 2024-present Gugle',
+    },
+    sidebar: {
+      ...chinese.sidebar,
+      ...Object.fromEntries(projects.flatMap(({ slug }) => versions.map(version =>
+        [`/${slug}/${version}/`, branchSidebar(slug, version)]))),
+    },
     search: {
       provider: 'local',
       options: {

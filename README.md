@@ -1,6 +1,6 @@
-# AnvilCraft 开发者手册
+# AnvilCraft 官网与开发文档
 
-面向附属模组、整合包和资源包作者的中文技术文档。站点以 AnvilCraft 为主入口，顶栏可进入 Ageratum。进入分支后，侧栏和搜索使用该分支的文档。
+首页与基本信息有简体中文和英文两版。顶栏的「开发文档」和「藿香」分别打开 AnvilCraft 和 Ageratum 的版本菜单。进入分册后，侧栏和搜索使用该分支的文档。
 
 | 模组 | Minecraft 1.21.1 | Minecraft 26.1.2 |
 | --- | --- | --- |
@@ -11,22 +11,32 @@
 
 ## 运行站点
 
-使用 Node.js 24 及 npm。首次克隆后在仓库根目录执行以下命令。
+使用 Node.js 24 及 pnpm。首次克隆后在仓库根目录执行以下命令。
 
 ```shell
-npm ci
-npm run docs:dev
+pnpm install --frozen-lockfile
+pnpm docs:dev
 ```
 
 打开终端打印的本地地址。生产构建输出到 `docs/.vitepress/dist/`，可交给静态 HTTP 服务器。
 
 ```shell
-npm run typecheck
-npm run docs:check
-npm run docs:build
-npm run docs:check-render
-npm run docs:preview
+pnpm typecheck
+pnpm docs:check
+pnpm docs:build
+pnpm docs:check-render
+pnpm docs:preview
 ```
+
+## 社区页面与账户
+
+从「基本信息」可进入模组介绍、概览、特别鸣谢与支持页面。鸣谢页连接贡献者墙和申请入口，右上角账户菜单连接 GitHub 登录与个人中心。
+
+前端默认使用 `https://api.anvilcraft.dev`。自建后端时，在运行 `pnpm docs:dev` 或构建前设置环境变量 `ANVIL_API_BASE`，填入后端源地址即可，例如 `http://localhost:8080`。也可在前端脚本运行前提供 `window.__ANVIL_API_BASE__`。账户、贡献者与实时更新共用这一地址。
+
+部署到新域名时，将站点来源加入所用后端的 CORS 配置，并确保 GitHub OAuth 与后端约定的回跳地址最终回到该站点的 `/oauth-callback`。GitHub 客户端密钥由后端管理。使用设备码的部署沿用 GitHub 设备授权流程。
+
+首页图文和图标、基本信息与社区页面移植自 Anvil-Dev 官网。上游页脚署名为 Copyright © 2024-present Gugle，内容采用 CC BY-NC-SA 4.0。迁移的前端代码沿用上游 AGPL 许可，本仓库针对开发文档导航、双语路由和账户交互做了适配。[上游取材提交](https://github.com/Anvil-Dev/Anvil-Dev.github.io/tree/26c370f6ca809bafa66781e07dcde509a97f05de) · [内容许可](https://creativecommons.org/licenses/by-nc-sa/4.0/) · [上游代码许可全文](licenses/Anvil-Dev.github.io-AGPL-3.0.txt)
 
 ## 核查一个分支
 

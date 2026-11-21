@@ -22,6 +22,7 @@ class RecipeCalls {
                 new TreeScanner<Void, Void>() {
                     String method = "";
                     final Map<String,String> declarations = new LinkedHashMap<>();
+                    final Set<String> serializerRegisters = new HashSet<>();
                     String exact(Tree t) {
                         return source.substring((int)positions.getStartPosition(unit,t), (int)positions.getEndPosition(unit,t));
                     }
@@ -34,11 +35,24 @@ class RecipeCalls {
                         return result;
                     }
                     @Override public Void visitVariable(VariableTree t, Void v) {
+                        if (t.getInitializer() instanceof MethodInvocationTree init
+                            && init.getArguments().stream().anyMatch(arg -> arg.toString().endsWith("Registries.RECIPE_SERIALIZER"))) {
+                            serializerRegisters.add(t.getName().toString());
+                        }
                         if (!method.isEmpty() && t.getType() != null)
                             declarations.put(t.getName().toString(),exact(t.getType()));
                         return super.visitVariable(t,v);
                     }
                     @Override public Void visitMethodInvocation(MethodInvocationTree call, Void unused) {
+                        if (call.getMethodSelect() instanceof MemberSelectTree member
+                            && member.getIdentifier().contentEquals("register") && call.getArguments().size() >= 2) {
+                            String receiver = member.getExpression().toString();
+                            if (serializerRegisters.contains(receiver.substring(receiver.lastIndexOf('.') + 1))) {
+                                if (!(call.getArguments().get(0) instanceof LiteralTree name) || !(name.getValue() instanceof String id))
+                                    throw new IllegalArgumentException("Non-literal recipe serializer ID in " + path + ": " + call);
+                                System.out.println("serializer\t" + id);
+                            }
+                        }
                         if (!(call.getMethodSelect() instanceof MemberSelectTree select) || !Set.of("save","buildRecipe","build").contains(select.getIdentifier().toString()))
                             return super.visitMethodInvocation(call, unused);
                         var receiver = select.getExpression();

@@ -1,0 +1,16 @@
+# 铁砧冲击加工
+
+- [方块粉碎](./block_crush)
+- [物品粉碎](./item_crush)
+- [拆包](./unpack)
+- [方块压缩](./block_compress)
+- [方块涂抹](./block_smear)
+- [物品压缩](./item_compress)
+- [物品冲压](./stamping)
+- [特殊物品冲压](./stamping_unique_items)
+- [物品注入](./item_inject)
+- [质量注入](./mass_inject)
+- [方块榨取](./squeezing)
+- [筛分](./mesh)
+- [方块处理](./block_processing)
+- [铁砧碰撞](./anvil_collision)

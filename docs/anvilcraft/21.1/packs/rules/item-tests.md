@@ -1,0 +1,26 @@
+# 物品细分谓词
+
+在物品谓词的 `predicates` 映射中，以注册 ID 为键，以下字段构成键对应的对象。
+
+## 类型与字段
+
+### `anvilcraft:saved_entity`
+
+| 字段 | JSON 类型或解码器 | 必填与默认值 | 用途 |
+| --- | --- | --- | --- |
+| `entitys` | `RegistryCodecs.homogeneousList(Registries.ENTITY_TYPE)` | 可省略 | 保存的实体类型列表，键名按序列化器拼写 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L29) |
+| `predicates` | `NumericTagValuePredicate.CODEC`数组 | 可省略，默认 `[]` | 参与匹配的谓词列表 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L33) |
+| `is_monster` | 布尔值 | 可省略，默认 `false` | 按怪物属性进行匹配 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L36) |
+
+[ItemSavedEntityPredicate.java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java)
+
+### `anvilcraft:enchantment_count`
+
+| 字段 | JSON 类型或解码器 | 必填与默认值 | 用途 |
+| --- | --- | --- | --- |
+| `min` | 整数 | 必填 | 下限 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemEnchantmentCountPredicate.java#L17) |
+| `max` | 整数 | 必填 | 上限 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemEnchantmentCountPredicate.java#L20) |
+
+[ItemEnchantmentCountPredicate.java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemEnchantmentCountPredicate.java)
+
+[ModItemSubPredicates.java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/init/item/ModItemSubPredicates.java)

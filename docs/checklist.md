@@ -11,10 +11,10 @@
 
 ## AnvilCraft 21.1
 
-- [ ] 快速开始 · 开发环境、仓库过滤、依赖坐标、可编译的入口示例
-- [ ] 运行时扩展 · 铁砧行为、事件订阅、物品、方块、传输与网络、电力、配方实现和客户端交互
-- [ ] 数据包与资源包 · 配方分派和各序列化器、条件、标签、注册表、客户端资源、示例与字段约束
-- [ ] 公开 API · 类型、构造器、字段、重载、注解、事件与构建器
+- [x] 快速开始 · 开发环境、仓库过滤、依赖坐标、可编译的入口示例
+- [x] 运行时扩展 · 铁砧行为、事件订阅、物品、方块、传输与网络、电力、配方实现和客户端交互
+- [x] 数据包与资源包 · 配方分派和各序列化器、条件、标签、注册表、客户端资源、示例与字段约束
+- [x] 公开 API · 类型、构造器、字段、重载、注解、事件与构建器
 
 <details><summary>按 Java 包拆分的参考页范围（238 个包）</summary>
 
@@ -258,6 +258,37 @@
 - `dev.dubhe.anvilcraft.worldgen`
 
 </details>
+
+### 已发布的子文档
+
+- [护符](/anvilcraft/21.1/amulets/) · 3 页
+- [铁砧落地行为](/anvilcraft/21.1/anvil/) · 3 页
+- [Java 公开 API](/anvilcraft/21.1/api/) · 362 页
+- [行为树](/anvilcraft/21.1/behavior/) · 3 页
+- [电荷与物品能量](/anvilcraft/21.1/charge/) · 3 页
+- [实体、刷怪与催熟](/anvilcraft/21.1/entities/) · 3 页
+- [事件](/anvilcraft/21.1/events/) · 21 页
+- [管道与流体](/anvilcraft/21.1/fluid/) · 4 页
+- [快速开始](/anvilcraft/21.1/getting-started/) · 3 页
+- [巨型铁砧](/anvilcraft/21.1/giant-anvil/) · 3 页
+- [铁砧锤](/anvilcraft/21.1/hammer/) · 3 页
+- [加热与热能收集](/anvilcraft/21.1/heat/) · 4 页
+- [物品能力与槽位](/anvilcraft/21.1/items/) · 3 页
+- [激光](/anvilcraft/21.1/laser/) · 3 页
+- [数据包与资源包](/anvilcraft/21.1/packs/) · 92 页
+- [方块放置与目标指针](/anvilcraft/21.1/placement/) · 3 页
+- [等离子喷流](/anvilcraft/21.1/plasma/) · 3 页
+- [玩家交互与提示](/anvilcraft/21.1/player-ui/) · 4 页
+- [传送门](/anvilcraft/21.1/portals/) · 3 页
+- [电网与功率](/anvilcraft/21.1/power/) · 5 页
+- [进度与条件](/anvilcraft/21.1/progress/) · 3 页
+- [配方与数据生成](/anvilcraft/21.1/recipe-code/) · 3 页
+- [方块实体渲染](/anvilcraft/21.1/render/) · 3 页
+- [滑轨与移动结构](/anvilcraft/21.1/sliding/) · 3 页
+- [声音与消音](/anvilcraft/21.1/sound/) · 2 页
+- [仓储端口与终端](/anvilcraft/21.1/storage/) · 3 页
+- [特斯拉塔](/anvilcraft/21.1/tesla/) · 3 页
+- [区块加载与随机刻](/anvilcraft/21.1/world-load/) · 3 页
 
 ## AnvilCraft 26.1
 

@@ -24,6 +24,8 @@
 - [铁砧落地行为](/anvilcraft/21.1/anvil/) · 3 页
 - [Java 公开 API](/anvilcraft/21.1/api/) · 362 页
 - [行为树](/anvilcraft/21.1/behavior/) · 3 页
+- [配方构建器](/anvilcraft/21.1/builders/) · 47 页
+- [天体锻造砧与恒星演化](/anvilcraft/21.1/celestial/) · 5 页
 - [电荷与物品能量](/anvilcraft/21.1/charge/) · 3 页
 - [实体、刷怪与催熟](/anvilcraft/21.1/entities/) · 3 页
 - [事件](/anvilcraft/21.1/events/) · 21 页
@@ -34,6 +36,7 @@
 - [加热与热能收集](/anvilcraft/21.1/heat/) · 4 页
 - [物品能力与槽位](/anvilcraft/21.1/items/) · 3 页
 - [激光](/anvilcraft/21.1/laser/) · 3 页
+- [客户端与服务端通信](/anvilcraft/21.1/network/) · 5 页
 - [数据包与资源包](/anvilcraft/21.1/packs/) · 92 页
 - [方块放置与目标指针](/anvilcraft/21.1/placement/) · 3 页
 - [等离子喷流](/anvilcraft/21.1/plasma/) · 3 页
@@ -41,12 +44,13 @@
 - [传送门](/anvilcraft/21.1/portals/) · 3 页
 - [电网与功率](/anvilcraft/21.1/power/) · 5 页
 - [进度与条件](/anvilcraft/21.1/progress/) · 3 页
-- [配方与数据生成](/anvilcraft/21.1/recipe-code/) · 3 页
+- [配方与数据生成](/anvilcraft/21.1/recipe-code/) · 4 页
 - [方块实体渲染](/anvilcraft/21.1/render/) · 3 页
 - [滑轨与移动结构](/anvilcraft/21.1/sliding/) · 3 页
 - [声音与消音](/anvilcraft/21.1/sound/) · 2 页
 - [仓储端口与终端](/anvilcraft/21.1/storage/) · 3 页
 - [特斯拉塔](/anvilcraft/21.1/tesla/) · 3 页
+- [图腾与致死保护](/anvilcraft/21.1/totems/) · 3 页
 - [区块加载与随机刻](/anvilcraft/21.1/world-load/) · 3 页
 
 ## AnvilCraft 26.1

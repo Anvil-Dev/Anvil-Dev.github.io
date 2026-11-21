@@ -1,0 +1,26 @@
+# dev.dubhe.anvilcraft.client.gui.screen（TranscendenceSmithingScreen 至 TranscendenceSmithingScreen）
+
+
+
+## TranscendenceSmithingScreen
+
+` public class TranscendenceSmithingScreen extends AbstractContainerScreen<TranscendenceSmithingMenu> implements ContainerListener `
+
+[类型声明](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L45)
+
+超限锻造台界面。
+
+| 成员签名 | 实现与调用约定 | 源码 |
+| --- | --- | --- |
+| ` public TranscendenceSmithingScreen( TranscendenceSmithingMenu menu, Inventory playerInventory, Component title ) ` | 执行 ` super(menu, playerInventory, title) ` | [构造器](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L126) |
+| ` @Override public void containerTick() ` | 实现调用 ` super.containerTick() `<br>实现调用 ` this.clampScrollRow() `<br>实现调用 ` this.tickSlotIcons() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L211) |
+| ` @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) ` | 实现调用 ` super.render(graphics, mouseX, mouseY, partialTick) `<br>分支 ` (this.draggingTemplate) ` 内调用 ` graphics.pose().pushPose() `<br>分支 ` (this.draggingTemplate) ` 内调用 ` graphics.pose() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L485) |
+| ` @Override public boolean mouseClicked(double mouseX, double mouseY, int button) ` | ` (this.isOverTemplateGrid(mouseX, mouseY)) ` 成立时提前返回 ` true `<br>` (button == 0 && this.searchBox != null && this.searchBox.isMouseOver(mouseX, mouseY)) ` 成立时提前返回 ` super.mouseClicked(mouseX, mouseY, button) `<br>` (this.isOverTemplatePanel(mouseX, mouseY)) ` 成立时提前返回 ` true `<br>末尾返回 ` super.mouseClicked(mouseX, mouseY, button) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L655) |
+| ` public Rect2i getTemplateDropArea() ` | JEI 的拖入范围只覆盖模板列表，不会向实物槽生成物品。<br>末尾返回 ` new Rect2i(this.panelX() + TEMPLATE_GRID_X, this.panelY() + TEMPLATE_GRID_Y, COLUMN_COUNT * TEMPLATE_SLOT_SIZE, VISIBLE_ROW_COUNT * TEMPLATE_SLOT_SIZE) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L693) |
+| ` public void addTemplate(ItemStack stack) ` | 实现调用 ` this.menu.canAddTemplate(stack) `<br>分支 ` (this.menu.canAddTemplate(stack)) ` 内调用 ` stack.copyWithCount(1) `<br>分支 ` (this.menu.canAddTemplate(stack)) ` 内调用 ` this.playTemplateClickSound() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L698) |
+| ` @Override public boolean mouseReleased(double mouseX, double mouseY, int button) ` | ` (this.finishTemplateDrag(mouseX, mouseY, button)) ` 成立时提前返回 ` true `<br>末尾返回 ` super.mouseReleased(mouseX, mouseY, button) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L738) |
+| ` @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) ` | ` (this.moveTemplateDrag(mouseX, mouseY, button)) ` 成立时提前返回 ` true `<br>末尾返回 ` super.mouseDragged(mouseX, mouseY, button, dragX, dragY) ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L747) |
+| ` @Override public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) ` | ` (!this.isOverTemplateGrid(mouseX, mouseY)) ` 成立时提前返回 ` super.mouseScrolled(mouseX, mouseY, scrollX, scrollY) `<br>末尾返回 ` true ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L759) |
+| ` @Override public void slotChanged(AbstractContainerMenu container, int slotIndex, ItemStack stack) ` | 实现调用 ` this.updateArmorStandPreview() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L873) |
+| ` @Override public void dataChanged(AbstractContainerMenu container, int dataSlotIndex, int value) ` | 当前实现的方法体为空。 | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L881) |
+| ` @Override public void removed() ` | 实现调用 ` this.menu.removeSlotListener(this) `<br>实现调用 ` super.removed() ` | [方法](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/client/gui/screen/TranscendenceSmithingScreen.java#L885) |

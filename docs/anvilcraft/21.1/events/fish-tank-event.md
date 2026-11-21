@@ -1,6 +1,26 @@
 # FishTankEvent
 
-该组事件定义在 [`FishTankEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/FishTankEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+给鱼缸增加周期处理时，监听 `ServerTick`。即使鱼缸里没有熔岩也会收到，且此时本体尚未修复物品。`EntityInside` 在客户端判断之前发布，写世界前要先判断逻辑侧。已点燃的鱼缸通过 `FluidDamage` 读取最后的伤害值，初值为 `4.0F`。普通熔岩的 `lavaHurt()` 走另一条路径。
+
+给地图内已经点燃的鱼缸统一设置 2 点伤害，可以订阅游戏总线。这个监听器只影响发布事件的伤害路径。
+
+```java
+package dev.example.tanks;
+
+import dev.dubhe.anvilcraft.api.event.FishTankEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+
+@EventBusSubscriber(modid = "sandstone_press")
+public final class FishTankDamage {
+    @SubscribeEvent
+    public static void onFluidDamage(FishTankEvent.FluidDamage event) {
+        event.setDamage(2.0F);
+    }
+}
+```
+
+该组事件定义在 [`FishTankEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/FishTankEvent.java)。
 
 | 事件类型 | 创建位置 |
 | --- | --- |

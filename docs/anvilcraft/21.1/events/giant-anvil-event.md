@@ -1,6 +1,8 @@
 # GiantAnvilEvent
 
-该组事件定义在 [`GiantAnvilEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/GiantAnvilEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+为巨砧落地增加多方块条件时，取消 `Multiblock` 可阻止本体在这次落地中处理多方块转换。`FallingTick` 和 `BlockTick` 分别位于下落实体 tick 和方块计划刻开头。取消这两个事件会直接跳过该次原逻辑，应把条件限定为自己负责的巨砧。[巨砧开发指南](../giant-anvil/)
+
+该组事件定义在 [`GiantAnvilEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/GiantAnvilEvent.java)。
 
 | 事件类型 | 创建位置 |
 | --- | --- |

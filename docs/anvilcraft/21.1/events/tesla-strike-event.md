@@ -1,6 +1,8 @@
 # TeslaStrikeEvent
 
-该组事件定义在 [`TeslaStrikeEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/TeslaStrikeEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+特斯拉塔选中生物或避雷针后、实际放电之前会发出目标事件。取消首个目标会清掉该目标；连锁攻击中取消后续目标会终止余下跳跃。`TargetBlock` 保留事件创建当时的方块状态。[特斯拉放电](../tesla/)
+
+该组事件定义在 [`TeslaStrikeEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/TeslaStrikeEvent.java)。
 
 | 事件类型 | 创建位置 |
 | --- | --- |

@@ -1,6 +1,8 @@
 # SlidingBlockEvent
 
-该组事件定义在 [`SlidingBlockEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/SlidingBlockEvent.java)。查询事件实例里能读写的状态时，使用下表中的声明；跟踪游戏时序时，从创建位置向下看发布者如何消费结果。
+观察一段方块开始或结束滑动时分别订阅 `Start` 和 `Stop`。`Start` 由实体构造流程发出。服务端停止流程先把方块放回世界，再发布 `Stop`，最后丢弃滑动实体。若需检查实际落点，放在 `Stop` 读取。[滑动方块](../sliding/)
+
+该组事件定义在 [`SlidingBlockEvent.java`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/SlidingBlockEvent.java)。
 
 | 事件类型 | 创建位置 |
 | --- | --- |

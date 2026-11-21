@@ -6,7 +6,7 @@ import type { DefaultTheme } from 'vitepress'
 const docsRoot = fileURLToPath(new URL('../', import.meta.url))
 const names: Record<string, string> = {
   'getting-started': '快速开始', setup: '快速开始', quickstart: '快速开始',
-  api: '公开 API', reference: 'API 参考', datapack: '数据包', datapacks: '数据包',
+  api: '公开 API', reference: 'API 参考', packs: '数据包与资源包', datapack: '数据包', datapacks: '数据包',
   resourcepack: '资源包', resources: '资源包', events: '事件', recipes: '配方',
 }
 
@@ -30,6 +30,12 @@ function children(directory: string, route: string): DefaultTheme.SidebarItem[] 
     if (entry.isDirectory()) {
       const groupRoute = route + entry.name + '/'
       const index = join(fullPath, 'index.md')
+      // The API index already links every package. Repeating those links would
+      // render hundreds of hidden sidebar entries in every HTML document.
+      if (entry.name === 'api' && existsSync(index)) {
+        items.push({ text: title(index, names.api), link: groupRoute })
+        continue
+      }
       const pages = children(fullPath, groupRoute)
       if (pages.length || existsSync(index)) {
         items.push({

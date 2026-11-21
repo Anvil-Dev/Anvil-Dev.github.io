@@ -11,6 +11,8 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'AnvilCraft 开发者手册',
   description: '面向模组和整合包作者的 AnvilCraft 与 Ageratum 开发文档。',
+  metaChunk: true,
+  buildConcurrency: 8,
   vite: { css: { preprocessorOptions: { scss: { api: 'modern' } } } },
   themeConfig: {
     siteTitle: 'AnvilCraft Docs',
@@ -24,6 +26,19 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        miniSearch: {
+          options: {
+            tokenize: (text: string) => {
+              const words = text.match(/[\p{Script=Han}]+|[\p{Script=Latin}\d_$]+/gu) ?? []
+              const tokens: string[] = []
+              for (const word of words) {
+                if (word.length < 2 || !/^\p{Script=Han}/u.test(word)) tokens.push(word)
+                else for (let i = 1; i < word.length; i++) tokens.push(word.slice(i - 1, i + 1))
+              }
+              return tokens
+            },
+          },
+        },
         _render(source, env, md) {
           const html = md.render(source, env)
           if (env.frontmatter?.search === false) return ''

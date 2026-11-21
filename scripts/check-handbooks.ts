@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs'
-import { resolve, join, dirname, relative } from 'node:path'
+import { resolve, join, dirname, relative, sep } from 'node:path'
 import { parseArgs } from 'node:util'
 
 const { values: options } = parseArgs({ options: { root: { type: 'string', default: 'docs' } } })
@@ -31,6 +31,8 @@ for (const project of ['anvilcraft', 'ageratum']) {
         try { JSON.parse(found[1]); json++ } catch { fail('JSON 示例无法解析') }
       }
       const prose = contents.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1[ \t]*$/gm, '').replace(/(`+)[^\n]*?\1/g, '')
+      const filler = prose.match(/赋能|抓手|总而言之|综上所述|在现代 Minecraft 开发中|让我们深入探索|不仅[^。\n]{0,120}而且|无缝集成|优雅地解决/)
+      if (filler) fail('正文含有禁用措辞 ' + filler[0])
       const source = project === 'anvilcraft' ? 'AnvilCraft' : 'Ageratum'
       const pins = new RegExp('github\\.com/Anvil-Dev/' + source + '/(?:tree|blob)/([a-f0-9]{40})','g')
       for (const match of prose.matchAll(pins)) if (match[1] !== sha) fail('交叉引用其他源码快照 ' + match[1])
@@ -38,6 +40,10 @@ for (const project of ['anvilcraft', 'ageratum']) {
         const link = m[1].split(/[?#]/)[0]
         if (!link || /^(?:[a-z]+:|\/\/)/i.test(link)) continue
         const path = link.startsWith('/') ? resolve(docs, '.' + link) : resolve(dirname(page), link)
+        const [linkedProject, linkedVersion] = relative(docs, path).split(sep)
+        if (['anvilcraft', 'ageratum'].includes(linkedProject) && ['21.1', '26.1'].includes(linkedVersion) && linkedVersion !== version) {
+          fail('分册正文链接指向其他版本 ' + link)
+        }
         const targets = [path, path + '.md', join(path, 'index.md'), join(docs, 'public', link)]
         if (!targets.some(target => existsSync(target) && statSync(target).isFile())) fail('无效链接 ' + link)
       }

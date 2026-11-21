@@ -69,12 +69,22 @@ const constraints:Record<string,string> = {
  procedural_process:'至少有一个步骤，loop 至少为 1。构建器还检查步骤是否属于铁砧加工配方，以及展示模型数量是否超过该步骤序列的上限。',
  solid_liquid:'需要有效的大锅流体条件，还必须提供物品产物或流体变换。缺失时 save 的 validate 会抛 IllegalArgumentException。',
  special_celestial_body:'直接构造天体定义并交给 RecipeOutput。属性、资源、需求的集合按构造器参数顺序传入；空集合保留该类别为空的含义。',
+ stamping_diff:'原料条目数必须在 1 至 9 之间，结果列表不能为空。使用区分不同物品的冲压构建器，避免将配方交给普通冲压序列化器。',
+ terminal_upgrade:'使用有序合成构建器，保存时把输出包在 TerminalUpgradeRecipe.output 中。服务端合成取第一个终端输入，将其工作台内容、均衡模式和自定义名称复制到成品。',
+ terminal_unbind:'使用无序合成构建器并调用 TerminalUpgradeRecipe.output。包装器会根据传入的 ShapelessRecipe 生成 TerminalUnbindRecipe，同样保留终端内的工作台内容、均衡模式和自定义名称。',
  squeezing:'当前 Builder 的 validate 方法体为空。为配方配置能匹配的原料和输出，并通过字段页核对流体和大锅条件。',
  stamping_unique_items:'需要 1 至 9 项互异物品加工所用的原料条目，还需要非空产物列表。条目数越界或产物为空都会被拒绝。',
  super_heating:'至少配置一项物品原料。若列表为空，validate 抛 IllegalArgumentException。',
  temple_demand:'构造时指定需求类别并传入需求条目列表，每个条目给出物品标识和数量。不同类别使用不同文件名可保留各自的兜底需求。',
  time_warp:'原料列表和大锅流体条件至少设置一种。两者均缺时会抛 IllegalArgumentException。'
 }
+if (branch==='26.1') Object.assign(constraints,{
+ stamping_diff:commonIngredient+'匹配时使用差异原料；冲压平台设置了 DEFER_TO_PLATFORM_BEHAVIOR 时会跳过这条配方。',
+ jewel_crafting:'材料总数必须为 1 至 256 项，合并相同材料后最多四组。超出任一限制时构造器抛 IllegalArgumentException；没有设置结果时 getResult 抛 IllegalStateException。',
+ fluid_mixing:'输入必须为 2 至 4 项。物品和流体各最多三种，产物总数为 1 至 6 项。空气、非正数量的物品和空流体都无法通过校验。启用 consumeMaximum 后只允许流体产物。',
+ portal_conversion:'必须设置门类型 ID，并添加至少一个结果。只设置门类型、未添加结果时 validate 会抛 IllegalArgumentException。',
+ energy_weapon_make:'材料数量必须为 1 至 6 项，并且必须设置结果模板。材料数越界或结果为 null 时 validate 会抛 IllegalArgumentException。'
+})
 function candidate(call:Call,names:string[]) {
     const ids=new Set(call.ids.split('\n'))
     if (call.receiver.includes('PermutationRecipeLoader.count(')) {
@@ -92,6 +102,13 @@ function candidate(call:Call,names:string[]) {
     const params=(call.params||'').split('\n').filter(Boolean).map(line=>line.split('\t'))
     if(params.some(([type])=>type==='var')) return
     const known=new Set(params.map(([,name])=>name)), helpers:string[]=[]
+    if(call.receiver.includes('MultiBlockConversionRecipeLoader.largeCauldronPart(')) {
+        const match=read(join(source,call.file)).match(/    private static BlockPredicateWithState largeCauldronPart\([^)]*\) \{\s*return [^;{}]*;\s*\}/)
+        if(!match) return
+        helpers.push(match[0])
+        call={...call,receiver:call.receiver.replaceAll('MultiBlockConversionRecipeLoader.largeCauldronPart(', 'largeCauldronPart(')}
+        ids.delete('MultiBlockConversionRecipeLoader')
+    }
     if(call.unqualified) {
         const ownerSource=read(join(source,call.file))
         for(const name of call.unqualified.split('\n')) {
@@ -113,15 +130,29 @@ for(const file of pages(join(handbook,'packs'))){
     const cls=md.match(/\[配方实现与匹配规则\]\([^)]*\/(\w+)\.java\)/)?.[1]
     if(!type||!cls)continue
     const targets=[cls,...(aliases[type]??[])]
-    const options=calls.map(call=>candidate(call,targets)).filter(x=>x!==undefined)
+    const wrapped=branch==='26.1' && ['neutronium_charging','terminal_unbind','terminal_upgrade'].includes(type)
+    const wrapper=type==='neutronium_charging'?'NeutroniumChargingRecipe':'TerminalUpgradeRecipe'
+    const wrapMethod=({neutronium_charging:'chargedNeutroniumIngot',terminal_unbind:'hyperdimensionTerminalUnbind',terminal_upgrade:'hyperdimensionTerminal'} as Record<string,string>)[type]
+    const builder=type==='terminal_unbind'?'ShapelessRecipeBuilder':'ShapedRecipeBuilder'
+    const pool=wrapped?calls.filter(c=>c.method===wrapMethod && c.operation==='save' && c.args.includes(wrapper+'.output(')).map(c=>{
+        const result=type==='neutronium_charging'?'CHARGED_NEUTRONIUM_INGOT':'HYPERDIMENSION_TERMINAL'
+        const receiver=c.receiver.replaceAll('ctx.getId().toString()', '"example:'+type+'"')
+            .replaceAll('ctx.get()', 'ModItems.'+result).replaceAll('provider.getItems()','lookup')
+        const ids=c.ids.split('\n').filter(id=>id!=='ctx' && id!=='provider')
+        const imports=c.imports+'\nimport net.minecraft.core.HolderGetter;\nimport net.minecraft.world.item.Item;\n'
+        return {...c,receiver,ids:[...ids,'lookup','ModItems','HolderGetter','Item',wrapper].join('\n'),params:'HolderGetter<Item>\tlookup',imports}
+    }):calls
+    const options=pool.map(call=>candidate(call,wrapped?[builder]:targets)).filter(x=>x!==undefined)
        .sort((a,b)=>Number(a.call.operation==='new')-Number(b.call.operation==='new') || a.params.length-b.params.length || a.call.receiver.length-b.call.receiver.length)
     const sample=options[0]
     if(!sample) {missing.push(type+' '+cls);continue}
     const {call,params,imports,helpers}=sample
     const symbol=branch==='21.1'?'ResourceLocation':'Identifier'
-    const idExpr=branch==='21.1'?'ResourceLocation.fromNamespaceAndPath("example", "'+type+'/guide")':'ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("example", "'+type+'/guide"))'
+    const idValue=symbol+'.fromNamespaceAndPath("example", "'+type+'/guide")'
+    const keyed=branch!=='21.1' && !['mob_transform','mob_transform_with_item'].includes(type)
+    const idExpr=keyed?'ResourceKey.create(Registries.RECIPE, '+idValue+')':idValue
     const needed=new Set([...imports,'import net.minecraft.data.recipes.RecipeOutput;','import net.minecraft.resources.'+symbol+';'])
-    if(branch!=='21.1'){needed.add('import net.minecraft.resources.ResourceKey;');needed.add('import net.minecraft.core.registries.Registries;')}
+    if(keyed){needed.add('import net.minecraft.resources.ResourceKey;');needed.add('import net.minecraft.core.registries.Registries;')}
     const className=type.split('_').map(w=>w[0].toUpperCase()+w.slice(1)).join('')+'Recipes'
     const javaName=/^\d/.test(className)?'Example'+className:className
     const args=['RecipeOutput destination',...params.map(([t,n])=>t+' '+n)].join(', ')
@@ -129,7 +160,8 @@ for(const file of pages(join(handbook,'packs'))){
     const indent=Math.min(...rows.slice(1).filter(s=>s.trim()).map(s=>s.length-s.trimStart().length),12)
     const chain=rows.map((line,i)=>i===0?'        '+line.trim():'            '+line.slice(indent)).join('\n')
     const direct=call.operation==='new' || call.operation==='build'
-    const emit=direct?['        var generatedRecipe = '+chain.trimStart()+(call.operation==='build'?'.build();':';'),'        destination.accept('+idExpr+', generatedRecipe, null);']:[chain,'            .save(destination, '+idExpr+');']
+    const sink=wrapped?wrapper+'.output(destination)':'destination'
+    const emit=direct?['        var generatedRecipe = '+chain.trimStart()+(call.operation==='build'?'.build();':';'),'        destination.accept('+idExpr+', generatedRecipe, null);']:[chain,'            .save('+sink+', '+idExpr+');']
     const title=md.match(/^# (.+)$/m)![1], summary=md.split('\n\n')[1]
     const src='https://github.com/Anvil-Dev/AnvilCraft/blob/'+sha+'/'+call.file+'#L'+call.line
     const link='../'+relative(handbook,file).replaceAll('\\','/').replace(/\.md$/,'')
@@ -138,7 +170,7 @@ for(const file of pages(join(handbook,'packs'))){
     for(const n of names){const ref=references.find(p=>p.md.split('\n').includes('## '+n));if(ref){memberLink='../api/'+basename(ref.path,'.md')+'#'+n.toLowerCase().replaceAll('.','-');break}}
     const fields=md.split('\n').filter(row=>row.startsWith('| `')).map(row=>row.replace(/ \[声明\]\([^)]*\)/g,''))
     let validator=cls
-    if(constraints[type]===commonIngredient)validator='AbstractProcessRecipe'
+    if(constraints[type]===commonIngredient || type==='stamping_diff')validator='AbstractProcessRecipe'
     else if(constraints[type]===smithing)validator='BaseMultipleToOneSmithingRecipe'
     else if(aliases[type])validator=aliases[type][0]
     const validationFile=files.find(p=>p.endsWith('/'+validator+'.java'))
@@ -146,7 +178,9 @@ for(const file of pages(join(handbook,'packs'))){
     const validationStart=validationSource.search(/public void validate\(/)
     const validationUrl=validationFile && validationStart>=0?' [构建器校验](https://github.com/Anvil-Dev/AnvilCraft/blob/'+sha+'/'+validationFile+'#L'+validationSource.slice(0,validationStart).split('\n').length+')':''
     const heading=title+(call.operation==='new'?'的配方输出':'的配方构建器')
-    const lines=['# '+heading,'',summary,'',constraints[type]+validationUrl,'','在附属模组的数据生成提供器中调用 `generate`，传入当前 '+ '`RecipeOutput`'+ '。运行数据生成后，配方 ID 为 `example:'+type+'/guide`，文件位于 `data/example/recipe/'+type+'/guide.json`。','',
+    const rule=wrapped&&type==='neutronium_charging'?'有序合成必须配合 NeutroniumChargingRecipe.output 保存。组装成品时从首个符合未充能中子锭标签的输入读取附魔，并仅将其复制到指定的充能中子锭结果。':constraints[type]
+    if(!rule)throw Error('缺少本类型的参数核对：'+type)
+    const lines=['# '+heading,'',summary,'',rule+validationUrl,'','在附属模组的数据生成提供器中调用 `generate`，传入当前 '+ '`RecipeOutput`'+ '。运行数据生成后，配方 ID 为 `example:'+type+'/guide`，文件位于 `data/example/recipe/'+type+'/guide.json`。','',
       '```java','package dev.example.recipebuild;','',...[...needed].sort(),'','public final class '+javaName+' {','    public static void generate('+args+') {',...emit,'    }',...helpers.map(h=>'\n'+h),'}','```','',
       '实现采用上游 `'+basename(call.file,'.java')+'.'+call.method+'` 中的一条实际配方链。'+(params.length?'其中 '+params.map(([t,n])=>'`'+t+' '+n+'`').join('、')+' 由调用者按生成环境传入。':'' )+' [原始配方调用]('+src+')','',
       '| 入口 | 调用约定 |','| --- | --- |','| `generate` | 在 datagen 期间接收当前输出对象，一次调用写入一个配方。 |',

@@ -16,11 +16,11 @@ export default defineConfig({
   vite: { css: { preprocessorOptions: { scss: { api: 'modern' } } } },
   themeConfig: {
     siteTitle: 'AnvilCraft Docs',
-    nav: projects.map(({ name, slug }) => ({
+    nav: [...projects.map(({ name, slug }) => ({
       text: name,
       activeMatch: `^/${slug}/`,
       items: versions.map(version => ({ text: version, link: `/${slug}/${version}/` })),
-    })),
+    })), { text: '文档清单', link: '/checklist' }],
     sidebar: Object.fromEntries(projects.flatMap(({ slug }) => versions.map(version =>
       [`/${slug}/${version}/`, branchSidebar(slug, version)]))),
     search: {

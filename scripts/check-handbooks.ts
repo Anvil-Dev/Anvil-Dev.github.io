@@ -30,7 +30,7 @@ for (const project of ['anvilcraft', 'ageratum']) {
       for (const found of contents.matchAll(/^```json[ \t]*\n([\s\S]*?)^```/gm)) {
         try { JSON.parse(found[1]); json++ } catch { fail('JSON 示例无法解析') }
       }
-      const prose = contents.replace(/^(?:`{3,}|~{3,})[^\n]*\n[\s\S]*?^(?:`{3,}|~{3,})[^\n]*$/gm, '')
+      const prose = contents.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1[ \t]*$/gm, '').replace(/(`+)[^\n]*?\1/g, '')
       const source = project === 'anvilcraft' ? 'AnvilCraft' : 'Ageratum'
       const pins = new RegExp('github\\.com/Anvil-Dev/' + source + '/(?:tree|blob)/([a-f0-9]{40})','g')
       for (const match of prose.matchAll(pins)) if (match[1] !== sha) fail('交叉引用其他源码快照 ' + match[1])

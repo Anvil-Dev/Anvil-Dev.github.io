@@ -1,130 +1,47 @@
+// The default theme supplies Inter, Chinese punctuation, backgrounds and the indigo scales for both appearances.
 :root {
-  --vp-c-brand-1: #935020;
-  --vp-c-brand-2: #9f5928;
-  --vp-c-brand-3: #87441a;
-  --vp-c-brand-soft: #ad622017;
-  --paper: #f6f3ed;
-  --paper-ink: #242c2c;
-  --paper-line: #d8d5cc;
+  --vp-c-brand-1: var(--vp-c-indigo-1);
+  --vp-c-brand-2: var(--vp-c-indigo-2);
+  --vp-c-brand-3: var(--vp-c-indigo-3);
+  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  --vp-home-hero-image-filter: blur(44px);
 }
 
-.dark {
-  --vp-c-brand-1: #efb589;
-  --vp-c-brand-2: #e7a576;
-  --vp-c-brand-3: #9d5828;
-  --vp-c-brand-soft: #df985227;
-  --paper: #242726;
-  --paper-ink: #eeeae1;
-  --paper-line: #464947;
+@media (min-width: 640px) {
+  :root { --vp-home-hero-image-filter: blur(56px); }
 }
 
-.handbook {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(24px, 6vw, 84px) clamp(18px, 5vw, 64px);
+@media (min-width: 960px) {
+  :root { --vp-home-hero-image-filter: blur(68px); }
 }
 
-.handbook-cover {
-  display: grid;
-  grid-template-columns: 1.18fr 1fr;
-  overflow: hidden;
-  border: 1px solid var(--paper-line);
-  background: var(--paper);
-  color: var(--paper-ink);
-}
-
-.handbook-intro {
-  align-self: center;
-  padding: clamp(30px, 4.5vw, 72px);
-
-  h1 {
-    margin: 0;
-    font-size: clamp(2.15rem, 4.4vw, 4.25rem);
-    font-weight: 760;
-    letter-spacing: -.055em;
-    line-height: 1.18;
+// The sidebar and translated labels leave different amounts of room for search.
+@media (min-width: 768px) {
+  .VPNavBarSearch {
+    container: nav-search / inline-size;
+    min-width: 72px;
   }
-
-  h1 span { display: block; margin-bottom: .12em; }
-  p { max-width: 30em; margin: 22px 0 30px; line-height: 1.85; }
 }
 
-.branch-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+@container nav-search (max-width: 165px) {
+  .VPNavBarSearch .DocSearch-Button {
+    justify-content: center;
+    width: 40px;
+    padding: 0;
 
-  a {
-    display: inline-flex;
-    gap: 15px;
-    align-items: baseline;
-    padding: 8px 15px;
-    border: 1px solid var(--paper-line);
-    border-radius: 4px;
-    color: var(--paper-ink);
-    font-size: 14px;
-    font-weight: 600;
+    .DocSearch-Button-Placeholder,
+    .DocSearch-Button-Keys { display: none; }
+    .DocSearch-Search-Icon { margin: 0; }
   }
-
-  a:first-child { background: var(--paper-ink); border-color: var(--paper-ink); color: var(--paper); }
-  a:hover, a:focus-visible { background: var(--vp-c-brand-3); color: white; }
 }
 
-.drawing {
-  display: grid;
-  min-height: 300px;
-  place-items: center;
-  overflow: hidden;
-  background-color: #2d4043;
-  background-image: linear-gradient(#b7d0c215 1px, transparent 1px),
-    linear-gradient(90deg, #b7d0c215 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-// Each cuboid uses a shared face size so the four layers stay aligned on rotation.
-.anvil {
-  width: 0;
-  height: 0;
-  transform: rotateX(-19deg) rotateY(-31deg);
-  transform-style: preserve-3d;
-
-  i {
-    position: absolute;
-    left: calc(-.5 * var(--w));
-    top: var(--y);
-    width: var(--w);
-    height: var(--h);
-    transform-style: preserve-3d;
-  }
-
-  b { display: block; position: absolute; outline: 1px solid #3c494a; }
-  .front { inset: 0; background: #829294; transform: translateZ(calc(.5 * var(--d))); }
-  .top { width: 100%; height: var(--d); background: #d9d9cd; transform-origin: top; transform: translateZ(calc(-.5 * var(--d))) rotateX(90deg); }
-  .right { right: 0; width: var(--d); height: 100%; background: #617476; transform-origin: right; transform: translateZ(calc(.5 * var(--d))) rotateY(-90deg); }
-  .crown { --w: 208px; --h: 48px; --d: 81px; --y: -84px; }
-  .shoulder { --w: 144px; --h: 17px; --d: 68px; --y: -36px; }
-  .stem { --w: 84px; --h: 60px; --d: 48px; --y: -19px; }
-  .foot { --w: 164px; --h: 32px; --d: 90px; --y: 41px; }
-}
-
-.companion {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--paper-line);
-
-  h2 { margin: 0 0 5px; font-size: 26px; line-height: 1.3; font-weight: 650; }
-  p { color: var(--vp-c-text-2); }
-  .secondary a { color: var(--vp-c-brand-1); background: transparent; border-color: var(--paper-line); }
-  .secondary a:hover { background: var(--vp-c-brand-soft); }
-}
-
-@media (max-width: 700px) {
-  .handbook-cover { grid-template-columns: 1fr; }
-  .drawing { min-height: 180px; order: -1; }
-  .anvil { transform: scale(.78) rotateX(-19deg) rotateY(-31deg); }
-  .handbook-intro { padding: 26px; }
+@media (max-width: 359px) {
+  body { min-width: 0; }
+  .VPHero .image-container { max-width: 100%; }
+  .VPNavBar .wrapper { padding-inline: 12px 4px; }
+  .VPNavBar .content-body { column-gap: 0; }
 }

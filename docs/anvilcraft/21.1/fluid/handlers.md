@@ -25,6 +25,6 @@ public final class InfiniteInlet {
 | `InfiniteGasPressureSource.isSupplyingInfiniteGasPressure(): boolean` | 决定气体扩散中的源压力优先级；有限储量仍照常扣减。可以随供电和输出模式改变。 |
 | `GasDisplayFillProvider.gasDisplayFill(FluidStack): float` | 为玻璃管提供显示填充率，范围 0 到 1；不含该气体时返回 0。 |
 | `InfinityFluidTank()` | 容量为整数上限，`fill` 报告接受全部输入且不会改变模板流体。非空模板允许抽取指定数量。按栈抽取判断流体种类，调用方对组件有要求时应自行比对。 |
-| `VoidFluidHandler.INSTANCE` | 恒报一个空槽，接受并丢弃全部输入，两种 `drain` 均返回空栈。可用于实现垃圾桶。 |
+| `VoidFluidHandler.INSTANCE` | 恒报一个空槽，接受并丢弃全部输入，两种 `drain` 均返回空栈。适合拿来做垃圾桶。 |
 | `OnlyDrainFluidTank(int[, Predicate<FluidStack>])` | 对外部 `fill` 永远返回 0。内部注解标记的 `internalFill` 用于实现它的生产侧。 |
 | `IFluidHandlerHolder.getFluidHandler(): IFluidHandler` | 给持有储罐的对象提供访问器。接入外部管道仍需验证相应面上的 NeoForge 流体能力。 |

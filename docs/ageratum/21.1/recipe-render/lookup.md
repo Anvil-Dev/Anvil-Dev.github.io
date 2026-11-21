@@ -1,6 +1,6 @@
 # 从标签定位配方
 
-玩家阅读机器手册时，应看到当前世界加载的配方。把标签单独放在一行，`id` 填配方注册名。下面展示原版熔炉用铁矿石烧制铁锭的配方。
+想让玩家在手册里看到当前世界已加载的配方，把 `<ageratum:recipe>` 标签单独放一行，`id` 填配方注册名即可。下面这行会画出原版熔炉用铁矿石烧制铁锭的配方。
 
 ```markdown
 <ageratum:recipe id="minecraft:iron_ingot_from_smelting_iron_ore" center="true"/>

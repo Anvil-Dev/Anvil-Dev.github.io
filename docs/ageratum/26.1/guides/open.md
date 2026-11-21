@@ -1,6 +1,6 @@
 # 从服务端打开页面
 
-例如工作台旁的管理员希望用命令给玩家演示手册。下面的完整入口注册 `/fieldguide`，把逻辑页 ID 发送给执行命令的玩家。接收端按自己的语言选资源。
+比如管理员想在工作台旁用命令给玩家演示手册，可以像下面这样注册 `/fieldguide` 命令。服务端把逻辑页 ID 发给执行命令的玩家，客户端收到后按自己的语言加载对应资源。
 
 ```java
 package dev.example.fieldguide;
@@ -35,6 +35,6 @@ public final class FieldGuideMod {
 | `openGuideOnClientWithoutLanguageCode` | 客户端传入逻辑页 ID 和面包屑列表，自动解析语言。解析失败返回 false。 |
 | `openGuideOnClient` | 用已经定位的资源 ID 打开页面，例如 `field_guide:ageratum/en_us/index.md`。需要指定锚点时使用相应重载。 |
 
-不要把 `ageratum/en_us/` 拼进服务端发送的逻辑页名。客户端处理这个包时会再拼手册根目录和语言，导致文件明明存在却找不到。命令从控制台执行时没有玩家，`getPlayerOrException()` 会经 Brigadier 将错误反馈给命令源。
+别把 `ageratum/en_us/` 拼进服务端发出的逻辑页名。客户端收到包后会自己拼接手册根目录和语言目录，提前拼上反而会找不到文件。从控制台执行这个命令时没有玩家，`getPlayerOrException()` 会通过 Brigadier 把错误提示返回给命令发送方。
 
 [服务端入口](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/Ageratum.java) · [客户端接包](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/network/ClientPayloadHandler.java)

@@ -1,6 +1,6 @@
 # 按物品组件进入对应文章
 
-同一种物品可以有不同用途。要让受损铁镐专门指向维修页，可在声明中写入 `minecraft:damage`。下例只匹配损耗值 12 的铁镐，堆栈上的附魔、名称等其他组件可以保留。
+同一个物品可能有好几种用法。想让受损铁镐专门跳转到维修页，可以在绑定里加上 `minecraft:damage`。下面这个例子只匹配损耗值为 12 的铁镐，物品栏里这把镐上的附魔、自定义名称等其他组件不受影响。
 
 ```markdown
 ---
@@ -23,6 +23,6 @@ guide:
 | `namespace:item`、`namespace:item{}` | 物品 ID | 两者只检查物品。 |
 | ID 后的 `{…}` | 组件对象文本 | 按实际堆栈编码后的数据作子集匹配。先尝试 JSON，解析失败时可尝试 SNBT。 |
 
-读取第一组有效配置，顺序是 `guide.items`、`guide.item`、`guide.item_id`、`items`、`item`、`item_id`。这些字段之间不合并。对象只需包含要求的键。数组中的要求元素必须按原顺序出现，可以夹有其他元素。数值按数值比较。空栈、ID 不符或无法解码的条件不会匹配。[绑定解析与匹配](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideItemBinding.java) · [字段优先级](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/MDDocument.java)
+解析器按 `guide.items`、`guide.item`、`guide.item_id`、`items`、`item`、`item_id` 的顺序读取第一组有效配置，字段之间不会合并。匹配组件对象时，物品只需包含要求的键即可；匹配数组时，要求的元素必须按原顺序出现，中间可以夹着其他元素；数值按数值大小比较。空物品栈、ID 不符或无法解码的条件都不会匹配。[绑定解析与匹配](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideItemBinding.java) · [字段优先级](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/MDDocument.java)
 
-手持目标物品执行 `/ageratum item`，可读取物品 ID 与相对默认物品发生变化的组件。进入背包悬停并按住“寻思”按键，默认 W，默认时长 750 毫秒。多个页面匹配时，先挑当前语言，再挑英文，再挑排序后的首个匹配项。宽泛规则和精确规则同时命中时，精确规则没有额外排序优先权。[命令实现](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/command/AgeratumCommand.java) · [缓存选择](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideDocumentCache.java) · [按键设置](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/AgeratumClientConfig.java)
+拿着目标物品执行 `/ageratum item`，可以查看它的物品 ID 以及相对默认状态发生变化的组件。在背包里把鼠标悬停在物品上，按住“寻思”键（默认 W，默认按住 750 毫秒）就能跳转。如果多个页面同时匹配，会先选当前语言，再选英文，最后取排序后的第一个结果。就算宽泛规则和精确规则同时命中，精确规则也没有额外的排序优先权。[命令实现](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/command/AgeratumCommand.java) · [缓存选择](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideDocumentCache.java) · [按键设置](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/AgeratumClientConfig.java)

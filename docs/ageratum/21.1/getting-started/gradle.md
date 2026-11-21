@@ -1,6 +1,6 @@
 # 配置 Gradle 与接口注入
 
-从与本文分支相同的上游检出目录复制 `gradlew`、`gradlew.bat` 和 `gradle/wrapper/` 到新目录。在项目根目录创建下面两个文件。使用 JDK 21 执行 Wrapper。
+从对应上游分支的检出目录里，把 `gradlew`、`gradlew.bat` 和 `gradle/wrapper/` 复制到新项目目录，再在根目录新建下面两个文件。执行 Wrapper 时请使用 JDK 21。
 
 ## settings.gradle
 
@@ -65,11 +65,11 @@ dependencies {
 }
 ```
 
-Ageratum 自己使用 AnvilLib 的配置和渲染子模块。单纯编写手册时不需要配方接口注入。附属同时调用 AnvilLib 注入到原版类型上的配方接口时，在项目的 `gradle.properties` 中写入 `recipeInjection=true`，再刷新开发环境。
+Ageratum 本身只用到了 AnvilLib 的配置和渲染子模块，单纯写手册不需要配方接口注入。如果你的附属模组也要调用 AnvilLib 注入到原版类型上的配方接口，就在 `gradle.properties` 里加上 `recipeInjection=true`，然后刷新开发环境。
 
 ## 为什么要过滤 Maven 组
 
-NeoForge Maven 只同步了 Maven Central 的部分内容。Gradle 一旦从某个仓库选中模块元数据，会继续从该仓库解析该模块所需的变体。普通 Java 类能编译，并不能证明接口注入所需的变体也能解析。`exclusiveContent` 将表中的组限定到 Maven Central 与 Cjsah Maven，避免 NeoForge 的镜像抢先命中不完整的发布。
+NeoForge Maven 只同步了 Maven Central 的一部分内容。Gradle 一旦从某个仓库选中了模块元数据，就会继续从同一个仓库解析这个模块的变体。所以普通 Java 类能编过，不代表接口注入所需的变体也能找到。用 `exclusiveContent` 把这几个组限定到 Maven Central 和 Cjsah Maven，就是为了防止 NeoForge 镜像抢先命中不完整的发布。
 
 | 配置 | 解析的内容 | 何时使用 |
 | --- | --- | --- |

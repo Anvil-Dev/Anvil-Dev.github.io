@@ -10,7 +10,7 @@
 
 ## 从页面导出
 
-打开已加载的结构预览，点击导出按钮。客户端将完整结构压缩并分片发送。服务端校验总大小、顺序、标识与 NBT 结构后，写入**当前世界目录**的 `data/ageratum/`。文件名只包含命名空间与源文件最后一段。例如 `workshop:ageratum/zh_cn/maintenance/stand.snbt` 产生 `workshop_stand.nbt`。再次导出会依次使用 `workshop_stand_1.nbt`、`workshop_stand_2.nbt`。
+打开已加载的结构预览后点击导出按钮，客户端会把完整结构压缩并分片发给服务端。服务端校验总大小、分片顺序、标识和 NBT 结构，确认无误后写进**当前世界目录**下的 `data/ageratum/`。导出文件名只保留命名空间和源文件最后一段：比如 `workshop:ageratum/zh_cn/maintenance/stand.snbt` 会存成 `workshop_stand.nbt`，再次导出则依次顺延为 `workshop_stand_1.nbt`、`workshop_stand_2.nbt`。
 
 | 限制 | 值 | 处理 |
 | --- | --- | --- |

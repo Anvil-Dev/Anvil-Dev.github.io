@@ -1,6 +1,6 @@
 # 终端解绑
 
-将终端放进工作台进行无序合成。输出保留合成库存、平衡模式和名称，配方指定的新物品栈决定绑定状态。
+把终端放进工作台无序合成。输出物品会保留原来的合成库存、平衡模式和名称，而绑定状态则由配方里指定的新物品栈决定。
 
 在数据包中建立 `data/example/recipe/terminal_unbind/example.json`。游戏按 `type` 选择序列化器，这个文件的配方 ID 是 `example:terminal_unbind/example`。
 

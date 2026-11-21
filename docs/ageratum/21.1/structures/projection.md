@@ -1,8 +1,8 @@
 # 把结构放进客户端预览
 
-把模板投影到世界中，可以让玩家边看蓝图边搭建。固定投影使用给定原点，浮动投影每次客户端 tick 将原点跟到视线前五格。手册结构卡片的投影按钮会先取准星命中面的相邻方块；没有命中方块时改用相机所在方块上方，再启动浮动投影并关闭屏幕。[结构卡片按钮](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L329) · [浮动位置更新](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/structure/StructureProjectionManager.java#L175)
+把模板投影到世界里，玩家就能照着蓝图边看边搭。固定投影会停在指定原点，浮动投影则会在每个客户端 tick 把原点拉到视线前方五格。玩家点击手册结构卡片上的投影按钮时，程序会先取准星命中面的相邻方块；如果没指到方块，就改用相机所在方块的上方，接着开启浮动投影并关掉手册界面。[结构卡片按钮](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L329) · [浮动位置更新](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/structure/StructureProjectionManager.java#L175)
 
-下面的按钮处理器把模板交给沙盒渲染器。返回 true 时可以关闭当前界面。示例给了指南针作为移动工具，因此按住 Ctrl 并滚动鼠标时，玩家任一只手持有指南针即可微调。浮动模式下使用键或攻击键会固定原点；固定后再用滚轮移动，下一 tick 就不会被视线位置覆盖。
+下面这个按钮处理器会把模板交给沙盒渲染器，返回 `true` 时顺便关闭当前界面。示例把指南针设成了移动工具，所以只要玩家任一只手拿着指南针，按住 Ctrl 滚动鼠标滚轮就能微调位置。浮动模式下按一下使用键或攻击键可以把原点固定住；固定后再用滚轮微调，下一 tick 就不会被视线位置拉跑。
 
 ```java
 package dev.example.blueprint;

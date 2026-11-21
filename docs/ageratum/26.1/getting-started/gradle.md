@@ -1,6 +1,6 @@
 # 配置 Gradle 与接口注入
 
-从与本文分支相同的上游检出目录复制 `gradlew`、`gradlew.bat` 和 `gradle/wrapper/` 到新目录。在项目根目录创建下面两个文件。使用 JDK 25 执行 Wrapper。
+从对应上游分支的检出目录里，把 `gradlew`、`gradlew.bat` 和 `gradle/wrapper/` 复制到新项目目录，再在根目录新建下面两个文件。执行 Wrapper 时请使用 JDK 25。
 
 ## settings.gradle
 
@@ -64,11 +64,11 @@ dependencies {
 }
 ```
 
-Ageratum 使用 AnvilLib 的配置、Registrum、字体与渲染子模块。字体模块同时发布接口注入描述；示例将同一坐标分别交给 Java 编译路径和 ModDevGradle 的注入配置。
+Ageratum 用到了 AnvilLib 的配置、Registrum、字体和渲染子模块。其中字体模块会单独发布接口注入描述，所以示例里把同一个坐标同时加进了 Java 编译路径和 ModDevGradle 的注入配置。
 
 ## 为什么要过滤 Maven 组
 
-NeoForge Maven 只同步了 Maven Central 的部分内容。Gradle 一旦从某个仓库选中模块元数据，会继续从该仓库解析该模块所需的变体。普通 Java 类能编译，并不能证明接口注入所需的变体也能解析。`exclusiveContent` 将表中的组限定到 Maven Central 与 Cjsah Maven，避免 NeoForge 的镜像抢先命中不完整的发布。
+NeoForge Maven 只同步了 Maven Central 的一部分内容。Gradle 一旦从某个仓库选中了模块元数据，就会继续从同一个仓库解析这个模块的变体。所以普通 Java 类能编过，不代表接口注入所需的变体也能找到。用 `exclusiveContent` 把这几个组限定到 Maven Central 和 Cjsah Maven，就是为了防止 NeoForge 镜像抢先命中不完整的发布。
 
 | 配置 | 解析的内容 | 何时使用 |
 | --- | --- | --- |

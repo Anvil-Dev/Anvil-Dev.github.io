@@ -42,7 +42,7 @@ guide:
 <item id="minecraft:anvil" showText="true"/>
 ```
 
-在世界内执行 `/ageratum workshop`。直接打开子页可用 `/ageratum workshop "maintenance/repair"`，引用的文件为 `maintenance/repair.md`。没有文件参数时使用 `index.md`。客户端先查当前语言，再查 `en_us`。某语言的条目可以只翻译一部分。语言代码会转成小写并把连字符换成下划线。修改后按 F3+T 让客户端重新建立正文与绑定索引。[路径处理](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideDocumentLoader.java) · [命令注册](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/command/AgeratumCommand.java)
+在游戏里输入 `/ageratum workshop` 就能打开首页；想直接跳到子页面，就写 `/ageratum workshop "maintenance/repair"`，对应 `maintenance/repair.md`（不传文件参数时默认打开 `index.md`）。客户端会先找当前语言，找不到再回退到 `en_us`，所以某个语言只翻译了一部分页面也没关系。语言代码会自动转成小写并把连字符换成下划线。改完文件后按 F3+T，客户端就会重新建立正文和绑定索引。[路径处理](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideDocumentLoader.java) · [命令注册](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/command/AgeratumCommand.java)
 
 ## 写作时实时预览
 

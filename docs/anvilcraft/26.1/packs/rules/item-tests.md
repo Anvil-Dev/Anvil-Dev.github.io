@@ -10,7 +10,7 @@
 | --- | --- | --- | --- |
 | `entities` | `EntityType.CODEC`数组 | 可省略，默认 `[]` | 要匹配的实体列表 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L25) |
 | `predicates` | `NumericTagValuePredicate.CODEC`数组 | 可省略，默认 `[]` | 参与匹配的谓词列表 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L29) |
-| `is_monster` | 布尔值 | 可省略，默认 `false` | 按怪物属性进行匹配 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L32) |
+| `is_monster` | 布尔值 | 可省略，默认 `false` | 按是否为怪物来匹配 [声明](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java#L32) |
 
 [ItemSavedEntityPredicate.java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/item/property/predicate/ItemSavedEntityPredicate.java)
 

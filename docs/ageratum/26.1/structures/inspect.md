@@ -1,10 +1,10 @@
 # 在手册中检查预览方块
 
-结构卡片可以用来解释多方块机器中某个端口的位置。玩家先调节可见层数，再单击预览模型：左键选择方块并显示提示；右键尝试在指南屏幕中打开该方块的 GUI 预览。这里读取的是客户端预览世界中的方块，服务端机器的容器不会被打开。[拾取和 GUI 预览入口](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L345)
+结构卡片能用来标明多方块机器里某个端口的位置。玩家先调好可见层数，再点击预览模型：左键选中方块并弹出提示，右键则会在指南界面里打开该方块的 GUI 预览。注意这里读的是客户端预览世界里的方块，不会打开服务端机器的容器。[拾取和 GUI 预览入口](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L345)
 
-组件在鼠标释放时判断这次操作是点击还是拖拽。只有在预览区域内、移动距离不超过点击阈值、按键与起始按键一致，且没有命中控制按钮时，才会按相机、平移量和可见层范围执行拾取。把曾经选中的方块隐藏在层范围外时，组件会清掉旧提示。右键命中但没有可显示菜单时，会切换为“没有 GUI”的提示。[点击边界](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L345) · [提示更新](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L165)
+组件会在松开鼠标时判断这次操作是点击还是拖拽。只有光标在预览区内、移动距离没超过点击阈值、松开键和按下键一致，而且没点到控制按钮时，才会结合相机视角、平移量和可见层范围去拾取方块。如果之前选中的方块后来被藏到了可见层范围外，组件会清掉旧提示；右键点中但这个方块没有可显示的菜单时，提示会变成“没有 GUI”。[点击边界](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L345) · [提示更新](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L165)
 
-附属组件已经持有模板、选中的模板内坐标和屏幕锚点时，可复用指南的 GUI 预览。下面的桥接方法接收实现了该入口所需的所属组件对象；传入同一对象可让预览记录其所属者。返回值用于选择显示菜单还是回退到提示文本。
+如果附属组件手里已经有模板、选中的模板内坐标和屏幕锚点，可以直接复用指南自带的 GUI 预览。下面的桥接方法会接收所属组件对象，传入同一个对象就能让预览记住是谁打开了它。你可以根据返回值决定是显示菜单，还是退回提示文本。
 
 ```java
 package dev.example.blueprint;

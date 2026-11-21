@@ -34,6 +34,6 @@ Place the furnace on a solid surface. Add raw iron to the top slot and coal to t
 [Back to the field guide](index)
 ```
 
-在 `zh_cn/` 下以相同的相对路径添加译文。服务端和书签使用稳定的页面标识，翻译标题无需更改标识。物品提示找不到页面时，先用命令打开同一文件，区分资源路径错误和物品绑定未匹配。
+把译文按同样的相对路径放进 `zh_cn/` 目录下即可。服务端和书签认的是固定的页面标识，翻译标题时不用改它。如果拿物品提示找不到页面，可以先用命令直接打开同一份文件，分清到底是资源路径写错了，还是物品绑定没匹配上。
 
 [文档加载器](https://github.com/Anvil-Dev/Ageratum/blob/36bf4ce16017ebc532a369c56f972dfb73d272a0/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/GuideDocumentLoader.java)

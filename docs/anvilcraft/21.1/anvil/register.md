@@ -33,6 +33,6 @@ public final class SandstonePress {
 | `handle` 的返回值 | 返回 `true` 时结束这一轮行为遍历。返回 `false` 时后续匹配项仍有机会运行。 |
 | `priority()` | 默认值 100。该提交中的落地遍历按注册表迭代顺序执行，没有按这个数值排序。 |
 
-同一个方块可以匹配多个行为。使用注册入口会清空匹配缓存，直接写入 `BEHAVIORS` 会绕过这一步。下方有切石机时，破坏分支可以提前返回。通常世界内配方在行为之前运行，行为返回值不能撤销已经产生的配方结果。
+同一个方块可以匹配多个行为。用注册事件入口注册会清空匹配缓存，直接往 `BEHAVIORS` 里写则会绕过这一步。下方有切石机时，破坏分支可能会提前返回。另外，世界内配方通常在行为之前运行，行为的返回值并不能撤销已经产生的配方结果。
 
 [行为接口](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/anvil/IAnvilBehavior.java) · [落地调用点](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/event/anvil/AnvilEventListener.java)

@@ -1,8 +1,8 @@
 # 客户端注册和资源重载
 
-客户端模组构造阶段把扩展注册器挂上模组事件总线。收到 `AddClientReloadListenersEvent` 后，可以为附属自己的资源索引登记监听器，首次加载、切换资源包和 F3+T 时都会重建。准备阶段从资源管理器读数据，应用阶段用新索引替换旧快照。
+在客户端模组构造阶段把扩展注册器挂上模组事件总线，收到 `AddClientReloadListenersEvent` 后，再为附属模组自己的资源索引登记监听器。这样首次加载、切换资源包和按 F3+T 时都会重建索引：准备阶段从资源管理器读数据，应用阶段用新索引替换旧快照。
 
-下例只收录 `assets/example/textures/guide/` 下的 PNG。检查附属示意图是否存在时用 `DiagramIndex.contains(id)`，资源包删掉图片后不会沿用旧索引。
+下面这个例子只收录 `assets/example/textures/guide/` 下的 PNG 图片。判断附属示意图是否存在时，调用 `DiagramIndex.contains(id)` 即可；一旦资源包删掉了某张图，就不会继续沿用旧索引。
 
 ```java
 package dev.example.guide;

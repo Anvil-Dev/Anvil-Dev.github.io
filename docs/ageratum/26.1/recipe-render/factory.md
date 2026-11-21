@@ -1,8 +1,8 @@
 # 用已知输入和成品绘制配方卡
 
-自定义机器可以把服务端已经同步的预览快照传给一个 `MDRecipeComponent`。要做资源包可用的静态示例，也可以从块扩展的属性读取物品 ID。下面把 `<example:press_card input="minecraft:sand" output="minecraft:sandstone"/>` 注册为一张可见的示意卡。示意卡展示作者填写的两种物品；如果整合包修改了配方，作者也要更新这张卡。
+自定义机器可以把服务端同步过来的预览快照直接传给 `MDRecipeComponent`。如果想做纯资源包就能用的静态示例，也可以从块扩展的属性里读取物品 ID。下面这个例子把 `<example:press_card input="minecraft:sand" output="minecraft:sandstone"/>` 注册成一张可见的示意卡。注意它只展示作者填好的两种物品，如果整合包改了配方，作者也得跟着更新这张卡。
 
-在客户端初始化时调用 `PressRecipeView.register(modEventBus)`。若自己的同步层已取得输入、成品，则直接用两个 ItemStack 构造同一个视图。通过 `copy()` 保存输入，防止后续库存变化改写已制作的预览。
+在客户端初始化时调用一次 `PressRecipeView.register(modEventBus)`。如果你的同步层已经拿到了输入和成品，直接用两个 `ItemStack` 构造同一个视图就行；构造方法里通过 `copy()` 复制了物品栈，以免后续库存变化把预览改掉。
 
 ```java
 package dev.example.guide;

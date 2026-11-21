@@ -34,7 +34,7 @@ public final class FurnaceHeat {
 }
 ```
 
-受热材料按家族注册。用自己的资源名调用 `HeatRecorder.registerHeatables(id)`，从 `normal` 到 `overheated` 逐档加入已注册方块。各档位还需加入方块标签 `anvilcraft:heatable_blocks`，否则管理器会跳过。升温使用目标方块的默认状态，原有朝向、属性和方块实体数据都需要在设计材料时考虑。需要持续时间与冷却逻辑的高温档，应提供相应的 `HeatableBlockEntity`。
+受热材料按家族注册：用自己的资源名调用 `HeatRecorder.registerHeatables(id)`，再从 `normal` 到 `overheated` 逐档把已注册方块加进去。每一档都必须加入 `anvilcraft:heatable_blocks` 方块标签，不然管理器会直接跳过。注意，升温时会直接换成目标方块的默认状态，所以原来的朝向、属性和方块实体数据怎么处理，需要在设计方块时提前想好。如果高温档需要持续时间和冷却逻辑，还得给它配上对应的 `HeatableBlockEntity`。
 
 | 入口 | 参数与调用约定 |
 | --- | --- |

@@ -1,8 +1,8 @@
 # 让方块实体接入电网
 
-在已注册的机器方块实体上实现 `IPowerConsumer`。AnvilCraft 监听 `BlockEntityEvent.ServerLoad` 并将它排入当前维度的电网队列，卸载时调用 `removeComponent`。加载回调结束时 `getGrid()` 仍可能为空。将需要电力的工作放入 `gridTick()`，在这里读 `isGridWorking()` 后再消耗材料。
+让已注册的机器方块实体实现 `IPowerConsumer`。AnvilCraft 会监听 `BlockEntityEvent.ServerLoad`，把它排进当前维度的电网队列，卸载时再调用 `removeComponent`。注意，加载回调刚结束时 `getGrid()` 仍可能为空；真正需要用电的逻辑要放进 `gridTick()` 里，先检查 `isGridWorking()` 再消耗材料。
 
-下例是耗电 4 的检测器。在方块状态定义中加入 `IPowerComponent.OVERLOAD`，即可在模型中区分过载和正常两种状态。构建自己的 `BlockEntityType` 时，将注册好的类型、位置和状态传入构造器。
+下面这个例子是一个耗电 4 的检测器。只要在方块状态定义里加上 `IPowerComponent.OVERLOAD`，就能在模型里区分过载和正常两种状态。构建自己的 `BlockEntityType` 时，把注册好的类型、位置和状态传进构造器即可。
 
 ```java
 package dev.example.addon;

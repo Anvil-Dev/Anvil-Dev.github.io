@@ -1,6 +1,6 @@
 # 用电容器给物品充能
 
-给物品实现 `ICapacitorChargeable` 前，先为该物品栈提供 `Capabilities.Energy.ITEM`。默认的 `getEnergyStorage` 通过 `ItemAccess.forStack(stack)` 查询能力，找不到时会抛出带物品名的异常。下面的设备材料只接受普通整份充电，允许充能前再走默认容量和模拟插入检查。
+让物品实现 `ICapacitorChargeable` 之前，得先给该物品栈提供 `Capabilities.Energy.ITEM`。默认的 `getEnergyStorage` 会通过 `ItemAccess.forStack(stack)` 去查能力，找不到就会抛出带物品名的异常。下面这个例子只接受普通整份充电，允许充电后还会继续走默认容量和模拟插入检查。
 
 ```java
 package dev.example.press;

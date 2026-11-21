@@ -1,8 +1,8 @@
 # 把模板导出到当前世界
 
-玩家点击手册预览上的导出按钮后，客户端将当前模板保存成压缩 NBT，再发给服务端。结果落在当前世界的 `data/ageratum/` 中。因此多人游戏要去服务器存档取文件，写完的文件也不会自动成为客户端资源包模板。[导出按钮](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L304) · [网络方向注册](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/network/AgeratumNetwork.java#L34)
+玩家点开手册预览里的导出按钮后，客户端会把当前模板打包成压缩 NBT 发给服务端，服务端最终写到当前世界的 `data/ageratum/` 目录。正因为文件写在服务端存档里，多人游戏时要去服务器存档取文件；而且导出的文件也不会自动变成客户端资源包里的模板。[导出按钮](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/client/feat/markdown/component/extend/MDNBTStructureComponent.java#L304) · [网络方向注册](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/network/AgeratumNetwork.java#L34)
 
-下面的附属界面动作读取玩家选中的资源 ID。返回 true 只表示已经把模板交给导出器；服务器写入成功后，会通过系统消息告知实际生成的文件名。客户端缺少连接或本地玩家时不发包。
+下面的附属界面动作会读取玩家选中的资源 ID。返回 `true` 只代表模板已经交给了导出器，等服务端真正写完文件，会再发一条系统消息告诉玩家生成了什么文件名。如果客户端还没连上服务器或没有本地玩家，就不会发包。
 
 ```java
 package dev.example.blueprint;

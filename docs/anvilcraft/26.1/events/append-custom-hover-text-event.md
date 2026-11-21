@@ -1,8 +1,8 @@
 # AppendCustomHoverTextEvent
 
-附属物品需要加一行操作说明时，订阅 `NeoForge.EVENT_BUS` 上的此事件。`ItemStack.addDetailsToTooltip` 进入方法时发布，监听器用 `getBuilder().accept(Component)` 追加一行，后续原版明细继续构建。事件给出当前 `ItemStack`、`TooltipContext`、`TooltipDisplay` 与 `TooltipFlag`。`getPlayer()` 可以为空，例如不带玩家上下文的提示预览。
+如果想给附属物品加一行操作说明，订阅 `NeoForge.EVENT_BUS` 上的这个事件就行。进入 `ItemStack.addDetailsToTooltip` 时会发布该事件，监听器通过 `getBuilder().accept(Component)` 追加一行提示，原版后续明细还会继续构建。事件里能拿到当前的 `ItemStack`、`TooltipContext`、`TooltipDisplay` 和 `TooltipFlag`；注意 `getPlayer()` 可能为空（比如没有玩家上下文的提示预览）。
 
-先按物品和显示条件过滤，再生成文本。构建提示时可能重复进入这一方法，所以把持久化修改留给实际使用操作。事件不能取消，传入的 `Consumer` 仅提供逐行追加能力。[原版方法注入点](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/ItemStackMixin.java) · [内置追加器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/event/TooltipEventListener.java)
+建议先按物品和显示条件过滤，再生成文本。构建提示时可能会重复进入这个方法，所以持久化修改不要放在这里做。该事件不能取消，传入的 `Consumer` 也只用来逐行追加文本。[原版方法注入点](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/ItemStackMixin.java) · [内置追加器](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/event/TooltipEventListener.java)
 
 ## 给指南针加一行操作提示
 

@@ -8,4 +8,4 @@
 | `anchor` | `String` | 去除前后空白后若仍有内容，就追加为客户端命令的第三个参数。 |
 | `sameTeam` | `boolean` | 为 true 时通过队伍对象是否相等筛选接收者。两名均未加入队伍的玩家在这个比较里相等。 |
 
-服务端能发送打开手册的请求，无法保证对方资源包里有对应页面。需要准确跳转时，确保各端安装包含该页面的资源；要在客户端代码中确认打开结果，可读取本地打开方法返回的布尔值。[发送入口](../guides/open) · [分享消息处理器](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/network/ServerPayloadHandler.java)
+服务端能发出打开手册的请求，但没法保证对方客户端的资源包里一定有这一页。要保证跳转不出错，各端都得装好包含该页面的资源包；想在客户端代码里确认有没有打开成功，可以读取本地打开方法返回的布尔值。[发送入口](../guides/open) · [分享消息处理器](https://github.com/Anvil-Dev/Ageratum/blob/83f89c4c3a6796d16bcef7e728f4b5b95d5a516c/src/main/java/dev/anvilcraft/resource/ageratum/network/ServerPayloadHandler.java)

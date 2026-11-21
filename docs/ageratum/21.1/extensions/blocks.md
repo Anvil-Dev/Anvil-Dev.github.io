@@ -1,6 +1,6 @@
 # 注册块组件工厂
 
-为机器的输入条件设计一个警示框。作者写 `<example:requirement>` 与结束标签，把内容交给 Markdown 解析器后，框内的列表和链接仍保持原来的组件结构。在自己模组的客户端初始化入口调用下面的 `register(modEventBus)` 一次。附属自己的注册器使用自己的命名空间，其键指向 Ageratum 已创建的注册表。
+比方说，你想给机器的输入条件做一个警示框：作者在文档里写 `<example:requirement>` 和结束标签，解析器处理后，框里的列表和链接依然保持原来的组件结构。只要在模组的客户端初始化入口里调用一次下面的 `register(modEventBus)` 就行。附属模组用自己的命名空间建注册器，键指向 Ageratum 已经建好的注册表。
 
 ```java
 package dev.example.guide;

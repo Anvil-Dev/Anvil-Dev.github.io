@@ -1,8 +1,8 @@
 # UseMagnetEvent
 
-改变手持磁铁吸引范围时，把监听器注册到**模组事件总线**。`MagnetUtil.magnetizeItems` 在玩家未潜行时，先以配置值创建事件，再用 `ModLoader.postEvent` 发布。潜行分支在发布之前已经返回 `PASS`。
+如果想修改手持磁铁的吸引范围，把监听器注册到**模组事件总线**。玩家没有潜行时，`MagnetUtil.magnetizeItems` 会先用配置值创建事件，再用 `ModLoader.postEvent` 发布（如果正在潜行，方法在发布前就已经返回 `PASS` 了）。
 
-`setAttractRadius(double)` 改变的是沿 X、Y、Z 三轴扩张的搜索盒半径，物品和经验球共用它。发布者直接使用读回值，应给出有限的非负数。取消会返回 `PASS`，跳过移动物品、集中经验球、消耗手持物品耐久和添加冷却。事件带有 `Level`，有副作用的监听逻辑需按逻辑侧处理。[磁铁调用点](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/util/MagnetUtil.java)
+`setAttractRadius(double)` 改的是沿 X、Y、Z 三轴展开的搜索盒半径，物品和经验球共用这个数值。发布方会直接读回你改过的值，所以请传入有限的非负数。如果取消事件，方法会直接返回 `PASS`，跳过移动物品、集中经验球、消耗手持物品耐久和添加冷却。事件里带有 `Level`，如果监听逻辑有副作用，记得按逻辑侧区分处理。[磁铁调用点](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/util/MagnetUtil.java)
 
 ## 给副手持指南针的玩家限制吸引距离
 

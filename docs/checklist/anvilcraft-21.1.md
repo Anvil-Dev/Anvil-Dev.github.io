@@ -4,7 +4,7 @@ search: false
 
 # AnvilCraft 21.1 逐篇清单
 
-勾选项对应本分册已收录的页面，共 609 篇。点击标题可以核对正文。
+勾选项对应本分册已收录的页面，共 616 篇。点击标题可以核对正文。
 
 - [x] [AnvilCraft 21.1 开发手册](/anvilcraft/21.1/)
 
@@ -54,7 +54,7 @@ search: false
 - [x] [物品粉碎的配方构建器](/anvilcraft/21.1/builders/item_crush)
 - [x] [物品注入的配方构建器](/anvilcraft/21.1/builders/item_inject)
 - [x] [宝石工艺的配方构建器](/anvilcraft/21.1/builders/jewel_crafting)
-- [x] [激光照射的配方构建器](/anvilcraft/21.1/builders/laser_hit)
+- [x] [激光照射的配方输出](/anvilcraft/21.1/builders/laser_hit)
 - [x] [质量注入的配方构建器](/anvilcraft/21.1/builders/mass_inject)
 - [x] [筛分的配方构建器](/anvilcraft/21.1/builders/mesh)
 - [x] [主动矿物涌泉的配方构建器](/anvilcraft/21.1/builders/mineral_fountain_active)
@@ -65,22 +65,30 @@ search: false
 - [x] [多方块转换的配方构建器](/anvilcraft/21.1/builders/multiblock_conversion)
 - [x] [多方块合成的配方构建器](/anvilcraft/21.1/builders/multiblock)
 - [x] [中子辐照的配方构建器](/anvilcraft/21.1/builders/neutron_irradiation)
-- [x] [中子锭充能的配方构建器](/anvilcraft/21.1/builders/neutronium_charging)
+- [x] [中子锭充能的配方输出](/anvilcraft/21.1/builders/neutronium_charging)
 - [x] [霜钢锻造置换的配方构建器](/anvilcraft/21.1/builders/permutation)
 - [x] [药丸合成的配方构建器](/anvilcraft/21.1/builders/pill_recipe)
 - [x] [行星资源的配方构建器](/anvilcraft/21.1/builders/planet_resource)
 - [x] [传送门转换的配方构建器](/anvilcraft/21.1/builders/portal_conversion)
 - [x] [序列装配的配方构建器](/anvilcraft/21.1/builders/procedural_process)
 - [x] [固液加工的配方构建器](/anvilcraft/21.1/builders/solid_liquid)
-- [x] [特殊天体的配方构建器](/anvilcraft/21.1/builders/special_celestial_body)
+- [x] [特殊天体的配方输出](/anvilcraft/21.1/builders/special_celestial_body)
 - [x] [方块榨取的配方构建器](/anvilcraft/21.1/builders/squeezing)
 - [x] [特殊物品冲压的配方构建器](/anvilcraft/21.1/builders/stamping_unique_items)
 - [x] [物品冲压的配方构建器](/anvilcraft/21.1/builders/stamping)
 - [x] [超高温加热的配方构建器](/anvilcraft/21.1/builders/super_heating)
-- [x] [神庙需求的配方构建器](/anvilcraft/21.1/builders/temple_demand)
+- [x] [神庙需求的配方输出](/anvilcraft/21.1/builders/temple_demand)
 - [x] [时移加工的配方构建器](/anvilcraft/21.1/builders/time_warp)
 - [x] [二合一锻造的配方构建器](/anvilcraft/21.1/builders/two_to_one_smithing)
 - [x] [拆包的配方构建器](/anvilcraft/21.1/builders/unpack)
+
+## 天体锻造砧与恒星演化
+
+- [x] [天体锻造砧与恒星演化](/anvilcraft/21.1/celestial/)
+- [x] [查找恒星演化的起始阶段](/anvilcraft/21.1/celestial/evolution)
+- [x] [添加一个行星测绘站巨构](/anvilcraft/21.1/celestial/megastructures)
+- [x] [发起搜索并观察结果](/anvilcraft/21.1/celestial/search)
+- [x] [复制天体快照到磁盘或奇点水晶](/anvilcraft/21.1/celestial/snapshot)
 
 ## 电荷与物品能量
 
@@ -161,6 +169,7 @@ search: false
 - [x] [客户端与服务端通信](/anvilcraft/21.1/network/)
 - [x] [注册附属模组自己的查询](/anvilcraft/21.1/network/registration)
 - [x] [同步药盒与护符盒的滚轮选中项](/anvilcraft/21.1/network/selection)
+- [x] [按收件人发送大型快照](/anvilcraft/21.1/network/split)
 - [x] [读取红石导线的服务端信号](/anvilcraft/21.1/network/wire)
 
 ## 数据包与资源包
@@ -338,6 +347,7 @@ search: false
 - [x] [配方与数据生成](/anvilcraft/21.1/recipe-code/)
 - [x] [让方块参与大锅加工](/anvilcraft/21.1/recipe-code/cauldron)
 - [x] [生成充放电配方](/anvilcraft/21.1/recipe-code/chargers)
+- [x] [在数据生成入口写出第一条铁砧配方](/anvilcraft/21.1/recipe-code/datagen)
 
 ## 方块实体渲染
 

@@ -4,7 +4,7 @@ search: false
 
 # AnvilCraft 26.1 逐篇清单
 
-勾选项对应本分册已收录的页面，共 616 篇。点击标题可以核对正文。
+勾选项对应本分册已收录的页面，共 666 篇。点击标题可以核对正文。
 
 - [x] [AnvilCraft 26.1 开发手册](/anvilcraft/26.1/)
 
@@ -31,6 +31,58 @@ search: false
 - [x] [行为树](/anvilcraft/26.1/behavior/)
 - [x] [在一次遍历中共享数据](/anvilcraft/26.1/behavior/context)
 - [x] [组织条件与动作](/anvilcraft/26.1/behavior/nodes)
+
+## 配方构建器
+
+- [x] [配方构建器](/anvilcraft/26.1/builders/)
+- [x] [四维多方块的配方构建器](/anvilcraft/26.1/builders/4d_multiblock)
+- [x] [铁砧碰撞的配方构建器](/anvilcraft/26.1/builders/anvil_collision)
+- [x] [方块压缩的配方构建器](/anvilcraft/26.1/builders/block_compress)
+- [x] [方块粉碎的配方构建器](/anvilcraft/26.1/builders/block_crush)
+- [x] [方块处理的配方构建器](/anvilcraft/26.1/builders/block_processing)
+- [x] [方块涂抹的配方构建器](/anvilcraft/26.1/builders/block_smear)
+- [x] [罐装食物的配方构建器](/anvilcraft/26.1/builders/canning_food)
+- [x] [天体铁砧合成的配方构建器](/anvilcraft/26.1/builders/celestial_anvil)
+- [x] [充放电的配方构建器](/anvilcraft/26.1/builders/charger_charging)
+- [x] [霜钢锻造变形的配方构建器](/anvilcraft/26.1/builders/deformation)
+- [x] [八合一锻造的配方构建器](/anvilcraft/26.1/builders/eight_to_one_smithing)
+- [x] [能量武器制作的配方构建器](/anvilcraft/26.1/builders/energy_weapon_make)
+- [x] [快速烹饪的配方构建器](/anvilcraft/26.1/builders/fast_cooking)
+- [x] [流体混合的配方构建器](/anvilcraft/26.1/builders/fluid_mixing)
+- [x] [四合一锻造的配方构建器](/anvilcraft/26.1/builders/four_to_one_smithing)
+- [x] [物品压缩的配方构建器](/anvilcraft/26.1/builders/item_compress)
+- [x] [物品粉碎的配方构建器](/anvilcraft/26.1/builders/item_crush)
+- [x] [物品注入的配方构建器](/anvilcraft/26.1/builders/item_inject)
+- [x] [宝石工艺的配方构建器](/anvilcraft/26.1/builders/jewel_crafting)
+- [x] [激光照射的配方输出](/anvilcraft/26.1/builders/laser_hit)
+- [x] [质量注入的配方构建器](/anvilcraft/26.1/builders/mass_inject)
+- [x] [筛分的配方构建器](/anvilcraft/26.1/builders/mesh)
+- [x] [主动矿物涌泉的配方构建器](/anvilcraft/26.1/builders/mineral_fountain_active)
+- [x] [被动矿物涌泉的配方构建器](/anvilcraft/26.1/builders/mineral_fountain_passive)
+- [x] [矿物涌泉替换的配方构建器](/anvilcraft/26.1/builders/mineral_fountain_replacement)
+- [x] [物品辅助转化的配方构建器](/anvilcraft/26.1/builders/mob_transform_with_item)
+- [x] [生物转化的配方构建器](/anvilcraft/26.1/builders/mob_transform)
+- [x] [多方块转换的配方构建器](/anvilcraft/26.1/builders/multiblock_conversion)
+- [x] [多方块合成的配方构建器](/anvilcraft/26.1/builders/multiblock)
+- [x] [中子辐照的配方构建器](/anvilcraft/26.1/builders/neutron_irradiation)
+- [x] [中子锭充能的配方构建器](/anvilcraft/26.1/builders/neutronium_charging)
+- [x] [霜钢锻造置换的配方构建器](/anvilcraft/26.1/builders/permutation)
+- [x] [药丸合成的配方构建器](/anvilcraft/26.1/builders/pill_recipe)
+- [x] [行星资源的配方构建器](/anvilcraft/26.1/builders/planet_resource)
+- [x] [传送门转换的配方构建器](/anvilcraft/26.1/builders/portal_conversion)
+- [x] [序列装配的配方构建器](/anvilcraft/26.1/builders/procedural_process)
+- [x] [固液加工的配方构建器](/anvilcraft/26.1/builders/solid_liquid)
+- [x] [特殊天体的配方输出](/anvilcraft/26.1/builders/special_celestial_body)
+- [x] [方块榨取的配方构建器](/anvilcraft/26.1/builders/squeezing)
+- [x] [异种物品冲压的配方构建器](/anvilcraft/26.1/builders/stamping_diff)
+- [x] [物品冲压的配方构建器](/anvilcraft/26.1/builders/stamping)
+- [x] [超高温加热的配方构建器](/anvilcraft/26.1/builders/super_heating)
+- [x] [神庙需求的配方输出](/anvilcraft/26.1/builders/temple_demand)
+- [x] [终端解绑的配方构建器](/anvilcraft/26.1/builders/terminal_unbind)
+- [x] [终端升级的配方构建器](/anvilcraft/26.1/builders/terminal_upgrade)
+- [x] [时移加工的配方构建器](/anvilcraft/26.1/builders/time_warp)
+- [x] [二合一锻造的配方构建器](/anvilcraft/26.1/builders/two_to_one_smithing)
+- [x] [拆包的配方构建器](/anvilcraft/26.1/builders/unpack)
 
 ## 恒星演化与铸星砧
 
@@ -298,6 +350,7 @@ search: false
 - [x] [配方与数据生成](/anvilcraft/26.1/recipe-code/)
 - [x] [让方块参与大锅加工](/anvilcraft/26.1/recipe-code/cauldron)
 - [x] [生成充放电配方](/anvilcraft/26.1/recipe-code/chargers)
+- [x] [从数据生成事件写出方块粉碎配方](/anvilcraft/26.1/recipe-code/datagen)
 
 ## 方块模型渲染
 

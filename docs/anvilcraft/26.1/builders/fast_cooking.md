@@ -45,4 +45,4 @@ public final class FastCookingRecipes {
 | `chance` | 数值 | 可省略，默认 `1.0f` | 触发概率 |
 | `ignited` | 布尔值 | 可省略，默认 `false` | 匹配点燃状态 |
 
-[查看 快速烹饪字段、默认值与配方示例](../packs/machine/fast_cooking) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-2#fastcookingrecipe-builder)
+[查看 快速烹饪字段、默认值与配方示例](../packs/machine/fast_cooking)

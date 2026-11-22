@@ -1,0 +1,16 @@
+# Crafting, Accessories & Smithing
+
+- [Neutronium Ingot Charging](./neutronium_charging)
+- [Jewel Crafting](./jewel_crafting)
+- [Food Canning](./canning_food)
+- [Pill Crafting](./pill_recipe)
+- [Two-to-One Smithing](./two_to_one_smithing)
+- [Four-to-One Smithing](./four_to_one_smithing)
+- [Eight-to-One Smithing](./eight_to_one_smithing)
+- [Frost Metal Permutation](./permutation)
+- [Frost Metal Deformation](./deformation)
+- [Energy Weapon Crafting](./energy_weapon_make)
+- [Smithing Result Modifiers](./modifiers)
+- [Component Accessors](./custom-data)
+- [Number Providers](./providers)
+- [Frost Metal Material Predicates](./frost-material)

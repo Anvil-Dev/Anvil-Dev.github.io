@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
 import { branchSidebar } from './sidebar'
-import { apiGuideLinks } from './api-guides'
 import { projects, siteNavigation, versions } from './navigation'
 
 const chinese = siteNavigation()
@@ -18,6 +17,11 @@ export default defineConfig({
       description: 'A vanilla survival expansion centered around the anvil. Project information, community and developer documentation.',
       themeConfig: {
         ...english,
+        sidebar: {
+          ...english.sidebar,
+          ...Object.fromEntries(projects.flatMap(({ slug }) => versions.map(version =>
+            [`/en/${slug}/${version}/`, branchSidebar(slug, version, true)]))),
+        },
         outline: { label: 'On this page', level: [2, 3] },
         docFooter: { prev: 'Previous page', next: 'Next page' },
         sidebarMenuLabel: 'Menu', returnToTopLabel: 'Return to top',
@@ -31,7 +35,6 @@ export default defineConfig({
   buildConcurrency: 8,
   markdown: {
     config(md) {
-      apiGuideLinks(md)
       const renderCode = md.renderer.rules.code_inline!
       md.renderer.rules.code_inline = (tokens, index, ...args) => {
         const html = renderCode(tokens, index, ...args)
@@ -65,8 +68,11 @@ export default defineConfig({
         miniSearch: {
           searchOptions: {
             filter: result => {
-              const branch = location.pathname.match(/\/(anvilcraft|ageratum)\/(21\.1|26\.1)\//)?.[0]
-              return !branch || String(result.id).includes(branch)
+              const branch = location.pathname.match(/^(?:\/en)?\/(anvilcraft|ageratum)\/(21\.1|26\.1)\//)
+              if (!branch) return true
+              const id = String(result.id)
+              const isEn = location.pathname.startsWith('/en/')
+              return id.startsWith('/en/') === isEn && id.includes(`/${branch[1]}/${branch[2]}/`)
             },
           },
           options: {
@@ -84,7 +90,8 @@ export default defineConfig({
         _render(source, env, md) {
           const html = md.render(source, env)
           if (env.frontmatter?.search === false) return ''
-          const [mod, version] = env.relativePath.split('/')
+          const parts = env.relativePath.split('/')
+          const [mod, version] = parts[0] === 'en' ? parts.slice(1) : parts
           const project = projects.find(({ slug }) => mod === slug)
           if (!project || !versions.includes(version)) return html
           return html.replace(/(<h1\b[^>]*>)/, `$1${project.name} ${version} · `)

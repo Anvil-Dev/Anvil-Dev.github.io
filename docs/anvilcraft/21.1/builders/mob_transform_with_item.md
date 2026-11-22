@@ -55,4 +55,4 @@ public final class MobTransformWithItemRecipes {
 | `index` | 整数 | 可省略 | 步骤或列表索引 |
 | `tag` | 字符串 | 必填 | 写入的标签内容 |
 
-[查看 物品辅助转化字段、默认值与配方示例](../packs/transform/mob_transform_with_item) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-transform-1#mobtransformwithitemrecipe)
+[查看 物品辅助转化字段、默认值与配方示例](../packs/transform/mob_transform_with_item)

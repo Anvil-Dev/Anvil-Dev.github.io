@@ -43,4 +43,4 @@ public final class EnergyWeaponMakeRecipes {
 | `ingredients` | 物品原料谓词数组 | 必填 | 参与匹配的原料列表 |
 | `result` | 物品栈模板对象 | 必填 | 完成配方后使用的结果 |
 
-[查看 能量武器制作字段、默认值与配方示例](../packs/crafting/energy_weapon_make) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-1#energyweaponmakerecipe-builder)
+[查看 能量武器制作字段、默认值与配方示例](../packs/crafting/energy_weapon_make)

@@ -9,8 +9,8 @@ PortalType 同时保存注册 ID 和 Portal 实现。从数据构造时会查询
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `PortalType` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-portal#portaltype) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/portal/PortalType.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `PortalType` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/portal/PortalType.java) |
 
 <!-- source-guide -->

@@ -50,4 +50,4 @@ public final class PermutationRecipes {
 | `material` | `IFrostMaterialPredicate.CODEC` | 必填 | 锻造材料谓词 |
 | `result` | `RecipeResult.CODEC` | 必填 | 完成配方后使用的结果 |
 
-[查看 霜钢锻造置换字段、默认值与配方示例](../packs/crafting/permutation) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-frost-2#permutationrecipe-builder)
+[查看 霜钢锻造置换字段、默认值与配方示例](../packs/crafting/permutation)

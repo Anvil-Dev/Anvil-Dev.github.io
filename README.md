@@ -1,13 +1,15 @@
 # AnvilCraft 官网与开发文档
 
-首页与基本信息有简体中文和英文两版。顶栏的「开发文档」和「藿香」分别打开 AnvilCraft 和 Ageratum 的版本菜单。进入分册后，侧栏和搜索使用该分支的文档。
+简体中文 · [English](README.en.md)
+
+首页、基本信息和四册开发手册均提供简体中文和英文。顶栏的「开发文档」和「藿香」分别打开 AnvilCraft 和 Ageratum 的版本菜单。进入分册后，侧栏和搜索使用该分支的文档。
 
 | 模组 | Minecraft 1.21.1 | Minecraft 26.1.2 |
 | --- | --- | --- |
 | AnvilCraft | [21.1 手册](docs/anvilcraft/21.1/index.md) | [26.1 手册](docs/anvilcraft/26.1/index.md) |
 | Ageratum | [21.1 手册](docs/ageratum/21.1/index.md) | [26.1 手册](docs/ageratum/26.1/index.md) |
 
-[全分支与子文档拆分清单](CHECKLIST.md) 记录上游分支、取材提交与功能组。配方和资源字段从各分册的“数据包与资源包”进入。查方法重载、隐式成员、事件或工厂时，打开“Java 公开 API”或在站内搜索类型名。
+[全分支与子文档拆分清单](CHECKLIST.md) 记录上游分支、取材提交与功能组。配方和资源字段从各分册的“数据包与资源包”进入。查找 Java 声明与实际调用时，可从功能指南打开对应版本的源码链接。
 
 ## 运行站点
 
@@ -51,10 +53,9 @@ pnpm docs:preview
 
 先检出相应上游分支并运行 `git pull --ff-only`。手册首页记录了本次取材的提交。复核已发布手册时，上游工作树须在该提交；更新手册时，先更新首页和清单中的基线，再逐组核对源码和示例。
 
-符号核查读取发布主源集，包含公开嵌套类型、接口的隐式成员、枚举、record 和 Lombok 展开的公开方法。继承方法在声明类型下查阅。下面的 PowerShell 命令假设上游位于相邻目录，`JAVA_HOME` 指向该分支对应的 JDK，`LOMBOK_JAR` 指向本地版本匹配的 Lombok JAR。
+下面的 PowerShell 命令假设上游位于相邻目录，`JAVA_HOME` 指向该分支对应的 JDK。
 
 ```powershell
-node scripts/reference.ts --check --source ../AnvilCraft --output docs/anvilcraft/21.1/api --upstream https://github.com/Anvil-Dev/AnvilCraft --java "$env:JAVA_HOME/bin/java.exe" --lombok "$env:LOMBOK_JAR"
 node scripts/check-source-links.ts ../AnvilCraft docs/anvilcraft/21.1
 node scripts/recipe-builders.ts --check --source ../AnvilCraft --handbook docs/anvilcraft/21.1 --java "$env:JAVA_HOME/bin/java.exe"
 node scripts/verify-examples.ts ../AnvilCraft docs/anvilcraft/21.1 --standalone
@@ -64,6 +65,6 @@ node scripts/verify-examples.ts ../AnvilCraft docs/anvilcraft/21.1 --standalone
 
 ## 文档目录
 
-每棵分支树位于 `docs/<模组>/<版本>/`。功能组以目录及其 `index.md` 命名，子页面从一级标题生成侧栏条目。Vue 组件在 `docs/.vitepress/theme/`，站点与导航使用 TypeScript，样式使用 SCSS。源文件使用 UTF-8。
+中文分册位于 `docs/<模组>/<版本>/`，英文分册位于 `docs/en/<模组>/<版本>/`。同一篇文档在两个目录下使用相同的相对路径，读者可用导航栏的语言菜单切换。功能组以目录及其 `index.md` 命名，子页面从一级标题生成侧栏条目。Vue 组件在 `docs/.vitepress/theme/`，站点与导航使用 TypeScript，样式使用 SCSS。源文件使用 UTF-8。
 
 新增、移动或改名页面后执行 `node scripts/checklist.ts`，按分册重新生成逐篇清单。总清单表中的“逐篇清单”可按功能组和子系统打开每篇正文。执行 `npm run docs:check` 会对照现有文件复核清单的标题、链接和页数。

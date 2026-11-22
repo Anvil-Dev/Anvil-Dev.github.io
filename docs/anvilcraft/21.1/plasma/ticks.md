@@ -43,7 +43,7 @@ public class PlasmaJetsRenderer implements BlockEntityRenderer<PlasmaJetsBlockEn
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `PlasmaJetBehavior` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-plasma#plasmajetbehavior) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/plasma/PlasmaJetBehavior.java) |
-| `PlasmaJetsBlockEntity` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-block-entity-13#plasmajetsblockentity) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/PlasmaJetsBlockEntity.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `PlasmaJetBehavior` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/plasma/PlasmaJetBehavior.java) |
+| `PlasmaJetsBlockEntity` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/PlasmaJetsBlockEntity.java) |

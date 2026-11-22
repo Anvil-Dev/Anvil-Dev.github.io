@@ -8,8 +8,3 @@
 | --- | --- |
 | `ItemEntityEvent` | 此提交中未检出以该名称直接构造的调用点 |
 | `ItemEntityEvent.InToBlock` | [`ItemEntityMixin:89`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/mixin/ItemEntityMixin.java#L89) |
-
-## 参数与事件状态
-
-- [`ItemEntityEvent`](../api/dev-dubhe-anvilcraft-api-event-2#itementityevent)
-- [`ItemEntityEvent.InToBlock`](../api/dev-dubhe-anvilcraft-api-event-2#itementityevent-intoblock)

@@ -9,9 +9,3 @@
 | `SlidingBlockEvent` | 此提交中未检出以该名称直接构造的调用点 |
 | `SlidingBlockEvent.Start` | [`SlidingBlockEntity:75`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/entity/SlidingBlockEntity.java#L75) |
 | `SlidingBlockEvent.Stop` | [`SlidingBlockEntity:165`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/entity/SlidingBlockEntity.java#L165) |
-
-## 参数与事件状态
-
-- [`SlidingBlockEvent`](../api/dev-dubhe-anvilcraft-api-event-2#slidingblockevent)
-- [`SlidingBlockEvent.Start`](../api/dev-dubhe-anvilcraft-api-event-2#slidingblockevent-start)
-- [`SlidingBlockEvent.Stop`](../api/dev-dubhe-anvilcraft-api-event-2#slidingblockevent-stop)

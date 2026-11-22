@@ -4,7 +4,7 @@ search: false
 
 # Ageratum 21.1 逐篇清单
 
-勾选项对应本分册已收录的页面，共 61 篇。点击标题可以核对正文。
+勾选项对应本分册已收录的页面，共 38 篇。点击标题可以核对正文。
 
 - [x] [Ageratum 21.1 开发手册](/ageratum/21.1/)
 
@@ -68,33 +68,3 @@ search: false
 - [x] [把模板导出到当前世界](/ageratum/21.1/structures/export)
 - [x] [把结构放进客户端预览](/ageratum/21.1/structures/projection)
 - [x] [从资源包查找模板](/ageratum/21.1/structures/templates)
-
-## Java 公开 API
-
-<details><summary>展开 23 篇参考页</summary>
-
-- [x] [Java 公开 API](/ageratum/21.1/api/)
-- [x] [dev.anvilcraft.resource.ageratum.client.command](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-command)
-- [x] [dev.anvilcraft.resource.ageratum.client.constants（AgeratumConstants 至 AgeratumConstants.Structure.Render）](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-constants-1)
-- [x] [dev.anvilcraft.resource.ageratum.client.constants（AgeratumConstants.Structure.Sensitivity 至 AgeratumConstants.Structure.Textures）](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-constants-2)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.item](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-item)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.markdown（BlockExtensionState 至 MDInlineComponentFactory）](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-markdown-1)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.markdown（MDRenderContext 至 SelfClosingBlockExtensionState）](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-markdown-2)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.markdown.component.extend.recipe](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-markdown-component-extend-recipe)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.markdown.component.extend](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-markdown-component-extend)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.markdown.component](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-markdown-component)
-- [x] [dev.anvilcraft.resource.ageratum.client.feat.structure](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-feat-structure)
-- [x] [dev.anvilcraft.resource.ageratum.client.gui](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-gui)
-- [x] [dev.anvilcraft.resource.ageratum.client.network](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-network)
-- [x] [dev.anvilcraft.resource.ageratum.client.registries](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-registries)
-- [x] [dev.anvilcraft.resource.ageratum.client.util](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client-util)
-- [x] [dev.anvilcraft.resource.ageratum.client](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-client)
-- [x] [dev.anvilcraft.resource.ageratum.data](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-data)
-- [x] [dev.anvilcraft.resource.ageratum.mixin.accessor](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-mixin-accessor)
-- [x] [dev.anvilcraft.resource.ageratum.mixin](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-mixin)
-- [x] [dev.anvilcraft.resource.ageratum.network](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-network)
-- [x] [dev.anvilcraft.resource.ageratum.structure](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-structure)
-- [x] [dev.anvilcraft.resource.ageratum.util](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum-util)
-- [x] [dev.anvilcraft.resource.ageratum](/ageratum/21.1/api/dev-anvilcraft-resource-ageratum)
-
-</details>

@@ -42,4 +42,4 @@ public final class FluidMixingRecipes {
 | `fluid_results` | 流体栈数组 | 可省略，默认 `List.<FluidStack>of()` | 流体产物 |
 | `consume_maximum` | 布尔值 | 可省略，默认 `false` | 按可用原料量尽量多地消耗 |
 
-[查看 流体混合字段、默认值与配方示例](../packs/machine/fluid_mixing) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-1#fluidmixingrecipe-builder)
+[查看 流体混合字段、默认值与配方示例](../packs/machine/fluid_mixing)

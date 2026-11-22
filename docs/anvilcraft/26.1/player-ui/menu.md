@@ -98,8 +98,8 @@ public class PulseGeneratorMenu extends AbstractContainerMenu {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `MenuBlockEntityLookup` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-menu#menublockentitylookup) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/menu/MenuBlockEntityLookup.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `MenuBlockEntityLookup` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/menu/MenuBlockEntityLookup.java) |
 
 <!-- source-guide -->

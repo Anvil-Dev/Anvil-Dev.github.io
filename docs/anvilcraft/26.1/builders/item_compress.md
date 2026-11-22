@@ -41,4 +41,4 @@ public final class ItemCompressRecipes {
 | `results` | 带概率的物品栈数组 | 可省略，默认 `[]` | 各次输出使用的结果列表 |
 | `priority` | 整数 | 可省略 | 多个候选之间的优先级 |
 
-[查看 物品压缩字段、默认值与配方示例](../packs/impact/item_compress) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-2#itemcompressrecipe-builder)
+[查看 物品压缩字段、默认值与配方示例](../packs/impact/item_compress)

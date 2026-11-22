@@ -82,9 +82,9 @@ public class GuideBookItem extends Item implements Thinkable, IItemTooltipProvid
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `Thinkable` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-thought#thinkable) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/thought/Thinkable.java) |
-| `ThoughtManager` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-thought#thoughtmanager) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/thought/ThoughtManager.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `Thinkable` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/thought/Thinkable.java) |
+| `ThoughtManager` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/thought/ThoughtManager.java) |
 
 <!-- source-guide -->

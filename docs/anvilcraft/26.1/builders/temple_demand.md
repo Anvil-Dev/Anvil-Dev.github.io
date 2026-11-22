@@ -47,4 +47,4 @@ public final class TempleDemandRecipes {
 | `id` | 字符串 | 必填 | 注册 ID |
 | `count` | 整数 | 必填 | 数量 |
 
-[查看 神庙需求字段、默认值与配方示例](../packs/celestial/temple_demand) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-celestial-3#templedemandrecipe)
+[查看 神庙需求字段、默认值与配方示例](../packs/celestial/temple_demand)

@@ -1,0 +1,16 @@
+# Anvil Impact Processing
+
+- [Block Crushing](./block_crush)
+- [Item Crushing](./item_crush)
+- [Unpacking](./unpack)
+- [Block Compression](./block_compress)
+- [Block Smearing](./block_smear)
+- [Item Compression](./item_compress)
+- [Item Stamping](./stamping)
+- [Stamping Distinct Items](./stamping_diff)
+- [Item Injection](./item_inject)
+- [Mass Injection](./mass_inject)
+- [Block Squeezing](./squeezing)
+- [Meshing](./mesh)
+- [Anvil Collision](./anvil_collision)
+- [Block Processing](./block_processing)

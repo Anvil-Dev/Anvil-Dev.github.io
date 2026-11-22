@@ -71,4 +71,4 @@ public final class PlanetResourceRecipes {
 | `age_min` | 整数 | 可省略，默认 `35` | 最低年龄 |
 | `wasteland_chance` | 整数 | 可省略，默认 `10` | 形成荒地的机会 |
 
-[查看 行星资源字段、默认值与配方示例](../packs/celestial/planet_resource) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-block-entity-celestial-4#planetresourcerecipe-builder)
+[查看 行星资源字段、默认值与配方示例](../packs/celestial/planet_resource)

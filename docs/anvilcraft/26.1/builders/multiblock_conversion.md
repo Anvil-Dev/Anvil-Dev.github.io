@@ -84,4 +84,4 @@ public final class MultiblockConversionRecipes {
 | `fromPos` | 三整数坐标 | 必填 | 源刷怪笼相对坐标 |
 | `toPos` | 三整数坐标 | 必填 | 目标刷怪笼相对坐标 |
 
-[查看 多方块转换字段、默认值与配方示例](../packs/structures/multiblock_conversion) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-multiblock-2#multiblockconversionrecipe-builder)
+[查看 多方块转换字段、默认值与配方示例](../packs/structures/multiblock_conversion)

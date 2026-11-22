@@ -45,4 +45,4 @@ public final class PortalConversionRecipes {
 | `results` | `WeightedChanceBlockStates.CODEC` | 必填 | 各次输出使用的结果列表 |
 | `portal` | 资源 ID | 必填 | 触发转换的传送门类型 |
 
-[查看 传送门转换字段、默认值与配方示例](../packs/machine/portal_conversion) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-3#portalconversionrecipe-builder)
+[查看 传送门转换字段、默认值与配方示例](../packs/machine/portal_conversion)

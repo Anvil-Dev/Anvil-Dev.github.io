@@ -10,7 +10,6 @@
 - [编写与打开手册](./guides/)
 - [Markdown 扩展](./extensions/)
 - [数据包与资源包](./packs/)
-- [Java 公开 API](./api/)
 
 ## 功能系统
 

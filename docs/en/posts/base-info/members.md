@@ -17,10 +17,8 @@ import DynamicMembers from '../../../.vitepress/theme/components/dynamic-members
 
 ---
 
-> The data below is maintained dynamically by the backend (auto-published after admin review).
-
 <DynamicMembers lang="en" />
 
-## Not found yourself?
+## Missing from the list?
 
-If you have contributed to AnvilCraft, feel free to [apply here](/en/posts/base-info/apply) — fill in your project and details, and you will be listed once approved by an admin.
+If you have contributed to AnvilCraft, [apply to join the list](/en/posts/base-info/apply). Describe your contribution and include the details you want to share. Your entry will appear once an administrator approves it.

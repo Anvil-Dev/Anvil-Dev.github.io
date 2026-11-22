@@ -38,4 +38,4 @@ public final class BlockCrushRecipes {
 | `input` | 方块状态谓词 | 必填 | 待匹配的输入 |
 | `result` | 带概率的方块状态 | 必填 | 完成配方后使用的结果 |
 
-[查看 方块粉碎字段、默认值与配方示例](../packs/impact/block_crush) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-1#blockcrushrecipe-builder)
+[查看 方块粉碎字段、默认值与配方示例](../packs/impact/block_crush)

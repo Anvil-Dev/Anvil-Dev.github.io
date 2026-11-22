@@ -47,4 +47,4 @@ public final class ChargerChargingRecipes {
 | `power` | 整数 | 必填 | 充放电功率，负值充电，正值放电，单位 kW |
 | `time` | 整数 | 必填 | 时间参数 |
 
-[查看 充放电字段、默认值与配方示例](../packs/machine/charger_charging) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-1#chargerchargingrecipe-builder)
+[查看 充放电字段、默认值与配方示例](../packs/machine/charger_charging)

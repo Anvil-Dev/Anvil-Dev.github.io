@@ -98,11 +98,11 @@ public abstract class TeslaFilter {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `IsPlayerIdFilter` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-teslatower#isplayeridfilter) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/IsPlayerIdFilter.java) |
-| `IsEntityIdFilter` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-teslatower#isentityidfilter) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/IsEntityIdFilter.java) |
-| `HasCustomNameFilter` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-teslatower#hascustomnamefilter) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/HasCustomNameFilter.java) |
-| `IsPetFilter` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-teslatower#ispetfilter) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/IsPetFilter.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `IsPlayerIdFilter` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/IsPlayerIdFilter.java) |
+| `IsEntityIdFilter` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/IsEntityIdFilter.java) |
+| `HasCustomNameFilter` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/HasCustomNameFilter.java) |
+| `IsPetFilter` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/teslatower/IsPetFilter.java) |
 
 <!-- source-guide -->

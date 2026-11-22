@@ -11,11 +11,3 @@
 | `AmuletEvent.ProcessFound` | [`AmuletManager:92`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/AmuletManager.java#L92) |
 | `AmuletEvent.ModifyRaffleProbability` | [`AmuletManager:204`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/AmuletManager.java#L204) |
 | `AmuletEvent.EntityCheck` | [`AmuletManager:79`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/AmuletManager.java#L79) |
-
-## 参数与事件状态
-
-- [`AmuletEvent`](../api/dev-dubhe-anvilcraft-api-event-1#amuletevent)
-- [`AmuletEvent.EntityCheck`](../api/dev-dubhe-anvilcraft-api-event-1#amuletevent-entitycheck)
-- [`AmuletEvent.Find`](../api/dev-dubhe-anvilcraft-api-event-1#amuletevent-find)
-- [`AmuletEvent.ModifyRaffleProbability`](../api/dev-dubhe-anvilcraft-api-event-1#amuletevent-modifyraffleprobability)
-- [`AmuletEvent.ProcessFound`](../api/dev-dubhe-anvilcraft-api-event-1#amuletevent-processfound)

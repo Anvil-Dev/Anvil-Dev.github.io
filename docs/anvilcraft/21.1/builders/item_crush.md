@@ -39,4 +39,4 @@ public final class ItemCrushRecipes {
 | `ingredients` | 物品原料谓词数组 | 可省略，默认 `[]` | 参与匹配的原料列表 |
 | `results` | 带概率的物品栈数组 | 可省略，默认 `[]` | 各次输出使用的结果列表 |
 
-[查看 物品粉碎字段、默认值与配方示例](../packs/impact/item_crush) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-2#itemcrushrecipe-builder)
+[查看 物品粉碎字段、默认值与配方示例](../packs/impact/item_crush)

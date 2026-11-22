@@ -42,4 +42,4 @@ public final class MeshRecipes {
 | `ingredients` | 物品原料谓词数组 | 可省略，默认 `[]` | 参与匹配的原料列表 |
 | `results` | 带概率的物品栈数组 | 可省略，默认 `[]` | 各次输出使用的结果列表 |
 
-[查看 筛分字段、默认值与配方示例](../packs/impact/mesh) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-2#meshrecipe-builder)
+[查看 筛分字段、默认值与配方示例](../packs/impact/mesh)

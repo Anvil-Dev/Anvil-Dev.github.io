@@ -43,4 +43,4 @@ public final class StampingDiffRecipes {
 | `ingredients` | 物品原料谓词数组 | 可省略，默认 `[]` | 参与匹配的原料列表 |
 | `results` | 带概率的物品栈数组 | 可省略，默认 `[]` | 各次输出使用的结果列表 |
 
-[查看 异种物品冲压字段、默认值与配方示例](../packs/impact/stamping_diff) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-3#stampingdiffrecipe-builder)
+[查看 异种物品冲压字段、默认值与配方示例](../packs/impact/stamping_diff)

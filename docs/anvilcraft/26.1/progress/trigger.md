@@ -52,10 +52,10 @@ public class PlayerWearAnvilHammerEventListener {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `InWorldRecipeTrigger` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-advancements-criterion-2#inworldrecipetrigger) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/advancements/criterion/InWorldRecipeTrigger.java) |
-| `AnvilOnGroundTrigger` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-advancements-criterion-1#anvilongroundtrigger) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/advancements/criterion/AnvilOnGroundTrigger.java) |
-| `TriggerUtil` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-util-8#triggerutil) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/util/TriggerUtil.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `InWorldRecipeTrigger` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/advancements/criterion/InWorldRecipeTrigger.java) |
+| `AnvilOnGroundTrigger` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/advancements/criterion/AnvilOnGroundTrigger.java) |
+| `TriggerUtil` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/util/TriggerUtil.java) |
 
 <!-- source-guide -->

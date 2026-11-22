@@ -47,4 +47,4 @@ public final class AnvilCollisionRecipes {
 | `output` | 带概率的方块状态 | 必填 | 转换后的结果 |
 | `max_count` | 整数 | 必填 | 最多转换的方块数 |
 
-[查看 铁砧碰撞字段、默认值与配方示例](../packs/impact/anvil_collision) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-collision#anvilcollisioncraftrecipe-builder)
+[查看 铁砧碰撞字段、默认值与配方示例](../packs/impact/anvil_collision)

@@ -36,7 +36,7 @@ public final class ReservedCauldron implements PlasmaJetFuelHandler {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `PlasmaJetFuelHandler` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-plasma#plasmajetfuelhandler) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/plasma/PlasmaJetFuelHandler.java) |
-| `PlasmaJetHooks` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-plasma#plasmajethooks) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/plasma/PlasmaJetHooks.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `PlasmaJetFuelHandler` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/plasma/PlasmaJetFuelHandler.java) |
+| `PlasmaJetHooks` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/plasma/PlasmaJetHooks.java) |

@@ -82,4 +82,4 @@ public final class MineralFountainActiveRecipes {
 | `min` | 整数 | 可省略，默认 `0` | 下限 |
 | `max` | 整数 | 可省略，默认 `8` | 上限 |
 
-[查看 主动矿物涌泉字段、默认值与配方示例](../packs/fountain/mineral_fountain_active) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-mineral-1#mineralfountainactiverecipe-builder)
+[查看 主动矿物涌泉字段、默认值与配方示例](../packs/fountain/mineral_fountain_active)

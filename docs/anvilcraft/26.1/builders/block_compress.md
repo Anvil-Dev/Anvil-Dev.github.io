@@ -41,4 +41,4 @@ public final class BlockCompressRecipes {
 | `inputs` | 方块状态谓词数组 | 必填 | 一组参与匹配的输入 |
 | `result` | 带概率的方块状态 | 必填 | 完成配方后使用的结果 |
 
-[查看 方块压缩字段、默认值与配方示例](../packs/impact/block_compress) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-1#blockcompressrecipe-builder)
+[查看 方块压缩字段、默认值与配方示例](../packs/impact/block_compress)

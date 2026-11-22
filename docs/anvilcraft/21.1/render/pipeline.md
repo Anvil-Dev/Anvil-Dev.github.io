@@ -116,8 +116,8 @@ public class FullyBufferedBufferSource extends MultiBufferSource.BufferSource im
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `CacheableBERenderingPipeline` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-rendering#cacheableberenderingpipeline) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/rendering/CacheableBERenderingPipeline.java) |
-| `CompileResult` | 见源码声明 | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/rendering/CompileResult.java) |
-| `RenderRegion` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-rendering#renderregion) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/rendering/RenderRegion.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `CacheableBERenderingPipeline` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/rendering/CacheableBERenderingPipeline.java) |
+| `CompileResult` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/rendering/CompileResult.java) |
+| `RenderRegion` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/rendering/RenderRegion.java) |

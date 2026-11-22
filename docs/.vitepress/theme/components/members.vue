@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { VPTeamMembers } from 'vitepress/theme'
-import { withBase } from 'vitepress'
+import { useData, withBase } from 'vitepress'
+import { computed } from 'vue'
 import authors from '../data/authors.json'
 import contributors from '../data/contributors.json'
 import supporters from '../data/supporters.json'
@@ -8,13 +9,32 @@ import { avatarColor, initials } from './member-avatar'
 
 const lists = { authors, contributors, supporters }
 const bundledAvatars = new Set(authors.map(author => author.avatar))
-defineProps<{ type: keyof typeof lists }>()
+const props = defineProps<{ type: keyof typeof lists }>()
+const { lang } = useData()
+const englishRoles: Record<string, string> = {
+  '创艺大师🎨🤔': 'Creative Lead 🎨🤔',
+  '代码民工💻': 'Developer 💻',
+  '捉虫达人🐞': 'Bug Hunter 🐞',
+  '语言学家🌏': 'Translator 🌏',
+  '砧艺添材➕': 'Content Contributor ➕',
+  '像素工匠👾': 'Pixel Artist 👾',
+  '智识学者📚': 'Researcher 📚',
+  '实力富哥💵': 'Supporter 💵',
+}
+const members = computed(() => {
+  const entries = lists[props.type]
+  if (lang.value !== 'en') return entries
+  return entries.map(member => ({
+    ...member,
+    title: member.title.split(' ').map(role => englishRoles[role] ?? role).join(' · '),
+  }))
+})
 </script>
 
 <template>
-  <VPTeamMembers v-if="type === 'authors'" :members="authors" size="small" />
+  <VPTeamMembers v-if="type === 'authors'" :members="members" size="small" />
   <ul v-else class="archived-members">
-    <li v-for="(member, index) in lists[type]" :key="member.name + index">
+    <li v-for="(member, index) in members" :key="member.name + index">
       <img v-if="bundledAvatars.has(member.avatar)" class="avatar" :src="withBase(member.avatar)" alt="" loading="lazy" />
       <span v-else class="avatar" aria-hidden="true" :style="{ backgroundColor: avatarColor(member.name) }">{{ initials(member.name) }}</span>
       <div>

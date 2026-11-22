@@ -107,7 +107,7 @@ public class GuideBookItem extends Item implements Thinkable {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `Thinkable` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-thought#thinkable) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/thought/Thinkable.java) |
-| `ThoughtManager` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-thought#thoughtmanager) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/thought/ThoughtManager.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `Thinkable` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/thought/Thinkable.java) |
+| `ThoughtManager` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/thought/ThoughtManager.java) |

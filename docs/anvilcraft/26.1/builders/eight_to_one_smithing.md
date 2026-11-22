@@ -53,4 +53,4 @@ public final class EightToOneSmithingRecipes {
 | `result` | 物品栈模板对象 | 必填 | 完成配方后使用的结果 |
 | `modifiers` | `IResultModifier.CODEC`数组 | 可省略，默认 `[]` | 按顺序处理结果的修饰器 |
 
-[查看 八合一锻造字段、默认值与配方示例](../packs/crafting/eight_to_one_smithing) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-multiple#eighttoonesmithingrecipe-builder)
+[查看 八合一锻造字段、默认值与配方示例](../packs/crafting/eight_to_one_smithing)

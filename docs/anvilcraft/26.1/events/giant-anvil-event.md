@@ -10,10 +10,3 @@
 | `GiantAnvilEvent.Multiblock` | [`GiantAnvilLandingEventListener:28`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/event/giantanvil/GiantAnvilLandingEventListener.java#L28) |
 | `GiantAnvilEvent.BlockTick` | [`GiantAnvilBlock:318`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/workstation/GiantAnvilBlock.java#L318) |
 | `GiantAnvilEvent.FallingTick` | [`FallingGiantAnvilEntity:82`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/entity/FallingGiantAnvilEntity.java#L82) |
-
-## 参数与事件状态
-
-- [`GiantAnvilEvent`](../api/dev-dubhe-anvilcraft-api-event-1#giantanvilevent)
-- [`GiantAnvilEvent.BlockTick`](../api/dev-dubhe-anvilcraft-api-event-1#giantanvilevent-blocktick)
-- [`GiantAnvilEvent.FallingTick`](../api/dev-dubhe-anvilcraft-api-event-1#giantanvilevent-fallingtick)
-- [`GiantAnvilEvent.Multiblock`](../api/dev-dubhe-anvilcraft-api-event-1#giantanvilevent-multiblock)

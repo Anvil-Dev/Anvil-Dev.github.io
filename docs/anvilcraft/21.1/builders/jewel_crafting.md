@@ -43,4 +43,4 @@ public final class JewelCraftingRecipes {
 | `has_vanishing_curse` | 布尔值 | 可省略，默认 `true` | 产物是否带消失诅咒 |
 | `ingredients` | `Ingredient.CODEC`数组 | 必填 | 参与匹配的原料列表 |
 
-[查看 宝石工艺字段、默认值与配方示例](../packs/crafting/jewel_crafting) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-2#jewelcraftingrecipe-builder)
+[查看 宝石工艺字段、默认值与配方示例](../packs/crafting/jewel_crafting)

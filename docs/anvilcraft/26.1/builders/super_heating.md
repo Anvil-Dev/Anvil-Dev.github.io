@@ -46,4 +46,4 @@ public final class SuperHeatingRecipes {
 | `chance` | 数值 | 可省略，默认 `1.0f` | 触发概率 |
 | `ignited` | 布尔值 | 可省略，默认 `false` | 匹配点燃状态 |
 
-[查看 超高温加热字段、默认值与配方示例](../packs/machine/super_heating) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-3#superheatingrecipe-builder)
+[查看 超高温加热字段、默认值与配方示例](../packs/machine/super_heating)

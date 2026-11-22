@@ -91,4 +91,4 @@ public final class SpecialCelestialBodyRecipes {
 | `coordinate_rule` | `CoordinateRule.CODEC` | 可省略，默认 `CoordinateRule.DEFAULT` | 目的地坐标计算规则 |
 | `return_rule` | `ReturnRule.CODEC` | 可省略，默认 `ReturnRule.DEFAULT` | 返程坐标计算规则 |
 
-[查看 特殊天体字段、默认值与配方示例](../packs/celestial/special_celestial_body) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-celestial-2#specialcelestialbodyrecipe)
+[查看 特殊天体字段、默认值与配方示例](../packs/celestial/special_celestial_body)

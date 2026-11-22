@@ -41,4 +41,4 @@ public final class DeformationRecipes {
 | `material` | `IFrostMaterialPredicate.CODEC` | 必填 | 锻造材料谓词 |
 | `inputs` | `RecipeResult.LIST_CODEC` | 必填 | 一组参与匹配的输入 |
 
-[查看 霜钢锻造变形字段、默认值与配方示例](../packs/crafting/deformation) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-frost-1#deformationrecipe-builder)
+[查看 霜钢锻造变形字段、默认值与配方示例](../packs/crafting/deformation)

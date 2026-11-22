@@ -40,4 +40,4 @@ public final class MassInjectRecipes {
 | `ingredient` | 原料 ID、标签或有效原料表达式 | 必填 | 单个待匹配的原料 |
 | `mass` | 整数 | 必填 | 质量数值 |
 
-[查看 质量注入字段、默认值与配方示例](../packs/impact/mass_inject) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil#massinjectrecipe-builder)
+[查看 质量注入字段、默认值与配方示例](../packs/impact/mass_inject)

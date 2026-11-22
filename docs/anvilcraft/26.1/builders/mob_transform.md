@@ -48,4 +48,4 @@ public final class MobTransformRecipes {
 | `index` | 整数 | 可省略 | 步骤或列表索引 |
 | `tag` | 字符串 | 必填 | 写入的标签内容 |
 
-[查看 生物转化字段、默认值与配方示例](../packs/transform/mob_transform) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-transform-1#mobtransformrecipe)
+[查看 生物转化字段、默认值与配方示例](../packs/transform/mob_transform)

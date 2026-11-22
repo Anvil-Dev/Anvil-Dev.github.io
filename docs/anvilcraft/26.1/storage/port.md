@@ -97,9 +97,9 @@ public class ServerLifecycleEventListener {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `IStoragePort` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api#istorageport) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/IStoragePort.java) |
-| `StoragePortManager` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api#storageportmanager) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/StoragePortManager.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `IStoragePort` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/IStoragePort.java) |
+| `StoragePortManager` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/StoragePortManager.java) |
 
 <!-- source-guide -->

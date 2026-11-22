@@ -63,10 +63,10 @@ public record SlidingEntitySyncPacket(int id, List<SlidingBlockInfo> infos, Dire
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `SlidingBlockStructureResolver` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-sliding#slidingblockstructureresolver) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/sliding/SlidingBlockStructureResolver.java) |
-| `SlidingBlockSection` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-sliding#slidingblocksection) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/sliding/SlidingBlockSection.java) |
-| `SlidingRailLoad` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-sliding#slidingrailload) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/sliding/SlidingRailLoad.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `SlidingBlockStructureResolver` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/sliding/SlidingBlockStructureResolver.java) |
+| `SlidingBlockSection` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/sliding/SlidingBlockSection.java) |
+| `SlidingRailLoad` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/sliding/SlidingRailLoad.java) |
 
 <!-- source-guide -->

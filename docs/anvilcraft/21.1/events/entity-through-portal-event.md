@@ -7,7 +7,3 @@
 | 事件类型 | 创建位置 |
 | --- | --- |
 | `EntityThroughPortalEvent` | [`EntityMixin:377`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/mixin/EntityMixin.java#L377) |
-
-## 参数与事件状态
-
-- [`EntityThroughPortalEvent`](../api/dev-dubhe-anvilcraft-api-event-1#entitythroughportalevent)

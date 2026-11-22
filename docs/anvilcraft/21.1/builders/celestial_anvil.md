@@ -29,4 +29,4 @@ public final class CelestialAnvilRecipes {
 | `generate` | 在 datagen 期间接收当前输出对象，一次调用写入一个配方。 |
 | `save` | 显式指定配方键。同一轮生成中，每个 ID 只应写一次。 |
 
-[查看 天体铁砧合成字段、默认值与配方示例](../packs/celestial/celestial_anvil) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-1#celestialanvilrecipe)
+[查看 天体铁砧合成字段、默认值与配方示例](../packs/celestial/celestial_anvil)

@@ -38,4 +38,4 @@ public final class BlockSmearRecipes {
 | `inputs` | 方块状态谓词数组 | 必填 | 一组参与匹配的输入 |
 | `result` | 带概率的方块状态 | 必填 | 完成配方后使用的结果 |
 
-[查看 方块涂抹字段、默认值与配方示例](../packs/impact/block_smear) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-2#blocksmearrecipe-builder)
+[查看 方块涂抹字段、默认值与配方示例](../packs/impact/block_smear)

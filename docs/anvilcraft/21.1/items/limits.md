@@ -12,8 +12,8 @@
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `FilteredItemStackHandler` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-itemhandler-1#filtereditemstackhandler) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/FilteredItemStackHandler.java) |
-| `ReadOnlyItemHandlerWrapper` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-itemhandler-1#readonlyitemhandlerwrapper) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/ReadOnlyItemHandlerWrapper.java) |
-| `InputRefusingItemHandlerWrapper` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-itemhandler-1#inputrefusingitemhandlerwrapper) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/InputRefusingItemHandlerWrapper.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `FilteredItemStackHandler` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/FilteredItemStackHandler.java) |
+| `ReadOnlyItemHandlerWrapper` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/ReadOnlyItemHandlerWrapper.java) |
+| `InputRefusingItemHandlerWrapper` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/InputRefusingItemHandlerWrapper.java) |

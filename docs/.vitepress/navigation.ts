@@ -16,8 +16,10 @@ export function siteNavigation(english = false) {
     { text: infoTitle, link: info, activeMatch: '^' + info },
     ...projects.map(({ slug }) => ({
       text: slug === 'ageratum' ? (english ? 'Ageratum' : '藿香') : (english ? 'Developer Docs' : '开发文档'),
-      activeMatch: slug === 'ageratum' ? '^/ageratum/' : '^/(?:anvilcraft/|(?:en/)?posts/docs/)',
-      items: versions.map(version => ({ text: version, link: `/${slug}/${version}/` })),
+      activeMatch: slug === 'ageratum'
+        ? (english ? '^/en/ageratum/' : '^/ageratum/')
+        : (english ? '^/en/(?:anvilcraft/|posts/docs/)' : '^/(?:anvilcraft/|posts/docs/)'),
+      items: versions.map(version => ({ text: version, link: `${home}${slug}/${version}/` })),
     })),
   ]
   const infoSidebar = [{

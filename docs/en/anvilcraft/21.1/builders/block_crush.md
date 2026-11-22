@@ -1,0 +1,39 @@
+# Block Crushing Recipe Builder
+
+Filters the block to crush with a state predicate, then specifies the resulting block state.
+
+Both input and result must provide a block; otherwise saving throws IllegalArgumentException. [Builder validation](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/recipe/anvil/wrap/BlockCrushRecipe.java#L178)
+
+Call `generate` from your add-on’s data provider with the current `RecipeOutput`. Data generation writes recipe `example:block_crush/guide` to `data/example/recipe/block_crush/guide.json`.
+
+```java
+package dev.example.recipebuild;
+
+import dev.dubhe.anvilcraft.recipe.anvil.wrap.BlockCrushRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+
+public final class BlockCrushRecipes {
+    public static void generate(RecipeOutput destination, Block input, Block result) {
+        BlockCrushRecipe.builder().input(input).result(result)
+            .save(destination, ResourceLocation.fromNamespaceAndPath("example", "block_crush/guide"));
+    }
+}
+```
+
+The example follows a recipe from `BlockCrushRecipeLoader.blockCrush`. The caller supplies `Block input`, and `Block result` from the data generation context. [Original recipe call](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/data/recipe/BlockCrushRecipeLoader.java#L31)
+
+| Entrypoint | Calling Convention |
+| --- | --- |
+| `generate` | Receives the current output object during datagen; writes one recipe per call. |
+| `save` | Explicitly specifies the recipe key. Each ID should be written only once per generation run. |
+
+## Generated File Field Conventions
+
+| Field | JSON Type or Codec | Required & Default | Purpose |
+| --- | --- | --- | --- |
+| `input` | Block state predicate | Required | Input entity to match |
+| `result` | Block state with a probability | Required | Result used after recipe completion |
+
+[View Block Crushing fields, defaults & recipe example](../packs/impact/block_crush)

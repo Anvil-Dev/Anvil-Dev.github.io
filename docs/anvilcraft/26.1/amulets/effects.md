@@ -67,11 +67,11 @@ public class AmuletEventListener {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `AmuletEvent` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-event-1#amuletevent) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/event/AmuletEvent.java) |
-| `AmuletEffectContext` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-amulet-ctx#amuleteffectcontext) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/ctx/AmuletEffectContext.java) |
-| `IAmuletEffect` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-amulet-effect-1#iamuleteffect) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/effect/IAmuletEffect.java) |
-| `AttributeAmuletEffect` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-amulet-effect-1#attributeamuleteffect) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/effect/AttributeAmuletEffect.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `AmuletEvent` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/event/AmuletEvent.java) |
+| `AmuletEffectContext` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/ctx/AmuletEffectContext.java) |
+| `IAmuletEffect` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/effect/IAmuletEffect.java) |
+| `AttributeAmuletEffect` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/amulet/effect/AttributeAmuletEffect.java) |
 
 <!-- source-guide -->

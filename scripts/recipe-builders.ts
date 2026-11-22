@@ -97,7 +97,6 @@ function pages(path: string): string[] {
     e.isDirectory() ? pages(join(path, e.name)) : e.name.endsWith('.md') ? [join(path, e.name)] : [],
   )
 }
-const references = pages(join(handbook, 'api')).map((path) => ({ path, md: read(path) }))
 const aliases: Record<string, string[]> = {
   mob_transform: ['TransformRecipeBuilder'],
   mob_transform_with_item: ['TransformWithItemRecipeBuilder'],
@@ -393,19 +392,6 @@ function renderJava(type: string, sample: Sample, wrapper?: string) {
   }
 }
 
-function builderMemberUrl(targets: string[]) {
-  const names = targets.flatMap((t) => [t + '.Builder', t])
-  let memberLink = ''
-  for (const n of names) {
-    const ref = references.find((p) => p.md.split('\n').includes('## ' + n))
-    if (ref) {
-      memberLink = '../api/' + basename(ref.path, '.md') + '#' + n.toLowerCase().replaceAll('.', '-')
-      break
-    }
-  }
-  return memberLink
-}
-
 function validationSourceUrl(type: string, cls: string) {
   let validator = cls
   if (constraints[type] === commonIngredient || type === 'stamping_diff')
@@ -443,7 +429,6 @@ for (const file of pages(join(handbook, 'packs'))) {
     summary = md.split('\n\n')[1]
   const src = 'https://github.com/Anvil-Dev/AnvilCraft/blob/' + sha + '/' + call.file + '#L' + call.line
   const link = '../' + relative(handbook, file).replaceAll('\\', '/').replace(/\.md$/, '')
-  const memberLink = builderMemberUrl(targets)
   const fields = md
     .split('\n')
     .filter((row) => row.startsWith('| `'))
@@ -505,8 +490,7 @@ for (const file of pages(join(handbook, 'packs'))) {
       title +
       '字段、默认值与配方示例](' +
       link +
-      ')' +
-      (memberLink ? ' · [查看 Java 成员签名](' + memberLink + ')' : ''),
+      ')',
     '',
   ]
   if (outputPages.has(type)) throw Error('多个字段页对应同一序列化器 ' + type)

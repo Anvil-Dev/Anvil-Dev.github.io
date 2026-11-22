@@ -97,8 +97,8 @@ public class LevelEventListener {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `AnvilCraftFakePlayers` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-entity-fakeplayer#anvilcraftfakeplayers) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/entity/fakeplayer/AnvilCraftFakePlayers.java) |
-| `AnvilCraftFakeBlockPlacer` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-entity-fakeplayer#anvilcraftfakeblockplacer) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/entity/fakeplayer/AnvilCraftFakeBlockPlacer.java) |
-| `AnvilCraftFakeDestroyer` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-entity-fakeplayer#anvilcraftfakedestroyer) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/entity/fakeplayer/AnvilCraftFakeDestroyer.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `AnvilCraftFakePlayers` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/entity/fakeplayer/AnvilCraftFakePlayers.java) |
+| `AnvilCraftFakeBlockPlacer` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/entity/fakeplayer/AnvilCraftFakeBlockPlacer.java) |
+| `AnvilCraftFakeDestroyer` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/entity/fakeplayer/AnvilCraftFakeDestroyer.java) |

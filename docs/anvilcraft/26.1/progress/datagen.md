@@ -60,9 +60,9 @@ public class AnvilHitPiezoelectricCrystalTrigger extends SimpleCriterionTrigger<
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `AdvancementLineHelper` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-advancement#advancementlinehelper) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/advancement/AdvancementLineHelper.java) |
-| `ModCriterionTriggers` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-init-1#modcriteriontriggers) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/init/ModCriterionTriggers.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `AdvancementLineHelper` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/advancement/AdvancementLineHelper.java) |
+| `ModCriterionTriggers` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/init/ModCriterionTriggers.java) |
 
 <!-- source-guide -->

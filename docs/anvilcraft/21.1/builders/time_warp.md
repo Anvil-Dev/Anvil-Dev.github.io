@@ -47,4 +47,4 @@ public final class TimeWarpRecipes {
 | `heat` | `HeatData.CODEC`数组 | 可省略，默认 `[]` | 热量效果 |
 | `distance` | `Distance.CODEC` | 可省略，默认 `Distance.DEFAULT` | 热量作用范围 |
 
-[查看 时移加工字段、默认值与配方示例](../packs/machine/time_warp) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-4#timewarprecipe-builder)
+[查看 时移加工字段、默认值与配方示例](../packs/machine/time_warp)

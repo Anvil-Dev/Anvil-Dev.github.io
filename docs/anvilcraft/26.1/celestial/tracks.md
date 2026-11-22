@@ -34,5 +34,3 @@ public final class StellarPreview {
 | `track(id)`、`forMass(initialMassAnvils)` | 前者按 ID 查询并允许 null，后者按 `mass_<档位>` 查询 | `forMass` 找不到档位时抛 `IllegalArgumentException`。 |
 | `startingPhaseIndex(track, surfaceClass)` | 返回该分类的起始节点序号 | 读取 `definition().startingNodes()`，遗漏入口会抛异常。 |
 | `replaceTracks(tracks)`、`replaceTracksFromJson(json)` | 用现有事件表重新验证完整轨道集合 | Java 入口把异常交给调用者，JSON 入口记录错误并返回 false；两者均要求完整的质量档位集合。 |
-
-[查看轨道类的全部签名](../api/)

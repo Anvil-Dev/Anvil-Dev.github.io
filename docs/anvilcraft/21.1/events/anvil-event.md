@@ -13,13 +13,3 @@
 | `AnvilEvent.BeforeInWorldRecipe` | [`AnvilEventListener:125`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/event/anvil/AnvilEventListener.java#L125) |
 | `AnvilEvent.AfterInWorldRecipe` | [`AnvilEventListener:153`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/event/anvil/AnvilEventListener.java#L153) |
 | `AnvilEvent.HurtEntity` | [`FallingSpectralBlockEntity:261`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/entity/FallingSpectralBlockEntity.java#L261)、[`FallingBlockEntityMixin:471`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/mixin/FallingBlockEntityMixin.java#L471) |
-
-## 参数与事件状态
-
-- [`AnvilEvent`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent)
-- [`AnvilEvent.AfterInWorldRecipe`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent-afterinworldrecipe)
-- [`AnvilEvent.BeforeInWorldRecipe`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent-beforeinworldrecipe)
-- [`AnvilEvent.CollisionBlock`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent-collisionblock)
-- [`AnvilEvent.GiantOnLand`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent-giantonland)
-- [`AnvilEvent.HurtEntity`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent-hurtentity)
-- [`AnvilEvent.OnLand`](../api/dev-dubhe-anvilcraft-api-event-1#anvilevent-onland)

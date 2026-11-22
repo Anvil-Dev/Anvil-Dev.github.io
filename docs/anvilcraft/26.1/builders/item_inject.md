@@ -43,4 +43,4 @@ public final class ItemInjectRecipes {
 | `block_ingredient` | 方块状态谓词 | 必填 | 接受注入的方块条件 |
 | `block_result` | 带概率的方块状态 | 可省略 | 注入后的方块状态 |
 
-[查看 物品注入字段、默认值与配方示例](../packs/impact/item_inject) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-wrap-2#iteminjectrecipe-builder)
+[查看 物品注入字段、默认值与配方示例](../packs/impact/item_inject)

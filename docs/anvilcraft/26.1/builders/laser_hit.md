@@ -53,4 +53,4 @@ public final class LaserHitRecipes {
 | `laser_type` | `LaserType.CODEC` | 可省略，默认 `LaserType.NORMAL` | 参与匹配的激光类型 |
 | `heat_duration` | 整数 `0 至 24000` | 可省略，默认 `0` | 保留热量的 tick 数 |
 
-[查看 激光照射字段、默认值与配方示例](../packs/machine/laser_hit) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-2#laserhitrecipe)
+[查看 激光照射字段、默认值与配方示例](../packs/machine/laser_hit)

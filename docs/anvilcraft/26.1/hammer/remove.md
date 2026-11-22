@@ -59,9 +59,9 @@ public class TranscendenceSmithingTableBlock extends SmithingTableBlock
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `IHammerRemovable` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-hammer#ihammerremovable) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/hammer/IHammerRemovable.java) |
-| `IHasHammerEffect` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-hammer#ihashammereffect) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/hammer/IHasHammerEffect.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `IHammerRemovable` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/hammer/IHammerRemovable.java) |
+| `IHasHammerEffect` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/hammer/IHasHammerEffect.java) |
 
 <!-- source-guide -->

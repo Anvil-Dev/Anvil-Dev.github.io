@@ -39,4 +39,4 @@ public final class StampingUniqueItemsRecipes {
 | `results` | 带概率的物品栈数组 | 必填 | 各次输出使用的结果列表 |
 | `ingredients` | `Ingredient.CODEC`数组 | 必填 | 参与匹配的原料列表 |
 
-[查看 特殊物品冲压字段、默认值与配方示例](../packs/impact/stamping_unique_items) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil#stampinguniqueitemsrecipe-builder)
+[查看 特殊物品冲压字段、默认值与配方示例](../packs/impact/stamping_unique_items)

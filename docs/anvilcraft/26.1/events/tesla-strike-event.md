@@ -9,9 +9,3 @@
 | `TeslaStrikeEvent` | 此提交中未检出以该名称直接构造的调用点 |
 | `TeslaStrikeEvent.TargetEntity` | [`TeslaTowerBlockEntity:278`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/entity/TeslaTowerBlockEntity.java#L278)、[`TeslaTowerBlockEntity:326`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/entity/TeslaTowerBlockEntity.java#L326) |
 | `TeslaStrikeEvent.TargetBlock` | [`TeslaTowerBlockEntity:304`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/block/entity/TeslaTowerBlockEntity.java#L304) |
-
-## 参数与事件状态
-
-- [`TeslaStrikeEvent`](../api/dev-dubhe-anvilcraft-api-event-2#teslastrikeevent)
-- [`TeslaStrikeEvent.TargetBlock`](../api/dev-dubhe-anvilcraft-api-event-2#teslastrikeevent-targetblock)
-- [`TeslaStrikeEvent.TargetEntity`](../api/dev-dubhe-anvilcraft-api-event-2#teslastrikeevent-targetentity)

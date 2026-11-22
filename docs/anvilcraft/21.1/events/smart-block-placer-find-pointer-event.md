@@ -7,7 +7,3 @@
 | 事件类型 | 创建位置 |
 | --- | --- |
 | `SmartBlockPlacerFindPointerEvent` | [`SmartBlockPlacerBlockEntity:284`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/SmartBlockPlacerBlockEntity.java#L284) |
-
-## 参数与事件状态
-
-- [`SmartBlockPlacerFindPointerEvent`](../api/dev-dubhe-anvilcraft-api-event-2#smartblockplacerfindpointerevent)

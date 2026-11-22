@@ -54,7 +54,7 @@ public class SoundEventListener {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `ISoundEventListener` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-sound#isoundeventlistener) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/sound/ISoundEventListener.java) |
-| `SoundHelper` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-sound#soundhelper) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/sound/SoundHelper.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `ISoundEventListener` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/sound/ISoundEventListener.java) |
+| `SoundHelper` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/sound/SoundHelper.java) |

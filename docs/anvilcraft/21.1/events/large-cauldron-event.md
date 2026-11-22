@@ -13,13 +13,3 @@
 | `LargeCauldronEvent.GiantAnvilImpact` | [`LargeCauldronBlockEntity:530`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/LargeCauldronBlockEntity.java#L530) |
 | `LargeCauldronEvent.FluidDamage` | [`LargeCauldronBlockEntity:1325`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/LargeCauldronBlockEntity.java#L1325) |
 | `LargeCauldronEvent.MixingOutput` | [`LargeCauldronBlockEntity:712`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/LargeCauldronBlockEntity.java#L712)、[`LargeCauldronBlockEntity:723`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/block/entity/LargeCauldronBlockEntity.java#L723) |
-
-## 参数与事件状态
-
-- [`LargeCauldronEvent`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent)
-- [`LargeCauldronEvent.EntityInside`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent-entityinside)
-- [`LargeCauldronEvent.FluidDamage`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent-fluiddamage)
-- [`LargeCauldronEvent.GiantAnvilImpact`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent-giantanvilimpact)
-- [`LargeCauldronEvent.MixingOutput`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent-mixingoutput)
-- [`LargeCauldronEvent.ServerTick`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent-servertick)
-- [`LargeCauldronEvent.UseItem`](../api/dev-dubhe-anvilcraft-api-event-2#largecauldronevent-useitem)

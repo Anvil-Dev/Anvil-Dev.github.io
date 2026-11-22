@@ -29,4 +29,4 @@ public final class CanningFoodRecipes {
 | `generate` | 在 datagen 期间接收当前输出对象，一次调用写入一个配方。 |
 | `save` | 显式指定配方键。同一轮生成中，每个 ID 只应写一次。 |
 
-[查看 罐装食物字段、默认值与配方示例](../packs/crafting/canning_food) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-1#canningfoodrecipe)
+[查看 罐装食物字段、默认值与配方示例](../packs/crafting/canning_food)

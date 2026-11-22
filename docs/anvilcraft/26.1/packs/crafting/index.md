@@ -12,3 +12,7 @@
 - [霜钢锻造置换](./permutation)
 - [霜钢锻造变形](./deformation)
 - [能量武器制作](./energy_weapon_make)
+- [锻造结果修饰器](./modifiers)
+- [组件访问方式](./custom-data)
+- [数值提供器](./providers)
+- [霜钢锻造材料谓词](./frost-material)

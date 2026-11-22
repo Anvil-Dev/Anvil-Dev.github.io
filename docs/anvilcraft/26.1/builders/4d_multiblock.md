@@ -51,4 +51,4 @@ public final class Example4dMultiblockRecipes {
 | `definitions` | `MultiblockDefinition.CODEC`数组 | 必填 | 依次参与匹配的结构定义 |
 | `result` | 物品栈模板对象 | 必填 | 完成配方后使用的结果 |
 
-[查看 四维多方块字段、默认值与配方示例](../packs/structures/4d_multiblock) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-multiblock-1#multiblock4drecipe)
+[查看 四维多方块字段、默认值与配方示例](../packs/structures/4d_multiblock)

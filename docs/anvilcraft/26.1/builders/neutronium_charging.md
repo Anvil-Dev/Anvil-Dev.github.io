@@ -43,4 +43,4 @@ public final class NeutroniumChargingRecipes {
 | `generate` | 在 datagen 期间接收当前输出对象，一次调用写入一个配方。 |
 | `save` | 显式指定配方键。同一轮生成中，每个 ID 只应写一次。 |
 
-[查看 中子锭充能字段、默认值与配方示例](../packs/crafting/neutronium_charging) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-2#neutroniumchargingrecipe)
+[查看 中子锭充能字段、默认值与配方示例](../packs/crafting/neutronium_charging)

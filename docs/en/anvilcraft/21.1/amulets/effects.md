@@ -1,0 +1,75 @@
+# Recognizing Amulets and Executing Effects
+
+External accessory slots can yield candidate items during the lookup event. Before executing effects, check the target entity and context keys to distinguish between failing the entity check and passing the check without finding an amulet.
+
+## Example in Source
+
+Take `AmuletEventListener` from this branch as an example. This class compiles under the upstream project and its package name.
+
+::: details View full Java class
+
+```java
+package dev.dubhe.anvilcraft.event;
+
+import dev.dubhe.anvilcraft.AnvilCraft;
+import dev.dubhe.anvilcraft.api.event.AmuletEvent;
+import dev.dubhe.anvilcraft.init.item.ModComponents;
+import dev.dubhe.anvilcraft.init.item.ModItems;
+import dev.dubhe.anvilcraft.inventory.PocketInventory;
+import dev.dubhe.anvilcraft.item.property.component.BoxContents;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+
+@EventBusSubscriber(modid = AnvilCraft.MOD_ID)
+public class AmuletEventListener {
+    @SubscribeEvent
+    public static void on(AmuletEvent.Find event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        event.provide(player.getMainHandItem());
+        event.provide(player.getOffhandItem());
+        PocketInventory.items(player).forEach(event::provide);
+    }
+
+    @SubscribeEvent
+    public static void on(AmuletEvent.ProcessFound event) {
+        ItemStack found = event.getFound();
+        if (found.is(ModItems.AMULET_BOX)) {
+            BoxContents contents = found.get(ModComponents.BOX_CONTENTS);
+            if (contents == null) return;
+            for (ItemStack stack : contents.amulets()) {
+                if (stack.has(ModComponents.AMULET)) {
+                    event.provide(stack.copy());
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void on(AmuletEvent.EntityCheck event) {
+        if (event.getEntity() instanceof Player) {
+            event.pass();
+        }
+    }
+}
+```
+
+:::
+
+[Source file](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/event/AmuletEventListener.java)
+
+- [`AmuletManager` · Line 79](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/AmuletManager.java#L79)
+- [`AmuletEventListener` · Line 17](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/event/AmuletEventListener.java#L17)
+- [`CuriosCommon` · Line 75](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/integration/curios/CuriosCommon.java#L75)
+- [`AmuletAbilitiesEventListener` · Line 58](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/event/AmuletAbilitiesEventListener.java#L58)
+- [`IAbnormal` · Line 26](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/item/abnormal/IAbnormal.java#L26)
+
+## Interfaces and Parameters
+
+| Type | Declaration |
+| --- | --- |
+| `AmuletEvent` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/event/AmuletEvent.java) |
+| `AmuletEffectContext` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/ctx/AmuletEffectContext.java) |
+| `IAmuletEffect` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/effect/IAmuletEffect.java) |
+| `AttributeAmuletEffect` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/amulet/effect/AttributeAmuletEffect.java) |

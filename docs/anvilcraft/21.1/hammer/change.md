@@ -43,8 +43,8 @@ public class ModHammerInits {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `IHammerChangeable` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-hammer#ihammerchangeable) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/hammer/IHammerChangeable.java) |
-| `HammerManager` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-hammer#hammermanager) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/hammer/HammerManager.java) |
-| `HammerRotateBehavior` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-hammer#hammerrotatebehavior) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/hammer/HammerRotateBehavior.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `IHammerChangeable` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/hammer/IHammerChangeable.java) |
+| `HammerManager` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/hammer/HammerManager.java) |
+| `HammerRotateBehavior` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/hammer/HammerRotateBehavior.java) |

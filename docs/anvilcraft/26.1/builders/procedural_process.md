@@ -61,4 +61,4 @@ public final class ProceduralProcessRecipes {
 | `index` | 整数 | 必填 | 步骤或列表索引 |
 | `content` | `Recipe.CODEC` | 必填 | 实际执行的子配方 |
 
-[查看 序列装配字段、默认值与配方示例](../packs/structures/procedural_process) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-anvil-procedural#proceduralprocessserializer)
+[查看 序列装配字段、默认值与配方示例](../packs/structures/procedural_process)

@@ -7,7 +7,3 @@
 | 事件类型 | 创建位置 |
 | --- | --- |
 | `LightningBoltStrikeEvent` | [`LightningBoltMixin:23`](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/mixin/LightningBoltMixin.java#L23) |
-
-## 参数与事件状态
-
-- [`LightningBoltStrikeEvent`](../api/dev-dubhe-anvilcraft-api-event-2#lightningboltstrikeevent)

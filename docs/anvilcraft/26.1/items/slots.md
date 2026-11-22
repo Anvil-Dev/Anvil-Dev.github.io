@@ -9,10 +9,10 @@
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `PollableItemHandler` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-itemhandler-1#pollableitemhandler) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/PollableItemHandler.java) |
-| `OverLimitItemHandler` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-itemhandler-1#overlimititemhandler) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/OverLimitItemHandler.java) |
-| `InfinityItemStackHandler` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-item#infinityitemstackhandler) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/item/InfinityItemStackHandler.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `PollableItemHandler` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/PollableItemHandler.java) |
+| `OverLimitItemHandler` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/itemhandler/OverLimitItemHandler.java) |
+| `InfinityItemStackHandler` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/item/InfinityItemStackHandler.java) |
 
 <!-- source-guide -->

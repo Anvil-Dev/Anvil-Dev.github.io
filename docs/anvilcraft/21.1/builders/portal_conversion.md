@@ -42,4 +42,4 @@ public final class PortalConversionRecipes {
 | `result` | 带概率的方块状态 | 必填 | 完成配方后使用的结果 |
 | `portal` | 资源 ID | 必填 | 触发转换的传送门类型 |
 
-[查看 传送门转换字段、默认值与配方示例](../packs/machine/portal_conversion) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-3#portalconversionrecipe-builder)
+[查看 传送门转换字段、默认值与配方示例](../packs/machine/portal_conversion)

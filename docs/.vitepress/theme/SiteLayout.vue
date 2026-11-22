@@ -19,10 +19,10 @@ const theme = computed(() => ({
     ...(data.theme.value.nav ?? []),
     { text: data.lang.value === 'en' ? 'AnvilLib' : '铁砧库', link: libraryUrl.value },
   ],
-  // The public site is bilingual. The four technical handbooks are published in Chinese.
-  i18nRouting: !data.page.value.isNotFound && !/^(anvilcraft|ageratum|checklist)\//.test(data.page.value.relativePath),
+  i18nRouting: !data.page.value.isNotFound,
 }))
-provide(dataSymbol, { ...data, theme })
+// The translation menu should open the paired article. Its translated headings have different IDs.
+provide(dataSymbol, { ...data, theme, hash: computed(() => '') })
 </script>
 
 <template>

@@ -8,10 +8,10 @@ EnergyHelper 从给定方块面查询 Capabilities.Energy.BLOCK，在根事务�
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `EnergyHelper` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-energy#energyhelper) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/energy/EnergyHelper.java) |
-| `ItemFEStorage` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-energy#itemfestorage) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/energy/ItemFEStorage.java) |
-| `IEnergyHandlerHolder` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-energy#ienergyhandlerholder) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/energy/IEnergyHandlerHolder.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `EnergyHelper` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/energy/EnergyHelper.java) |
+| `ItemFEStorage` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/energy/ItemFEStorage.java) |
+| `IEnergyHandlerHolder` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/energy/IEnergyHandlerHolder.java) |
 
 <!-- source-guide -->

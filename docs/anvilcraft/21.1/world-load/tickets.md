@@ -84,7 +84,7 @@ public class ServerBlockEntityEventListener {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `LevelLoadManager` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-world-load#levelloadmanager) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/world/load/LevelLoadManager.java) |
-| `LoadChuckData` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-world-load#loadchuckdata) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/world/load/LoadChuckData.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `LevelLoadManager` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/world/load/LevelLoadManager.java) |
+| `LoadChuckData` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/6a4cde43b4ece65b765137a7aab145b9b4c002bf/src/main/java/dev/dubhe/anvilcraft/api/world/load/LoadChuckData.java) |

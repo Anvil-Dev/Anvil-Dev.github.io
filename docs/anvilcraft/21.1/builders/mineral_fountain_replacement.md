@@ -65,4 +65,4 @@ public final class MineralFountainReplacementRecipes {
 | `min` | 整数 | 可省略，默认 `0` | 下限 |
 | `max` | 整数 | 可省略，默认 `8` | 上限 |
 
-[查看 矿物涌泉替换字段、默认值与配方示例](../packs/fountain/mineral_fountain_replacement) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-mineral-2#mineralfountainreplacementrecipe-builder)
+[查看 矿物涌泉替换字段、默认值与配方示例](../packs/fountain/mineral_fountain_replacement)

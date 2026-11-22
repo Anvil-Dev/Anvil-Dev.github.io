@@ -21,6 +21,12 @@ function inspect(dir: string) {
 inspect(dist)
 let checked = 0
 for (const [file, links] of targets) {
+  const page = relative(dist, file).replaceAll('\\', '/')
+  if (page !== '404.html') {
+    const counterpart = page.startsWith('en/') ? page.slice(3) : 'en/' + page
+    const route = '/' + counterpart.replace(/(^|\/)index\.html$/, '$1')
+    if (!links.has(route)) failures.add(page + ' → 缺少对应语言入口 ' + route)
+  }
   for (const link of links) {
     if (!link || /^(?:[a-z][\w+.-]*:|\/\/)/i.test(link)) continue
     const [path, hash] = link.split('#', 2)

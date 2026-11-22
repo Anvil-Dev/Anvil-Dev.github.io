@@ -9,7 +9,6 @@
 - [快速开始](./getting-started/)
 - [铁砧落地行为](./anvil/)
 - [数据包与资源包](./packs/)
-- [Java 公开 API](./api/)
 
 ## 功能系统
 

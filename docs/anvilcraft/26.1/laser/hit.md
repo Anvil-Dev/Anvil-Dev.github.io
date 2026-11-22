@@ -85,11 +85,11 @@ public final class LaserComponentTypes {
 
 ## 接口和参数
 
-| 类型 | 本分支参考 | 声明 |
-| --- | --- | --- |
-| `ILaserComponent` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-laser#ilasercomponent) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/ILaserComponent.java) |
-| `ILaserComponentOwner` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-laser#ilasercomponentowner) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/ILaserComponentOwner.java) |
-| `LaserHitBehavior` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-laser#laserhitbehavior) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/LaserHitBehavior.java) |
-| `LaserMiningComponent` | [签名、参数与返回值](../api/dev-dubhe-anvilcraft-api-laser#laserminingcomponent) | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/LaserMiningComponent.java) |
+| 类型 | 声明 |
+| --- | --- |
+| `ILaserComponent` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/ILaserComponent.java) |
+| `ILaserComponentOwner` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/ILaserComponentOwner.java) |
+| `LaserHitBehavior` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/LaserHitBehavior.java) |
+| `LaserMiningComponent` | [Java](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/api/laser/LaserMiningComponent.java) |
 
 <!-- source-guide -->

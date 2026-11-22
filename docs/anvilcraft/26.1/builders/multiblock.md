@@ -42,4 +42,4 @@ public final class MultiblockRecipes {
 | `pattern` | `MultiblockUtil.DEFINITION_CODEC` | 必填 | 输入的有序图案或结构定义 |
 | `result` | 物品栈模板对象 | 必填 | 完成配方后使用的结果 |
 
-[查看 多方块合成字段、默认值与配方示例](../packs/structures/multiblock) · [查看 Java 成员签名](../api/dev-dubhe-anvilcraft-recipe-multiblock-2#multiblockrecipe)
+[查看 多方块合成字段、默认值与配方示例](../packs/structures/multiblock)

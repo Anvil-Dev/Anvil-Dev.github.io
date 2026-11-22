@@ -49,5 +49,3 @@ public final class ForgeRules {
 | `SetTreeNode(Supplier<Set<TreeNode<T>>> factory)`、`then(TreeNode<T> node)` | 自己管理子节点集合 | 构造时调用 factory 一次。`then` 把节点加入集合并返回父节点，连续调用两次得到两个兄弟节点。需要固定插入顺序时传入 `LinkedHashSet::new`。 |
 | `SetTreeNode.executes(Consumer<ExecutionContext<T>> consumer)` | 为集合加入动作 | 每次调用都添加一个新的子节点。示例中根节点有 `PredicateExecutableTreeNode` 类型，它的重写方法替换根节点自身的动作。 |
 | `TreeNode.matches(context)`、`getChildren()`、`run(context)` | 实现自定义节点 | 依次决定是否深入、列出直接子节点、执行当前动作。集合节点返回实际使用的子节点集合，遍历期间修改它可能抛出 `ConcurrentModificationException`。 |
-
-[查看本分支的行为树成员签名](../api/dev-dubhe-anvilcraft-api-behavior)

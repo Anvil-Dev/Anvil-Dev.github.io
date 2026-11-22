@@ -7,7 +7,3 @@
 | 事件类型 | 创建位置 |
 | --- | --- |
 | `PrimerEnchantmentsEvent` | [`AutoEnchantingTableMenu:125`](https://github.com/Anvil-Dev/AnvilCraft/blob/7ac05a76988c98454c0384513fcab44d9da4cf88/src/main/java/dev/dubhe/anvilcraft/inventory/AutoEnchantingTableMenu.java#L125) |
-
-## 参数与事件状态
-
-- [`PrimerEnchantmentsEvent`](../api/dev-dubhe-anvilcraft-api-event-2#primerenchantmentsevent)
